@@ -17,3 +17,4 @@ rootProject.name = "Market Mingle"
 include(":app")
 include(":core:common")
 include(":core:data")
+include(":feature:welcome")
