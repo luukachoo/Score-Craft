@@ -1,9 +1,3 @@
-import ProjectConfig.appId
-import ProjectConfig.minSdk
-import ProjectConfig.targetSdk
-import ProjectConfig.versionCode
-import ProjectConfig.versionName
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -15,11 +9,11 @@ android {
     compileSdk = ProjectConfig.compileSdk
 
     defaultConfig {
-        appId
-        minSdk
-        targetSdk
-        versionCode
-        versionName
+        ProjectConfig.appId
+        ProjectConfig.minSdk
+        ProjectConfig.targetSdk
+        ProjectConfig.versionCode
+        ProjectConfig.versionName
         "androidx.test.runner.AndroidJUnitRunner"
     }
 
