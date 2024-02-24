@@ -31,5 +31,5 @@ fun DependencyHandler.kapt(dependency: String) {
 }
 
 fun DependencyHandler.ksp(dependency: String) {
-    add("kapt", dependency)
+    add("ksp", dependency)
 }

@@ -1,3 +1,9 @@
+import ProjectConfig.appId
+import ProjectConfig.minSdk
+import ProjectConfig.targetSdk
+import ProjectConfig.versionCode
+import ProjectConfig.versionName
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -9,13 +15,12 @@ android {
     compileSdk = ProjectConfig.compileSdk
 
     defaultConfig {
-        applicationId = ProjectConfig.appId
-        minSdk = ProjectConfig.minSdk
-        targetSdk = ProjectConfig.targetSdk
-        versionCode = ProjectConfig.versionCode
-        versionName = ProjectConfig.versionName
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        appId
+        minSdk
+        targetSdk
+        versionCode
+        versionName
+        "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -27,6 +32,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
