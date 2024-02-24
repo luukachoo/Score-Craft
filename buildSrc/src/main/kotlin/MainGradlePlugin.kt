@@ -14,7 +14,6 @@ class MainGradlePlugin : Plugin<Project> {
             plugin("android-library")
             plugin("kotlin-android")
             plugin("kotlin-kapt")
-            plugin("dagger.hilt.android.plugin")
         }
     }
 
