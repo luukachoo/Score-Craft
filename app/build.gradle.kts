@@ -14,7 +14,7 @@ android {
         ProjectConfig.targetSdk
         ProjectConfig.versionCode
         ProjectConfig.versionName
-        "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -39,4 +39,8 @@ android {
 dependencies {
     basic()
     daggerHilt()
+}
+
+kapt {
+    correctErrorTypes = true
 }
