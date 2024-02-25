@@ -19,7 +19,7 @@ object Dependencies {
 
     // Dagger - Hilt
     const val daggerHilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
-    const val daggerHiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hiltVersion}"
+    const val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
     const val daggerHiltAgp = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion}"
 
     // Glide
@@ -86,4 +86,12 @@ fun DependencyHandler.navigationComponent() {
 // example of how to implement modules
 fun DependencyHandler.data() {
     implementation(project(":core:data"))
+}
+
+fun DependencyHandler.welcome() {
+    implementation(project(":feature:welcome"))
+}
+
+fun DependencyHandler.common() {
+    implementation(project(":core:common"))
 }

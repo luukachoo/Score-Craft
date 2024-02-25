@@ -7,6 +7,10 @@ apply<MainGradlePlugin>()
 
 android {
     namespace = "com.core.common"
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {

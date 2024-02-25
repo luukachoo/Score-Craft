@@ -12,6 +12,7 @@ android {
 }
 
 dependencies {
+    basic()
     retrofit()
     daggerHilt()
 }

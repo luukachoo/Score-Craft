@@ -7,9 +7,14 @@ apply<MainGradlePlugin>()
 
 android {
     namespace = "com.feature.welcome"
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
     basic()
+    common()
     data()
 }
