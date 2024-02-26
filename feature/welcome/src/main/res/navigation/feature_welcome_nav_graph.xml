@@ -9,5 +9,6 @@
         android:id="@+id/welcomeFragment"
         android:name="com.feature.welcome.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" />
+        tools:layout="@layout/fragment_welcome" >
+    </fragment>
 </navigation>

@@ -47,7 +47,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_register_btn"
         android:gravity="center"
-        android:text="@string/login"
+        android:text="@string/register"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="18sp"

@@ -8,7 +8,7 @@ plugins {
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.example.registration"
+    namespace = "com.example.login"
 
     buildFeatures {
         viewBinding = true

@@ -42,6 +42,8 @@ dependencies {
     daggerHilt()
     navigationComponent()
     implementation(project(":feature:welcome"))
+    implementation(project(":feature:registration"))
+    implementation(project(":feature:login"))
 }
 
 kapt {
