@@ -3,13 +3,19 @@ package com.feature.welcome
 import com.core.common.base.BaseFragment
 import com.core.common.helper.BindViewActionListeners
 import com.feature.welcome.databinding.FragmentWelcomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBinding::inflate), BindViewActionListeners {
+@AndroidEntryPoint
+class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBinding::inflate) {
     override fun bind() {
-        bindViewActionListeners()
+
     }
 
     override fun bindViewActionListeners() {
+
+    }
+
+    override fun bindObserves() {
 
     }
 }

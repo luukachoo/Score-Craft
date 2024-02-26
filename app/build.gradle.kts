@@ -40,6 +40,8 @@ android {
 dependencies {
     basic()
     daggerHilt()
+    navigationComponent()
+    implementation(project(":feature:welcome"))
 }
 
 kapt {

@@ -36,6 +36,7 @@ object Dependencies {
     const val androidxNavigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationVersion}"
 
     // Firebase
+    const val firebaseAgp = "com.google.gms:google-services:${Versions.gmsVersion}"
     const val firebaseAuth = "com.google.firebase:firebase-auth:${Versions.firebaseAuthVersion}"
     const val firebaseDatabase = "com.google.firebase:firebase-database:${Versions.firebaseDatabaseVersion}"
 
@@ -57,6 +58,10 @@ fun DependencyHandler.basic() {
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.androidxTestExtJunit)
     androidTestImplementation(Dependencies.espressoCore)
+}
+
+fun DependencyHandler.firebaseDataBase() {
+    implementation((Dependencies.firebaseDatabase))
 }
 
 fun DependencyHandler.room() {

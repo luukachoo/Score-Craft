@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 apply<MainGradlePlugin>()
@@ -17,4 +19,10 @@ dependencies {
     basic()
     common()
     data()
+    daggerHilt()
+    navigationComponent()
+}
+
+kapt {
+    correctErrorTypes = true
 }
