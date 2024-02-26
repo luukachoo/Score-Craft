@@ -10,5 +10,6 @@
         android:name="com.feature.welcome.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
+        <deepLink app:uri="market-mingle://feature.welcome/fragment_welcome" />
     </fragment>
 </navigation>

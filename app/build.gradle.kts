@@ -41,6 +41,8 @@ dependencies {
     basic()
     daggerHilt()
     navigationComponent()
+    retrofit()
+    common()
     implementation(project(":feature:welcome"))
     implementation(project(":feature:registration"))
     implementation(project(":feature:login"))

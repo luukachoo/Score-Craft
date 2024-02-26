@@ -12,7 +12,7 @@ object Dependencies {
 
     // Retrofit and Moshi with OkHttp
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
-    const val moshiConverter = "com.squareup.retrofit2:converter-moshi${Versions.retrofitVersion}"
+    const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofitVersion}"
     const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshiVersion}"
     const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttpVersion}"
     const val okhttpInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpVersion}"
