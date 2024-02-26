@@ -18,7 +18,6 @@ android {
 dependencies {
     basic()
     common()
-    data()
     daggerHilt()
     navigationComponent()
 }
