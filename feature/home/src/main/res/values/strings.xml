@@ -1,0 +1,11 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_text">Hello👋</string>
+    <string name="jemal_kakauridze">Jemal Kakauridze</string>
+    <string name="search">Search</string>
+    <string name="categories">Categories</string>
+    <string name="heart">Heart</string>
+    <string name="hoodie">Hoodie</string>
+    <string name="test_price">$120</string>
+</resources>

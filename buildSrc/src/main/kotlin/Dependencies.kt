@@ -88,15 +88,35 @@ fun DependencyHandler.navigationComponent() {
     implementation(Dependencies.navigationUi)
 }
 
+fun DependencyHandler.glide() {
+    implementation(Dependencies.glide)
+}
+
 // example of how to implement modules
+fun DependencyHandler.featureWelcome() {
+    implementation(project(":feature:welcome"))
+}
+
+fun DependencyHandler.featureLogin() {
+    implementation(project(":feature:login"))
+}
+
+fun DependencyHandler.featureRegister() {
+    implementation(project(":feature:registration"))
+}
+
+fun DependencyHandler.featureHome() {
+    implementation(project(":feature:home"))
+}
+
 fun DependencyHandler.data() {
     implementation(project(":core:data"))
 }
 
-fun DependencyHandler.welcome() {
-    implementation(project(":feature:welcome"))
-}
-
 fun DependencyHandler.common() {
     implementation(project(":core:common"))
+}
+
+fun DependencyHandler.domain() {
+    implementation(project(":core:domain"))
 }

@@ -18,8 +18,17 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://api.escuelajs.co/api/v1/\"")
+        }
+
         release {
+            buildConfigField("String", "BASE_URL", "\"https://api.escuelajs.co/api/v1/\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -27,7 +36,6 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_18
         targetCompatibility = JavaVersion.VERSION_18
@@ -42,10 +50,17 @@ dependencies {
     daggerHilt()
     navigationComponent()
     retrofit()
+
+    // core
     common()
-    implementation(project(":feature:welcome"))
-    implementation(project(":feature:registration"))
-    implementation(project(":feature:login"))
+    data()
+    domain()
+
+    // feature
+    featureWelcome()
+    featureRegister()
+    featureLogin()
+    featureHome()
 }
 
 kapt {

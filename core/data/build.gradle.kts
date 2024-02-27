@@ -18,6 +18,11 @@ dependencies {
     retrofit()
     daggerHilt()
     firebaseDataBase()
+
+    // core
+    common()
+    domain()
+
 }
 
 kapt {
