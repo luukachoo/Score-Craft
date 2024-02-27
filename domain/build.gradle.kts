@@ -8,18 +8,12 @@ plugins {
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.example.forgot_password"
-
-    buildFeatures {
-        viewBinding = true
-    }
+    namespace = "com.example.domain"
 }
 
 dependencies {
     basic()
-    common()
     daggerHilt()
-    navigationComponent()
 }
 
 kapt {
