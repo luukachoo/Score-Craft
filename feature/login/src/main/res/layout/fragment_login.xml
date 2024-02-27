@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".screen.LoginFragment">
+    tools:context=".LoginFragment">
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/backBtn"
@@ -65,19 +65,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailEt" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/forgotPasswordTv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordEt"
-        android:layout_marginTop="15dp"
-        android:text="@string/forgot_password"
-        android:layout_marginEnd="20dp"
-        android:textSize="16sp"
-        android:textColor="@color/dark_gray"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
@@ -95,7 +82,7 @@
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/forgotPasswordTv" />
+        app:layout_constraintTop_toBottomOf="@id/passwordEt" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/lineTv"
@@ -104,9 +91,7 @@
         android:layout_marginTop="30dp"
         android:fontFamily="@font/urbanist"
         android:text="@string/or_login_with"
-        android:textColor="@color/dark_gray"
-        android:textStyle="bold"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginBtn" />
@@ -156,15 +141,6 @@
         android:textSize="16sp"
         android:textColor="@color/dark"
         android:text="@string/don_t_have_an_account_register_now"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <ProgressBar
-        android:id="@+id/progress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
