@@ -23,6 +23,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             backBtn.setOnClickListener {
                 handleNavigation("market-mingle://feature.welcome/fragment_welcome")
             }
+
+            alreadyHaveAccTv.setOnClickListener {
+                handleNavigation("market-mingle://feature.login/fragment_login")
+            }
         }
     }
 
