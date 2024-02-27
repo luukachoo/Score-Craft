@@ -21,6 +21,9 @@ dependencies {
     daggerHilt()
     navigationComponent()
     glide()
+
+    // core
+    domain()
 }
 
 kapt {
