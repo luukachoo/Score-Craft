@@ -15,4 +15,5 @@ android {
 
 dependencies {
     basic()
+    retrofit()
 }
