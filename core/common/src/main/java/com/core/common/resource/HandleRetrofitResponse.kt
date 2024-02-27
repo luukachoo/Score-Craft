@@ -3,7 +3,7 @@ package com.core.common.resource
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 
-class HandleRetrofitResponse() {
+class HandleRetrofitResponse {
     fun <T : Any> apiCall(call: suspend () -> Response<T>) = flow {
         emit(Resource.Loading(loading = true))
         try {

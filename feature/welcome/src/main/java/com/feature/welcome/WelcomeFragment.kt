@@ -5,7 +5,6 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
-import com.core.common.helper.BindViewActionListeners
 import com.feature.welcome.databinding.FragmentWelcomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 

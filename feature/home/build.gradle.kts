@@ -20,6 +20,7 @@ dependencies {
     common()
     daggerHilt()
     navigationComponent()
+    glide()
 }
 
 kapt {
