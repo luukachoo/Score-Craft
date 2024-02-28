@@ -9,7 +9,7 @@ import com.core.common.base.BaseFragment
 import com.feature.home.databinding.FragmentHomeBinding
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
-import com.feature.home.extension.showSnackbar
+import com.core.common.extension.showSnackbar
 import com.feature.home.recycler_adapters.MainRecyclerAdapter
 import com.feature.home.state.HomeState
 import dagger.hilt.android.AndroidEntryPoint

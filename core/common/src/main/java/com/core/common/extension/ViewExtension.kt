@@ -1,4 +1,4 @@
-package com.feature.home.extension
+package com.core.common.extension
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar

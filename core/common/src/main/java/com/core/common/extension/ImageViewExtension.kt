@@ -1,4 +1,4 @@
-package com.feature.home.extension
+package com.core.common.extension
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

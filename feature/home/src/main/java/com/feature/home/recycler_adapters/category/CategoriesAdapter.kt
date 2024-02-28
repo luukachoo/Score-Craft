@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.feature.home.databinding.ItemCategoryBinding
-import com.feature.home.extension.loadImagesWithGlide
+import com.core.common.extension.loadImagesWithGlide
 import com.feature.home.model.Category
 
 class CategoriesAdapter :

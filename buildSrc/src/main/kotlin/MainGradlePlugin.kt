@@ -2,6 +2,8 @@ import com.android.build.gradle.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.kotlin
 
 class MainGradlePlugin : Plugin<Project> {
     override fun apply(project: Project) {
@@ -13,6 +15,8 @@ class MainGradlePlugin : Plugin<Project> {
         project.apply {
             plugin("android-library")
             plugin("kotlin-android")
+            plugin("dagger.hilt.android.plugin")
+            plugin("kotlin-kapt")
         }
     }
 
@@ -29,6 +33,10 @@ class MainGradlePlugin : Plugin<Project> {
                 sourceCompatibility = JavaVersion.VERSION_18
                 targetCompatibility = JavaVersion.VERSION_18
             }
+        }
+
+        project.dependencies {
+            daggerHilt()
         }
     }
 
