@@ -1,7 +1,7 @@
 package com.core.data.mapper
 
-import com.core.data.model.CategoryDto
-import com.core.domain.model.GetCategory
+import com.core.data.model.category.CategoryDto
+import com.core.domain.model.category.GetCategory
 
 fun CategoryDto.toDomainModel() = GetCategory(
     creationAt = creationAt,

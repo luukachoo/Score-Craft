@@ -7,5 +7,6 @@
     <include app:graph="@navigation/feature_welcome_nav_graph" />
     <include app:graph="@navigation/feature_register_nav_graph" />
     <include app:graph="@navigation/feature_login_nav_graph" />
+    <include app:graph="@navigation/feature_forgot_password_nav_graph" />
 
 </navigation>

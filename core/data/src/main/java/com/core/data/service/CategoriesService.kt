@@ -1,6 +1,6 @@
 package com.core.data.service
 
-import com.core.data.model.CategoryDto
+import com.core.data.model.category.CategoryDto
 import retrofit2.Response
 
 interface CategoriesService {

@@ -61,7 +61,11 @@ fun DependencyHandler.basic() {
 }
 
 fun DependencyHandler.firebaseDataBase() {
-    implementation((Dependencies.firebaseDatabase))
+    implementation(Dependencies.firebaseDatabase)
+}
+
+fun DependencyHandler.fireBaseAuth() {
+    implementation(Dependencies.firebaseAuth)
 }
 
 fun DependencyHandler.room() {
@@ -107,6 +111,10 @@ fun DependencyHandler.featureRegister() {
 
 fun DependencyHandler.featureHome() {
     implementation(project(":feature:home"))
+}
+
+fun DependencyHandler.featureForgotPassword() {
+    implementation(project(":feature:forgot_password"))
 }
 
 fun DependencyHandler.data() {

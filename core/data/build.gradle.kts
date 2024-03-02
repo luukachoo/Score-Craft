@@ -14,15 +14,14 @@ android {
 
 dependencies {
     basic()
-    common()
     retrofit()
     daggerHilt()
+    fireBaseAuth()
     firebaseDataBase()
 
     // core
-    common()
     domain()
-
+    common()
 }
 
 kapt {

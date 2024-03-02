@@ -1,0 +1,9 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="don_t_worry_it_occurs_please_enter_the_email_address_linked_with_your_account">Don\'t worry! It occurs. Please enter the email\naddress linked with your account.</string>
+    <string name="email">Email</string>
+    <string name="send_code">Send Code</string>
+    <string name="remember_password_login">Remember Password? <font color= "#A45EE5"><B>Login</B></font></string>
+</resources>
