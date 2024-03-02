@@ -6,14 +6,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.core.common.base.BaseFragment
+import com.core.common.extension.showSnackbar
 import com.feature.home.databinding.FragmentHomeBinding
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
-import com.core.common.extension.showSnackbar
 import com.feature.home.recycler_adapters.MainRecyclerAdapter
 import com.feature.home.state.HomeState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
