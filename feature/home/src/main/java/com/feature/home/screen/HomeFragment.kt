@@ -22,7 +22,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private val viewModel: HomeFragmentViewModel by viewModels()
     private lateinit var mainRecyclerAdapter: MainRecyclerAdapter
     override fun bind() {
-        mainRecyclerAdapter = MainRecyclerAdapter(emptyList(), emptyList())
+        mainRecyclerAdapter = MainRecyclerAdapter(emptyList())
         viewModel.onEvent(HomeFragmentEvent.FetchCategories)
         viewModel.onEvent(HomeFragmentEvent.FetchProducts)
     }
@@ -55,7 +55,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private fun handleHomeState(state: HomeState) = with(binding) {
         progressBar.isVisible = state.isLoading
 
-        mainRecyclerAdapter = MainRecyclerAdapter(state.categories ?: emptyList(), state.products ?: emptyList())
+        mainRecyclerAdapter = MainRecyclerAdapter(state.categories ?: emptyList())
         mainRecyclerView.adapter = mainRecyclerAdapter
 
         state.errorMessage?.let {

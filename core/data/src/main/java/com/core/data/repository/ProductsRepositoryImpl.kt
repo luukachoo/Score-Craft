@@ -10,18 +10,18 @@ import com.core.domain.repository.ProductRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class ProductsRepositoryImpl @Inject constructor(
-    private val service: ProductsService,
-    private val responseHandler: HandleRetrofitResponse
-) : ProductRepository {
-    override suspend fun getProducts(): Flow<Resource<List<GetProduct>>> {
-        return responseHandler.apiCall {
-            service.getProducts()
-        }.asResource {
-            it.map { productDto ->
-                productDto.toDomainModel()
-            }
-        }
-    }
-
-}
+//class ProductsRepositoryImpl @Inject constructor(
+//    private val service: ProductsService,
+//    private val responseHandler: HandleRetrofitResponse
+//) : ProductRepository {
+//    override suspend fun getProducts(): Flow<Resource<List<GetProduct>>> {
+//        return responseHandler.apiCall {
+//            service.getProducts()
+//        }.asResource {
+//            it.map { productDto ->
+//                productDto.toDomainModel()
+//            }
+//        }
+//    }
+//
+//}

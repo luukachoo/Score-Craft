@@ -4,22 +4,23 @@ import com.core.common.mapper.asResource
 import com.core.common.resource.HandleRetrofitResponse
 import com.core.common.resource.Resource
 import com.core.data.mapper.toDomainModel
-import com.core.data.service.CategoriesService
+import com.core.data.service.LeaguesService
 import com.core.domain.model.GetCategory
-import com.core.domain.repository.CategoryRepository
+import com.core.domain.model.GetLeague
+import com.core.domain.repository.LeagueRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class CategoriesRepositoryImpl @Inject constructor(
-    private val service: CategoriesService,
+    private val service: LeaguesService,
     private val responseHandler: HandleRetrofitResponse
-) : CategoryRepository {
-    override suspend fun getCategories(): Flow<Resource<List<GetCategory>>> {
+) : LeagueRepository {
+    override suspend fun getLeagues(): Flow<Resource<List<GetLeague>>> {
         return responseHandler.apiCall {
-            service.getCategories()
+            service.getLeagues()
         }.asResource {
-            it.map { categoryDto ->
-                categoryDto.toDomainModel()
+            it.map { leagueDto ->
+                leagueDto.toDomainModel()
             }
         }
     }

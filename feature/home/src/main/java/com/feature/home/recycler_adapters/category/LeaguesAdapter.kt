@@ -4,22 +4,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.feature.home.databinding.ItemCategoryBinding
 import com.core.common.extension.loadImagesWithGlide
-import com.feature.home.model.Category
+import com.feature.home.databinding.ItemLeagueBinding
+import com.feature.home.model.League
 
-class CategoriesAdapter :
-    ListAdapter<Category, CategoriesAdapter.CategoryViewHolder>(CategoryDiffCallback()) {
-    inner class CategoryViewHolder(private val binding: ItemCategoryBinding) :
+class LeaguesAdapter :
+    ListAdapter<League, LeaguesAdapter.CategoryViewHolder>(CategoryDiffCallback()) {
+    inner class CategoryViewHolder(private val binding: ItemLeagueBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(category: Category) = with(binding) {
-            tvName.text = category.name
-            ivImage.loadImagesWithGlide(category.image)
+        fun bind(league: League) = with(binding) {
+            tvName.text = league.name
+            ivImage.loadImagesWithGlide(league.imageUrl)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CategoryViewHolder(
-        ItemCategoryBinding.inflate(
+        ItemLeagueBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false

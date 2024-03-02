@@ -4,8 +4,7 @@ import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
-import com.core.domain.use_case.GetCategoriesUseCase
-import com.core.domain.use_case.GetProductsUseCase
+import com.core.domain.use_case.GetLeaguesUseCase
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
 import com.feature.home.mapper.toPresentationModel
@@ -20,8 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(
-    private val getProductsUseCase: GetProductsUseCase,
-    private val getCategoriesUseCase: GetCategoriesUseCase
+    private val getLeaguesUseCase: GetLeaguesUseCase
 ) : ViewModel() {
 
     private val _homeState = MutableStateFlow(HomeState())
@@ -34,27 +32,33 @@ class HomeFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             when (event) {
                 HomeFragmentEvent.EditTextClick -> updateNavigationEvent(HomeNavigationEvents.NavigateToSearch)
-                HomeFragmentEvent.FetchCategories -> fetchCategories()
-                HomeFragmentEvent.FetchProducts -> fetchProducts()
-                is HomeFragmentEvent.ItemClick -> updateNavigationEvent(HomeNavigationEvents.NavigateToDetails(event.id))
+                HomeFragmentEvent.FetchCategories -> fetchLeagues()
+                HomeFragmentEvent.FetchProducts -> Unit
+                is HomeFragmentEvent.ItemClick -> updateNavigationEvent(
+                    HomeNavigationEvents.NavigateToDetails(
+                        event.id
+                    )
+                )
+
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
             }
         }
     }
 
-    private fun fetchCategories() {
+    private fun fetchLeagues() {
         viewModelScope.launch {
-            getCategoriesUseCase().collect { res ->
+            getLeaguesUseCase().collect { res ->
                 when (res) {
                     is Resource.Error -> {
                         updateErrorMessage(res.errorMessage)
                         d("ViewModelHttpError", res.errorMessage)
                     }
+
                     is Resource.Loading -> loading(res.loading)
                     is Resource.Success -> {
                         _homeState.update {
                             it.copy(
-                                categories = res.data.map { getCategory -> getCategory.toPresentationModel() },
+                                categories = res.data.map { getLeague ->  getLeague.toPresentationModel() },
                                 isLoading = false,
                                 errorMessage = null
                             )
@@ -65,28 +69,29 @@ class HomeFragmentViewModel @Inject constructor(
         }
     }
 
-    private fun fetchProducts() {
-        viewModelScope.launch {
-            getProductsUseCase().collect { res ->
-                when (res) {
-                    is Resource.Error -> {
-                        updateErrorMessage(res.errorMessage)
-                        d("ViewModelHttpError", res.errorMessage)
-                    }
-                    is Resource.Loading -> loading(res.loading)
-                    is Resource.Success -> {
-                        _homeState.update {
-                            it.copy(
-                                products = res.data.map { getProduct -> getProduct.toPresentationModel() },
-                                isLoading = false,
-                                errorMessage = null
-                            )
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    private fun fetchProducts() {
+//        viewModelScope.launch {
+//            getProductsUseCase().collect { res ->
+//                when (res) {
+//                    is Resource.Error -> {
+//                        updateErrorMessage(res.errorMessage)
+//                        d("ViewModelHttpError", res.errorMessage)
+//                    }
+//
+//                    is Resource.Loading -> loading(res.loading)
+//                    is Resource.Success -> {
+//                        _homeState.update {
+//                            it.copy(
+//                                products = res.data.map { getProduct -> getProduct.toPresentationModel() },
+//                                isLoading = false,
+//                                errorMessage = null
+//                            )
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     private fun loading(isLoading: Boolean) =
         _homeState.update { it.copy(isLoading = isLoading) }
