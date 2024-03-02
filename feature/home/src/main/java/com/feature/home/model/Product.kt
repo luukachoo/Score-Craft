@@ -1,7 +1,7 @@
 package com.feature.home.model
 
 data class Product(
-    val category: Category,
+    val league: League,
     val description: String,
     val id: Int,
     val images: List<String>,

@@ -1,7 +1,8 @@
-package com.example.marketmingle
+package com.example.marketmingle.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.marketmingle.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

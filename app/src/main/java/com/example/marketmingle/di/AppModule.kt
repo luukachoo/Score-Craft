@@ -1,7 +1,7 @@
 package com.example.marketmingle.di
 
 import com.core.common.resource.HandleRetrofitResponse
-import com.core.data.service.CategoriesService
+import com.core.data.service.LeaguesService
 import com.core.data.service.ProductsService
 import com.example.marketmingle.BuildConfig
 import com.squareup.moshi.Moshi
@@ -57,8 +57,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCategoriesService(retrofit: Retrofit): CategoriesService {
-        return retrofit.create(CategoriesService::class.java)
+    fun provideCategoriesService(retrofit: Retrofit): LeaguesService {
+        return retrofit.create(LeaguesService::class.java)
     }
 
     @Provides

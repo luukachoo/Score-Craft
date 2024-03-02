@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCategories"
+        android:id="@+id/tvLeagues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:fontFamily="@font/alata"
-        android:text="@string/categories"
+        android:text="@string/leagues"
         android:textColor="@color/dark"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCategories"
+        android:id="@+id/rvLeagues"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -27,8 +27,8 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCategories"
+        app:layout_constraintTop_toBottomOf="@+id/tvLeagues"
         app:spanCount="2"
-        tools:listitem="@layout/item_category" />
+        tools:listitem="@layout/item_league" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

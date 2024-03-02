@@ -1,12 +1,15 @@
 package com.core.data.mapper
 
-import com.core.data.model.category.CategoryDto
-import com.core.domain.model.category.GetCategory
+import com.core.data.model.LeagueDto
+import com.core.domain.model.GetLeague
 
-fun CategoryDto.toDomainModel() = GetCategory(
-    creationAt = creationAt,
-    id = id,
-    image = image,
-    name = name,
-    updatedAt = updatedAt
+fun LeagueDto.toDomainModel() = GetLeague(
+    id = id ?: 0,
+    imageUrl = imageUrl ?: "",
+    modifiedAt = modifiedAt ?: "",
+    name = name ?: "",
+    getSeriesList = seriesDtoList.map { it.toDomainModel() },
+    slug = slug ?: "",
+    url = url,
+    getVideoGame = videoGameDto.toDomainModel()
 )

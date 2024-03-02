@@ -25,11 +25,11 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://api.escuelajs.co/api/v1/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.pandascore.co/\"")
         }
 
         release {
-            buildConfigField("String", "BASE_URL", "\"https://api.escuelajs.co/api/v1/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.pandascore.co/\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
