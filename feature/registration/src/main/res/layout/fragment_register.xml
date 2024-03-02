@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".RegisterFragment">
+    tools:context=".screen.RegisterFragment">
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/backBtn"
@@ -91,6 +91,7 @@
         android:fontFamily="@font/urbanist"
         android:gravity="center_vertical"
         android:hint="@string/email"
+        android:inputType="textEmailAddress"
         android:paddingStart="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,6 +108,7 @@
         android:fontFamily="@font/urbanist"
         android:gravity="center_vertical"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:paddingStart="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,6 +125,7 @@
         android:fontFamily="@font/urbanist"
         android:gravity="center_vertical"
         android:hint="@string/confirm_password"
+        android:inputType="textPassword"
         android:paddingStart="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -210,5 +213,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
