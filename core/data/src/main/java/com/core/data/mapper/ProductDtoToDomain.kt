@@ -1,7 +1,7 @@
 package com.core.data.mapper
 
-import com.core.data.model.ProductDto
-import com.core.domain.model.GetProduct
+import com.core.data.model.product.ProductDto
+import com.core.domain.model.category.GetProduct
 
 //fun ProductDto.toDomainModel() = GetProduct(
 //    getCategory = categoryDto.toDomainModel(),

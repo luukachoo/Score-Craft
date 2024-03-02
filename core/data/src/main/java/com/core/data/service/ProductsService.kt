@@ -1,6 +1,6 @@
 package com.core.data.service
 
-import com.core.data.model.ProductDto
+import com.core.data.model.product.ProductDto
 import retrofit2.Response
 import retrofit2.http.GET
 

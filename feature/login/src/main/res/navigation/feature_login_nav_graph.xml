@@ -7,9 +7,11 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.login.LoginFragment"
+        android:name="com.example.login.screen.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
 
     <deepLink app:uri="market-mingle://feature.login/fragment_login" />
+
+    </fragment>
 </navigation>
