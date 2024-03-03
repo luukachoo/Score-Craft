@@ -10,6 +10,5 @@ fun GetLeague.toPresentationModel() = League(
     name = name,
     getSeriesList = getSeriesList.map { it.toPresentationModel() },
     slug = slug,
-    url = url,
-    getVideoGame = getVideoGame.toPresentataionModel()
+    url = url
 )

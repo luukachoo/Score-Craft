@@ -16,7 +16,6 @@
             android:id="@+id/imgPreview"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="@drawable/rounded_field"
             android:clipToOutline="true"
             android:scaleType="centerCrop"
             tools:targetApi="s" />

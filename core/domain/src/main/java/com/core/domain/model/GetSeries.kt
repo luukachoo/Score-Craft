@@ -12,5 +12,5 @@ data class GetSeries(
     val slug: String,
     val winnerId: Any?,
     val winnerType: Any?,
-    val year: Int
+    val year: Int,
 )

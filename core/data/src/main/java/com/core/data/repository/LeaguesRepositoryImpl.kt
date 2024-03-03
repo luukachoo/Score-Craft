@@ -5,13 +5,13 @@ import com.core.common.resource.HandleRetrofitResponse
 import com.core.common.resource.Resource
 import com.core.data.mapper.toDomainModel
 import com.core.data.service.LeaguesService
-import com.core.domain.model.GetCategory
 import com.core.domain.model.GetLeague
+import com.core.domain.model.GetSeries
 import com.core.domain.repository.LeagueRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class CategoriesRepositoryImpl @Inject constructor(
+class LeaguesRepositoryImpl @Inject constructor(
     private val service: LeaguesService,
     private val responseHandler: HandleRetrofitResponse
 ) : LeagueRepository {
@@ -21,6 +21,16 @@ class CategoriesRepositoryImpl @Inject constructor(
         }.asResource {
             it.map { leagueDto ->
                 leagueDto.toDomainModel()
+            }
+        }
+    }
+
+    override suspend fun getSeriesBySlug(slug: String): Flow<Resource<List<GetSeries>>> {
+        return responseHandler.apiCall {
+            service.getSeriesBySlug(slug = slug)
+        }.asResource {
+            it.map { seriesDto ->
+                seriesDto.toDomainModel()
             }
         }
     }

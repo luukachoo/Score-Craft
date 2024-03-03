@@ -8,5 +8,5 @@
     <include app:graph="@navigation/feature_register_nav_graph" />
     <include app:graph="@navigation/feature_login_nav_graph" />
     <include app:graph="@navigation/feature_home_nav_graph" />
-
+    <include app:graph="@navigation/feature_series_nav_graph" />
 </navigation>

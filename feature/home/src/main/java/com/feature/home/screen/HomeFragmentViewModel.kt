@@ -3,7 +3,9 @@ package com.feature.home.screen
 import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.core.common.resource.Resource
+import com.core.common.resource.takeIfError
+import com.core.common.resource.takeIfLoading
+import com.core.common.resource.takeIfSuccess
 import com.core.domain.use_case.GetLeaguesUseCase
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
@@ -13,6 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,62 +34,59 @@ class HomeFragmentViewModel @Inject constructor(
     fun onEvent(event: HomeFragmentEvent) {
         viewModelScope.launch {
             when (event) {
-                HomeFragmentEvent.EditTextClick -> updateNavigationEvent(HomeNavigationEvents.NavigateToSearch)
                 HomeFragmentEvent.FetchCategories -> fetchLeagues()
-                HomeFragmentEvent.FetchProducts -> Unit
                 is HomeFragmentEvent.ItemClick -> updateNavigationEvent(
                     HomeNavigationEvents.NavigateToDetails(
-                        event.id
+                        event.slug
                     )
                 )
-
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
             }
         }
     }
 
-    private fun fetchLeagues() {
+    private suspend fun fetchLeagues() {
         viewModelScope.launch {
-            getLeaguesUseCase().collect { res ->
-                when (res) {
-                    is Resource.Error -> {
-                        updateErrorMessage(res.errorMessage)
-                        d("ViewModelHttpError", res.errorMessage)
-                    }
+            getLeaguesUseCase().collectLatest { res ->
+                res.takeIfError { errorMessage ->
+                    updateErrorMessage(errorMessage)
+                    d("ViewModelHttpError", errorMessage)
+                }
 
-                    is Resource.Loading -> loading(res.loading)
-                    is Resource.Success -> {
-                        _homeState.update {
-                            it.copy(
-                                categories = res.data.map { getLeague ->  getLeague.toPresentationModel() },
-                                isLoading = false,
-                                errorMessage = null
-                            )
-                        }
+                res.takeIfLoading { loading ->
+                    loading(loading)
+                }
+
+                res.takeIfSuccess { data ->
+                    _homeState.update {
+                        it.copy(
+                            categories = data.map { getLeague -> getLeague.toPresentationModel() },
+                            isLoading = false,
+                            errorMessage = null
+                        )
                     }
                 }
             }
         }
     }
 
-//    private fun fetchProducts() {
+//    private suspend fun fetchLiveMatches() {
 //        viewModelScope.launch {
-//            getProductsUseCase().collect { res ->
-//                when (res) {
-//                    is Resource.Error -> {
-//                        updateErrorMessage(res.errorMessage)
-//                        d("ViewModelHttpError", res.errorMessage)
-//                    }
+//            getMatchesUseCase().collect { res ->
+//                res.takeIfError { errorMessage ->
+//                    updateErrorMessage(errorMessage)
+//                    d("ViewModelHttpError", errorMessage)
+//                }
 //
-//                    is Resource.Loading -> loading(res.loading)
-//                    is Resource.Success -> {
-//                        _homeState.update {
-//                            it.copy(
-//                                products = res.data.map { getProduct -> getProduct.toPresentationModel() },
-//                                isLoading = false,
-//                                errorMessage = null
-//                            )
-//                        }
+//                res.takeIfLoading { loading ->
+//                    loading(loading)
+//                }
+//
+//                res.takeIfSuccess { data ->
+//                    _homeState.update {
+//                        it.copy(
+//                            liveMatches = data.map { getMatch ->  getMatch.toPresentationModel() }
+//                        )
 //                    }
 //                }
 //            }

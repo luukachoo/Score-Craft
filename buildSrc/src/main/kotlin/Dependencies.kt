@@ -48,6 +48,9 @@ object Dependencies {
 
     // Splash Screen
     const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashVersion}"
+
+    // Paging
+    const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
 }
 
 fun DependencyHandler.basic() {
@@ -92,6 +95,10 @@ fun DependencyHandler.glide() {
     implementation(Dependencies.glide)
 }
 
+fun DependencyHandler.paging() {
+    implementation(Dependencies.paging)
+}
+
 // example of how to implement modules
 fun DependencyHandler.featureWelcome() {
     implementation(project(":feature:welcome"))
@@ -107,6 +114,10 @@ fun DependencyHandler.featureRegister() {
 
 fun DependencyHandler.featureHome() {
     implementation(project(":feature:home"))
+}
+
+fun DependencyHandler.featureSeries() {
+    implementation(project(":feature:series"))
 }
 
 fun DependencyHandler.data() {
