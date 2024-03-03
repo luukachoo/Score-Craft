@@ -1,5 +1,6 @@
-package com.core.common.resource
+package com.core.common.resource.auth
 
+import com.core.common.resource.Resource
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException

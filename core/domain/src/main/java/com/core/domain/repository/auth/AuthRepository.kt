@@ -1,6 +1,7 @@
 package com.core.domain.repository.auth
 
 import com.core.common.resource.Resource
+import com.core.domain.model.auth.GetUsers
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.flow.Flow
 
@@ -9,4 +10,5 @@ interface AuthRepository {
     suspend fun login(email: String, password: String): Flow<Resource<FirebaseUser>>
     suspend fun logOut()
     suspend fun forgotPassword(email: String): Flow<Resource<Unit>>
+    suspend fun getCurrentUser(): Flow<Resource<GetUsers>>
 }

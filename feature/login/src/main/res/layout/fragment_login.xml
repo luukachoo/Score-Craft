@@ -43,6 +43,7 @@
         android:fontFamily="@font/urbanist"
         android:gravity="center_vertical"
         android:hint="@string/email"
+        android:inputType="textEmailAddress"
         android:paddingStart="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +60,7 @@
         android:fontFamily="@font/urbanist"
         android:gravity="center_vertical"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:paddingStart="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,16 +69,16 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/forgotPasswordTv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordEt"
-        android:layout_marginTop="15dp"
-        android:text="@string/forgot_password"
-        android:layout_marginEnd="20dp"
-        android:textSize="16sp"
-        android:textColor="@color/dark_gray"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/forgot_password"
+        android:textColor="@color/dark_gray"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordEt" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginBtn"
@@ -105,8 +107,8 @@
         android:fontFamily="@font/urbanist"
         android:text="@string/or_login_with"
         android:textColor="@color/dark_gray"
-        android:textStyle="bold"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginBtn" />
@@ -149,24 +151,24 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/dontHaveAccTv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/urbanist"
-        android:textSize="16sp"
-        android:textColor="@color/dark"
         android:text="@string/don_t_have_an_account_register_now"
+        android:textColor="@color/dark"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/progress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

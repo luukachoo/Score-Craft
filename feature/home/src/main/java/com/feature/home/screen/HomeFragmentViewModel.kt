@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
 import com.core.domain.use_case.GetLeaguesUseCase
+import com.core.domain.use_case.auth.GetAuthUseCase
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
+import com.feature.home.mapper.auth.toPresenter
 import com.feature.home.mapper.toPresentationModel
 import com.feature.home.state.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +21,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(
-    private val getLeaguesUseCase: GetLeaguesUseCase
+    private val getLeaguesUseCase: GetLeaguesUseCase,
+    private val getAuthUseCase: GetAuthUseCase
 ) : ViewModel() {
 
     private val _homeState = MutableStateFlow(HomeState())
@@ -41,6 +44,7 @@ class HomeFragmentViewModel @Inject constructor(
                 )
 
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
+                HomeFragmentEvent.GetCurrentUser -> getCurrentUser()
             }
         }
     }
@@ -55,10 +59,35 @@ class HomeFragmentViewModel @Inject constructor(
                     }
 
                     is Resource.Loading -> loading(res.loading)
+
                     is Resource.Success -> {
                         _homeState.update {
                             it.copy(
                                 categories = res.data.map { getLeague ->  getLeague.toPresentationModel() },
+                                isLoading = false,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getCurrentUser() {
+        viewModelScope.launch {
+            getAuthUseCase.getCurrentUserUseCase().collect { res ->
+                when (res) {
+                    is Resource.Error -> {
+                        updateErrorMessage(res.errorMessage)
+                    }
+
+                    is Resource.Loading -> loading(res.loading)
+
+                    is Resource.Success -> {
+                        _homeState.update {
+                            it.copy(
+                                user = res.data.toPresenter(),
                                 isLoading = false,
                                 errorMessage = null
                             )

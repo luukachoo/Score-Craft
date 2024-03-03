@@ -117,6 +117,10 @@ fun DependencyHandler.featureForgotPassword() {
     implementation(project(":feature:forgot_password"))
 }
 
+fun DependencyHandler.featureProfile() {
+    implementation(project(":feature:profile"))
+}
+
 fun DependencyHandler.data() {
     implementation(project(":core:data"))
 }

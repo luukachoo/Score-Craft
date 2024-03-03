@@ -1,5 +1,6 @@
-package com.core.common.resource
+package com.core.common.resource.auth
 
+import com.core.common.resource.Resource
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuthActionCodeException
 import com.google.firebase.auth.FirebaseAuthEmailException
