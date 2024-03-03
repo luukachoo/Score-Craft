@@ -4,12 +4,12 @@ import com.core.data.model.LeagueDto
 import com.core.domain.model.GetLeague
 
 fun LeagueDto.toDomainModel() = GetLeague(
-    id = id ?: 0,
+    id = id,
     imageUrl = imageUrl ?: "",
-    modifiedAt = modifiedAt ?: "",
-    name = name ?: "",
+    modifiedAt = modifiedAt,
+    name = name,
     getSeriesList = seriesDtoList.map { it.toDomainModel() },
-    slug = slug ?: "",
+    slug = slug,
     url = url,
     getVideoGame = videoGameDto.toDomainModel()
 )
