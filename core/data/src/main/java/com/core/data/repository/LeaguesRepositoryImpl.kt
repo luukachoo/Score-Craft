@@ -3,6 +3,7 @@ package com.core.data.repository
 import com.core.common.mapper.asResource
 import com.core.common.resource.HandleRetrofitResponse
 import com.core.common.resource.Resource
+import com.core.data.mapper.match_dto_mapper.toDomainModel
 import com.core.data.mapper.toDomainModel
 import com.core.data.service.LeaguesService
 import com.core.domain.model.GetLeague
@@ -27,7 +28,7 @@ class LeaguesRepositoryImpl @Inject constructor(
 
     override suspend fun getSeriesBySlug(slug: String): Flow<Resource<List<GetSeries>>> {
         return responseHandler.apiCall {
-            service.getSeriesBySlug(slug = slug)
+            service.getSeriesBySlug(slug)
         }.asResource {
             it.map { seriesDto ->
                 seriesDto.toDomainModel()

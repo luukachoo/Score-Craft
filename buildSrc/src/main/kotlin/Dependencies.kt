@@ -120,6 +120,10 @@ fun DependencyHandler.featureSeries() {
     implementation(project(":feature:series"))
 }
 
+fun DependencyHandler.featureLiveMatches() {
+    implementation(project(":feature:live_matches"))
+}
+
 fun DependencyHandler.data() {
     implementation(project(":core:data"))
 }

@@ -27,6 +27,11 @@ class MainRecyclerAdapter(
             leagueAdapter.onLeagueClick { league ->
                 onLeagueClick?.invoke(league)
             }
+
+//
+//            root.setOnClickListener {
+//                onLeagueClick?.invoke()
+//            }
         }
     }
 

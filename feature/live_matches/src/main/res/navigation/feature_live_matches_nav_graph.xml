@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feature_live_matches_nav_graph"
+    app:startDestination="@id/livesFragment">
+
+    <fragment
+        android:id="@+id/livesFragment"
+        android:name="com.feature.live_matches.screen.LivesFragment"
+        android:label="fragment_lives"
+        tools:layout="@layout/fragment_lives" />
+</navigation>

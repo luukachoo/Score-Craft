@@ -70,29 +70,6 @@ class HomeFragmentViewModel @Inject constructor(
         }
     }
 
-//    private suspend fun fetchLiveMatches() {
-//        viewModelScope.launch {
-//            getMatchesUseCase().collect { res ->
-//                res.takeIfError { errorMessage ->
-//                    updateErrorMessage(errorMessage)
-//                    d("ViewModelHttpError", errorMessage)
-//                }
-//
-//                res.takeIfLoading { loading ->
-//                    loading(loading)
-//                }
-//
-//                res.takeIfSuccess { data ->
-//                    _homeState.update {
-//                        it.copy(
-//                            liveMatches = data.map { getMatch ->  getMatch.toPresentationModel() }
-//                        )
-//                    }
-//                }
-//            }
-//        }
-//    }
-
     private fun loading(isLoading: Boolean) =
         _homeState.update { it.copy(isLoading = isLoading) }
 

@@ -4,8 +4,6 @@ import com.squareup.moshi.Json
 
 
 data class MatchDto(
-    @Json(name = "begin_at")
-    val beginAt: String,
     @Json(name = "detailed_stats")
     val detailedStats: Boolean,
     @Json(name = "draw")
