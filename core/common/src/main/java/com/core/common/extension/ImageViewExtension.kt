@@ -2,15 +2,14 @@ package com.core.common.extension
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.core.common.R
 
-fun ImageView.loadImagesWithGlide(url: String?) {
-    val finalUrl = if (url.isNullOrEmpty()) {
-        R.drawable.ic_error_page
+fun ImageView.loadImagesWithGlide(url: String?, placeHolder: Int? = null) {
+    if (!url.isNullOrBlank()) {
+        Glide.with(this.context)
+            .load(url)
+            .placeholder(placeHolder ?: 0)
+            .into(this)
     } else {
-        url
+        placeHolder?.let { setImageResource(it) }
     }
-    Glide.with(this)
-        .load(finalUrl)
-        .into(this)
 }

@@ -1,39 +1,37 @@
-package com.feature.live_matches.mapper
+package com.core.data
 
+import com.core.data.mapper.toDomainModel
+import com.core.data.model.MatchDto
 import com.core.domain.model.GetMatch
-import com.feature.live_matches.model.Match
 
-
-fun GetMatch.toPresentationModel() = Match(
+fun MatchDto.toDomainModel() = GetMatch(
     beginAt = beginAt,
     detailedStats = detailedStats,
     draw = draw,
     endAt = endAt,
     forfeit = forfeit,
     gameAdvantage = gameAdvantage,
-    games = games?.map { it?.toPresentationModel() },
+    games = games?.map { it?.toDomainModel() },
     id = id,
     matchType = matchType,
     modifiedAt = modifiedAt,
     name = name,
     numberOfGames = numberOfGames,
-    opponents = opponents?.map { it?.toPresentationModel() },
+    opponents = opponents?.map { it?.toDomainModel() },
     originalScheduledAt = originalScheduledAt,
     rescheduled = rescheduled,
-    results = results?.map { it?.toPresentationModel() },
+    results = results?.map { it?.toDomainModel() },
     scheduledAt = scheduledAt,
     slug = slug,
     status = status,
-    streamsList = streamsList?.map { it?.toPresentationModel() },
-    videogame = videogame,
-    winner = winner,
+    streamsList = streamsList?.map { it?.toDomainModel() },
+    videogame = videogame?.toDomainModel(),
+    winner = winner?.toDomainModel(),
     winnerId = winnerId,
     winnerType = winnerType
 )
 
-fun GetMatch.GetOpponent.toPresentationModel() = Match.Opponent(opponent = opponent, type = type)
-
-fun GetMatch.GetStream.toPresentationModel() = Match.Stream(
+fun MatchDto.StreamDto.toDomainModel() = GetMatch.GetStream(
     embedUrl = embedUrl,
     language = language,
     main = main,
@@ -41,7 +39,9 @@ fun GetMatch.GetStream.toPresentationModel() = Match.Stream(
     rawUrl = rawUrl
 )
 
-fun GetMatch.GetGame.toPresentationModel() = Match.Game(
+fun MatchDto.ResultDto.toDomainModel() = GetMatch.GetResult(score = score, teamId = teamId)
+
+fun MatchDto.GameDto.toDomainModel() = GetMatch.GetGame(
     beginAt = beginAt,
     complete = complete,
     detailedStats = detailedStats,
@@ -53,13 +53,10 @@ fun GetMatch.GetGame.toPresentationModel() = Match.Game(
     matchId = matchId,
     position = position,
     status = status,
-    winner = winner?.toPresentationModel(),
+    winner = winner?.toDomainModel(),
     winnerType = winnerType
 )
 
-fun GetMatch.GetResult.toPresentationModel() =
-    Match.Result(score = score, teamId = teamId)
+fun MatchDto.GameDto.WinnerDto.toDomainModel() = GetMatch.GetGame.GetWinner(id = id, type = type)
 
-fun GetMatch.GetGame.GetWinner.toPresentationModel() =
-    Match.Game.Winner(id = id, type = type)
-
+fun MatchDto.OpponentDto.toDomainModel() = GetMatch.GetOpponent(opponent = opponent?.toDomainModel(), type = type)

@@ -8,7 +8,7 @@ import com.core.common.resource.takeIfLoading
 import com.core.common.resource.takeIfSuccess
 import com.core.domain.use_case.GetMatchesUseCase
 import com.feature.live_matches.event.LivesFragmentEvent
-import com.feature.live_matches.mapper.test_mapper.toPresentationModel
+import com.feature.live_matches.mapper.toPresentationModel
 import com.feature.live_matches.state.LiveState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,7 +37,7 @@ class LivesFragmentViewModel @Inject constructor(private val getMatchesUseCase: 
                 res.takeIfSuccess { data ->
                     _liveState.update {
                         it.copy(
-                            liveMatches = data.map { getMatch ->  getMatch.toPresentationModel() }
+                            liveMatches = data.map { getMatch -> getMatch.toPresentationModel() }
                         )
                     }
                 }

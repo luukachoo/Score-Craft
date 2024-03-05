@@ -1,6 +1,6 @@
 package com.core.data.mapper
 
-//fun MatchDto.toDomainModel() = GetMatch(
+//fun GetMatch.toDomainModel() = GetMatch(
 //    endAt = endAt,
 //    gameDtos = gameDtoDtos.map { it.toDomainModel() },
 //    id = id,
@@ -24,7 +24,7 @@ package com.core.data.mapper
 //    winnerType = winnerType
 //)
 //
-//fun MatchDto.GameDto.toDomainModel() = GetMatch.GetGame(
+//fun GetMatch.GetGame.toDomainModel() = GetMatch.GetGame(
 //    beginAt = beginAt,
 //    complete = complete,
 //    detailedStats = detailedStats,
@@ -39,7 +39,7 @@ package com.core.data.mapper
 //)
 //
 //
-//fun MatchDto.StreamsDto.toDomainModel() = GetMatch.GetStreams(
+//fun GetMatch.StreamsDto.toDomainModel() = GetMatch.GetStreams(
 //    embedUrl = embedUrl,
 //    language = language,
 //    main = main,
@@ -47,9 +47,9 @@ package com.core.data.mapper
 //    rawUrl = rawUrl
 //)
 //
-//fun MatchDto.ResultDto.toDomainModel() = GetMatch.GetResult(score = score, teamId = teamId)
+//fun GetMatch.GetResult.toDomainModel() = GetMatch.GetResult(score = score, teamId = teamId)
 //
-//fun MatchDto.GameDto.WinnerDto.toDomainModel() = GetMatch.GetGame.GetWinner(id = id, type = type)
+//fun GetMatch.GetGame.WinnerDto.toDomainModel() = GetMatch.GetGame.GetWinner(id = id, type = type)
 //
-//fun MatchDto.OpponentDto.toDomainModel() =
+//fun GetMatch.OpponentDto.toDomainModel() =
 //    GetMatch.GetOpponent(opponent = opponent.toDomainModel(), type = type)
