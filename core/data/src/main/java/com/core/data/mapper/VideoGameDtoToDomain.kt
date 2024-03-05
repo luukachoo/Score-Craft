@@ -1,10 +1,20 @@
 package com.core.data.mapper
 
-import com.core.data.model.VideoGameDto
-import com.core.domain.model.GetVideoGame
+import com.core.data.model.GamesDto
+import com.core.domain.model.GetGames
 
-fun VideoGameDto.toDomainModel() = GetVideoGame(
+fun GamesDto.toDomainModel() = GetGames(
     id = id,
-    name = name,
-    slug = slug
+    beginAt = beginAt,
+    complete = complete,
+    detailedStats = detailedStats,
+    endAt = endAt,
+    finished = finished,
+    forfeit = forfeit,
+    length = length,
+    matchId = matchId,
+    position = position,
+    status = status,
+    winner = winner.toDomainModel(),
+    winnerType = winnerType,
 )

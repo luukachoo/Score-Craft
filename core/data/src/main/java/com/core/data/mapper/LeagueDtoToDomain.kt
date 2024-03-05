@@ -5,11 +5,10 @@ import com.core.domain.model.GetLeague
 
 fun LeagueDto.toDomainModel() = GetLeague(
     id = id,
-    imageUrl = imageUrl ?: "",
+    imageUrl = imageUrl,
     modifiedAt = modifiedAt,
     name = name,
     getSeriesList = seriesDtoList.map { it.toDomainModel() },
     slug = slug,
     url = url,
-    getVideoGame = videoGameDto.toDomainModel()
 )

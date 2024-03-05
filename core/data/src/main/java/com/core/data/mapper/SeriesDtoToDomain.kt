@@ -1,9 +1,7 @@
 package com.core.data.mapper
 
 import com.core.data.model.SeriesDto
-import com.core.data.model.TournamentDtoList
 import com.core.domain.model.GetSeries
-import com.core.domain.model.GetTournamentsList
 
 fun SeriesDto.toDomainModel() = GetSeries(
     beginAt = beginAt,
@@ -21,21 +19,21 @@ fun SeriesDto.toDomainModel() = GetSeries(
 )
 
 
-fun TournamentDtoList.toDomainModel() = GetTournamentsList(getTournaments = tournamentDtos.map { it.toDomainModel() })
-fun TournamentDtoList.TournamentDto.toDomainModel() = GetTournamentsList.GetTournament(
-    beginAt = beginAt,
-    detailedStats = detailedStats,
-    endAt = endAt,
-    hasBracket = hasBracket,
-    id = id,
-    leagueId = leagueId,
-    liveSupported = liveSupported,
-    modifiedAt = modifiedAt,
-    name = name,
-    prizePool = prizePool,
-    serieId = serieId,
-    slug = slug,
-    tier = tier,
-    winnerId = winnerId,
-    winnerType = winnerType
-)
+//fun TournamentDtoList.toDomainModel() = GetTournamentsList(getTournaments = tournamentDtos.map { it.toDomainModel() })
+//fun TournamentDtoList.TournamentDto.toDomainModel() = GetTournamentsList.GetTournament(
+//    beginAt = beginAt,
+//    detailedStats = detailedStats,
+//    endAt = endAt,
+//    hasBracket = hasBracket,
+//    id = id,
+//    leagueId = leagueId,
+//    liveSupported = liveSupported,
+//    modifiedAt = modifiedAt,
+//    name = name,
+//    prizePool = prizePool,
+//    serieId = serieId,
+//    slug = slug,
+//    tier = tier,
+//    winnerId = winnerId,
+//    winnerType = winnerType
+//)

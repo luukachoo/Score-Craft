@@ -19,8 +19,8 @@ class LeaguesRepositoryImpl @Inject constructor(
         return responseHandler.apiCall {
             service.getLeagues()
         }.asResource {
-            it.map { leagueDto ->
-                leagueDto.toDomainModel()
+            it.map { dto ->
+                dto.toDomainModel()
             }
         }
     }

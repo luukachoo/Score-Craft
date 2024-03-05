@@ -1,12 +1,11 @@
 package com.core.domain.model
 
 data class GetTeam(
-    val acronym: String,
-    val id: Int,
-    val imageUrl: String,
-    val location: String,
-    val modifiedAt: String,
-    val name: String,
-    val slug: String,
-    val players: List<GetPlayer>
+    val score: Int,
+    val teamId: Int
+)
+
+data class GetResults(
+    val firstTeam: GetTeam,
+    val secondTeam: GetTeam
 )

@@ -6,14 +6,7 @@ import com.core.domain.model.GetPlayer
 import com.core.domain.model.GetTeam
 
 fun TeamDto.toDomainModel() = GetTeam(
-    acronym = acronym,
-    id = id,
-    imageUrl = imageUrl,
-    location = location,
-    modifiedAt = modifiedAt,
-    name = name,
-    slug = slug,
-    players = players.map { it.toDomainModel() }
+    score = score, teamId = teamId
 )
 
 fun PlayerDto.toDomainModel() = GetPlayer(

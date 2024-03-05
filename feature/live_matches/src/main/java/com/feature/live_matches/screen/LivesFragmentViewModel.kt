@@ -37,7 +37,7 @@ class LivesFragmentViewModel @Inject constructor(private val getMatchesUseCase: 
                 res.takeIfSuccess { data ->
                     _liveState.update {
                         it.copy(
-                            liveMatches = data.map { getMatch -> getMatch.toPresentationModel() }
+                            liveMatches = data.map { getMatchWrapper -> getMatchWrapper.match.toPresentationModel() }
                         )
                     }
                 }

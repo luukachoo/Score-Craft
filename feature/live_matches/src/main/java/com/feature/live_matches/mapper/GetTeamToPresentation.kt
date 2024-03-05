@@ -6,14 +6,7 @@ import com.feature.live_matches.model.Player
 import com.feature.live_matches.model.Team
 
 fun GetTeam.toPresentationModel() = Team(
-    acronym = acronym,
-    id = id,
-    imageUrl = imageUrl,
-    location = location,
-    modifiedAt = modifiedAt,
-    name = name,
-    slug = slug,
-    players = players.map { it.toPresentationModel() }
+    score = score, teamId = teamId
 )
 
 fun GetPlayer.toPresentationModel() = Player(

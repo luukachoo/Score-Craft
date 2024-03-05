@@ -59,7 +59,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private fun handleHomeState(state: HomeState) = with(binding) {
         progressBar.isVisible = state.isLoading
 
-        mainRecyclerAdapter = MainRecyclerAdapter(state.categories ?: emptyList())
+        mainRecyclerAdapter = MainRecyclerAdapter(state.leagues ?: emptyList())
         mainRecyclerView.adapter = mainRecyclerAdapter
 
         state.errorMessage?.let {

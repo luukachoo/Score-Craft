@@ -30,7 +30,7 @@ package com.core.domain.test_model
 //        val modifiedAt: String,
 //        val name: String,
 //        val numberOfGames: Int,
-//        val opponents: List<GetOpponentWrapper.GetOpponent>,
+//        val opponents: List<GetOpponentWrapper.Opponent>,
 //        val rescheduled: Boolean,
 //        val results: List<GetResult>,
 //        val scheduledAt: String,
@@ -81,10 +81,10 @@ package com.core.domain.test_model
 //        )
 //
 //        data class GetOpponentWrapper(
-//            val opponent: GetOpponent,
+//            val opponent: Opponent,
 //            val type: String
 //        ) {
-//            data class GetOpponent(
+//            data class Opponent(
 //                val acronym: String,
 //                val id: Int,
 //                val imageUrl: String,
