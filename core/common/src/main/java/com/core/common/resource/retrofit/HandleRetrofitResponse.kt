@@ -1,5 +1,6 @@
-package com.core.common.resource
+package com.core.common.resource.retrofit
 
+import com.core.common.resource.Resource
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 

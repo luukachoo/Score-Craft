@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feature_image_bottom_sheet_nav_graph"
+    app:startDestination="@id/imageBottomSheetFragment">
+
+    <dialog
+        android:id="@+id/imageBottomSheetFragment"
+        android:name="com.example.image_bottom_sheet.ImageBottomSheetFragment"
+        android:label="fragment_image_bottom_sheet"
+        tools:layout="@layout/fragment_image_bottom_sheet" >
+
+        <deepLink app:uri="market-mingle://feature.image_bottom_sheet/fragment_image_bottom_sheet"/>
+    </dialog>
+</navigation>

@@ -2,9 +2,9 @@ package com.feature.home.recycler_adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.core.common.extension.loadImagesWithGlide
 import com.feature.home.databinding.ItemHeaderSectionBinding
 import com.feature.home.databinding.ItemLeaguesSectionBinding
 import com.feature.home.model.League

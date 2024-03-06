@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".WelcomeFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -18,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/market_mingle"
         android:fontFamily="@font/urbanist"
+        android:text="@string/market_mingle"
         android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -59,12 +59,12 @@
         android:textColor="@color/dark"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:strokeWidth="1dp"
-        app:strokeColor="@color/dark"
         app:backgroundTint="@color/white"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginBtn" />
+        app:layout_constraintTop_toBottomOf="@id/loginBtn"
+        app:strokeColor="@color/dark"
+        app:strokeWidth="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

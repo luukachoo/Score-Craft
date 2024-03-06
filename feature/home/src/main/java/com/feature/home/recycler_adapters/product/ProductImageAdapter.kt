@@ -3,8 +3,8 @@ package com.feature.home.recycler_adapters.product
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.feature.home.databinding.ItemProductPhotoBinding
 import com.core.common.extension.loadImagesWithGlide
+import com.feature.home.databinding.ItemProductPhotoBinding
 
 class ProductImageAdapter(private val photos: List<String>) :
     RecyclerView.Adapter<ProductImageAdapter.PhotoViewHolder>() {

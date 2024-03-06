@@ -15,6 +15,7 @@ import com.feature.home.R
 import com.feature.home.databinding.FragmentHomeBinding
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
+import com.feature.home.model.auth.Users
 import com.feature.home.recycler_adapters.MainRecyclerAdapter
 import com.feature.home.state.HomeState
 import dagger.hilt.android.AndroidEntryPoint

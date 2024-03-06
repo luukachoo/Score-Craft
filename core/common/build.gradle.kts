@@ -20,5 +20,6 @@ dependencies {
     glide()
     fireBaseAuth()
     firebaseDataBase()
-
+    firebaseStorage()
+    workManager()
 }

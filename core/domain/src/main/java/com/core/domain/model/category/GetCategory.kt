@@ -1,6 +1,6 @@
 package com.core.domain.model.category
 
-data class GetCategory (
+data class GetCategory(
     val creationAt: String,
     val id: Int,
     val image: String,

@@ -2,7 +2,6 @@ package com.core.common.resource.auth
 
 import android.util.Log.d
 import com.core.common.resource.Resource
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -16,7 +15,15 @@ class HandleCurrentUserResponse @Inject constructor(private val databaseReferenc
             val snapshot = databaseReference.child("Users").child(userId).get().await()
             d("FirebaseDebug", "Snapshot: ${snapshot.value}")
             val userDetails = snapshot.value as? Map<String, String>
-            if (userDetails != null && userDetails.keys.containsAll(listOf("email", "firstName", "lastName", "userName"))) {
+            if (userDetails != null && userDetails.keys.containsAll(
+                    listOf(
+                        "email",
+                        "firstName",
+                        "lastName",
+                        "userName"
+                    )
+                )
+            ) {
                 emit(Resource.Success(userDetails))
             } else {
                 emit(Resource.Error("User details not found"))

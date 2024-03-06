@@ -11,6 +11,11 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
 
-        <deepLink app:uri="market-mingle://feature.profile/fragment_profile" />
+        <argument
+            android:name="imageUri"
+            app:argType="string"
+            app:nullable="true" />
+
+        <deepLink app:uri="market-mingle://feature.profile/fragment_profile?imageUri={imageUri}" />
     </fragment>
 </navigation>

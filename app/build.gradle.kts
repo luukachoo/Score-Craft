@@ -66,6 +66,7 @@ dependencies {
     featureHome()
     featureForgotPassword()
     featureProfile()
+    featureImageBottomSheet()
 }
 
 kapt {

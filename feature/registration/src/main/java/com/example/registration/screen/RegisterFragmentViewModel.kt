@@ -35,7 +35,7 @@ class RegisterFragmentViewModel @Inject constructor(
             is RegisterEvent.Register -> validateForm(
                 userName = event.userName,
                 firstName = event.firstName,
-                lastName =  event.lastName,
+                lastName = event.lastName,
                 email = event.email,
                 password = event.password,
                 confirmPassword = event.confirmPassword
@@ -85,7 +85,16 @@ class RegisterFragmentViewModel @Inject constructor(
         password: String,
         confirmPassword: String
     ) {
-        val areFieldsEmpty = validationUseCase.fieldValidatorUseCase(listOf(userName, firstName, lastName, email, password, confirmPassword))
+        val areFieldsEmpty = validationUseCase.fieldValidatorUseCase(
+            listOf(
+                userName,
+                firstName,
+                lastName,
+                email,
+                password,
+                confirmPassword
+            )
+        )
 
         val doPasswordsMatch =
             validationUseCase.confirmPasswordValidatorUseCase(password, confirmPassword)

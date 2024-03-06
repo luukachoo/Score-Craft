@@ -21,7 +21,7 @@ import javax.inject.Inject
 class LoginFragmentViewModel @Inject constructor(
     private val getAuthUseCase: GetAuthUseCase,
     private val validationUseCase: ValidationUseCase
-): ViewModel() {
+) : ViewModel() {
     private val _logInState = MutableStateFlow(LoginState())
     val logInState: StateFlow<LoginState> = _logInState.asStateFlow()
 
@@ -66,7 +66,7 @@ class LoginFragmentViewModel @Inject constructor(
         val isPasswordValid = validationUseCase.fieldValidatorUseCase(listOf(password))
         val isEmailValid = email.isNotBlank()
 
-        val areFieldsValid = listOf(isEmailValid ,isPasswordValid).all { it }
+        val areFieldsValid = listOf(isEmailValid, isPasswordValid).all { it }
 
         if (!areFieldsValid) {
             updateErrorMessage(message = "Fields are not valid!")
@@ -96,6 +96,6 @@ class LoginFragmentViewModel @Inject constructor(
     sealed interface LogInUiEvent {
         data object NavigateToRegister : LogInUiEvent
         data object NavigateToHome : LogInUiEvent
-        data object NavigateToForgotPasswordPage: LogInUiEvent
+        data object NavigateToForgotPasswordPage : LogInUiEvent
     }
 }

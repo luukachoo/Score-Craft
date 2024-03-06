@@ -7,5 +7,7 @@ data class GetAuthUseCase @Inject constructor(
     val getRegisterUseCase: GetRegisterUseCase,
     val getLogOutUseCase: GetLogOutUseCase,
     val getForgotPasswordUseCase: GetForgotPasswordUseCase,
-    val getCurrentUserUseCase: GetCurrentUserUseCase
+    val getCurrentUserUseCase: GetCurrentUserUseCase,
+    val getUploadProfileImageUseCase: GetUploadProfileImageUseCase,
+    val getUserProfileImageUseCase: GetUserProfileImageUseCase
 )

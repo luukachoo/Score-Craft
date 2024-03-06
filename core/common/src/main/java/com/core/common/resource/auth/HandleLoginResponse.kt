@@ -14,7 +14,10 @@ class HandleLoginResponse @Inject constructor() {
         emit(Resource.Loading(loading = true))
         try {
             val authResult = call()
-            val user = authResult.user ?: throw FirebaseAuthInvalidUserException("ERROR_NO_SIGNED_IN_USER", "The user is not signed in")
+            val user = authResult.user ?: throw FirebaseAuthInvalidUserException(
+                "ERROR_NO_SIGNED_IN_USER",
+                "The user is not signed in"
+            )
             emit(Resource.Success(data = user))
         } catch (e: FirebaseAuthInvalidCredentialsException) {
             emit(Resource.Error("The password is invalid or the user does not have a password."))

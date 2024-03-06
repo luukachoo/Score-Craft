@@ -89,8 +89,14 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     private fun handleNavigationEvents(event: RegisterFragmentViewModel.RegisterUiEvent) {
         when (event) {
-            RegisterFragmentViewModel.RegisterUiEvent.AlreadyHaveAccountNavigation -> handleNavigation("market-mingle://feature.login/fragment_login")
-            is RegisterFragmentViewModel.RegisterUiEvent.NavigateToLogin -> handleNavigation("market-mingle://feature.login/fragment_login")
+            RegisterFragmentViewModel.RegisterUiEvent.AlreadyHaveAccountNavigation -> handleNavigation(
+                "market-mingle://feature.login/fragment_login"
+            )
+
+            is RegisterFragmentViewModel.RegisterUiEvent.NavigateToLogin -> handleNavigationWithArgs(
+                event.email,
+                event.password
+            )
         }
     }
 
@@ -103,5 +109,19 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         }
 
         findNavController().navigate(request, navOptions)
+    }
+
+    private fun handleNavigationWithArgs(email: String, password: String) {
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            val uri = "market-mingle://feature.login/fragment_login?email=$email&password=$password"
+            val parsedUri = uri.toUri()
+            val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
+
+            val navOptions = navOptions {
+                popUpTo(R.id.registerFragment) { inclusive = true }
+            }
+
+            findNavController().navigate(request, navOptions)
+        }
     }
 }

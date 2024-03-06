@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.feature.home.screen.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
 
         <deepLink app:uri="market-mingle://feature.home/fragment_home" />
 

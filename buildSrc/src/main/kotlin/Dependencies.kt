@@ -5,7 +5,8 @@ object Dependencies {
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val material = "com.google.android.material:material:${Versions.material}"
-    const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
+    const val constraintlayout =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     const val junit = "junit:junit:${Versions.junit}"
     const val androidxTestExtJunit = "androidx.test.ext:junit:${Versions.androidxTestExtJunit}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
@@ -15,7 +16,8 @@ object Dependencies {
     const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofitVersion}"
     const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshiVersion}"
     const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttpVersion}"
-    const val okhttpInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpVersion}"
+    const val okhttpInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpVersion}"
 
     // Dagger - Hilt
     const val daggerHilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
@@ -31,20 +33,26 @@ object Dependencies {
     const val roomCoroutine = "androidx.room:room-ktx:${Versions.roomVersion}"
 
     // Navigation Component
-    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
+    const val navigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
-    const val androidxNavigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationVersion}"
+    const val androidxNavigationSafeArgsGradlePlugin =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationVersion}"
 
     // Firebase
     const val firebaseAgp = "com.google.gms:google-services:${Versions.gmsVersion}"
     const val firebaseAuth = "com.google.firebase:firebase-auth:${Versions.firebaseAuthVersion}"
-    const val firebaseDatabase = "com.google.firebase:firebase-database:${Versions.firebaseDatabaseVersion}"
+    const val firebaseStorage =
+        "com.google.firebase:firebase-storage-ktx:${Versions.firebaseDatabaseVersion}"
+    const val firebaseDatabase =
+        "com.google.firebase:firebase-database:${Versions.firebaseDatabaseVersion}"
 
     // WorkManager
     const val workManager = "androidx.work:work-runtime-ktx:${Versions.workManagerVersion}"
 
     // Coroutine ViewModel Lifecycle Scopes
-    const val coroutineLifecycleScope = "androidx.fragment:fragment-ktx:${Versions.coroutineLifecycleScopeVersion}"
+    const val coroutineLifecycleScope =
+        "androidx.fragment:fragment-ktx:${Versions.coroutineLifecycleScopeVersion}"
 
     // Splash Screen
     const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashVersion}"
@@ -60,12 +68,20 @@ fun DependencyHandler.basic() {
     androidTestImplementation(Dependencies.espressoCore)
 }
 
+fun DependencyHandler.workManager() {
+    implementation(Dependencies.workManager)
+}
+
 fun DependencyHandler.firebaseDataBase() {
     implementation(Dependencies.firebaseDatabase)
 }
 
 fun DependencyHandler.fireBaseAuth() {
     implementation(Dependencies.firebaseAuth)
+}
+
+fun DependencyHandler.firebaseStorage() {
+    implementation(Dependencies.firebaseStorage)
 }
 
 fun DependencyHandler.room() {
@@ -119,6 +135,10 @@ fun DependencyHandler.featureForgotPassword() {
 
 fun DependencyHandler.featureProfile() {
     implementation(project(":feature:profile"))
+}
+
+fun DependencyHandler.featureImageBottomSheet() {
+    implementation(project(":feature:image_bottom_sheet"))
 }
 
 fun DependencyHandler.data() {

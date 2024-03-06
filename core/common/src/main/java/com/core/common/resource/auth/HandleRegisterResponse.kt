@@ -25,10 +25,19 @@ class HandleUserRegistrationResponse @Inject constructor(
         emit(Resource.Loading(loading = true))
         try {
             val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
-            val firebaseUser = authResult.user ?: throw FirebaseAuthInvalidUserException("ERROR_USER_NOT_FOUND", "No Firebase User returned after registration.")
+            val firebaseUser = authResult.user ?: throw FirebaseAuthInvalidUserException(
+                "ERROR_USER_NOT_FOUND",
+                "No Firebase User returned after registration."
+            )
 
-            val userToSave = mapOf("userName" to userName, "firstName" to firstName, "lastName" to lastName, "email" to email)
-            firebaseDatabase.getReference("Users").child(firebaseUser.uid).setValue(userToSave).await()
+            val userToSave = mapOf(
+                "userName" to userName,
+                "firstName" to firstName,
+                "lastName" to lastName,
+                "email" to email
+            )
+            firebaseDatabase.getReference("Users").child(firebaseUser.uid).setValue(userToSave)
+                .await()
 
             emit(Resource.Success(data = firebaseUser))
         } catch (e: FirebaseAuthUserCollisionException) {

@@ -27,7 +27,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
     override fun bindViewActionListeners() {
+        val emailArg = arguments?.getString("email") ?: ""
+        val passwordArg = arguments?.getString("password") ?: ""
+
         binding.apply {
+            emailEt.setText(emailArg)
+            passwordEt.setText(passwordArg)
+
             loginBtn.setOnClickListener {
                 val email = emailEt.text.toString()
                 val password = passwordEt.text.toString()
