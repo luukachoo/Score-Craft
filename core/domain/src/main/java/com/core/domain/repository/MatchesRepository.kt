@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface MatchesRepository {
     suspend fun getRunningMatches(): Flow<Resource<List<GetMatchWrapper>>>
     suspend fun getMatchById(matchId: Int): Flow<Resource<GetMatchDetails>>
-    suspend fun getMatchOpponents(matchId: Int): Flow<Resource<Unit>>
+//    suspend fun getMatchOpponents(matchId: Int): Flow<Resource<Unit>>
 }
 

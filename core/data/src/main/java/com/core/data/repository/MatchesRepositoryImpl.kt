@@ -33,11 +33,11 @@ class MatchesRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getMatchOpponents(matchId: Int): Flow<Resource<Unit>> {
-        return responseHandler.apiCall {
-            service.getMatchOpponents(matchId)
-        }.asResource {
-            it.toDomainModel()
-        }
-    }
+//    override suspend fun getMatchOpponents(matchId: Int): Flow<Resource<Unit>> {
+//        return responseHandler.apiCall {
+//            service.getMatchOpponents(matchId)
+//        }.asResource {
+//
+//        }
+//    }
 }

@@ -2,7 +2,6 @@ package com.core.data.service
 
 import com.core.data.model.MatchDetailsDto
 import com.core.data.model.MatchWrapperDto
-import com.core.data.model.OpponentWithTypeDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers

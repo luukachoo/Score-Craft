@@ -10,5 +10,4 @@
     <include app:graph="@navigation/feature_home_nav_graph" />
     <include app:graph="@navigation/feature_series_nav_graph" />
     <include app:graph="@navigation/feature_live_matches_nav_graph" />
-    <include app:graph="@navigation/feature_live_match_details_nav_graph" />
 </navigation>
