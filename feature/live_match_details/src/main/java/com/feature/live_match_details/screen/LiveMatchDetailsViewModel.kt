@@ -6,7 +6,9 @@ import com.core.common.resource.takeIfError
 import com.core.common.resource.takeIfLoading
 import com.core.common.resource.takeIfSuccess
 import com.core.domain.use_case.live_matches.GetMatchByIdUseCase
+import com.core.domain.use_case.live_matches.GetMatchOpponentsUseCase
 import com.feature.live_match_details.event.LiveMatchDetailsEvents
+import com.feature.live_match_details.extension.toPlayersModel
 import com.feature.live_match_details.mapper.toPresentationModel
 import com.feature.live_match_details.state.LiveMatchDetailsState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +19,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LiveMatchDetailsViewModel @Inject constructor(private val getMatchByIdUseCase: GetMatchByIdUseCase) :
+class LiveMatchDetailsViewModel @Inject constructor(
+    private val getMatchByIdUseCase: GetMatchByIdUseCase,
+    private val getMatchOpponentsUseCase: GetMatchOpponentsUseCase
+) :
     ViewModel() {
 
     private val _liveMatchesState = MutableStateFlow(LiveMatchDetailsState())
@@ -26,7 +31,7 @@ class LiveMatchDetailsViewModel @Inject constructor(private val getMatchByIdUseC
     fun onEvent(event: LiveMatchDetailsEvents) {
         when(event) {
             is LiveMatchDetailsEvents.FetchMatchDetailsById -> fetchMatchDetailsById(event.matchId)
-            is LiveMatchDetailsEvents.FetchTeamMembersByMatchId -> TODO()
+            is LiveMatchDetailsEvents.FetchTeamMembersByMatchId -> fetchOpponentsByMatchId(event.matchId)
             LiveMatchDetailsEvents.ResetErrorMessage -> updateErrorMessage(null)
         }
     }
@@ -46,6 +51,22 @@ class LiveMatchDetailsViewModel @Inject constructor(private val getMatchByIdUseC
                 res.takeIfLoading { loading(it) }
 
                 res.takeIfError { updateErrorMessage(it) }
+            }
+        }
+    }
+
+    private fun fetchOpponentsByMatchId(matchId: Int) {
+        viewModelScope.launch {
+            getMatchOpponentsUseCase(matchId).collect { res ->
+                res.takeIfSuccess { getTeamWrapper ->
+                    _liveMatchesState.update {
+                        it.copy(
+                            players = getTeamWrapper.toPresentationModel().toPlayersModel(),
+                            isLoading = false,
+                            errorMessage = null
+                        )
+                    }
+                }
             }
         }
     }

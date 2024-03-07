@@ -1,5 +1,6 @@
 package com.core.data.model
 
+import com.core.data.model.live_matches.MatchWrapperDto
 import com.squareup.moshi.Json
 
 data class GamesDto(

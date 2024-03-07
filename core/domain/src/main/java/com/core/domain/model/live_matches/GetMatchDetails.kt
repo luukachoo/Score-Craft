@@ -1,4 +1,6 @@
-package com.core.domain.model
+package com.core.domain.model.live_matches
+
+import com.core.domain.model.GetStream
 
 data class GetMatchDetails(
     val slug: String,

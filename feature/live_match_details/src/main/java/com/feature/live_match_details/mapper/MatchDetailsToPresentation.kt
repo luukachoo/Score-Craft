@@ -1,6 +1,6 @@
 package com.feature.live_match_details.mapper
 
-import com.core.domain.model.GetMatchDetails
+import com.core.domain.model.live_matches.GetMatchDetails
 import com.feature.live_match_details.model.MatchDetails
 
 fun GetMatchDetails.toPresentationModel() = MatchDetails(

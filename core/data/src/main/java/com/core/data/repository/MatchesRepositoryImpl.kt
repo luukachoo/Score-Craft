@@ -5,8 +5,9 @@ import com.core.common.resource.HandleRetrofitResponse
 import com.core.common.resource.Resource
 import com.core.data.mapper.toDomainModel
 import com.core.data.service.MatchesService
-import com.core.domain.model.GetMatchDetails
-import com.core.domain.model.GetMatchWrapper
+import com.core.domain.model.live_matches.GetMatchDetails
+import com.core.domain.model.live_matches.GetMatchWrapper
+import com.core.domain.model.live_matches.GetTeamWrapper
 import com.core.domain.repository.MatchesRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -33,11 +34,11 @@ class MatchesRepositoryImpl @Inject constructor(
         }
     }
 
-//    override suspend fun getMatchOpponents(matchId: Int): Flow<Resource<Unit>> {
-//        return responseHandler.apiCall {
-//            service.getMatchOpponents(matchId)
-//        }.asResource {
-//
-//        }
-//    }
+    override suspend fun getMatchOpponents(matchId: Int): Flow<Resource<GetTeamWrapper>> {
+        return responseHandler.apiCall {
+            service.getMatchOpponents(matchId)
+        }.asResource {
+            it.toDomainModel()
+        }
+    }
 }

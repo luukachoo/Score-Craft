@@ -6,5 +6,6 @@
     <string name="zero">0</string>
     <string name="minus">-</string>
     <string name="back">back</string>
+    <string name="ge">GE</string>
 
 </resources>

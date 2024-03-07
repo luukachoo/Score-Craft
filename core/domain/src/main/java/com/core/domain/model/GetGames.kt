@@ -1,5 +1,7 @@
 package com.core.domain.model
 
+import com.core.domain.model.live_matches.GetMatchWrapper
+
 data class GetGames(
     val beginAt: String?,
     val complete: Boolean,

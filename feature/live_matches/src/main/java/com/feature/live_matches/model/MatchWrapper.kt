@@ -1,6 +1,6 @@
 package com.feature.live_matches.model
 
-import com.core.domain.model.GetMatchWrapper
+import com.core.domain.model.live_matches.GetMatchWrapper
 
 data class MatchWrapper(
     val match: Match

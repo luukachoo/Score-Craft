@@ -1,10 +1,10 @@
 package com.core.data.mapper
 
-import com.core.data.model.MatchDetailsDto
-import com.core.data.model.MatchWrapperDto
+import com.core.data.model.live_matches.MatchDetailsDto
+import com.core.data.model.live_matches.MatchWrapperDto
 import com.core.data.model.StreamDto
-import com.core.domain.model.GetMatchDetails
-import com.core.domain.model.GetMatchWrapper
+import com.core.domain.model.live_matches.GetMatchDetails
+import com.core.domain.model.live_matches.GetMatchWrapper
 import com.core.domain.model.GetStream
 
 
