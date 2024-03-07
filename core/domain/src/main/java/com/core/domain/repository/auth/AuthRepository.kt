@@ -21,4 +21,5 @@ interface AuthRepository {
     suspend fun getCurrentUser(): Flow<Resource<GetUsers>>
     suspend fun uploadProfileImage(userId: String, imageUri: Uri): Flow<Resource<String>>
     suspend fun fetchUserProfileImageUrl(userId: String): Flow<Resource<String>>
+    suspend fun checkUserSession(): Flow<Resource<Boolean>>
 }

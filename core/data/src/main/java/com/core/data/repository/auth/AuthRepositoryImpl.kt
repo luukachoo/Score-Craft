@@ -2,12 +2,11 @@ package com.core.data.repository.auth
 
 import android.content.Context
 import android.net.Uri
-import android.util.Log.d
 import com.core.common.resource.Resource
 import com.core.common.resource.auth.HandleCurrentUserResponse
-import com.core.common.resource.auth.HandleFirebaseStorage
 import com.core.common.resource.auth.HandleForgotPasswordResponse
 import com.core.common.resource.auth.HandleLoginResponse
+import com.core.common.resource.auth.HandleSessionResponse
 import com.core.common.resource.auth.HandleUserRegistrationResponse
 import com.core.data.worker_util.WorkManagerUtil.enqueueUploadWork
 import com.core.domain.model.auth.GetUsers
@@ -29,6 +28,7 @@ class AuthRepositoryImpl @Inject constructor(
     private val handleForgotPasswordResponse: HandleForgotPasswordResponse,
     private val handleUserRegistrationResponse: HandleUserRegistrationResponse,
     private val handleCurrentUserResponse: HandleCurrentUserResponse,
+    private val handleSessionResponse: HandleSessionResponse
 ) : AuthRepository {
     override suspend fun register(
         userName: String,
@@ -88,17 +88,18 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun uploadProfileImage(userId: String, imageUri: Uri): Flow<Resource<String>> = flow {
-        emit(Resource.Loading(true))
-        try {
-            enqueueUploadWork(context, userId, imageUri)
-            emit(Resource.Success("Upload scheduled"))
-        } catch (e: Exception) {
-            emit(Resource.Error("Failed to schedule upload: ${e.localizedMessage}"))
-        }
+    override suspend fun uploadProfileImage(userId: String, imageUri: Uri): Flow<Resource<String>> =
+        flow {
+            emit(Resource.Loading(true))
+            try {
+                enqueueUploadWork(context, userId, imageUri)
+                emit(Resource.Success("Upload scheduled"))
+            } catch (e: Exception) {
+                emit(Resource.Error("Failed to schedule upload: ${e.localizedMessage}"))
+            }
 
-        emit(Resource.Loading(false))
-    }
+            emit(Resource.Loading(false))
+        }
 
     override suspend fun fetchUserProfileImageUrl(userId: String): Flow<Resource<String>> = flow {
         emit(Resource.Loading(true))
@@ -111,5 +112,9 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Resource.Error("Failed to fetch image URL: ${e.message}"))
         }
         emit(Resource.Loading(false))
+    }
+
+    override suspend fun checkUserSession(): Flow<Resource<Boolean>> {
+        return handleSessionResponse.checkUserSession()
     }
 }

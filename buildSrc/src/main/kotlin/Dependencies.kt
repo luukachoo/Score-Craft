@@ -141,6 +141,10 @@ fun DependencyHandler.featureImageBottomSheet() {
     implementation(project(":feature:image_bottom_sheet"))
 }
 
+fun DependencyHandler.featureSplashScreen() {
+    implementation(project(":feature:splash_screen"))
+}
+
 fun DependencyHandler.data() {
     implementation(project(":core:data"))
 }
