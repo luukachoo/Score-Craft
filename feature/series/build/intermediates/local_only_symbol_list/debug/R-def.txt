@@ -1,0 +1,21 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_back_btn
+id appCompatTextView
+id buttonBack
+id feature_series_nav_graph
+id rvSeries
+id seriesFragment
+id tvBegin
+id tvBeginDate
+id tvName
+layout fragment_series
+layout item_series
+navigation feature_series_nav_graph
+string back
+string begin_at
+string hello_blank_fragment
+string series
+string test_date
+string test_season
+style roundedShape

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "feature_series_nav_graph",
+    "navigationXmlIds": [],
+    "deepLinks": [
+      {
+        "schemes": [
+          "market-mingle"
+        ],
+        "host": "feature.series",
+        "port": -1,
+        "path": "/fragment_series",
+        "query": "slug\u003d.*",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mDescription": "feature_series_nav_graph.xml"
+          },
+          "mSourcePosition": {
+            "mStartLine": 13,
+            "mStartColumn": 8,
+            "mStartOffset": 541,
+            "mEndLine": 13,
+            "mEndColumn": 89,
+            "mEndOffset": 622
+          }
+        },
+        "isAutoVerify": false,
+        "action": "android.intent.action.VIEW"
+      }
+    ]
+  }
+]

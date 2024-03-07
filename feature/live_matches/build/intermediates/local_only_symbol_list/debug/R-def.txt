@@ -1,0 +1,19 @@
+R_DEF: Internal format may change without notice
+local
+color tvGrey
+drawable img_stream_error
+id feature_live_matches_nav_graph
+id ivPreview
+id livesFragment
+id progressBar
+id rvMatches
+id tvLeague
+id tvTitle
+layout fragment_lives
+layout item_live
+navigation feature_live_matches_nav_graph
+string hello_blank_fragment
+string now_streaming
+string test
+string title
+string zero

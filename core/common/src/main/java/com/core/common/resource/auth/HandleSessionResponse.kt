@@ -16,7 +16,7 @@ class HandleSessionResponse @Inject constructor(private val firebaseAuth: Fireba
                 user.getIdToken(true).await()
                 emit(Resource.Success(true))
             } else {
-                emit(Resource.Error("No user logged in"))
+                emit(Resource.Success(false))
             }
         } catch (e: FirebaseAuthInvalidCredentialsException) {
             emit(Resource.Error("Session expired, please log in again"))
