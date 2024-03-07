@@ -1,6 +1,6 @@
-package com.core.domain.model
+package com.feature.live_match_details.model
 
-data class GetMatchDetails(
+data class MatchDetails(
     val slug: String,
     val status: String,
     val originalScheduledAt: String,
@@ -9,11 +9,11 @@ data class GetMatchDetails(
     val detailedStats: Boolean,
     val scheduledAt: String,
     val beginAt: String,
-    val opponents: List<GetOpponentWrapper>,
-    val streamsList: List<GetStream>,
-    val results: List<GetResult>
+    val opponents: List<OpponentWrapper>,
+    val streamsList: List<Stream>,
+    val results: List<Result>
 ) {
-    data class GetResult(
+    data class Result(
         val score: Int,
         val teamId: Int
     )

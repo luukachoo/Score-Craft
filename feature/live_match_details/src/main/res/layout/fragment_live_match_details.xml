@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".screen.LiveMatchDetailsFragment">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#161514"
+        android:contentDescription="@string/back"
+        android:foregroundTint="#FFFFFF"
+        android:src="@drawable/ic_back_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/material_dynamic_neutral60"
+        app:shapeAppearanceOverlay="@style/roundedShape"
+        app:tint="@null" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTeamOneImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:src="#FF0000"
+        app:layout_constraintEnd_toStartOf="@+id/tvTeamOneScore"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTeamOneScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zero"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTeamOneImage"
+        app:layout_constraintEnd_toStartOf="@+id/tvMinus"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivTeamOneImage"
+        app:layout_constraintTop_toTopOf="@+id/ivTeamOneImage" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minus"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSecondTeamScore"
+        app:layout_constraintEnd_toStartOf="@+id/tvSecondTeamScore"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvTeamOneScore"
+        app:layout_constraintTop_toTopOf="@+id/tvTeamOneScore" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSecondTeamScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zero"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivTeamSecondImage"
+        app:layout_constraintEnd_toStartOf="@+id/ivTeamSecondImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvMinus"
+        app:layout_constraintTop_toTopOf="@+id/ivTeamSecondImage" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTeamSecondImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="#FF0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvSecondTeamScore"
+        app:layout_constraintTop_toTopOf="@+id/ivTeamOneImage" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTeamPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/bb_vs_tspirit"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivTeamOneImage" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonWatchOnYT"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="#161514"
+        android:drawableEnd="@drawable/ic_youtube"
+        android:text="@string/watch_on"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/buttonWatchOnTwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#FF0000"
+        app:tint="@null" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonWatchOnTwitch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="#161514"
+        android:drawableEnd="@drawable/ic_twitch"
+        android:text="@string/watch_on"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#9146FF"
+        app:shapeAppearanceOverlay="@style/roundedShape"
+        app:tint="@null" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

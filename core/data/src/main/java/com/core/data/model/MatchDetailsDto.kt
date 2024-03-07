@@ -20,7 +20,7 @@ data class MatchDetailsDto(
     @Json(name = "begin_at")
     val beginAt: String,
     @Json(name = "opponents")
-    val opponents: List<OpponentWithTypeDto>,
+    val opponents: List<OpponentWrapperDto>,
     @Json(name = "streams_list")
     val streamsList: List<StreamDto>,
     @Json(name = "results")

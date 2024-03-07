@@ -64,7 +64,7 @@ class LivesFragment : BaseFragment<FragmentLivesBinding>(FragmentLivesBinding::i
 
     private fun handleNavigation(matchId: Int) {
         val deepLinkUri =
-            Uri.parse("market-mingle://feature.live_match_details/fragment_match_details?matchId=$matchId")
+            Uri.parse("market-mingle://feature.fragment_live_match_details/fragment_live_match_details?matchId=$matchId")
 
         findNavController().navigate(deepLinkUri)
     }

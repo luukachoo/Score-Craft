@@ -1,13 +1,13 @@
 package com.core.data.mapper
 
-import com.core.data.model.OpponentWithTypeDto
-import com.core.domain.model.GetOpponentWithType
+import com.core.data.model.OpponentWrapperDto
+import com.core.domain.model.GetOpponentWrapper
 
+fun OpponentWrapperDto.OpponentDto.toDomainModel() = GetOpponentWrapper.GetOpponent(
+    id = id,
+    imageUrl = imageUrl,
+    name = name,
+    slug = slug
+)
 
-fun OpponentWithTypeDto.toDomainModel() =
-    GetOpponentWithType(opponents = opponents.map { it.toDomainModel() })
-
-fun OpponentWithTypeDto.OpponentWrapperDto.OpponentDto.toDomainModel() =
-    GetOpponentWithType.GetOpponentWrapper.GetOpponent(
-        slug = slug, id = id, imageUrl = imageUrl, name = name,
-    )
+fun OpponentWrapperDto.toDomainModel() = GetOpponentWrapper(opponent = opponent.toDomainModel())
