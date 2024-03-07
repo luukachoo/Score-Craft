@@ -74,7 +74,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
             logOutBtn.setOnClickListener {
                 viewModel.onEvent(ProfileEvent.LogOut)
-                handleNavigation("market-mingle://feature.welcome/fragment_welcome")
             }
         }
     }
@@ -82,6 +81,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     private fun handleNavigationEvents(event: ProfileFragmentViewModel.ProfileUiEvent) {
         when (event) {
             ProfileFragmentViewModel.ProfileUiEvent.NavigateToHome -> handleNavigation("market-mingle://feature.home/fragment_home")
+            ProfileFragmentViewModel.ProfileUiEvent.NavigateToWelcome -> handleNavigation("market-mingle://feature.welcome/fragment_welcome")
         }
     }
 

@@ -121,6 +121,7 @@ class ProfileFragmentViewModel @Inject constructor(
     private fun logOut() {
         viewModelScope.launch {
             getAuthUseCase.getLogOutUseCase()
+            _uiEvent.emit(ProfileUiEvent.NavigateToWelcome)
         }
     }
 
@@ -130,5 +131,6 @@ class ProfileFragmentViewModel @Inject constructor(
 
     sealed interface ProfileUiEvent {
         data object NavigateToHome : ProfileUiEvent
+        data object NavigateToWelcome: ProfileUiEvent
     }
 }

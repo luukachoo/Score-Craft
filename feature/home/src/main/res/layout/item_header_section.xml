@@ -11,7 +11,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/ic_person"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/roundedShape" />
@@ -32,7 +32,11 @@
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_user_name"
         android:fontFamily="@font/alata"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
         android:text="@string/welcome_jemal_kakauridze"
         android:textColor="@color/dark_grey"
         android:textSize="18sp"
@@ -69,7 +73,7 @@
         android:hint="@string/search"
         android:paddingHorizontal="10dp"
         android:textColor="@color/dark_grey"
-        android:textColorHint="@color/grey"
+        android:textColorHint="@color/gray"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
 

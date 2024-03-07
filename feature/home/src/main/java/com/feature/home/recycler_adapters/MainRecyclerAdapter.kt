@@ -1,6 +1,10 @@
 package com.feature.home.recycler_adapters
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +36,23 @@ class MainRecyclerAdapter(
                     onAvatarClick?.invoke()
                 }
 
-                tvUserName.text = "Welcome ${user?.userName}"
+                val welcomeText = "Welcome ${user?.userName}"
+                val spannableString = SpannableString(welcomeText)
+
+                val userNameStart = welcomeText.indexOf("${user?.userName}")
+                val userNameEnd = userNameStart + (user?.userName?.length ?: 0)
+
+                val purpleColor = Color.parseColor("#A45EE5")
+
+                spannableString.setSpan(
+                    ForegroundColorSpan(purpleColor),
+                    userNameStart,
+                    userNameEnd,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+
+                tvUserName.text = spannableString
+
                 ivAvatar.loadImagesWithGlide(image)
             }
         }
