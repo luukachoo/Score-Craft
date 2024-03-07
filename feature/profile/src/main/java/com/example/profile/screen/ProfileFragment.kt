@@ -67,6 +67,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             ivAvatar.setOnClickListener {
                 checkAndRequestPermissions()
             }
+
+            backBtn.setOnClickListener {
+                handleNavigation("market-mingle://feature.home/fragment_home")
+            }
+
+            logOutBtn.setOnClickListener {
+                viewModel.onEvent(ProfileEvent.LogOut)
+                handleNavigation("market-mingle://feature.welcome/fragment_welcome")
+            }
         }
     }
 
@@ -93,8 +102,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             binding.ivAvatar.loadImageWithUri(imageUri)
 
             state.user?.userId?.let { userId ->
-                d("yle1", "yle1 shemovida")
-
                 viewModel.onEvent(
                     ProfileEvent.UploadProfileImage(
                         userId = userId,
@@ -106,14 +113,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
         if (!state.imageFetched && !state.imageIsSet) {
             state.user?.userId?.let { userId ->
-                d("yle2", "yle2 shemovida")
                 viewModel.onEvent(ProfileEvent.FetchUserProfileImage(userId = userId))
             }
         }
 
         if (!state.imageIsSet) {
             state.imageUri?.let {
-                d("yle3", "yle3 shemovida")
                 binding.ivAvatar.loadImagesWithGlide(it)
             }
         }

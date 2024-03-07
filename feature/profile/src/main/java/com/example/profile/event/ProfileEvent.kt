@@ -7,4 +7,5 @@ sealed class ProfileEvent {
     data object GetCurrentUser : ProfileEvent()
     data class UploadProfileImage(val userId: String, val imageUri: Uri) : ProfileEvent()
     data class FetchUserProfileImage(val userId: String): ProfileEvent()
+    data object LogOut: ProfileEvent()
 }

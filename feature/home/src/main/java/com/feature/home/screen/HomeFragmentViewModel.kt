@@ -45,6 +45,7 @@ class HomeFragmentViewModel @Inject constructor(
 
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
                 HomeFragmentEvent.GetCurrentUser -> getCurrentUser()
+                is HomeFragmentEvent.FetchUserProfileImage -> fetchUserProfileImage(event.userId)
             }
         }
     }
@@ -98,29 +99,32 @@ class HomeFragmentViewModel @Inject constructor(
         }
     }
 
-//    private fun fetchProducts() {
-//        viewModelScope.launch {
-//            getProductsUseCase().collect { res ->
-//                when (res) {
-//                    is Resource.Error -> {
-//                        updateErrorMessage(res.errorMessage)
-//                        d("ViewModelHttpError", res.errorMessage)
-//                    }
-//
-//                    is Resource.Loading -> loading(res.loading)
-//                    is Resource.Success -> {
-//                        _homeState.update {
-//                            it.copy(
-//                                products = res.data.map { getProduct -> getProduct.toPresentationModel() },
-//                                isLoading = false,
-//                                errorMessage = null
-//                            )
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+    private fun fetchUserProfileImage(userId: String) {
+        viewModelScope.launch {
+            getAuthUseCase.getUserProfileImageUseCase(userId).collect { resource ->
+                when (resource) {
+                    is Resource.Error -> updateErrorMessage(resource.errorMessage)
+
+                    is Resource.Loading -> {
+                        _homeState.update { currentState ->
+                            currentState.copy(isLoading = resource.loading)
+                        }
+                    }
+
+                    is Resource.Success -> {
+                        _homeState.update { currentState ->
+                            currentState.copy(
+                                imageUri = resource.data,
+                                isLoading = false,
+                                imageFetched = true,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     private fun loading(isLoading: Boolean) =
         _homeState.update { it.copy(isLoading = isLoading) }

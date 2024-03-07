@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/feature_profile_nav_graph">
+    app:startDestination="@id/feature_home_nav_graph">
 
     <include app:graph="@navigation/feature_welcome_nav_graph" />
     <include app:graph="@navigation/feature_register_nav_graph" />

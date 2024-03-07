@@ -19,6 +19,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logOutBtn"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rounded_back_btn"
+        android:fontFamily="@font/alata"
+        android:gravity="center"
+        android:scaleType="center"
+        android:text="@string/log_out"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/profileTv"
         android:layout_width="wrap_content"
@@ -38,7 +52,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/ic_person"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"

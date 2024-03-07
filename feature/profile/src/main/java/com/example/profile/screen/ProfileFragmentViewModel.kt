@@ -34,6 +34,7 @@ class ProfileFragmentViewModel @Inject constructor(
             ProfileEvent.ResetErrorMessage -> updateErrorMessage(message = null)
             is ProfileEvent.UploadProfileImage -> uploadProfileImage(userId = event.userId, imageUri = event.imageUri)
             is ProfileEvent.FetchUserProfileImage -> fetchUserProfileImage(event.userId)
+            ProfileEvent.LogOut -> logOut()
         }
     }
 
@@ -114,6 +115,12 @@ class ProfileFragmentViewModel @Inject constructor(
                     }
                 }
             }
+        }
+    }
+
+    private fun logOut() {
+        viewModelScope.launch {
+            getAuthUseCase.getLogOutUseCase()
         }
     }
 

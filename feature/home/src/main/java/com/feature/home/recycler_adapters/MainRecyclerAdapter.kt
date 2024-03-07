@@ -14,24 +14,26 @@ import com.feature.home.recycler_adapters.category.LeaguesAdapter
 
 class MainRecyclerAdapter(
     private val categories: List<League>,
-    private val model: Users?
+    private val model: Users?,
+    private val imageUri: String
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var onProductClick: ((Product) -> Unit)? = null
 
-    var onAvatarClick: (() -> Unit)? = null
+    private var onAvatarClick: (() -> Unit)? = null
 
     inner class HeaderViewHolder(private val binding: ItemHeaderSectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
 
-        fun bind(user: Users?) {
+        fun bind(user: Users?, image: String) {
             binding.apply {
-                tvUserName.text = "Welcome ${user?.userName}"
-
                 ivAvatar.setOnClickListener {
                     onAvatarClick?.invoke()
                 }
+
+                tvUserName.text = "Welcome ${user?.userName}"
+                ivAvatar.loadImagesWithGlide(image)
             }
         }
     }
@@ -70,7 +72,7 @@ class MainRecyclerAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is HeaderViewHolder -> holder.bind(model)
+            is HeaderViewHolder -> holder.bind(model, imageUri)
             is CategoriesViewHolder -> holder.bindCategories(categories)
         }
     }
@@ -82,6 +84,10 @@ class MainRecyclerAdapter(
             0 -> HEADER
             else -> LEAGUES
         }
+    }
+
+    fun onAvatarClick(click: () -> Unit) {
+        this.onAvatarClick = click
     }
 
     fun onPostClick(click: (Product) -> Unit) {

@@ -10,12 +10,12 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
+import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.showSnackbar
 import com.feature.home.R
 import com.feature.home.databinding.FragmentHomeBinding
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
-import com.feature.home.model.auth.Users
 import com.feature.home.recycler_adapters.MainRecyclerAdapter
 import com.feature.home.state.HomeState
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,23 +28,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private lateinit var mainRecyclerAdapter: MainRecyclerAdapter
 
     override fun bind() {
-        mainRecyclerAdapter = MainRecyclerAdapter(emptyList(), null)
+        mainRecyclerAdapter = MainRecyclerAdapter(emptyList(), null, "")
+        binding.mainRecyclerView.adapter = mainRecyclerAdapter
 
         viewModel.onEvent(HomeFragmentEvent.FetchCategories)
         viewModel.onEvent(HomeFragmentEvent.FetchProducts)
         viewModel.onEvent(HomeFragmentEvent.GetCurrentUser)
-
-        binding.mainRecyclerView.adapter = mainRecyclerAdapter
     }
 
     override fun bindViewActionListeners() {
-        mainRecyclerAdapter.onPostClick { product ->
-            viewModel.onEvent(HomeFragmentEvent.ItemClick(product.id))
-        }
-
-        mainRecyclerAdapter.onAvatarClick = {
-            handleNavigation("market-mingle://feature.profile/fragment_profile")
-        }
+        setupClickListeners()
     }
 
     override fun bindObserves() {
@@ -69,14 +62,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         progressBar.isVisible = state.isLoading
 
         state.user?.let { user ->
-            mainRecyclerAdapter = MainRecyclerAdapter(state.categories ?: emptyList(), user)
-            binding.mainRecyclerView.adapter = mainRecyclerAdapter
-        }
+            if (!state.imageFetched) {
+                viewModel.onEvent(HomeFragmentEvent.FetchUserProfileImage(user.userId))
+            }
 
+            mainRecyclerAdapter = MainRecyclerAdapter(state.categories ?: emptyList(), user, imageUri = state.imageUri ?: "")
+            mainRecyclerView.adapter = mainRecyclerAdapter
+            setupClickListeners()
+        }
 
         state.errorMessage?.let {
             root.showSnackbar(it)
             viewModel.onEvent(HomeFragmentEvent.ResetErrorMessage)
+        }
+    }
+
+    private fun setupClickListeners() {
+        mainRecyclerAdapter.onPostClick { product ->
+            viewModel.onEvent(HomeFragmentEvent.ItemClick(product.id))
+        }
+
+        mainRecyclerAdapter.onAvatarClick {
+            handleNavigation("market-mingle://feature.profile/fragment_profile")
         }
     }
 
