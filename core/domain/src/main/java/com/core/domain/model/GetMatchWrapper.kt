@@ -7,20 +7,14 @@ data class GetMatchWrapper(
         val slug: String,
         val status: String,
         val originalScheduledAt: String,
-        val games: List<GetGames>,
-        val serieId: Int,
-        val videoGameVersion: String?,
-        val numberOfGames: Int,
         val id: Int,
         val name: String,
         val detailedStats: Boolean,
         val scheduledAt: String,
         val beginAt: String,
         val videogame: GetVideoGame,
-        val results: List<GetTeam>,
-        val videoGameTitle: String?,
+        val videoGameTitle: Any?,
         val forfeit: Boolean,
-        val opponents: List<GetOpponentWithType>,
         val streamsList: List<GetStream>
     ) {
         data class GetVideoGame(

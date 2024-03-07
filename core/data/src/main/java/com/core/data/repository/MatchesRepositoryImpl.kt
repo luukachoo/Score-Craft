@@ -5,6 +5,7 @@ import com.core.common.resource.HandleRetrofitResponse
 import com.core.common.resource.Resource
 import com.core.data.mapper.toDomainModel
 import com.core.data.service.MatchesService
+import com.core.domain.model.GetMatchDetails
 import com.core.domain.model.GetMatchWrapper
 import com.core.domain.repository.MatchesRepository
 import kotlinx.coroutines.flow.Flow
@@ -21,6 +22,22 @@ class MatchesRepositoryImpl @Inject constructor(
             it.map { dto ->
                 dto.toDomainModel()
             }
+        }
+    }
+
+    override suspend fun getMatchById(matchId: Int): Flow<Resource<GetMatchDetails>> {
+        return responseHandler.apiCall {
+            service.getMatchById(matchId)
+        }.asResource {
+            it.toDomainModel()
+        }
+    }
+
+    override suspend fun getMatchOpponents(matchId: Int): Flow<Resource<Unit>> {
+        return responseHandler.apiCall {
+            service.getMatchOpponents(matchId)
+        }.asResource {
+            it.toDomainModel()
         }
     }
 }

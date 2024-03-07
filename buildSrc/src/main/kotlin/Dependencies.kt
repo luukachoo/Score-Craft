@@ -124,6 +124,10 @@ fun DependencyHandler.featureLiveMatches() {
     implementation(project(":feature:live_matches"))
 }
 
+fun DependencyHandler.featureLiveMatchDetails() {
+    implementation(project(":feature:live_match_details"))
+}
+
 fun DependencyHandler.data() {
     implementation(project(":core:data"))
 }

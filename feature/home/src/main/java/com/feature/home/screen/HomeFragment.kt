@@ -69,7 +69,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun handleNavigationEvents(event: HomeNavigationEvents) {
-        when(event) {
+        when (event) {
             is HomeNavigationEvents.NavigateToDetails -> handleNavigation(event.slug)
         }
     }

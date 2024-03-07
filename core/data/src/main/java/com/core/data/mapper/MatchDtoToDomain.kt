@@ -1,10 +1,10 @@
 package com.core.data.mapper
 
+import com.core.data.model.MatchDetailsDto
 import com.core.data.model.MatchWrapperDto
-import com.core.data.model.OpponentWithTypeDto
 import com.core.data.model.StreamDto
+import com.core.domain.model.GetMatchDetails
 import com.core.domain.model.GetMatchWrapper
-import com.core.domain.model.GetOpponentWithType
 import com.core.domain.model.GetStream
 
 
@@ -14,20 +14,14 @@ fun MatchWrapperDto.MatchDto.toDomainModel() = GetMatchWrapper.GetMatch(
     slug = slug,
     status = status,
     originalScheduledAt = originalScheduledAt,
-    games = games.map { it.toDomainModel() },
-    serieId = serieId,
-    videoGameVersion = videoGameVersion,
-    numberOfGames = numberOfGames,
     id = id,
     name = name,
     detailedStats = detailedStats,
     scheduledAt = scheduledAt,
     beginAt = beginAt,
     videogame = videogame.toDomainModel(),
-    results = results.map { it.toDomainModel() },
     videoGameTitle = videoGameTitle,
     forfeit = forfeit,
-    opponents = opponents.map { it.toDomainModel() },
     streamsList = streamsList.map { it.toDomainModel() }
 )
 
@@ -39,18 +33,6 @@ fun StreamDto.toDomainModel() = GetStream(
     rawUrl = rawUrl
 )
 
-fun OpponentWithTypeDto.toDomainModel() = GetOpponentWithType(opponent = opponent.toDomainModel(), type = type)
-
-fun OpponentWithTypeDto.OpponentDto.toDomainModel() = GetOpponentWithType.Opponent(
-    acronym = acronym,
-    id = id,
-    imageUrl = imageUrl,
-    location = location,
-    modifiedAt = modifiedAt,
-    name = name,
-    slug = slug
-)
-
 fun MatchWrapperDto.MatchDto.WinnerDto.toDomainModel() = GetMatchWrapper.GetMatch.GetWinner(
     id = id,
     type = type
@@ -60,4 +42,23 @@ fun MatchWrapperDto.MatchDto.VideoGameDto.toDomainModel() = GetMatchWrapper.GetM
     id = id,
     name = name,
     slug = slug
+)
+
+fun MatchDetailsDto.toDomainModel() = GetMatchDetails(
+    slug = slug,
+    status = status,
+    originalScheduledAt = originalScheduledAt,
+    id = id,
+    name = name,
+    detailedStats = detailedStats,
+    scheduledAt = scheduledAt,
+    beginAt = beginAt,
+    opponents = opponents.map { it.toDomainModel() },
+    streamsList = streamsList.map { it.toDomainModel() },
+    results = results.map { it.toDomainModel() }
+)
+
+fun MatchDetailsDto.ResultDto.toDomainModel() = GetMatchDetails.GetResult(
+    score = score,
+    teamId = teamId
 )

@@ -1,4 +1,4 @@
-package com.feature.live_matches.model
+package com.feature.live_match_details.model
 
 data class Team(
     val score: Int,

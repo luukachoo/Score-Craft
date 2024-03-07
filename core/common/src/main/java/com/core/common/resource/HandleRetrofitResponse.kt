@@ -14,6 +14,7 @@ class HandleRetrofitResponse {
                 emit(Resource.Success(data = it))
             } ?: emit(Resource.Error(errorMessage = "Empty Response"))
         } else {
+            val test = response.errorBody().toString()
             emit(Resource.Error(errorMessage = response.errorBody()?.string() ?: "Unknown Error"))
         }
         emit(Resource.Loading(loading = false))

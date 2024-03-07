@@ -63,6 +63,7 @@ dependencies {
     featureHome()
     featureSeries()
     featureLiveMatches()
+    featureLiveMatchDetails()
 }
 
 kapt {

@@ -9,5 +9,10 @@
         android:id="@+id/livesFragment"
         android:name="com.feature.live_matches.screen.LivesFragment"
         android:label="fragment_lives"
-        tools:layout="@layout/fragment_lives" />
+        tools:layout="@layout/fragment_lives">
+
+        <deepLink app:uri="market-mingle://feature.live_matches/fragment_live_matches" />
+
+    </fragment>
+
 </navigation>

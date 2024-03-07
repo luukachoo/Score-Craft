@@ -12,14 +12,6 @@ data class MatchWrapperDto(
         val status: String,
         @Json(name = "original_scheduled_at")
         val originalScheduledAt: String,
-        @Json(name = "games")
-        val games: List<GamesDto>,
-        @Json(name = "serie_id")
-        val serieId: Int,
-        @Json(name = "videogame_version")
-        val videoGameVersion: String?,
-        @Json(name = "number_of_games")
-        val numberOfGames: Int,
         @Json(name = "id")
         val id: Int,
         @Json(name = "name")
@@ -32,14 +24,10 @@ data class MatchWrapperDto(
         val beginAt: String,
         @Json(name = "videogame")
         val videogame: VideoGameDto,
-        @Json(name = "results")
-        val results: List<TeamDto>,
         @Json(name = "videogame_title")
-        val videoGameTitle: String?,
+        val videoGameTitle: Any?,
         @Json(name = "forfeit")
         val forfeit: Boolean,
-        @Json(name = "opponents")
-        val opponents: List<OpponentWithTypeDto>,
         @Json(name = "streams_list")
         val streamsList: List<StreamDto>
     ) {

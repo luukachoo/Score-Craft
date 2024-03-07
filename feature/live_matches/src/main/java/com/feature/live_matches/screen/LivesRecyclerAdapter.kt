@@ -1,6 +1,5 @@
 package com.feature.live_matches.screen
 
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -15,6 +14,8 @@ import com.feature.live_matches.model.MatchWrapper
 class LivesRecyclerAdapter :
     ListAdapter<MatchWrapper.Match, LivesRecyclerAdapter.LivesViewHolder>(LivesDiffCallback) {
 
+    private var onClick: ((MatchWrapper.Match) -> Unit)? = null
+
     inner class LivesViewHolder(private val binding: ItemLiveBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(match: MatchWrapper.Match) = with(binding) {
@@ -22,16 +23,9 @@ class LivesRecyclerAdapter :
                 match.streamsList.checkForPreview(),
                 placeHolder = R.drawable.img_stream_error
             )
-            tvLeague.text = match.beginAt
+            tvLeague.text = match.beginAt.dropLast(10)
             tvTitle.text = match.name
-
-
-            d("TestAdapter", match.numberOfGames.toString())
-
-
-//            d("TestAdapter", match.beginAt)
-            d("TestAdapter", "${match.streamsList.checkForPreview()}")
-            d("TestAdapter", "${match.id}")
+            root.setOnClickListener { onClick?.invoke(match) }
         }
     }
 
@@ -45,6 +39,10 @@ class LivesRecyclerAdapter :
 
     override fun onBindViewHolder(holder: LivesViewHolder, position: Int) {
         holder.bind(getItem(position))
+    }
+
+    fun onClick(click: (MatchWrapper.Match) -> Unit) {
+        this.onClick = click
     }
 
     private object LivesDiffCallback : DiffUtil.ItemCallback<MatchWrapper.Match>() {

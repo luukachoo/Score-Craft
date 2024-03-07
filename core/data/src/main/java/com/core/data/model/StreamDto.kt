@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class StreamDto(
     @Json(name = "embed_url")
-    val embedUrl: String,
+    val embedUrl: String?,
     @Json(name = "language")
     val language: String,
     @Json(name = "main")

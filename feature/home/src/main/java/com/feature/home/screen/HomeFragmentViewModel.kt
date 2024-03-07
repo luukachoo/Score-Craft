@@ -40,6 +40,7 @@ class HomeFragmentViewModel @Inject constructor(
                         event.slug
                     )
                 )
+
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
             }
         }

@@ -10,36 +10,16 @@ fun GetMatchWrapper.GetMatch.toPresentationModel() =
         slug = slug,
         status = status,
         originalScheduledAt = originalScheduledAt,
-        games = games,
-        serieId = serieId,
-        videoGameVersion = videoGameVersion,
-        numberOfGames = numberOfGames,
         id = id,
         name = name,
         detailedStats = detailedStats,
         scheduledAt = scheduledAt,
         beginAt = beginAt,
         videogame = videogame,
-        results = results.map { it.toPresentationModel() },
         videoGameTitle = videoGameTitle,
         forfeit = forfeit,
-        opponents = opponents,
         streamsList = streamsList.map { it.toPresentationModel() }
     )
-
-
-//fun GetMatchWrapper.GetMatch.GetLeague.toPresentationModel() = MatchWrapper.Match.League(
-//    id = id, imageUrl = imageUrl, modifiedAt = modifiedAt, name = name, slug = slug, url = url
-//)
-//
-//fun GetMatchWrapper.GetMatch.GetLeague.toDomainModel() = MatchWrapper.Match.League(
-//    id = id,
-//    imageUrl = imageUrl,
-//    modifiedAt = modifiedAt,
-//    name = name,
-//    slug = slug,
-//    url = url
-//)
 
 fun GetMatchWrapper.GetMatch.GetWinner.toPresentationModel() =
     MatchWrapper.Match.Winner(id = id, type = type)

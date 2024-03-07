@@ -1,6 +1,6 @@
 package com.core.domain.model
 
-data class GetLeague (
+data class GetLeague(
     val id: Int,
     val imageUrl: String?,
     val modifiedAt: String,

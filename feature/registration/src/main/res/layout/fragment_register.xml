@@ -153,8 +153,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/or_register_with"
         android:fontFamily="@font/urbanist"
+        android:text="@string/or_register_with"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -164,37 +164,37 @@
         android:id="@+id/leftLine"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="@color/gray"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="10dp"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/lineTv"
         app:layout_constraintEnd_toStartOf="@+id/lineTv"
-        app:layout_constraintTop_toTopOf="@+id/lineTv"
-        app:layout_constraintBottom_toBottomOf="@+id/lineTv" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lineTv" />
 
     <View
         android:id="@+id/rightLine"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="@color/gray"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintStart_toEndOf="@+id/lineTv"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/lineTv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lineTv"
-        app:layout_constraintBottom_toBottomOf="@+id/lineTv" />
+        app:layout_constraintStart_toEndOf="@+id/lineTv"
+        app:layout_constraintTop_toTopOf="@+id/lineTv" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/alreadyHaveAccTv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/urbanist"
-        android:textSize="16sp"
-        android:textColor="@color/dark"
         android:text="@string/already_have_an_accout_login_now"
+        android:textColor="@color/dark"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
