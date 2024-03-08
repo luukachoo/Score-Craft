@@ -57,6 +57,10 @@ object Dependencies {
 
     // Paging
     const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+
+    // lottie
+    const val lottie =
+        "com.airbnb.android:lottie:${Versions.lottieVersion}"
 }
 
 fun DependencyHandler.basic() {
@@ -103,6 +107,10 @@ fun DependencyHandler.glide() {
 
 fun DependencyHandler.paging() {
     implementation(Dependencies.paging)
+}
+
+fun DependencyHandler.lottie() {
+    implementation(Dependencies.lottie)
 }
 
 // example of how to implement modules

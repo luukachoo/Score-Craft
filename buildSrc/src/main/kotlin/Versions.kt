@@ -23,4 +23,5 @@ object Versions {
     const val gmsVersion = "4.4.1"
     const val orgJetbrainsKotlinJvm = "1.9.22"
     const val paging = "3.0.0"
+    const val lottieVersion = "6.4.0"
 }

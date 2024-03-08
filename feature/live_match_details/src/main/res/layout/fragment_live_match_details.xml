@@ -7,7 +7,7 @@
     tools:context=".screen.LiveMatchDetailsFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/buttonGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -22,6 +22,17 @@
         app:shapeAppearanceOverlay="@style/roundedShape"
         app:tint="@null" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieLiveNowAnimation"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonGoBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/buttonGoBack"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="now_streaming.json"
+        app:lottie_loop="true" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivTeamOneImage"
         android:layout_width="100dp"
@@ -31,7 +42,7 @@
         app:layout_constraintEnd_toStartOf="@+id/tvTeamOneScore"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonGoBack" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTeamOneScore"
@@ -83,7 +94,10 @@
         android:id="@+id/rvTeamPlayers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
+        android:overScrollMode="never"
+        android:background="@drawable/custom_border"
+        android:layout_marginHorizontal="15dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         tools:layout_editor_absoluteX="16dp" />

@@ -25,6 +25,13 @@ class LivesRecyclerAdapter :
             )
             tvLeague.text = match.beginAt.dropLast(10)
             tvTitle.text = match.name
+
+            if (match.status == "running") {
+                lottieLiveNowAnimation.isAnimating
+            } else {
+                !lottieLiveNowAnimation.isAnimating
+            }
+
             root.setOnClickListener { onClick?.invoke(match) }
         }
     }

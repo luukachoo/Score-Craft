@@ -11,7 +11,7 @@ data class GetTeamWrapper(
     ) {
         data class GetPlayer(
             val active: Boolean,
-            val age: Int,
+            val age: Int?,
             val birthday: String?,
             val firstName: String,
             val id: Int,

@@ -7,11 +7,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.showSnackbar
 import com.feature.live_match_details.databinding.FragmentLiveMatchDetailsBinding
 import com.feature.live_match_details.event.LiveMatchDetailsEvents
+import com.feature.live_match_details.event.LiveMatchDetailsUiEvent
 import com.feature.live_match_details.state.LiveMatchDetailsState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -40,6 +42,14 @@ class LiveMatchDetailsFragment :
                 }
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.liveMatchUiEvent.collect {
+                    handleNavigationState(it)
+                }
+            }
+        }
     }
 
     override fun bindViewActionListeners() = with(binding) {
@@ -48,8 +58,11 @@ class LiveMatchDetailsFragment :
         }
 
         buttonWatchOnYT.setOnClickListener {
-            val test = youtubeStreamLink
             handleYoutubeLink(youtubeStreamLink)
+        }
+
+        buttonGoBack.setOnClickListener {
+            viewModel.onEvent(LiveMatchDetailsEvents.BackButtonClick)
         }
     }
 
@@ -80,22 +93,27 @@ class LiveMatchDetailsFragment :
         errorState(state)
     }
 
+    private fun handleNavigationState(state: LiveMatchDetailsUiEvent) {
+        when(state) {
+            LiveMatchDetailsUiEvent.NavigateToDetails -> findNavController().popBackStack()
+        }
+    }
+
     private fun successState(state: LiveMatchDetailsState) = with(binding) {
-        val youtubeStream =
-            state.matchDetails?.streamsList?.find { it.rawUrl.contains("https://www.youtube.com") }
 
         if (state.matchDetails?.streamsList != null) {
-            twitchStreamLink = state.matchDetails.streamsList.last().rawUrl
-        } else if (youtubeStream != null) {
-            youtubeStreamLink = youtubeStream.toString()
+            twitchStreamLink = state.matchDetails.streamsList.find {
+                it.rawUrl.contains("twitch.tv")
+            }?.rawUrl ?: ""
+            youtubeStreamLink = state.matchDetails.streamsList.find {
+                it.rawUrl.contains("youtube.com")
+            }?.rawUrl ?: ""
         }
 
         if (state.matchDetails?.status == "running") {
             buttonWatchOnTwitch.isEnabled = true
             buttonWatchOnYT.isEnabled = true
-        } else {
-            buttonWatchOnTwitch.isEnabled = false
-            buttonWatchOnYT.isEnabled = false
+            lottieLiveNowAnimation.isAnimating
         }
 
         progressBar.isVisible = state.isLoading
@@ -107,6 +125,7 @@ class LiveMatchDetailsFragment :
 
         rvPlayersAdapter.submitList(state.players)
     }
+
 
     private fun errorState(state: LiveMatchDetailsState) =
         state.errorMessage?.let {

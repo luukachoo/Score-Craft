@@ -20,7 +20,7 @@ data class TeamWrapperDto(
             @Json(name = "active")
             val active: Boolean,
             @Json(name = "age")
-            val age: Int,
+            val age: Int?,
             @Json(name = "birthday")
             val birthday: String?,
             @Json(name = "first_name")
