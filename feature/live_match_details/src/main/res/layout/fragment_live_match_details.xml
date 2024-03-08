@@ -6,21 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".screen.LiveMatchDetailsFragment">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/buttonGoBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#161514"
-        android:contentDescription="@string/back"
-        android:foregroundTint="#FFFFFF"
+        android:scaleType="center"
         android:src="@drawable/ic_back_btn"
+        android:background="@drawable/rounded_back_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/material_dynamic_neutral60"
-        app:shapeAppearanceOverlay="@style/roundedShape"
-        app:tint="@null" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieLiveNowAnimation"
@@ -94,10 +90,10 @@
         android:id="@+id/rvTeamPlayers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:overScrollMode="never"
-        android:background="@drawable/custom_border"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_border"
+        android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         tools:layout_editor_absoluteX="16dp" />
