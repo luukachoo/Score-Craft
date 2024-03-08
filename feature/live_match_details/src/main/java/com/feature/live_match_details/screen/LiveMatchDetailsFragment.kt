@@ -54,11 +54,11 @@ class LiveMatchDetailsFragment :
     }
 
     private fun handleTwitchLink(twitchLink: String) {
-        try{
+        try {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(twitchLink)
             startActivity(intent)
-        }catch (e: Throwable){
+        } catch (e: Throwable) {
             binding.root.showSnackbar("Live is not available")
         }
     }
@@ -81,7 +81,8 @@ class LiveMatchDetailsFragment :
     }
 
     private fun successState(state: LiveMatchDetailsState) = with(binding) {
-        val youtubeStream = state.matchDetails?.streamsList?.find { it.rawUrl.contains("https://www.youtube.com") }
+        val youtubeStream =
+            state.matchDetails?.streamsList?.find { it.rawUrl.contains("https://www.youtube.com") }
 
         if (state.matchDetails?.streamsList != null) {
             twitchStreamLink = state.matchDetails.streamsList.last().rawUrl

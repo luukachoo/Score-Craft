@@ -10,4 +10,5 @@ fun GetOpponentWrapper.GetOpponent.toPresentationModel() = OpponentWrapper.Oppon
     slug = slug
 )
 
-fun GetOpponentWrapper.toPresentationModel() = OpponentWrapper(opponent = opponent.toPresentationModel())
+fun GetOpponentWrapper.toPresentationModel() =
+    OpponentWrapper(opponent = opponent.toPresentationModel())

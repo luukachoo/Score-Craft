@@ -29,7 +29,7 @@ class LiveMatchDetailsViewModel @Inject constructor(
     val liveMatchesState get() = _liveMatchesState.asStateFlow()
 
     fun onEvent(event: LiveMatchDetailsEvents) {
-        when(event) {
+        when (event) {
             is LiveMatchDetailsEvents.FetchMatchDetailsById -> fetchMatchDetailsById(event.matchId)
             is LiveMatchDetailsEvents.FetchTeamMembersByMatchId -> fetchOpponentsByMatchId(event.matchId)
             LiveMatchDetailsEvents.ResetErrorMessage -> updateErrorMessage(null)

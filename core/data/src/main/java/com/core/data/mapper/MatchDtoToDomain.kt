@@ -1,11 +1,11 @@
 package com.core.data.mapper
 
+import com.core.data.model.StreamDto
 import com.core.data.model.live_matches.MatchDetailsDto
 import com.core.data.model.live_matches.MatchWrapperDto
-import com.core.data.model.StreamDto
+import com.core.domain.model.GetStream
 import com.core.domain.model.live_matches.GetMatchDetails
 import com.core.domain.model.live_matches.GetMatchWrapper
-import com.core.domain.model.GetStream
 
 
 fun MatchWrapperDto.toDomainModel() = GetMatchWrapper(match = match.toDomainModel())
