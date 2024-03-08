@@ -6,6 +6,7 @@ import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.mapper.toDomainModel
 import com.core.data.service.LeaguesService
 import com.core.domain.model.GetLeague
+import com.core.domain.model.GetSeries
 import com.core.domain.repository.LeagueRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -18,8 +19,18 @@ class LeaguesRepositoryImpl @Inject constructor(
         return responseHandler.apiCall {
             service.getLeagues()
         }.asResource {
-            it.map { leagueDto ->
-                leagueDto.toDomainModel()
+            it.map { dto ->
+                dto.toDomainModel()
+            }
+        }
+    }
+
+    override suspend fun getSeriesBySlug(slug: String): Flow<Resource<List<GetSeries>>> {
+        return responseHandler.apiCall {
+            service.getSeriesBySlug(slug)
+        }.asResource {
+            it.map { seriesDto ->
+                seriesDto.toDomainModel()
             }
         }
     }

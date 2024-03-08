@@ -1,0 +1,8 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="now_streaming">Now Streaming:</string>
+    <string name="zero">0</string>
+    <string name="title">Title</string>
+    <string name="test">00/00/0000</string>
+</resources>

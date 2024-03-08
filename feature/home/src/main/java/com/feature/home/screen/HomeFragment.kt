@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
 
             mainRecyclerAdapter = MainRecyclerAdapter(
-                state.categories ?: emptyList(),
+                state.leagues ?: emptyList(),
                 user,
                 imageUri = state.imageUri ?: ""
             )
@@ -81,10 +81,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun setupClickListeners() {
-        mainRecyclerAdapter.onPostClick { product ->
-            viewModel.onEvent(HomeFragmentEvent.ItemClick(product.id))
-        }
-
         mainRecyclerAdapter.onAvatarClick {
             handleNavigation("market-mingle://feature.profile/fragment_profile")
         }

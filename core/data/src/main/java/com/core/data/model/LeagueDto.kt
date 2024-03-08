@@ -17,6 +17,4 @@ data class LeagueDto(
     val slug: String,
     @Json(name = "url")
     val url: String?,
-    @Json(name = "videogame")
-    val videoGameDto: VideoGameDto
 )

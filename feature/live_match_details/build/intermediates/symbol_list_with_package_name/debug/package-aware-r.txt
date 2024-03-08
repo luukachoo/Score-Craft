@@ -3,7 +3,7 @@ drawable guest_player
 drawable ic_back_btn
 drawable ic_twitch
 drawable ic_youtube
-drawable rounded_field
+drawable rounded_shape
 id buttonWatchOnTwitch
 id buttonWatchOnYT
 id feature_live_match_details_nav_graph
@@ -24,15 +24,15 @@ id tvPlayerSecondUsername
 id tvSecondTeamScore
 id tvTeamOneScore
 id tvTitle
-layout fragment_match_details
-layout item_players
+layout fragment_live_match_details
+layout item_player
 navigation feature_live_match_details_nav_graph
 string back
 string bb_vs_tspirit
 string ge
 string hello_blank_fragment
 string minus
-string watch
+string watch_on
 string zero
 style roundedShape
 style roundedShapeForImageView

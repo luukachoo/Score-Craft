@@ -1,8 +1,10 @@
 package com.example.marketmingle.di
 
+import com.core.data.repository.LeaguesRepositoryImpl
+import com.core.data.repository.MatchesRepositoryImpl
 import com.core.data.repository.auth.AuthRepositoryImpl
-import com.core.data.repository.category.LeaguesRepositoryImpl
 import com.core.domain.repository.LeagueRepository
+import com.core.domain.repository.MatchesRepository
 import com.core.domain.repository.auth.AuthRepository
 import dagger.Binds
 import dagger.Module
@@ -15,7 +17,11 @@ import javax.inject.Singleton
 interface RepositoryModule {
     @Binds
     @Singleton
-    fun bindCategoryRepository(categoriseRepositoryImpl: LeaguesRepositoryImpl): LeagueRepository
+    fun bindLeaguesRepository(leaguesRepositoryImpl: LeaguesRepositoryImpl): LeagueRepository
+
+    @Binds
+    @Singleton
+    fun bindMatchesRepository(matchesRepositoryImpl: MatchesRepositoryImpl): MatchesRepository
 
     @Binds
     @Singleton

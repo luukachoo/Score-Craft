@@ -15,107 +15,107 @@ public final class League {
     private final java.lang.String url = null;
     @org.jetbrains.annotations.NotNull()
     private final java.util.List<com.feature.live_matches.model.Series> getSeriesList = null;
-
+    
     public League(int id, @org.jetbrains.annotations.Nullable()
     java.lang.String imageUrl, @org.jetbrains.annotations.NotNull()
-                  java.lang.String modifiedAt, @org.jetbrains.annotations.NotNull()
-                  java.lang.String name, @org.jetbrains.annotations.NotNull()
-                  java.lang.String slug, @org.jetbrains.annotations.Nullable()
-                  java.lang.String url, @org.jetbrains.annotations.NotNull()
-                  java.util.List<com.feature.live_matches.model.Series> getSeriesList) {
+    java.lang.String modifiedAt, @org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
+    java.lang.String slug, @org.jetbrains.annotations.Nullable()
+    java.lang.String url, @org.jetbrains.annotations.NotNull()
+    java.util.List<com.feature.live_matches.model.Series> getSeriesList) {
         super();
     }
-
+    
     public final int getId() {
         return 0;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String getImageUrl() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getModifiedAt() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getName() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getSlug() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String getUrl() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.util.List<com.feature.live_matches.model.Series> getGetSeriesList() {
         return null;
     }
-
+    
     public final int component1() {
         return 0;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String component2() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component3() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component4() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component5() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String component6() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.util.List<com.feature.live_matches.model.Series> component7() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final com.feature.live_matches.model.League copy(int id, @org.jetbrains.annotations.Nullable()
     java.lang.String imageUrl, @org.jetbrains.annotations.NotNull()
-                                                            java.lang.String modifiedAt, @org.jetbrains.annotations.NotNull()
-                                                            java.lang.String name, @org.jetbrains.annotations.NotNull()
-                                                            java.lang.String slug, @org.jetbrains.annotations.Nullable()
-                                                            java.lang.String url, @org.jetbrains.annotations.NotNull()
-                                                            java.util.List<com.feature.live_matches.model.Series> getSeriesList) {
+    java.lang.String modifiedAt, @org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
+    java.lang.String slug, @org.jetbrains.annotations.Nullable()
+    java.lang.String url, @org.jetbrains.annotations.NotNull()
+    java.util.List<com.feature.live_matches.model.Series> getSeriesList) {
         return null;
     }
-
+    
     @java.lang.Override()
     public boolean equals(@org.jetbrains.annotations.Nullable()
-                          java.lang.Object other) {
+    java.lang.Object other) {
         return false;
     }
-
+    
     @java.lang.Override()
     public int hashCode() {
         return 0;
     }
-
+    
     @java.lang.Override()
     @org.jetbrains.annotations.NotNull()
     public java.lang.String toString() {

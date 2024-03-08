@@ -8,19 +8,19 @@
           "market-mingle"
         ],
         "port": -1,
-        "path": "/fragment_match_details",
+        "path": "/fragment_live_match_details",
         "query": "matchId\u003d.*",
         "sourceFilePosition": {
           "mSourceFile": {
             "mDescription": "feature_live_match_details_nav_graph.xml"
           },
           "mSourcePosition": {
-            "mStartLine": 13,
+            "mStartLine": 12,
             "mStartColumn": 8,
-            "mStartOffset": 597,
-            "mEndLine": 13,
-            "mEndColumn": 114,
-            "mEndOffset": 703
+            "mStartOffset": 604,
+            "mEndLine": 12,
+            "mEndColumn": 128,
+            "mEndOffset": 724
           }
         },
         "isAutoVerify": false,

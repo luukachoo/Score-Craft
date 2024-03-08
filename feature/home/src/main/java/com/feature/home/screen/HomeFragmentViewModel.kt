@@ -64,7 +64,7 @@ class HomeFragmentViewModel @Inject constructor(
                     is Resource.Success -> {
                         _homeState.update {
                             it.copy(
-                                categories = res.data.map { getLeague -> getLeague.toPresentationModel() },
+                                leagues = res.data.map { getLeague -> getLeague.toPresentationModel() },
                                 isLoading = false,
                                 errorMessage = null
                             )

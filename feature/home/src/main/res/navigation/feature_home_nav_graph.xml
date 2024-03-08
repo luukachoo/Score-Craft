@@ -12,6 +12,6 @@
         tools:layout="@layout/fragment_home">
 
         <deepLink app:uri="market-mingle://feature.home/fragment_home" />
-
     </fragment>
+
 </navigation>

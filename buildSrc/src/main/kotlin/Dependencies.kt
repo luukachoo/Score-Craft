@@ -163,3 +163,15 @@ fun DependencyHandler.common() {
 fun DependencyHandler.domain() {
     implementation(project(":core:domain"))
 }
+
+fun DependencyHandler.featureSeries() {
+    implementation(project(":feature:series"))
+}
+
+fun DependencyHandler.featureLiveMatches() {
+    implementation(project(":feature:live_matches"))
+}
+
+fun DependencyHandler.featureLiveMatchDetails() {
+    implementation(project(":feature:live_match_details"))
+}

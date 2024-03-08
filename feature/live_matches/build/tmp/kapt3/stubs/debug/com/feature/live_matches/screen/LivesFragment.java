@@ -7,38 +7,38 @@ public final class LivesFragment extends com.core.common.base.BaseFragment<com.f
     private final kotlin.Lazy viewModel$delegate = null;
     @org.jetbrains.annotations.NotNull()
     private final kotlin.Lazy livesAdapter$delegate = null;
-
+    
     public LivesFragment() {
         super(null);
     }
-
+    
     private final com.feature.live_matches.screen.LivesFragmentViewModel getViewModel() {
         return null;
     }
-
+    
     private final com.feature.live_matches.screen.LivesRecyclerAdapter getLivesAdapter() {
         return null;
     }
-
+    
     @java.lang.Override()
     public void bind() {
     }
-
+    
     @java.lang.Override()
     public void bindObserves() {
     }
-
+    
     @java.lang.Override()
     public void bindViewActionListeners() {
     }
-
+    
     private final kotlin.Unit handleLiveState(com.feature.live_matches.state.LiveState state) {
         return null;
     }
-
+    
     private final void setUpRecycler() {
     }
-
+    
     private final void handleNavigation(int matchId) {
     }
 }

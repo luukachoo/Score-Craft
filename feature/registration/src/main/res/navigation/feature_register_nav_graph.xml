@@ -12,6 +12,5 @@
         tools:layout="@layout/fragment_register">
 
         <deepLink app:uri="market-mingle://feature.register/fragment_register" />
-
     </fragment>
 </navigation>
