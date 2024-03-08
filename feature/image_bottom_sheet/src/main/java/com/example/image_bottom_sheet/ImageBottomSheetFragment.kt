@@ -1,5 +1,8 @@
 package com.example.image_bottom_sheet
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
@@ -9,43 +12,43 @@ import com.core.common.base.BaseBottomSheetFragment
 import com.example.image_bottom_sheet.databinding.FragmentImageBottomSheetBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.content.Context
 import java.io.FileOutputStream
 import java.io.InputStream
 
 @AndroidEntryPoint
-class ImageBottomSheetFragment : BaseBottomSheetFragment<FragmentImageBottomSheetBinding>(FragmentImageBottomSheetBinding::inflate) {
+class ImageBottomSheetFragment :
+    BaseBottomSheetFragment<FragmentImageBottomSheetBinding>(FragmentImageBottomSheetBinding::inflate) {
 
     private lateinit var photoFile: File
 
-    private val takePictureResultLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
-        if (isSuccess) {
-            val photoURI: Uri = FileProvider.getUriForFile(
-                requireContext(),
-                "${requireContext().packageName}.provider",
-                photoFile
-            )
-            val compressedUri = compressImage(photoURI, requireContext())
-            if (compressedUri != null) {
-                navigateBackWithImageUri(compressedUri)
+    private val takePictureResultLauncher =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+            if (isSuccess) {
+                val photoURI: Uri = FileProvider.getUriForFile(
+                    requireContext(),
+                    "${requireContext().packageName}.provider",
+                    photoFile
+                )
+                val compressedUri = compressImage(photoURI, requireContext())
+                if (compressedUri != null) {
+                    navigateBackWithImageUri(compressedUri)
+                }
+            } else {
+                // Handle the failure or cancellation
             }
-        } else {
-            // Handle the failure or cancellation
         }
-    }
 
-    private val pickImageResultLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        if (uri != null) {
-            val compressedUri = compressImage(uri, requireContext())
-            if (compressedUri != null) {
-                navigateBackWithImageUri(compressedUri)
+    private val pickImageResultLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            if (uri != null) {
+                val compressedUri = compressImage(uri, requireContext())
+                if (compressedUri != null) {
+                    navigateBackWithImageUri(compressedUri)
+                }
+            } else {
+                // Handle the failure or cancellation
             }
-        } else {
-            // Handle the failure or cancellation
         }
-    }
 
 
     override fun bind() {
@@ -89,7 +92,8 @@ class ImageBottomSheetFragment : BaseBottomSheetFragment<FragmentImageBottomShee
 
     private fun navigateBackWithImageUri(imageUri: Uri) {
         val encodedUriString = Uri.encode(imageUri.toString())
-        val deepLinkUri = Uri.parse("market-mingle://feature.profile/fragment_profile?imageUri=$encodedUriString")
+        val deepLinkUri =
+            Uri.parse("market-mingle://feature.profile/fragment_profile?imageUri=$encodedUriString")
 
         val navOptions = navOptions {
             popUpTo(R.id.imageBottomSheetFragment) { inclusive = true }

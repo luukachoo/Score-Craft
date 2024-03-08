@@ -1,7 +1,6 @@
 package com.example.splash_screen.screen
 
-import android.annotation.SuppressLint
-import android.view.View
+import android.animation.Animator
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -11,7 +10,6 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
-import com.core.common.extension.loadImagesWithGlide
 import com.example.splash_screen.R
 import com.example.splash_screen.databinding.FragmentSplashScreenBinding
 import com.example.splash_screen.event.SplashScreenEvent
@@ -27,7 +25,25 @@ class SplashScreenFragment :
     private val viewModel: SplashScreenViewModel by viewModels()
 
     override fun bind() {
-        viewModel.onEvent(SplashScreenEvent.CheckUserSessions)
+        binding.animationView.apply {
+            speed = 2.0f
+            addAnimatorListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator) {
+                }
+
+                override fun onAnimationEnd(animation: Animator) {
+                    viewModel.onEvent(SplashScreenEvent.CheckUserSessions)
+                }
+
+                override fun onAnimationCancel(animation: Animator) {
+                    // Animation canceled
+                }
+
+                override fun onAnimationRepeat(animation: Animator) {
+                    // Animation repeats
+                }
+            })
+        }
     }
 
     override fun bindObserves() {

@@ -56,6 +56,9 @@ object Dependencies {
 
     // Splash Screen
     const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashVersion}"
+
+    const val lottie =
+        "com.airbnb.android:lottie:${Versions.lottieVersion}"
 }
 
 fun DependencyHandler.basic() {
@@ -106,6 +109,10 @@ fun DependencyHandler.daggerHilt() {
 fun DependencyHandler.navigationComponent() {
     implementation(Dependencies.navigationFragment)
     implementation(Dependencies.navigationUi)
+}
+
+fun DependencyHandler.lottie() {
+    implementation(Dependencies.lottie)
 }
 
 fun DependencyHandler.glide() {

@@ -9,7 +9,7 @@ data class HomeState(
     val products: List<Product>? = emptyList(),
     val user: Users? = null,
     val isLoading: Boolean = false,
-    val imageUri: String?= null,
+    val imageUri: String? = null,
     val imageFetched: Boolean = false,
     val errorMessage: String? = null
 )

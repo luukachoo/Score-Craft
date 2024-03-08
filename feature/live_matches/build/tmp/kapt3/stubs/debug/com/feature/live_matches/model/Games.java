@@ -21,155 +21,155 @@ public final class Games {
     private final com.feature.live_matches.model.MatchWrapper.Match.Winner winner = null;
     @org.jetbrains.annotations.NotNull()
     private final java.lang.String winnerType = null;
-    
+
     public Games(@org.jetbrains.annotations.Nullable()
-    java.lang.String beginAt, boolean complete, boolean detailedStats, @org.jetbrains.annotations.Nullable()
-    java.lang.String endAt, boolean finished, boolean forfeit, int id, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer length, int matchId, int position, @org.jetbrains.annotations.NotNull()
-    java.lang.String status, @org.jetbrains.annotations.NotNull()
-    com.feature.live_matches.model.MatchWrapper.Match.Winner winner, @org.jetbrains.annotations.NotNull()
-    java.lang.String winnerType) {
+                 java.lang.String beginAt, boolean complete, boolean detailedStats, @org.jetbrains.annotations.Nullable()
+                 java.lang.String endAt, boolean finished, boolean forfeit, int id, @org.jetbrains.annotations.Nullable()
+                 java.lang.Integer length, int matchId, int position, @org.jetbrains.annotations.NotNull()
+                 java.lang.String status, @org.jetbrains.annotations.NotNull()
+                 com.feature.live_matches.model.MatchWrapper.Match.Winner winner, @org.jetbrains.annotations.NotNull()
+                 java.lang.String winnerType) {
         super();
     }
-    
+
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String getBeginAt() {
         return null;
     }
-    
+
     public final boolean getComplete() {
         return false;
     }
-    
+
     public final boolean getDetailedStats() {
         return false;
     }
-    
+
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String getEndAt() {
         return null;
     }
-    
+
     public final boolean getFinished() {
         return false;
     }
-    
+
     public final boolean getForfeit() {
         return false;
     }
-    
+
     public final int getId() {
         return 0;
     }
-    
+
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Integer getLength() {
         return null;
     }
-    
+
     public final int getMatchId() {
         return 0;
     }
-    
+
     public final int getPosition() {
         return 0;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getStatus() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final com.feature.live_matches.model.MatchWrapper.Match.Winner getWinner() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getWinnerType() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String component1() {
         return null;
     }
-    
+
     public final int component10() {
         return 0;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component11() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final com.feature.live_matches.model.MatchWrapper.Match.Winner component12() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component13() {
         return null;
     }
-    
+
     public final boolean component2() {
         return false;
     }
-    
+
     public final boolean component3() {
         return false;
     }
-    
+
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String component4() {
         return null;
     }
-    
+
     public final boolean component5() {
         return false;
     }
-    
+
     public final boolean component6() {
         return false;
     }
-    
+
     public final int component7() {
         return 0;
     }
-    
+
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Integer component8() {
         return null;
     }
-    
+
     public final int component9() {
         return 0;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final com.feature.live_matches.model.Games copy(@org.jetbrains.annotations.Nullable()
-    java.lang.String beginAt, boolean complete, boolean detailedStats, @org.jetbrains.annotations.Nullable()
-    java.lang.String endAt, boolean finished, boolean forfeit, int id, @org.jetbrains.annotations.Nullable()
-    java.lang.Integer length, int matchId, int position, @org.jetbrains.annotations.NotNull()
-    java.lang.String status, @org.jetbrains.annotations.NotNull()
-    com.feature.live_matches.model.MatchWrapper.Match.Winner winner, @org.jetbrains.annotations.NotNull()
-    java.lang.String winnerType) {
+                                                           java.lang.String beginAt, boolean complete, boolean detailedStats, @org.jetbrains.annotations.Nullable()
+                                                           java.lang.String endAt, boolean finished, boolean forfeit, int id, @org.jetbrains.annotations.Nullable()
+                                                           java.lang.Integer length, int matchId, int position, @org.jetbrains.annotations.NotNull()
+                                                           java.lang.String status, @org.jetbrains.annotations.NotNull()
+                                                           com.feature.live_matches.model.MatchWrapper.Match.Winner winner, @org.jetbrains.annotations.NotNull()
+                                                           java.lang.String winnerType) {
         return null;
     }
-    
+
     @java.lang.Override()
     public boolean equals(@org.jetbrains.annotations.Nullable()
-    java.lang.Object other) {
+                          java.lang.Object other) {
         return false;
     }
-    
+
     @java.lang.Override()
     public int hashCode() {
         return 0;
     }
-    
+
     @java.lang.Override()
     @org.jetbrains.annotations.NotNull()
     public java.lang.String toString() {

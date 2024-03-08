@@ -10,7 +10,6 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
-import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.showSnackbar
 import com.feature.home.R
 import com.feature.home.databinding.FragmentHomeBinding
@@ -66,7 +65,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 viewModel.onEvent(HomeFragmentEvent.FetchUserProfileImage(user.userId))
             }
 
-            mainRecyclerAdapter = MainRecyclerAdapter(state.categories ?: emptyList(), user, imageUri = state.imageUri ?: "")
+            mainRecyclerAdapter = MainRecyclerAdapter(
+                state.categories ?: emptyList(),
+                user,
+                imageUri = state.imageUri ?: ""
+            )
             mainRecyclerView.adapter = mainRecyclerAdapter
             setupClickListeners()
         }

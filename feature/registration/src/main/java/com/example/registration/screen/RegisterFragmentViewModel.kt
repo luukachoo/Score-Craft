@@ -70,7 +70,7 @@ class RegisterFragmentViewModel @Inject constructor(
                                     errorMessage = null
                                 )
                             }
-                            _uiEvent.emit(RegisterUiEvent.NavigateToLogin(email, password))
+                            _uiEvent.emit(RegisterUiEvent.NavigateToLoginWithArgs(email, password))
                         }
                     }
                 }
@@ -121,18 +121,14 @@ class RegisterFragmentViewModel @Inject constructor(
         )
     }
 
-    fun onAlreadyHaveAccountClicked() {
-        viewModelScope.launch {
-            _uiEvent.emit(RegisterUiEvent.AlreadyHaveAccountNavigation)
-        }
-    }
-
     private fun updateErrorMessage(message: String?) {
         _registerState.update { currentState -> currentState.copy(errorMessage = message) }
     }
 
     sealed interface RegisterUiEvent {
-        data object AlreadyHaveAccountNavigation : RegisterUiEvent
-        data class NavigateToLogin(val email: String, val password: String) : RegisterUiEvent
+        data object NavigateToLogin : RegisterUiEvent
+        data object NavigateToWelcome : RegisterUiEvent
+        data class NavigateToLoginWithArgs(val email: String, val password: String) :
+            RegisterUiEvent
     }
 }

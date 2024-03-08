@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><Layout layout="item_live" modulePackage="com.feature.live_matches" filePath="feature\live_matches\src\main\res\layout\item_live.xml" directory="layout" isMerge="false" isBindingData="false" rootNodeType="com.google.android.material.card.MaterialCardView"><Targets><Target tag="layout/item_live_0" view="com.google.android.material.card.MaterialCardView"><Expressions/><location startLine="1" startOffset="0" endLine="46" endOffset="51"/></Target><Target id="@+id/ivPreview" view="androidx.appcompat.widget.AppCompatImageView"><Expressions/><location startLine="15" startOffset="8" endLine="22" endOffset="55"/></Target><Target id="@+id/tvTitle" view="androidx.appcompat.widget.AppCompatTextView"><Expressions/><location startLine="24" startOffset="8" endLine="33" endOffset="66"/></Target><Target id="@+id/tvLeague" view="androidx.appcompat.widget.AppCompatTextView"><Expressions/><location startLine="35" startOffset="8" endLine="43" endOffset="64"/></Target></Targets></Layout>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Layout directory="layout" filePath="feature\live_matches\src\main\res\layout\item_live.xml"
+    isBindingData="false" isMerge="false"
+    layout="item_live" modulePackage="com.feature.live_matches"
+    rootNodeType="com.google.android.material.card.MaterialCardView">
+    <Targets>
+        <Target tag="layout/item_live_0" view="com.google.android.material.card.MaterialCardView">
+            <Expressions />
+            <location endLine="46" endOffset="51" startLine="1" startOffset="0" />
+        </Target>
+        <Target id="@+id/ivPreview" view="androidx.appcompat.widget.AppCompatImageView">
+            <Expressions />
+            <location endLine="22" endOffset="55" startLine="15" startOffset="8" />
+        </Target>
+        <Target id="@+id/tvTitle" view="androidx.appcompat.widget.AppCompatTextView">
+            <Expressions />
+            <location endLine="33" endOffset="66" startLine="24" startOffset="8" />
+        </Target>
+        <Target id="@+id/tvLeague" view="androidx.appcompat.widget.AppCompatTextView">
+            <Expressions />
+            <location endLine="43" endOffset="64" startLine="35" startOffset="8" />
+        </Target>
+    </Targets>
+</Layout>

@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBinding::inflate) {
     override fun bind() {
-
+        binding.animationView.isAnimating
     }
 
     override fun bindViewActionListeners() {

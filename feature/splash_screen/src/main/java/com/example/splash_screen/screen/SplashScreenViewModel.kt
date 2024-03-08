@@ -19,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashScreenViewModel @Inject constructor(
     private val getAuthUseCase: GetAuthUseCase
-): ViewModel() {
+) : ViewModel() {
     private val _splashScreenState = MutableStateFlow(SplashScreenState())
     val splashScreenState: StateFlow<SplashScreenState> = _splashScreenState.asStateFlow()
 
@@ -55,7 +55,7 @@ class SplashScreenViewModel @Inject constructor(
 
                         if (resource.data) {
                             _uiEvent.emit(SplashScreenUiEvent.NavigateToHome)
-                        } else  {
+                        } else {
                             _uiEvent.emit(SplashScreenUiEvent.NavigateToWelcome)
                         }
                     }
@@ -70,6 +70,6 @@ class SplashScreenViewModel @Inject constructor(
 
     sealed interface SplashScreenUiEvent {
         data object NavigateToHome : SplashScreenUiEvent
-        data object NavigateToWelcome: SplashScreenUiEvent
+        data object NavigateToWelcome : SplashScreenUiEvent
     }
 }

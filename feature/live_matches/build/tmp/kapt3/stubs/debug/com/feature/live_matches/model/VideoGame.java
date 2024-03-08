@@ -7,59 +7,59 @@ public final class VideoGame {
     private final java.lang.String name = null;
     @org.jetbrains.annotations.NotNull()
     private final java.lang.String slug = null;
-    
+
     public VideoGame(int id, @org.jetbrains.annotations.NotNull()
     java.lang.String name, @org.jetbrains.annotations.NotNull()
-    java.lang.String slug) {
+                     java.lang.String slug) {
         super();
     }
-    
+
     public final int getId() {
         return 0;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getName() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getSlug() {
         return null;
     }
-    
+
     public final int component1() {
         return 0;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component2() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component3() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final com.feature.live_matches.model.VideoGame copy(int id, @org.jetbrains.annotations.NotNull()
     java.lang.String name, @org.jetbrains.annotations.NotNull()
-    java.lang.String slug) {
+                                                               java.lang.String slug) {
         return null;
     }
-    
+
     @java.lang.Override()
     public boolean equals(@org.jetbrains.annotations.Nullable()
-    java.lang.Object other) {
+                          java.lang.Object other) {
         return false;
     }
-    
+
     @java.lang.Override()
     public int hashCode() {
         return 0;
     }
-    
+
     @java.lang.Override()
     @org.jetbrains.annotations.NotNull()
     public java.lang.String toString() {

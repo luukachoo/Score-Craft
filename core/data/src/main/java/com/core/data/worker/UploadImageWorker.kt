@@ -21,7 +21,8 @@ class UploadImageWorker(
         val imageUri = Uri.parse(imageUriString)
 
         try {
-            val storageReference = FirebaseStorage.getInstance().reference.child("user_profiles/$userId/profile_picture.jpg")
+            val storageReference =
+                FirebaseStorage.getInstance().reference.child("user_profiles/$userId/profile_picture.jpg")
 
             // Initiate upload and wait for it to complete
             val uploadTask = storageReference.putFile(imageUri).await()

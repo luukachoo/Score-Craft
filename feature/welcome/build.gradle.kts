@@ -17,6 +17,7 @@ dependencies {
     basic()
     daggerHilt()
     navigationComponent()
+    lottie()
 
     // core
     common()

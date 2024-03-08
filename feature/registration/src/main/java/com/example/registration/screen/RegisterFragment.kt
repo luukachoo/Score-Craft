@@ -50,7 +50,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             }
 
             alreadyHaveAccTv.setOnClickListener {
-                viewModel.onAlreadyHaveAccountClicked()
+                handleNavigation("market-mingle://feature.logic/fragment_logic")
             }
 
             backBtn.setOnClickListener {
@@ -89,14 +89,16 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     private fun handleNavigationEvents(event: RegisterFragmentViewModel.RegisterUiEvent) {
         when (event) {
-            RegisterFragmentViewModel.RegisterUiEvent.AlreadyHaveAccountNavigation -> handleNavigation(
+            RegisterFragmentViewModel.RegisterUiEvent.NavigateToLogin -> handleNavigation(
                 "market-mingle://feature.login/fragment_login"
             )
 
-            is RegisterFragmentViewModel.RegisterUiEvent.NavigateToLogin -> handleNavigationWithArgs(
+            is RegisterFragmentViewModel.RegisterUiEvent.NavigateToLoginWithArgs -> handleNavigationWithArgs(
                 event.email,
                 event.password
             )
+
+            RegisterFragmentViewModel.RegisterUiEvent.NavigateToWelcome -> TODO()
         }
     }
 

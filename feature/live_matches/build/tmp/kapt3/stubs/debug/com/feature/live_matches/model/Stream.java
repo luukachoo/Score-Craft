@@ -10,79 +10,79 @@ public final class Stream {
     private final boolean official = false;
     @org.jetbrains.annotations.NotNull()
     private final java.lang.String rawUrl = null;
-    
+
     public Stream(@org.jetbrains.annotations.Nullable()
-    java.lang.String embedUrl, @org.jetbrains.annotations.NotNull()
-    java.lang.String language, boolean main, boolean official, @org.jetbrains.annotations.NotNull()
-    java.lang.String rawUrl) {
+                  java.lang.String embedUrl, @org.jetbrains.annotations.NotNull()
+                  java.lang.String language, boolean main, boolean official, @org.jetbrains.annotations.NotNull()
+                  java.lang.String rawUrl) {
         super();
     }
-    
+
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String getEmbedUrl() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getLanguage() {
         return null;
     }
-    
+
     public final boolean getMain() {
         return false;
     }
-    
+
     public final boolean getOfficial() {
         return false;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getRawUrl() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String component1() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component2() {
         return null;
     }
-    
+
     public final boolean component3() {
         return false;
     }
-    
+
     public final boolean component4() {
         return false;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component5() {
         return null;
     }
-    
+
     @org.jetbrains.annotations.NotNull()
     public final com.feature.live_matches.model.Stream copy(@org.jetbrains.annotations.Nullable()
-    java.lang.String embedUrl, @org.jetbrains.annotations.NotNull()
-    java.lang.String language, boolean main, boolean official, @org.jetbrains.annotations.NotNull()
-    java.lang.String rawUrl) {
+                                                            java.lang.String embedUrl, @org.jetbrains.annotations.NotNull()
+                                                            java.lang.String language, boolean main, boolean official, @org.jetbrains.annotations.NotNull()
+                                                            java.lang.String rawUrl) {
         return null;
     }
-    
+
     @java.lang.Override()
     public boolean equals(@org.jetbrains.annotations.Nullable()
-    java.lang.Object other) {
+                          java.lang.Object other) {
         return false;
     }
-    
+
     @java.lang.Override()
     public int hashCode() {
         return 0;
     }
-    
+
     @java.lang.Override()
     @org.jetbrains.annotations.NotNull()
     public java.lang.String toString() {

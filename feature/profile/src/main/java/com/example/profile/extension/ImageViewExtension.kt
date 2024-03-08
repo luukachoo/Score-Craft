@@ -11,7 +11,8 @@ fun ImageView.loadImageWithUri(uri: Uri) {
         .load(uri)
         .apply(
             RequestOptions()
-            .placeholder(R.drawable.ic_person)
-            .error(R.drawable.ic_person))
+                .placeholder(R.drawable.ic_person)
+                .error(R.drawable.ic_person)
+        )
         .into(this)
 }

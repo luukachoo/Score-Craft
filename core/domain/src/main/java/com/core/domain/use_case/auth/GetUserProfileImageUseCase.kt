@@ -8,5 +8,6 @@ import javax.inject.Inject
 class GetUserProfileImageUseCase @Inject constructor(
     private val authRepository: AuthRepository
 ) {
-    suspend operator fun invoke(userId: String): Flow<Resource<String>> = authRepository.fetchUserProfileImageUrl(userId)
+    suspend operator fun invoke(userId: String): Flow<Resource<String>> =
+        authRepository.fetchUserProfileImageUrl(userId)
 }

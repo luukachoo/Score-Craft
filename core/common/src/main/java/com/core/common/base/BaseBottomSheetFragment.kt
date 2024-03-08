@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-abstract class BaseBottomSheetFragment<VB : ViewBinding>(private val inflate: Inflater<VB>) : BottomSheetDialogFragment() {
+abstract class BaseBottomSheetFragment<VB : ViewBinding>(private val inflate: Inflater<VB>) :
+    BottomSheetDialogFragment() {
     private var _binding: VB? = null
     protected val binding: VB get() = _binding!!
 

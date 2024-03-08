@@ -32,7 +32,11 @@ class ProfileFragmentViewModel @Inject constructor(
         when (event) {
             ProfileEvent.GetCurrentUser -> getCurrentUser()
             ProfileEvent.ResetErrorMessage -> updateErrorMessage(message = null)
-            is ProfileEvent.UploadProfileImage -> uploadProfileImage(userId = event.userId, imageUri = event.imageUri)
+            is ProfileEvent.UploadProfileImage -> uploadProfileImage(
+                userId = event.userId,
+                imageUri = event.imageUri
+            )
+
             is ProfileEvent.FetchUserProfileImage -> fetchUserProfileImage(event.userId)
             ProfileEvent.LogOut -> logOut()
         }
@@ -131,6 +135,6 @@ class ProfileFragmentViewModel @Inject constructor(
 
     sealed interface ProfileUiEvent {
         data object NavigateToHome : ProfileUiEvent
-        data object NavigateToWelcome: ProfileUiEvent
+        data object NavigateToWelcome : ProfileUiEvent
     }
 }
