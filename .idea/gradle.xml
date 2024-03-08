@@ -29,8 +29,11 @@
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/forgot_password" />
             <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/live_match_details" />
+            <option value="$PROJECT_DIR$/feature/live_matches" />
             <option value="$PROJECT_DIR$/feature/login" />
             <option value="$PROJECT_DIR$/feature/registration" />
+            <option value="$PROJECT_DIR$/feature/series" />
             <option value="$PROJECT_DIR$/feature/welcome" />
           </set>
         </option>

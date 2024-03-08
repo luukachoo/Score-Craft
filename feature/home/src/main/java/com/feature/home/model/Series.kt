@@ -1,6 +1,6 @@
 package com.feature.home.model
 
-data class Series (
+data class Series(
     val beginAt: String,
     val endAt: String,
     val fullName: String,
