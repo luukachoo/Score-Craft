@@ -45,7 +45,6 @@ class LivesFragment : BaseFragment<FragmentLivesBinding>(FragmentLivesBinding::i
         }
     }
 
-
     override fun bindViewActionListeners() {
         livesAdapter.onClick { match ->
             viewModel.onEvent(LivesFragmentEvent.ItemClick(match.id))
@@ -79,7 +78,6 @@ class LivesFragment : BaseFragment<FragmentLivesBinding>(FragmentLivesBinding::i
             is LiveFragmentUiEvent.NavigateToDetails -> handleNavigation(state.id)
         }
     }
-
 
     private fun setUpRecycler() = with(binding) {
         rvMatches.adapter = livesAdapter

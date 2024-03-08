@@ -7,5 +7,5 @@
     <string name="minus">-</string>
     <string name="back">back</string>
     <string name="ge">GE</string>
-
+    <string name="no_live_link">Live is not available</string>
 </resources>

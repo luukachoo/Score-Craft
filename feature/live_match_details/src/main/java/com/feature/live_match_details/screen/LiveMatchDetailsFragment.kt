@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.showSnackbar
+import com.feature.live_match_details.R
 import com.feature.live_match_details.databinding.FragmentLiveMatchDetailsBinding
 import com.feature.live_match_details.event.LiveMatchDetailsEvents
 import com.feature.live_match_details.event.LiveMatchDetailsUiEvent
@@ -54,11 +55,11 @@ class LiveMatchDetailsFragment :
 
     override fun bindViewActionListeners() = with(binding) {
         buttonWatchOnTwitch.setOnClickListener {
-            handleTwitchLink(twitchStreamLink)
+            handleLiveLink(twitchStreamLink)
         }
 
         buttonWatchOnYT.setOnClickListener {
-            handleYoutubeLink(youtubeStreamLink)
+            handleLiveLink(youtubeStreamLink)
         }
 
         buttonGoBack.setOnClickListener {
@@ -66,26 +67,15 @@ class LiveMatchDetailsFragment :
         }
     }
 
-    private fun handleTwitchLink(twitchLink: String) {
+    private fun handleLiveLink(twitchLink: String) {
         try {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(twitchLink)
             startActivity(intent)
         } catch (e: Throwable) {
-            binding.root.showSnackbar("Live is not available")
+            binding.root.showSnackbar(getString(R.string.no_live_link))
         }
     }
-
-    private fun handleYoutubeLink(youtubeLink: String) {
-        try {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(youtubeLink)
-            startActivity(intent)
-        } catch (e: Throwable) {
-            binding.root.showSnackbar("Live is not available")
-        }
-    }
-
 
     private fun handleMatchDetailsViewState(state: LiveMatchDetailsState) {
         successState(state)
