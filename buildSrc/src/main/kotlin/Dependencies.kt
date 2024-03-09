@@ -142,6 +142,10 @@ fun DependencyHandler.featureLiveMatchDetails() {
     implementation(project(":feature:live_match_details"))
 }
 
+fun DependencyHandler.featureUpcomingLiveMatches() {
+    implementation(project(":feature:upcoming_matches"))
+}
+
 fun DependencyHandler.data() {
     implementation(project(":core:data"))
 }

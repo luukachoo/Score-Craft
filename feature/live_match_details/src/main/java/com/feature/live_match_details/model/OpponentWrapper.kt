@@ -5,7 +5,7 @@ data class OpponentWrapper(
 ) {
     data class Opponent(
         val id: Int,
-        val imageUrl: String,
+        val imageUrl: String?,
         val name: String,
         val slug: String,
     )

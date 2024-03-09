@@ -3,11 +3,12 @@ package com.core.data.repository
 import com.core.common.mapper.asResource
 import com.core.common.resource.HandleRetrofitResponse
 import com.core.common.resource.Resource
-import com.core.data.mapper.toDomainModel
+import com.core.data.mapper.matches.toDomainModel
 import com.core.data.service.MatchesService
-import com.core.domain.model.live_matches.GetMatchDetails
-import com.core.domain.model.live_matches.GetMatchWrapper
-import com.core.domain.model.live_matches.GetTeamWrapper
+import com.core.domain.model.matches.live.GetMatchDetails
+import com.core.domain.model.matches.live.GetMatchWrapper
+import com.core.domain.model.matches.live.GetTeamWrapper
+import com.core.domain.model.matches.upcoming.GetUpcomingMatch
 import com.core.domain.repository.MatchesRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -39,6 +40,16 @@ class MatchesRepositoryImpl @Inject constructor(
             service.getMatchOpponents(matchId)
         }.asResource {
             it.toDomainModel()
+        }
+    }
+
+    override suspend fun getUpcomingMatches(): Flow<Resource<List<GetUpcomingMatch>>> {
+        return responseHandler.apiCall {
+            service.getUpcomingMatches()
+        }.asResource {
+            it.map { dto ->
+                dto.toDomainModel()
+            }
         }
     }
 }
