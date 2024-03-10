@@ -31,6 +31,7 @@
             <option value="$PROJECT_DIR$/feature/live_match_details" />
             <option value="$PROJECT_DIR$/feature/live_matches" />
             <option value="$PROJECT_DIR$/feature/login" />
+            <option value="$PROJECT_DIR$/feature/past_matches" />
             <option value="$PROJECT_DIR$/feature/registration" />
             <option value="$PROJECT_DIR$/feature/series" />
             <option value="$PROJECT_DIR$/feature/upcoming_matches" />

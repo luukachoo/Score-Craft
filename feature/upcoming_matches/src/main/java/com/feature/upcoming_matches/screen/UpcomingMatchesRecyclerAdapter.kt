@@ -19,8 +19,8 @@ class UpcomingMatchesRecyclerAdapter :
             upcomingMatch?.let {
                 with(binding) {
                     tvName.text = it.name
-                    tvDate.text = it.beginAt.dropLast(10)
-                    tvTime.text = it.beginAt.drop(11).dropLast(4)
+                    tvDate.text = it.beginAt?.dropLast(10)
+                    tvTime.text = it.beginAt?.drop(11)?.dropLast(4)
 
                     ivTeamOneLogo.loadImagesWithGlide(it.opponents.firstOrNull()?.opponent?.imageUrl)
                     tvTeamOneName.text = it.opponents.firstOrNull()?.opponent?.name

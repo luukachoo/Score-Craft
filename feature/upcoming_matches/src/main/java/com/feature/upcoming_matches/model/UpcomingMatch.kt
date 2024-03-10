@@ -7,6 +7,6 @@ data class UpcomingMatch(
     val id: Int,
     val videogame: VideoGame,
     val opponents: List<GetOpponentWrapper>,
-    val beginAt: String,
-    val name: String
+    val beginAt: String?,
+    val name: String?
 )

@@ -1,5 +1,6 @@
-package com.core.data.mapper.matches
+package com.core.data.mapper.matches.live
 
+import com.core.data.mapper.matches.toDomainModel
 import com.core.data.model.StreamDto
 import com.core.data.model.matches.live.MatchDetailsDto
 import com.core.data.model.matches.live.MatchWrapperDto
