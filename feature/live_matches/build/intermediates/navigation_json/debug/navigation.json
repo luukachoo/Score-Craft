@@ -1,0 +1,30 @@
+[
+  {
+    "name": "feature_live_matches_nav_graph",
+    "navigationXmlIds": [],
+    "deepLinks": [
+      {
+        "schemes": [
+          "market-mingle"
+        ],
+        "port": -1,
+        "path": "/fragment_live_matches",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mDescription": "feature_live_matches_nav_graph.xml"
+          },
+          "mSourcePosition": {
+            "mStartLine": 13,
+            "mStartColumn": 8,
+            "mStartOffset": 548,
+            "mEndLine": 13,
+            "mEndColumn": 89,
+            "mEndOffset": 629
+          }
+        },
+        "isAutoVerify": false,
+        "action": "android.intent.action.VIEW"
+      }
+    ]
+  }
+]

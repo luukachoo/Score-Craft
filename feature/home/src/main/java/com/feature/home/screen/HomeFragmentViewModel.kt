@@ -3,26 +3,26 @@ package com.feature.home.screen
 import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.core.common.resource.takeIfError
-import com.core.common.resource.takeIfLoading
-import com.core.common.resource.takeIfSuccess
+import com.core.common.resource.Resource
 import com.core.domain.use_case.GetLeaguesUseCase
+import com.core.domain.use_case.auth.GetAuthUseCase
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
+import com.feature.home.mapper.auth.toPresenter
 import com.feature.home.mapper.toPresentationModel
 import com.feature.home.state.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(
-    private val getLeaguesUseCase: GetLeaguesUseCase
+    private val getLeaguesUseCase: GetLeaguesUseCase,
+    private val getAuthUseCase: GetAuthUseCase
 ) : ViewModel() {
 
     private val _homeState = MutableStateFlow(HomeState())
@@ -34,37 +34,92 @@ class HomeFragmentViewModel @Inject constructor(
     fun onEvent(event: HomeFragmentEvent) {
         viewModelScope.launch {
             when (event) {
+                HomeFragmentEvent.EditTextClick -> updateNavigationEvent(HomeNavigationEvents.NavigateToSearch)
                 HomeFragmentEvent.FetchCategories -> fetchLeagues()
+                HomeFragmentEvent.FetchProducts -> Unit
                 is HomeFragmentEvent.ItemClick -> updateNavigationEvent(
                     HomeNavigationEvents.NavigateToDetails(
-                        event.slug
+                        event.id
                     )
                 )
 
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
+                HomeFragmentEvent.GetCurrentUser -> getCurrentUser()
+                is HomeFragmentEvent.FetchUserProfileImage -> fetchUserProfileImage(event.userId)
             }
         }
     }
 
-    private suspend fun fetchLeagues() {
+    private fun fetchLeagues() {
         viewModelScope.launch {
-            getLeaguesUseCase().collectLatest { res ->
-                res.takeIfError { errorMessage ->
-                    updateErrorMessage(errorMessage)
-                    d("ViewModelHttpError", errorMessage)
-                }
+            getLeaguesUseCase().collect { res ->
+                when (res) {
+                    is Resource.Error -> {
+                        updateErrorMessage(res.errorMessage)
+                        d("ViewModelHttpError", res.errorMessage)
+                    }
 
-                res.takeIfLoading { loading ->
-                    loading(loading)
-                }
+                    is Resource.Loading -> loading(res.loading)
 
-                res.takeIfSuccess { data ->
-                    _homeState.update {
-                        it.copy(
-                            leagues = data.map { getLeague -> getLeague.toPresentationModel() },
-                            isLoading = false,
-                            errorMessage = null
-                        )
+                    is Resource.Success -> {
+                        _homeState.update {
+                            it.copy(
+                                categories = res.data.map { getLeague -> getLeague.toPresentationModel() },
+                                isLoading = false,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getCurrentUser() {
+        viewModelScope.launch {
+            getAuthUseCase.getCurrentUserUseCase().collect { res ->
+                when (res) {
+                    is Resource.Error -> {
+                        updateErrorMessage(res.errorMessage)
+                    }
+
+                    is Resource.Loading -> loading(res.loading)
+
+                    is Resource.Success -> {
+                        _homeState.update {
+                            it.copy(
+                                user = res.data.toPresenter(),
+                                isLoading = false,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun fetchUserProfileImage(userId: String) {
+        viewModelScope.launch {
+            getAuthUseCase.getUserProfileImageUseCase(userId).collect { resource ->
+                when (resource) {
+                    is Resource.Error -> updateErrorMessage(resource.errorMessage)
+
+                    is Resource.Loading -> {
+                        _homeState.update { currentState ->
+                            currentState.copy(isLoading = resource.loading)
+                        }
+                    }
+
+                    is Resource.Success -> {
+                        _homeState.update { currentState ->
+                            currentState.copy(
+                                imageUri = resource.data,
+                                isLoading = false,
+                                imageFetched = true,
+                                errorMessage = null
+                            )
+                        }
                     }
                 }
             }

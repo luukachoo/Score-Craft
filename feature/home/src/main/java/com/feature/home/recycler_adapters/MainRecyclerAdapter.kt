@@ -1,37 +1,70 @@
 package com.feature.home.recycler_adapters
 
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.core.common.extension.loadImagesWithGlide
 import com.feature.home.databinding.ItemHeaderSectionBinding
 import com.feature.home.databinding.ItemLeaguesSectionBinding
 import com.feature.home.model.League
-import com.feature.home.recycler_adapters.leagues.LeaguesAdapter
+import com.feature.home.model.Product
+import com.feature.home.model.auth.Users
+import com.feature.home.recycler_adapters.category.LeaguesAdapter
 
 class MainRecyclerAdapter(
-    private val leagues: List<League>
+    private val categories: List<League>,
+    private val model: Users?,
+    private val imageUri: String
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var onLeagueClick: ((League) -> Unit)? = null
+    private var onProductClick: ((Product) -> Unit)? = null
 
-    inner class HeaderViewHolder(binding: ItemHeaderSectionBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    private var onAvatarClick: (() -> Unit)? = null
 
-    inner class LeaguesViewHolder(private val binding: ItemLeaguesSectionBinding) :
+    inner class HeaderViewHolder(private val binding: ItemHeaderSectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bindCategories(leagues: List<League>) = with(binding) {
-            val leagueAdapter = LeaguesAdapter()
-            leagueAdapter.submitList(leagues)
-            rvLeagues.adapter = leagueAdapter
+        @SuppressLint("SetTextI18n")
 
-            leagueAdapter.onLeagueClick { league ->
-                onLeagueClick?.invoke(league)
+        fun bind(user: Users?, image: String) {
+            binding.apply {
+                ivAvatar.setOnClickListener {
+                    onAvatarClick?.invoke()
+                }
+
+                val welcomeText = "Welcome ${user?.userName}"
+                val spannableString = SpannableString(welcomeText)
+
+                val userNameStart = welcomeText.indexOf("${user?.userName}")
+                val userNameEnd = userNameStart + (user?.userName?.length ?: 0)
+
+                val purpleColor = Color.parseColor("#A45EE5")
+
+                spannableString.setSpan(
+                    ForegroundColorSpan(purpleColor),
+                    userNameStart,
+                    userNameEnd,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+
+                tvUserName.text = spannableString
+
+                ivAvatar.loadImagesWithGlide(image)
             }
+        }
+    }
 
-//
-//            root.setOnClickListener {
-//                onLeagueClick?.invoke()
-//            }
+    inner class CategoriesViewHolder(private val binding: ItemLeaguesSectionBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindCategories(categories: List<League>) = binding.apply {
+            val leagueAdapter = LeaguesAdapter()
+            leagueAdapter.submitList(categories)
+//            rvLeagues.adapter = leagueAdapter
+
         }
     }
 
@@ -52,15 +85,15 @@ class MainRecyclerAdapter(
                     parent,
                     false
                 )
-                LeaguesViewHolder(leagueBinding)
+                CategoriesViewHolder(leagueBinding)
             }
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is HeaderViewHolder -> Unit
-            is LeaguesViewHolder -> holder.bindCategories(leagues)
+            is HeaderViewHolder -> holder.bind(model, imageUri)
+            is CategoriesViewHolder -> holder.bindCategories(categories)
         }
     }
 
@@ -73,8 +106,12 @@ class MainRecyclerAdapter(
         }
     }
 
-    fun onLeagueClick(click: (League) -> Unit) {
-        this.onLeagueClick = click
+    fun onAvatarClick(click: () -> Unit) {
+        this.onAvatarClick = click
+    }
+
+    fun onPostClick(click: (Product) -> Unit) {
+        this.onProductClick = click
     }
 
     companion object {

@@ -19,7 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ForgotPasswordFragment: BaseFragment<FragmentForgotPasswordBinding>(FragmentForgotPasswordBinding::inflate)  {
+class ForgotPasswordFragment :
+    BaseFragment<FragmentForgotPasswordBinding>(FragmentForgotPasswordBinding::inflate) {
 
     private val viewModel: ForgotPasswordViewModel by viewModels()
 

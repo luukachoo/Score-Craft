@@ -35,7 +35,7 @@ class RegisterFragmentViewModel @Inject constructor(
             is RegisterEvent.Register -> validateForm(
                 userName = event.userName,
                 firstName = event.firstName,
-                lastName =  event.lastName,
+                lastName = event.lastName,
                 email = event.email,
                 password = event.password,
                 confirmPassword = event.confirmPassword
@@ -70,7 +70,7 @@ class RegisterFragmentViewModel @Inject constructor(
                                     errorMessage = null
                                 )
                             }
-                            _uiEvent.emit(RegisterUiEvent.NavigateToLogin(email, password))
+                            _uiEvent.emit(RegisterUiEvent.NavigateToLoginWithArgs(email, password))
                         }
                     }
                 }
@@ -85,7 +85,16 @@ class RegisterFragmentViewModel @Inject constructor(
         password: String,
         confirmPassword: String
     ) {
-        val areFieldsEmpty = validationUseCase.fieldValidatorUseCase(listOf(userName, firstName, lastName, email, password, confirmPassword))
+        val areFieldsEmpty = validationUseCase.fieldValidatorUseCase(
+            listOf(
+                userName,
+                firstName,
+                lastName,
+                email,
+                password,
+                confirmPassword
+            )
+        )
 
         val doPasswordsMatch =
             validationUseCase.confirmPasswordValidatorUseCase(password, confirmPassword)
@@ -112,18 +121,14 @@ class RegisterFragmentViewModel @Inject constructor(
         )
     }
 
-    fun onAlreadyHaveAccountClicked() {
-        viewModelScope.launch {
-            _uiEvent.emit(RegisterUiEvent.AlreadyHaveAccountNavigation)
-        }
-    }
-
     private fun updateErrorMessage(message: String?) {
         _registerState.update { currentState -> currentState.copy(errorMessage = message) }
     }
 
     sealed interface RegisterUiEvent {
-        data object AlreadyHaveAccountNavigation : RegisterUiEvent
-        data class NavigateToLogin(val email: String, val password: String) : RegisterUiEvent
+        data object NavigateToLogin : RegisterUiEvent
+        data object NavigateToWelcome : RegisterUiEvent
+        data class NavigateToLoginWithArgs(val email: String, val password: String) :
+            RegisterUiEvent
     }
 }

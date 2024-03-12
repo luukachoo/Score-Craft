@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back">back</string>
+    <string name="begin_at">Begins at:</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="series">Series</string>
+    <string name="test_date">2024 jan 14</string>
+    <string name="test_season">Season 2 2023</string>
+    <style name="roundedShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

@@ -12,5 +12,5 @@ class GetLoginUseCase @Inject constructor(
     suspend operator fun invoke(
         email: String,
         password: String
-    ) : Flow<Resource<FirebaseUser>> = authRepository.login(email, password)
+    ): Flow<Resource<FirebaseUser>> = authRepository.login(email, password)
 }

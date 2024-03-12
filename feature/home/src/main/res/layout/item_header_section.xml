@@ -6,49 +6,58 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivAvatar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/ic_person"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedShape" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivSideMenu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:background="#FF0000"
+        android:background="@drawable/ic_side_menu"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/roundedShape" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvHello"
+        android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:background="@drawable/rounded_user_name"
         android:fontFamily="@font/alata"
-        android:text="@string/hello_text"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
+        android:text="@string/welcome_jemal_kakauridze"
         android:textColor="@color/dark_grey"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/ivAvatar"
-        app:layout_constraintTop_toTopOf="@+id/ivAvatar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivAvatar" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvFullName"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:fontFamily="@font/alata"
-        android:text="@string/jemal_kakauridze"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/urbanist"
+        android:text="@string/score_craft"
         android:textColor="@color/dark"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ivAvatar"
-        app:layout_constraintStart_toEndOf="@+id/ivAvatar" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/ibHeart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/ic_heart"
-        app:layout_constraintBottom_toTopOf="@+id/tvFullName"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etSearch"
@@ -59,10 +68,13 @@
         android:background="@drawable/rounded_field"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="15dp"
+        android:fontFamily="@font/alata"
+        android:gravity="center_vertical"
         android:hint="@string/search"
         android:paddingHorizontal="10dp"
         android:textColor="@color/dark_grey"
-        android:textColorHint="@color/grey"
+        android:textColorHint="@color/gray"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/tvFullName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

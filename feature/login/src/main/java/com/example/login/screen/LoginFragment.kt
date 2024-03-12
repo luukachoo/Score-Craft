@@ -27,7 +27,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
     override fun bindViewActionListeners() {
+        val emailArg = arguments?.getString("email") ?: ""
+        val passwordArg = arguments?.getString("password") ?: ""
+
         binding.apply {
+            emailEt.setText(emailArg)
+            passwordEt.setText(passwordArg)
+
             loginBtn.setOnClickListener {
                 val email = emailEt.text.toString()
                 val password = passwordEt.text.toString()
@@ -70,7 +76,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private fun handleNavigationEvents(event: LoginFragmentViewModel.LogInUiEvent) {
         when (event) {
             LoginFragmentViewModel.LogInUiEvent.NavigateToForgotPasswordPage -> handleNavigation("market-mingle://feature.forgot_password/fragment_forgot_password")
-            LoginFragmentViewModel.LogInUiEvent.NavigateToHome -> handleNavigation("market-mingle://feature.forgot_password/fragment_forgot_password")
+            LoginFragmentViewModel.LogInUiEvent.NavigateToHome -> handleNavigation("market-mingle://feature.home/fragment_home")
             LoginFragmentViewModel.LogInUiEvent.NavigateToRegister -> handleNavigation("market-mingle://feature.register/fragment_register")
         }
     }

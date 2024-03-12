@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/feature_welcome_nav_graph">
+    app:startDestination="@id/feature_splash_screen_nav_graph">
 
     <include app:graph="@navigation/feature_welcome_nav_graph" />
     <include app:graph="@navigation/feature_register_nav_graph" />
@@ -13,4 +13,9 @@
     <include app:graph="@navigation/feature_live_match_details_nav_graph" />
     <include app:graph="@navigation/feature_upcoming_matches_nav_graph" />
     <include app:graph="@navigation/feature_past_matches_nav_graph" />
+    <include app:graph="@navigation/feature_forgot_password_nav_graph" />
+    <include app:graph="@navigation/feature_profile_nav_graph" />
+    <include app:graph="@navigation/feature_image_bottom_sheet_nav_graph" />
+    <include app:graph="@navigation/feature_splash_screen_nav_graph" />
+
 </navigation>

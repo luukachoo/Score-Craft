@@ -1,6 +1,5 @@
 package com.feature.home.screen
 
-import android.util.Log.d
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -9,8 +8,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
 import com.core.common.extension.showSnackbar
+import com.feature.home.R
 import com.feature.home.databinding.FragmentHomeBinding
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
@@ -26,16 +27,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private lateinit var mainRecyclerAdapter: MainRecyclerAdapter
 
     override fun bind() {
-        mainRecyclerAdapter = MainRecyclerAdapter(emptyList())
+        mainRecyclerAdapter = MainRecyclerAdapter(emptyList(), null, "")
+        binding.mainRecyclerView.adapter = mainRecyclerAdapter
+
         viewModel.onEvent(HomeFragmentEvent.FetchCategories)
+        viewModel.onEvent(HomeFragmentEvent.FetchProducts)
+        viewModel.onEvent(HomeFragmentEvent.GetCurrentUser)
     }
 
     override fun bindViewActionListeners() {
-        mainRecyclerAdapter.onLeagueClick { league ->
-            if (league.slug.isNotEmpty()) {
-                viewModel.onEvent(HomeFragmentEvent.ItemClick(league.slug))
-            }
-        }
+        setupClickListeners()
     }
 
     override fun bindObserves() {
@@ -59,8 +60,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private fun handleHomeState(state: HomeState) = with(binding) {
         progressBar.isVisible = state.isLoading
 
-        mainRecyclerAdapter = MainRecyclerAdapter(state.leagues ?: emptyList())
-        mainRecyclerView.adapter = mainRecyclerAdapter
+        state.user?.let { user ->
+            if (!state.imageFetched) {
+                viewModel.onEvent(HomeFragmentEvent.FetchUserProfileImage(user.userId))
+            }
+
+            mainRecyclerAdapter = MainRecyclerAdapter(
+                state.categories ?: emptyList(),
+                user,
+                imageUri = state.imageUri ?: ""
+            )
+            mainRecyclerView.adapter = mainRecyclerAdapter
+            setupClickListeners()
+        }
 
         state.errorMessage?.let {
             root.showSnackbar(it)
@@ -68,19 +80,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    private fun handleNavigationEvents(event: HomeNavigationEvents) {
-        when (event) {
-            is HomeNavigationEvents.NavigateToDetails -> handleNavigation(event.slug)
+    private fun setupClickListeners() {
+        mainRecyclerAdapter.onPostClick { product ->
+            viewModel.onEvent(HomeFragmentEvent.ItemClick(product.id))
+        }
+
+        mainRecyclerAdapter.onAvatarClick {
+            handleNavigation("market-mingle://feature.profile/fragment_profile")
         }
     }
 
-    private fun handleNavigation(slug: String) {
-        if (slug.isNotEmpty()) {
-            val uri = "market-mingle://feature.series/fragment_series?slug=$slug"
-            val parsedUri = uri.toUri()
-            val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-            d("Navigation", "Navigating to: $parsedUri")
-            findNavController().navigate(request)
+    private fun handleNavigationEvents(event: HomeNavigationEvents) {
+        when (event) {
+            HomeNavigationEvents.NavigateToProfile -> handleNavigation("market-mingle://feature.profile/fragment_profile")
+            else -> {}
         }
+    }
+
+    private fun handleNavigation(uri: String) {
+        val parsedUri = uri.toUri()
+        val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
+
+        val navOptions = navOptions {
+            popUpTo(R.id.homeFragment) { inclusive = true }
+        }
+
+        findNavController().navigate(request, navOptions)
     }
 }

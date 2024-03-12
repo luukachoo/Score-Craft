@@ -18,7 +18,7 @@ dependencies {
     basic()
     navigationComponent()
     glide()
-    firebaseAuth()
+    fireBaseAuth()
     firebaseDataBase()
 
     // core

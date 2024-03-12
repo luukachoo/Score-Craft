@@ -1,6 +1,6 @@
 package com.example.marketmingle.di
 
-import com.core.common.resource.HandleRetrofitResponse
+import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.service.LeaguesService
 import com.core.data.service.MatchesService
 import com.example.marketmingle.BuildConfig

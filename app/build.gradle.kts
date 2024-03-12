@@ -70,6 +70,9 @@ dependencies {
     featureUpcomingLiveMatches()
     featurePastLiveMatches()
     featureForgotPassword()
+    featureProfile()
+    featureImageBottomSheet()
+    featureSplashScreen()
 }
 
 kapt {

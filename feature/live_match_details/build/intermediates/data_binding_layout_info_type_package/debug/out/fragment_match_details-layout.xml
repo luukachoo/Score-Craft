@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Layout directory="layout" filePath="feature\live_match_details\src\main\res\layout\fragment_match_details.xml"
+    isBindingData="false"
+    isMerge="false" layout="fragment_match_details" modulePackage="com.feature.live_match_details"
+    rootNodeType="androidx.constraintlayout.widget.ConstraintLayout">
+    <Targets>
+        <Target tag="layout/fragment_match_details_0"
+            view="androidx.constraintlayout.widget.ConstraintLayout">
+            <Expressions />
+            <location endLine="148" endOffset="51" startLine="1" startOffset="0" />
+        </Target>
+        <Target id="@+id/floatingActionButton"
+            view="com.google.android.material.floatingactionbutton.FloatingActionButton">
+            <Expressions />
+            <location endLine="23" endOffset="26" startLine="9" startOffset="4" />
+        </Target>
+        <Target id="@+id/ivTeamOneImage" view="androidx.appcompat.widget.AppCompatImageView">
+            <Expressions />
+            <location endLine="34" endOffset="73" startLine="25" startOffset="4" />
+        </Target>
+        <Target id="@+id/tvTeamOneScore" view="androidx.appcompat.widget.AppCompatTextView">
+            <Expressions />
+            <location endLine="46" endOffset="64" startLine="36" startOffset="4" />
+        </Target>
+        <Target id="@+id/tvMinus" view="androidx.appcompat.widget.AppCompatTextView">
+            <Expressions />
+            <location endLine="58" endOffset="64" startLine="48" startOffset="4" />
+        </Target>
+        <Target id="@+id/tvSecondTeamScore" view="androidx.appcompat.widget.AppCompatTextView">
+            <Expressions />
+            <location endLine="70" endOffset="67" startLine="60" startOffset="4" />
+        </Target>
+        <Target id="@+id/ivTeamSecondImage" view="androidx.appcompat.widget.AppCompatImageView">
+            <Expressions />
+            <location endLine="80" endOffset="64" startLine="72" startOffset="4" />
+        </Target>
+        <Target id="@+id/rvTeamPlayers" view="androidx.recyclerview.widget.RecyclerView">
+            <Expressions />
+            <location endLine="89" endOffset="46" startLine="82" startOffset="4" />
+        </Target>
+        <Target id="@+id/tvTitle" view="androidx.appcompat.widget.AppCompatTextView">
+            <Expressions />
+            <location endLine="100" endOffset="67" startLine="91" startOffset="4" />
+        </Target>
+        <Target id="@+id/buttonWatchOnYT" view="com.google.android.material.button.MaterialButton">
+            <Expressions />
+            <location endLine="118" endOffset="26" startLine="103" startOffset="4" />
+        </Target>
+        <Target id="@+id/buttonWatchOnTwitch"
+            view="com.google.android.material.button.MaterialButton">
+            <Expressions />
+            <location endLine="137" endOffset="26" startLine="121" startOffset="4" />
+        </Target>
+        <Target id="@+id/progressBar" view="ProgressBar">
+            <Expressions />
+            <location endLine="146" endOffset="51" startLine="139" startOffset="4" />
+        </Target>
+    </Targets>
+</Layout>

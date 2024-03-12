@@ -16,6 +16,8 @@ dependencies {
     daggerHilt()
     firebaseAuth()
     firebaseDataBase()
+    firebaseStorage()
+    workManager()
 
     // core
     domain()

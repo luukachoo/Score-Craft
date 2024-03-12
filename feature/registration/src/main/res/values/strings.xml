@@ -9,5 +9,5 @@
     <string name="confirm_password">Confirm password</string>
     <string name="register">Register</string>
     <string name="or_register_with">Or Register with</string>
-    <string name="already_have_an_account_login_now">Already have an account? <font color= "#A45EE5"><B>Login Now</B></font></string>
+    <string name="already_have_an_account_login_now">Already have an account? <font color="#A45EE5"><B>Login Now</B></font></string>
 </resources>
