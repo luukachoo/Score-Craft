@@ -17,6 +17,6 @@ dependencies {
     basic()
     retrofit()
     glide()
-    fireBaseAuth()
+    firebaseAuth()
     firebaseDataBase()
 }

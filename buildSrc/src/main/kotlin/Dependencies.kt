@@ -74,7 +74,11 @@ fun DependencyHandler.basic() {
 }
 
 fun DependencyHandler.firebaseDataBase() {
-    implementation((Dependencies.firebaseDatabase))
+    implementation(Dependencies.firebaseDatabase)
+}
+
+fun DependencyHandler.firebaseAuth() {
+    implementation(Dependencies.firebaseAuth)
 }
 
 fun DependencyHandler.room() {
@@ -148,6 +152,10 @@ fun DependencyHandler.featureUpcomingLiveMatches() {
 
 fun DependencyHandler.featurePastLiveMatches() {
     implementation(project(":feature:past_matches"))
+}
+
+fun DependencyHandler.featureForgotPassword() {
+    implementation(project(":feature:forgot_password"))
 }
 
 fun DependencyHandler.data() {

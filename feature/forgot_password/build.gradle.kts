@@ -1,8 +1,6 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
-    kotlin("kapt")
     id("com.google.gms.google-services")
 }
 
@@ -20,11 +18,7 @@ dependencies {
     basic()
     common()
     domain()
-    fireBaseAuth()
+    firebaseAuth()
     daggerHilt()
     navigationComponent()
-}
-
-kapt {
-    correctErrorTypes = true
 }

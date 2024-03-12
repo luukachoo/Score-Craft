@@ -51,7 +51,7 @@ dependencies {
     daggerHilt()
     navigationComponent()
     retrofit()
-    fireBaseAuth()
+    firebaseAuth()
     firebaseDataBase()
 
     // core

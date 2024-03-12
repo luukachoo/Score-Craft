@@ -1,4 +1,4 @@
-package com.core.data.repository
+package com.core.data.repository.match
 
 import com.core.common.mapper.asResource
 import com.core.common.resource.HandleRetrofitResponse

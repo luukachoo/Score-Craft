@@ -1,9 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
     id("com.google.gms.google-services")
-    kotlin("kapt")
 }
 
 apply<MainGradlePlugin>()
@@ -16,14 +14,10 @@ dependencies {
     basic()
     retrofit()
     daggerHilt()
-    fireBaseAuth()
+    firebaseAuth()
     firebaseDataBase()
 
     // core
     domain()
     common()
-}
-
-kapt {
-    correctErrorTypes = true
 }

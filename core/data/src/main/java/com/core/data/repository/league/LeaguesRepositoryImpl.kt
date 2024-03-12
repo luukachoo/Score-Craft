@@ -1,4 +1,4 @@
-package com.core.data.repository.category
+package com.core.data.repository.league
 
 import com.core.common.mapper.asResource
 import com.core.common.resource.HandleRetrofitResponse
