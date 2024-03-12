@@ -34,7 +34,6 @@ class PastMatchesFragment :
         }
     }
 
-
     private fun handlePastMatchesState(state: PastMatchesState) = with(binding) {
         progressBar.isVisible = state.isLoading
 
@@ -48,10 +47,8 @@ class PastMatchesFragment :
         }
     }
 
-
     private fun setUpRecycler() = with(binding) {
         rvPastMatches.adapter = rvPastMatchesAdapter
         viewModel.onEvent(PastMatchesEvents.FetchPastMatches)
     }
-
 }

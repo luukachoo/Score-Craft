@@ -59,7 +59,7 @@ class MatchesRepositoryImpl @Inject constructor(
 
     override suspend fun getPastMatches(): Flow<Resource<List<GetPastMatch>>> {
         return responseHandler.apiCall {
-            service.getPastMatches(pageNumber = 1, size = 15)
+            service.getPastMatches(pageNumber = 2, size = 15)
         }.asResource {
             it.map { dto ->
                 dto.toDomainModel()

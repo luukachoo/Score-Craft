@@ -9,7 +9,7 @@ fun GetPastMatch.toPresentationModel() = PastMatch(
     opponents = opponents.map { it.toPresentationModel() },
     beginAt = beginAt,
     name = name,
-    winner = winner.toPresentationModel(),
+    winner = winner?.toPresentationModel(),
     videoGame = videoGame.toPresenetationModel(),
     winnerId = winnerId
 )

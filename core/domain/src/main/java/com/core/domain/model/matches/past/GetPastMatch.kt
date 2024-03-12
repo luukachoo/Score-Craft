@@ -10,7 +10,7 @@ data class GetPastMatch(
     val opponents: List<GetOpponentWrapper>,
     val beginAt: String?,
     val name: String?,
-    val winner: GetWinner,
+    val winner: GetWinner?,
     val videoGame: GetVideoGame,
-    val winnerId : Int
+    val winnerId : Int?
 )

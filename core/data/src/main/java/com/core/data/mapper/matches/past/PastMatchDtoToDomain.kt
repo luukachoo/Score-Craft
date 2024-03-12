@@ -11,7 +11,7 @@ fun PastMatchDto.toDomainModel() = GetPastMatch(
     opponents = opponents.map { it.toDomainModel() },
     beginAt = beginAt,
     name = name,
-    winner = winner.toDomainModel(),
+    winner = winner?.toDomainModel(),
     videoGame = videoGame.toDomainModel(),
     winnerId = winnerId
 )

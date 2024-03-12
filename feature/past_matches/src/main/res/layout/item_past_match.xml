@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:background="@color/gray"
-    android:padding="20dp"
     app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,9 +44,10 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTeamOneName"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
+            android:gravity="center"
             android:text="@string/test_team_one"
             android:textSize="19sp"
             app:layout_constraintEnd_toStartOf="@+id/ivTeamOneLogo"
@@ -60,7 +60,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitCenter"
-            android:src="#FF0000"
             app:layout_constraintBottom_toBottomOf="@+id/tvTeamOneName"
             app:layout_constraintEnd_toStartOf="@+id/tvTeamOneScore"
             app:layout_constraintHorizontal_bias="0.5"
@@ -108,7 +107,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitCenter"
-            android:src="#FF0000"
             app:layout_constraintBottom_toBottomOf="@+id/ivTeamOneLogo"
             app:layout_constraintEnd_toStartOf="@+id/tvTeamTwoName"
             app:layout_constraintHorizontal_bias="0.5"
@@ -117,8 +115,9 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTeamTwoName"
-            android:layout_width="wrap_content"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@string/test_team_one"
             android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="@+id/ivTeamTwoLogo"
@@ -133,6 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:text="@string/league_of_legends"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/ivTeamTwoLogo"

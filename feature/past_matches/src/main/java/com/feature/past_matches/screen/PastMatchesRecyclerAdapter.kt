@@ -1,12 +1,14 @@
 package com.feature.past_matches.screen
 
-import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.core.common.R
+import com.core.common.extension.bold
 import com.core.common.extension.loadImagesWithGlide
+import com.core.common.extension.normal
 import com.feature.past_matches.databinding.ItemPastMatchBinding
 import com.feature.past_matches.model.PastMatch
 
@@ -17,7 +19,7 @@ class PastMatchesRecyclerAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(pastMatch: PastMatch) = with(binding) {
 
-            val isWinner = pastMatch.opponents.any { it.opponent.id == pastMatch.winner.winnerId }
+            val winnerName = pastMatch.winner?.name
 
             tvName.text = pastMatch.name
             tvDate.text = pastMatch.beginAt?.dropLast(10)
@@ -26,18 +28,27 @@ class PastMatchesRecyclerAdapter :
 
             tvTeamOneName.text = pastMatch.opponents.firstOrNull()?.opponent?.name
             tvTeamOneScore.text = pastMatch.results.firstOrNull()?.score.toString()
-            ivTeamOneLogo.loadImagesWithGlide(pastMatch.opponents.firstOrNull()?.opponent?.imageUrl)
+            ivTeamOneLogo.loadImagesWithGlide(pastMatch.opponents.firstOrNull()?.opponent?.imageUrl, R.drawable.placeholder)
 
             tvTeamTwoName.text = pastMatch.opponents.lastOrNull()?.opponent?.name
             tvTeamTwoScore.text = pastMatch.results.lastOrNull()?.score.toString()
-            ivTeamTwoLogo.loadImagesWithGlide(pastMatch.opponents.lastOrNull()?.opponent?.imageUrl)
+            ivTeamTwoLogo.loadImagesWithGlide(pastMatch.opponents.lastOrNull()?.opponent?.imageUrl, R.drawable.placeholder)
 
-            if (isWinner) {
-                tvTeamOneName.setTypeface(tvTeamOneName.typeface, Typeface.BOLD)
-                tvTeamOneScore.setTypeface(tvTeamOneScore.typeface, Typeface.BOLD)
 
-                tvTeamTwoName.setTypeface(tvTeamTwoName.typeface, Typeface.BOLD)
-                tvTeamTwoScore.setTypeface(tvTeamTwoScore.typeface, Typeface.BOLD)
+            if (tvTeamOneName.text == winnerName) {
+                tvTeamOneName.bold()
+                tvTeamOneScore.bold()
+            } else {
+                tvTeamOneName.normal()
+                tvTeamOneScore.normal()
+            }
+
+            if (tvTeamTwoName.text == winnerName) {
+                tvTeamTwoName.bold()
+                tvTeamTwoScore.bold()
+            } else {
+                tvTeamTwoName.normal()
+                tvTeamTwoScore.normal()
             }
         }
     }

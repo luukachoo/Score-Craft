@@ -17,9 +17,9 @@ data class PastMatchDto(
     @Json(name = "name")
     val name: String?,
     @Json(name = "winner")
-    val winner: WinnerDto,
+    val winner: WinnerDto?,
     @Json(name = "videogame")
     val videoGame: VideoGameDto,
     @Json(name = "winner_id")
-    val winnerId: Int
+    val winnerId: Int?
 )

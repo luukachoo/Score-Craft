@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.core.common.R
 import com.core.common.extension.loadImagesWithGlide
-import com.feature.live_matches.R
 import com.feature.live_matches.databinding.ItemLiveBinding
 import com.feature.live_matches.extension.checkForPreview
 import com.feature.live_matches.model.MatchWrapper

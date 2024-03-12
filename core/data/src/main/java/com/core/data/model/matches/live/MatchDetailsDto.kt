@@ -31,6 +31,6 @@ data class MatchDetailsDto(
         @Json(name = "score")
         val score: Int,
         @Json(name = "team_id")
-        val teamId: Int
+        val teamId: Int?
     )
 }
