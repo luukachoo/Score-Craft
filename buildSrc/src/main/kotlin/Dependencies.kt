@@ -147,6 +147,26 @@ fun DependencyHandler.featureSplashScreen() {
     implementation(project(":feature:splash_screen"))
 }
 
+fun DependencyHandler.featureLiveMatches() {
+    implementation(project(":feature:live_matches"))
+}
+
+fun DependencyHandler.featurePastMatches() {
+    implementation(project(":feature:past_matches"))
+}
+
+fun DependencyHandler.featureSeries() {
+    implementation(project(":feature:series"))
+}
+
+fun DependencyHandler.featureUpcomingMatches() {
+    implementation(project(":feature:upcoming_matches"))
+}
+
+fun DependencyHandler.featureLiveMatchDetails() {
+    implementation(project(":feature:live_match_details"))
+}
+
 fun DependencyHandler.data() {
     implementation(project(":core:data"))
 }

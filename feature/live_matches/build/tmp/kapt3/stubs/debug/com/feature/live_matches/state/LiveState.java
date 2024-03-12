@@ -8,71 +8,71 @@ public final class LiveState {
     private final boolean isLoading = false;
     @org.jetbrains.annotations.Nullable()
     private final java.lang.String errorMessage = null;
-
+    
     public LiveState(@org.jetbrains.annotations.Nullable()
-                     java.util.List<com.feature.live_matches.model.MatchWrapper.Match> liveMatches, int liveMatchesCount, boolean isLoading, @org.jetbrains.annotations.Nullable()
-                     java.lang.String errorMessage) {
+    java.util.List<com.feature.live_matches.model.MatchWrapper.Match> liveMatches, int liveMatchesCount, boolean isLoading, @org.jetbrains.annotations.Nullable()
+    java.lang.String errorMessage) {
         super();
     }
-
-    public LiveState() {
-        super();
-    }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.util.List<com.feature.live_matches.model.MatchWrapper.Match> getLiveMatches() {
         return null;
     }
-
+    
     public final int getLiveMatchesCount() {
         return 0;
     }
-
+    
     public final boolean isLoading() {
         return false;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String getErrorMessage() {
         return null;
     }
-
+    
+    public LiveState() {
+        super();
+    }
+    
     @org.jetbrains.annotations.Nullable()
     public final java.util.List<com.feature.live_matches.model.MatchWrapper.Match> component1() {
         return null;
     }
-
+    
     public final int component2() {
         return 0;
     }
-
+    
     public final boolean component3() {
         return false;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.String component4() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final com.feature.live_matches.state.LiveState copy(@org.jetbrains.annotations.Nullable()
-                                                               java.util.List<com.feature.live_matches.model.MatchWrapper.Match> liveMatches, int liveMatchesCount, boolean isLoading, @org.jetbrains.annotations.Nullable()
-                                                               java.lang.String errorMessage) {
+    java.util.List<com.feature.live_matches.model.MatchWrapper.Match> liveMatches, int liveMatchesCount, boolean isLoading, @org.jetbrains.annotations.Nullable()
+    java.lang.String errorMessage) {
         return null;
     }
-
+    
     @java.lang.Override()
     public boolean equals(@org.jetbrains.annotations.Nullable()
-                          java.lang.Object other) {
+    java.lang.Object other) {
         return false;
     }
-
+    
     @java.lang.Override()
     public int hashCode() {
         return 0;
     }
-
+    
     @java.lang.Override()
     @org.jetbrains.annotations.NotNull()
     public java.lang.String toString() {

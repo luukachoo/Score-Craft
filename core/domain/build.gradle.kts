@@ -13,7 +13,7 @@ android {
 dependencies {
     basic()
     daggerHilt()
-    firebaseAuth()
+    fireBaseAuth()
 
     // core
     common()

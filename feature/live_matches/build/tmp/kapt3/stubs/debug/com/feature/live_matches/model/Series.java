@@ -23,159 +23,159 @@ public final class Series {
     @org.jetbrains.annotations.Nullable()
     private final java.lang.Object winnerType = null;
     private final int year = 0;
-
+    
     public Series(@org.jetbrains.annotations.NotNull()
-                  java.lang.String beginAt, @org.jetbrains.annotations.NotNull()
-                  java.lang.String endAt, @org.jetbrains.annotations.NotNull()
-                  java.lang.String fullName, int id, int leagueId, @org.jetbrains.annotations.NotNull()
-                  java.lang.String modifiedAt, @org.jetbrains.annotations.NotNull()
-                  java.lang.String name, @org.jetbrains.annotations.NotNull()
-                  java.lang.String season, @org.jetbrains.annotations.NotNull()
-                  java.lang.String slug, @org.jetbrains.annotations.Nullable()
-                  java.lang.Object winnerId, @org.jetbrains.annotations.Nullable()
-                  java.lang.Object winnerType, int year) {
+    java.lang.String beginAt, @org.jetbrains.annotations.NotNull()
+    java.lang.String endAt, @org.jetbrains.annotations.NotNull()
+    java.lang.String fullName, int id, int leagueId, @org.jetbrains.annotations.NotNull()
+    java.lang.String modifiedAt, @org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
+    java.lang.String season, @org.jetbrains.annotations.NotNull()
+    java.lang.String slug, @org.jetbrains.annotations.Nullable()
+    java.lang.Object winnerId, @org.jetbrains.annotations.Nullable()
+    java.lang.Object winnerType, int year) {
         super();
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getBeginAt() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getEndAt() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getFullName() {
         return null;
     }
-
+    
     public final int getId() {
         return 0;
     }
-
+    
     public final int getLeagueId() {
         return 0;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getModifiedAt() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getName() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getSeason() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String getSlug() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object getWinnerId() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object getWinnerType() {
         return null;
     }
-
+    
     public final int getYear() {
         return 0;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component1() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object component10() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object component11() {
         return null;
     }
-
+    
     public final int component12() {
         return 0;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component2() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component3() {
         return null;
     }
-
+    
     public final int component4() {
         return 0;
     }
-
+    
     public final int component5() {
         return 0;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component6() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component7() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component8() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final java.lang.String component9() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final com.feature.live_matches.model.Series copy(@org.jetbrains.annotations.NotNull()
-                                                            java.lang.String beginAt, @org.jetbrains.annotations.NotNull()
-                                                            java.lang.String endAt, @org.jetbrains.annotations.NotNull()
-                                                            java.lang.String fullName, int id, int leagueId, @org.jetbrains.annotations.NotNull()
-                                                            java.lang.String modifiedAt, @org.jetbrains.annotations.NotNull()
-                                                            java.lang.String name, @org.jetbrains.annotations.NotNull()
-                                                            java.lang.String season, @org.jetbrains.annotations.NotNull()
-                                                            java.lang.String slug, @org.jetbrains.annotations.Nullable()
-                                                            java.lang.Object winnerId, @org.jetbrains.annotations.Nullable()
-                                                            java.lang.Object winnerType, int year) {
+    java.lang.String beginAt, @org.jetbrains.annotations.NotNull()
+    java.lang.String endAt, @org.jetbrains.annotations.NotNull()
+    java.lang.String fullName, int id, int leagueId, @org.jetbrains.annotations.NotNull()
+    java.lang.String modifiedAt, @org.jetbrains.annotations.NotNull()
+    java.lang.String name, @org.jetbrains.annotations.NotNull()
+    java.lang.String season, @org.jetbrains.annotations.NotNull()
+    java.lang.String slug, @org.jetbrains.annotations.Nullable()
+    java.lang.Object winnerId, @org.jetbrains.annotations.Nullable()
+    java.lang.Object winnerType, int year) {
         return null;
     }
-
+    
     @java.lang.Override()
     public boolean equals(@org.jetbrains.annotations.Nullable()
-                          java.lang.Object other) {
+    java.lang.Object other) {
         return false;
     }
-
+    
     @java.lang.Override()
     public int hashCode() {
         return 0;
     }
-
+    
     @java.lang.Override()
     @org.jetbrains.annotations.NotNull()
     public java.lang.String toString() {

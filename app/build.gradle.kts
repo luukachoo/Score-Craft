@@ -51,7 +51,7 @@ dependencies {
     daggerHilt()
     navigationComponent()
     retrofit()
-    firebaseAuth()
+    fireBaseAuth()
     firebaseDataBase()
 
     // core
@@ -67,8 +67,8 @@ dependencies {
     featureSeries()
     featureLiveMatches()
     featureLiveMatchDetails()
-    featureUpcomingLiveMatches()
-    featurePastLiveMatches()
+    featureUpcomingMatches()
+    featurePastMatches()
     featureForgotPassword()
     featureProfile()
     featureImageBottomSheet()

@@ -17,9 +17,10 @@ android {
 dependencies {
     basic()
     common()
-    firebaseAuth()
+    fireBaseAuth()
     daggerHilt()
     navigationComponent()
 
+    // core
     domain()
 }

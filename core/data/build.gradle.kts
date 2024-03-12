@@ -14,7 +14,7 @@ dependencies {
     basic()
     retrofit()
     daggerHilt()
-    firebaseAuth()
+    fireBaseAuth()
     firebaseDataBase()
     firebaseStorage()
     workManager()

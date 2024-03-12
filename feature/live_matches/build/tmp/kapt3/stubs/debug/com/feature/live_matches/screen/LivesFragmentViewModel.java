@@ -9,36 +9,36 @@ public final class LivesFragmentViewModel extends androidx.lifecycle.ViewModel {
     private final kotlinx.coroutines.flow.MutableStateFlow<com.feature.live_matches.state.LiveState> _liveState = null;
     @org.jetbrains.annotations.NotNull()
     private final kotlinx.coroutines.flow.MutableSharedFlow<com.feature.live_matches.event.LiveFragmentUiEvent> _uiEvent = null;
-
+    
     @javax.inject.Inject()
     public LivesFragmentViewModel(@org.jetbrains.annotations.NotNull()
-                                  com.core.domain.use_case.live_matches.GetMatchesUseCase getMatchesUseCase) {
+    com.core.domain.use_case.live_matches.GetMatchesUseCase getMatchesUseCase) {
         super();
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final kotlinx.coroutines.flow.StateFlow<com.feature.live_matches.state.LiveState> getLiveState() {
         return null;
     }
-
+    
     @org.jetbrains.annotations.NotNull()
     public final kotlinx.coroutines.flow.MutableSharedFlow<com.feature.live_matches.event.LiveFragmentUiEvent> getUiEvent() {
         return null;
     }
-
+    
     public final void onEvent(@org.jetbrains.annotations.NotNull()
-                              com.feature.live_matches.event.LivesFragmentEvent event) {
+    com.feature.live_matches.event.LivesFragmentEvent event) {
     }
-
+    
     private final void fetchLiveMatches() {
     }
-
+    
     private final void loading(boolean isLoading) {
     }
-
+    
     private final void updateErrorMessage(java.lang.String message) {
     }
-
+    
     private final java.lang.Object updateNavigationEvent(com.feature.live_matches.event.LiveFragmentUiEvent events, kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
         return null;
     }

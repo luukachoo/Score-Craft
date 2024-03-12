@@ -1,8 +1,8 @@
 package com.core.data.repository.match
 
 import com.core.common.mapper.asResource
-import com.core.common.resource.HandleRetrofitResponse
 import com.core.common.resource.Resource
+import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.mapper.matches.live.toDomainModel
 import com.core.data.mapper.matches.past.toDomainModel
 import com.core.data.mapper.matches.toDomainModel

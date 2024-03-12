@@ -1,10 +1,7 @@
 package com.core.common.resource.retrofit
 
-<<<<<<<< HEAD:core/common/src/main/java/com/core/common/resource/HandleRetrofitResponse.kt
 
-========
 import com.core.common.resource.Resource
->>>>>>>> origin/feature_splash:core/common/src/main/java/com/core/common/resource/retrofit/HandleRetrofitResponse.kt
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 

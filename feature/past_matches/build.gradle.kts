@@ -16,7 +16,6 @@ dependencies {
     basic()
     navigationComponent()
     glide()
-    paging()
 
     // core
     domain()

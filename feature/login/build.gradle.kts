@@ -18,7 +18,7 @@ dependencies {
     basic()
     common()
     domain()
-    firebaseAuth()
+    fireBaseAuth()
     daggerHilt()
     navigationComponent()
 }

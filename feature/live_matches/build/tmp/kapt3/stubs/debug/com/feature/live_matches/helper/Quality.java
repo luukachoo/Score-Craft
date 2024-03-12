@@ -6,7 +6,7 @@ public final class Quality {
     public static final java.lang.String LOW = "960x490";
     @org.jetbrains.annotations.NotNull()
     public static final com.feature.live_matches.helper.Quality INSTANCE = null;
-
+    
     private Quality() {
         super();
     }
