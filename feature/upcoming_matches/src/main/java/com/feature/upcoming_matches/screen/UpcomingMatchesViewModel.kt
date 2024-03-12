@@ -17,13 +17,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class UpcomingMatchesViewModel @Inject constructor(private val getUpcomingMatchesUseCase: GetUpcomingMatchesUseCase): ViewModel() {
+class UpcomingMatchesViewModel @Inject constructor(private val getUpcomingMatchesUseCase: GetUpcomingMatchesUseCase) :
+    ViewModel() {
 
     private val _upcomingMatchesState = MutableStateFlow(UpcomingMatchesState())
     val upcomingMatchesState get() = _upcomingMatchesState.asStateFlow()
 
     fun onEvent(event: UpcomingMatchesEvent) {
-        when(event) {
+        when (event) {
             UpcomingMatchesEvent.FetchUpcomingMatches -> fetchUpcomingMatches()
             UpcomingMatchesEvent.ResetErrorMessage -> updateErrorMessage(null)
         }
@@ -35,7 +36,7 @@ class UpcomingMatchesViewModel @Inject constructor(private val getUpcomingMatche
                 res.takeIfSuccess { data ->
                     _upcomingMatchesState.update {
                         it.copy(
-                            upcomingMatches = data.map { getUpcomingMatch ->  getUpcomingMatch.toPresentationModel() },
+                            upcomingMatches = data.map { getUpcomingMatch -> getUpcomingMatch.toPresentationModel() },
                             isLoading = false,
                             errorMessage = null
                         )

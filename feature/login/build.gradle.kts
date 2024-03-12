@@ -21,4 +21,7 @@ dependencies {
     fireBaseAuth()
     daggerHilt()
     navigationComponent()
+    implementation("com.google.android.gms:play-services-auth:20.2.0")
+
+
 }

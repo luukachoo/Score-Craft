@@ -12,9 +12,9 @@
         android:layout_height="40dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_back_btn"
         android:scaleType="center"
         android:src="@drawable/ic_back_btn"
-        android:background="@drawable/rounded_back_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

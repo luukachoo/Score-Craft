@@ -84,7 +84,7 @@ class LiveMatchDetailsFragment :
     }
 
     private fun handleNavigationState(state: LiveMatchDetailsUiEvent) {
-        when(state) {
+        when (state) {
             LiveMatchDetailsUiEvent.NavigateToDetails -> findNavController().popBackStack()
         }
     }

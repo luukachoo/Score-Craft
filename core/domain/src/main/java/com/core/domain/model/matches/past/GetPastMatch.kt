@@ -12,5 +12,5 @@ data class GetPastMatch(
     val name: String?,
     val winner: GetWinner?,
     val videoGame: GetVideoGame,
-    val winnerId : Int?
+    val winnerId: Int?
 )

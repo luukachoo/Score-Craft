@@ -27,7 +27,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private lateinit var mainRecyclerAdapter: MainRecyclerAdapter
 
     override fun bind() {
-        mainRecyclerAdapter = MainRecyclerAdapter(emptyList(), null, "")
+        mainRecyclerAdapter =
+            MainRecyclerAdapter(
+                emptyList(),
+                null,
+                "",
+                onLeagueItemClick = { _ -> },
+                onFavouriteClick = { _ -> })
         binding.mainRecyclerView.adapter = mainRecyclerAdapter
 
         viewModel.onEvent(HomeFragmentEvent.FetchCategories)
@@ -66,11 +72,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
 
             mainRecyclerAdapter = MainRecyclerAdapter(
-                state.categories ?: emptyList(),
+                state.leagues ?: emptyList(),
                 user,
-                imageUri = state.imageUri ?: ""
+                state.imageUri ?: "",
+                onLeagueItemClick = { league ->
+                    viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(league.slug))
+                    handleNavigationWithArgs(league.slug)
+                },
+                onFavouriteClick = {
+                    viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(leagueSlug = it.slug))
+                }
             )
-            mainRecyclerView.adapter = mainRecyclerAdapter
+
+            binding.mainRecyclerView.adapter = mainRecyclerAdapter
+
             setupClickListeners()
         }
 
@@ -81,12 +96,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun setupClickListeners() {
-        mainRecyclerAdapter.onPostClick { product ->
-            viewModel.onEvent(HomeFragmentEvent.ItemClick(product.id))
-        }
-
         mainRecyclerAdapter.onAvatarClick {
             handleNavigation("market-mingle://feature.profile/fragment_profile")
+        }
+
+        mainRecyclerAdapter.onNextPageClick {
+            viewModel.onEvent(HomeFragmentEvent.LoadNextPage)
+        }
+
+        mainRecyclerAdapter.onPrevPageClick {
+            viewModel.onEvent(HomeFragmentEvent.LoadPreviousPage)
         }
     }
 
@@ -94,6 +113,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         when (event) {
             HomeNavigationEvents.NavigateToProfile -> handleNavigation("market-mingle://feature.profile/fragment_profile")
             else -> {}
+        }
+    }
+
+    private fun handleNavigationWithArgs(slug: String) {
+        if (slug.isNotEmpty()) {
+            val uri = "market-mingle://feature.series/fragment_series?slug=$slug"
+            val parsedUri = uri.toUri()
+            val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
+
+            val navOptions = navOptions {
+                popUpTo(R.id.homeFragment) { inclusive = true }
+            }
+
+            findNavController().navigate(request, navOptions)
         }
     }
 

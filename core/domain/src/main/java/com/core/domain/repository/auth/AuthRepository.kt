@@ -22,4 +22,5 @@ interface AuthRepository {
     suspend fun uploadProfileImage(userId: String, imageUri: Uri): Flow<Resource<String>>
     suspend fun fetchUserProfileImageUrl(userId: String): Flow<Resource<String>>
     suspend fun checkUserSession(): Flow<Resource<Boolean>>
+    suspend fun saveFavouriteLeagues(leagueSlug: String): Flow<Resource<String>>
 }

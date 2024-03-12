@@ -1,6 +1,5 @@
 package com.core.common.resource.retrofit
 
-
 import com.core.common.resource.Resource
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
@@ -8,15 +7,16 @@ import retrofit2.Response
 class HandleRetrofitResponse {
     fun <T : Any> apiCall(call: suspend () -> Response<T>) = flow {
         emit(Resource.Loading(loading = true))
-        val response = call()
-        if (response.isSuccessful) {
-            val test = response.body()
-            response.body()?.let {
-                emit(Resource.Success(data = it))
-            } ?: emit(Resource.Error(errorMessage = "Empty Response"))
-        } else {
-            val test = response.errorBody().toString()
-            emit(Resource.Error(errorMessage = response.errorBody()?.string() ?: "Unknown Error"))
+        try {
+            val response = call()
+            val body = response.body()
+            if (response.isSuccessful && body != null) {
+                emit(Resource.Success(data = body))
+            } else {
+                emit(Resource.Error(errorMessage = response.errorBody()?.string() ?: ""))
+            }
+        } catch (e: Throwable) {
+            emit(Resource.Error(errorMessage = e.message ?: ""))
         }
         emit(Resource.Loading(loading = false))
     }

@@ -73,6 +73,10 @@ dependencies {
     featureProfile()
     featureImageBottomSheet()
     featureSplashScreen()
+    featureSeries()
+    featureLiveMatchDetails()
+    featureLiveMatches()
+    featureTournament()
 }
 
 kapt {

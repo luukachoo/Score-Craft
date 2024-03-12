@@ -26,14 +26,32 @@ public final class ItemSeriesBinding implements ViewBinding {
   public final AppCompatTextView tvBeginDate;
 
   @NonNull
+  public final AppCompatTextView tvEnd;
+
+  @NonNull
+  public final AppCompatTextView tvEndDate;
+
+  @NonNull
   public final AppCompatTextView tvName;
 
+  @NonNull
+  public final AppCompatTextView tvSeason;
+
+  @NonNull
+  public final AppCompatTextView tvSeasonText;
+
   private ItemSeriesBinding(@NonNull MaterialCardView rootView, @NonNull AppCompatTextView tvBegin,
-      @NonNull AppCompatTextView tvBeginDate, @NonNull AppCompatTextView tvName) {
+      @NonNull AppCompatTextView tvBeginDate, @NonNull AppCompatTextView tvEnd,
+      @NonNull AppCompatTextView tvEndDate, @NonNull AppCompatTextView tvName,
+      @NonNull AppCompatTextView tvSeason, @NonNull AppCompatTextView tvSeasonText) {
     this.rootView = rootView;
     this.tvBegin = tvBegin;
     this.tvBeginDate = tvBeginDate;
+    this.tvEnd = tvEnd;
+    this.tvEndDate = tvEndDate;
     this.tvName = tvName;
+    this.tvSeason = tvSeason;
+    this.tvSeasonText = tvSeasonText;
   }
 
   @Override
@@ -75,13 +93,38 @@ public final class ItemSeriesBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvEnd;
+      AppCompatTextView tvEnd = ViewBindings.findChildViewById(rootView, id);
+      if (tvEnd == null) {
+        break missingId;
+      }
+
+      id = R.id.tvEndDate;
+      AppCompatTextView tvEndDate = ViewBindings.findChildViewById(rootView, id);
+      if (tvEndDate == null) {
+        break missingId;
+      }
+
       id = R.id.tvName;
       AppCompatTextView tvName = ViewBindings.findChildViewById(rootView, id);
       if (tvName == null) {
         break missingId;
       }
 
-      return new ItemSeriesBinding((MaterialCardView) rootView, tvBegin, tvBeginDate, tvName);
+      id = R.id.tvSeason;
+      AppCompatTextView tvSeason = ViewBindings.findChildViewById(rootView, id);
+      if (tvSeason == null) {
+        break missingId;
+      }
+
+      id = R.id.tvSeasonText;
+      AppCompatTextView tvSeasonText = ViewBindings.findChildViewById(rootView, id);
+      if (tvSeasonText == null) {
+        break missingId;
+      }
+
+      return new ItemSeriesBinding((MaterialCardView) rootView, tvBegin, tvBeginDate, tvEnd,
+          tvEndDate, tvName, tvSeason, tvSeasonText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

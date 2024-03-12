@@ -67,14 +67,14 @@ class LivesFragment : BaseFragment<FragmentLivesBinding>(FragmentLivesBinding::i
             lottieNoLivesAnimation.visibility = View.VISIBLE
             lottieNoLivesAnimation.isAnimating
             tvNoLives.visibility = View.VISIBLE
-        }  else {
+        } else {
             tvNoLives.visibility = View.GONE
             lottieNoLivesAnimation.visibility = View.GONE
         }
     }
 
     private fun handleNavigationState(state: LiveFragmentUiEvent) {
-        when(state) {
+        when (state) {
             is LiveFragmentUiEvent.NavigateToDetails -> handleNavigation(state.id)
         }
     }

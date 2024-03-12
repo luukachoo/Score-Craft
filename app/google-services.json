@@ -13,7 +13,20 @@
           "package_name": "com.example.marketmingle"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "977644697938-6if113sobi21rc04p9l85jtcneq8bmoc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.marketmingle",
+            "certificate_hash": "0ebfaf0f692cbadca03c7ae3ec762b029b0d595b"
+          }
+        },
+        {
+          "client_id": "977644697938-ctvp0uhtv23fdqcg164cifne8de76bo5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBvJN0vjSIJh_SCNRkOI7QbccDXw1kw6tQ"
@@ -21,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977644697938-9nptv2lbmk5cb4qrruvnnecnqc9m64le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

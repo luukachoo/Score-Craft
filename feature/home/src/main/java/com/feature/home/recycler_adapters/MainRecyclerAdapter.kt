@@ -16,18 +16,21 @@ import com.feature.home.model.auth.Users
 import com.feature.home.recycler_adapters.leagues.LeaguesAdapter
 
 class MainRecyclerAdapter(
-    private val categories: List<League>,
+    private val leagues: List<League>,
     private val model: Users?,
-    private val imageUri: String
+    private val imageUri: String,
+    private val onLeagueItemClick: (League) -> Unit,
+    private val onFavouriteClick: ((League) -> Unit)
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var onProductClick: ((League) -> Unit)? = null
-
     private var onAvatarClick: (() -> Unit)? = null
+    private var onNextPageClick: (() -> Unit)? = null
+    private var onPrevPageClick: (() -> Unit)? = null
 
     inner class HeaderViewHolder(private val binding: ItemHeaderSectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
+
         fun bind(user: Users?, image: String) {
             binding.apply {
                 ivAvatar.setOnClickListener {
@@ -52,17 +55,32 @@ class MainRecyclerAdapter(
                 tvUserName.text = spannableString
 
                 ivAvatar.loadImagesWithGlide(image)
+
+                nextBtn.setOnClickListener {
+                    onNextPageClick?.invoke()
+                }
+
+                prevBtn.setOnClickListener {
+                    onPrevPageClick?.invoke()
+                }
             }
         }
     }
 
-    inner class CategoriesViewHolder(private val binding: ItemLeaguesSectionBinding) :
+    inner class LeaguesViewHolder(private val binding: ItemLeaguesSectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bindCategories(categories: List<League>) = binding.apply {
-            val leagueAdapter = LeaguesAdapter()
-            leagueAdapter.submitList(categories)
-            rvLeagues.adapter = leagueAdapter
+        fun bindCategories(leagues: List<League>) = binding.apply {
+            val leagueAdapter = LeaguesAdapter().apply {
+                onLeagueClick { league ->
+                    onLeagueItemClick(league)
+                }
 
+                onFavouriteClick { league ->
+                    onFavouriteClick(league)
+                }
+            }
+            leagueAdapter.submitList(leagues)
+            rvLeagues.adapter = leagueAdapter
         }
     }
 
@@ -83,7 +101,7 @@ class MainRecyclerAdapter(
                     parent,
                     false
                 )
-                CategoriesViewHolder(leagueBinding)
+                LeaguesViewHolder(leagueBinding)
             }
         }
     }
@@ -91,7 +109,7 @@ class MainRecyclerAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is HeaderViewHolder -> holder.bind(model, imageUri)
-            is CategoriesViewHolder -> holder.bindCategories(categories)
+            is LeaguesViewHolder -> holder.bindCategories(leagues)
         }
     }
 
@@ -108,8 +126,12 @@ class MainRecyclerAdapter(
         this.onAvatarClick = click
     }
 
-    fun onPostClick(click: (League) -> Unit) {
-        this.onProductClick = click
+    fun onNextPageClick(click: () -> Unit) {
+        this.onNextPageClick = click
+    }
+
+    fun onPrevPageClick(click: () -> Unit) {
+        this.onPrevPageClick = click
     }
 
     companion object {

@@ -28,11 +28,17 @@ class PastMatchesRecyclerAdapter :
 
             tvTeamOneName.text = pastMatch.opponents.firstOrNull()?.opponent?.name
             tvTeamOneScore.text = pastMatch.results.firstOrNull()?.score.toString()
-            ivTeamOneLogo.loadImagesWithGlide(pastMatch.opponents.firstOrNull()?.opponent?.imageUrl, R.drawable.placeholder)
+            ivTeamOneLogo.loadImagesWithGlide(
+                pastMatch.opponents.firstOrNull()?.opponent?.imageUrl,
+                R.drawable.placeholder
+            )
 
             tvTeamTwoName.text = pastMatch.opponents.lastOrNull()?.opponent?.name
             tvTeamTwoScore.text = pastMatch.results.lastOrNull()?.score.toString()
-            ivTeamTwoLogo.loadImagesWithGlide(pastMatch.opponents.lastOrNull()?.opponent?.imageUrl, R.drawable.placeholder)
+            ivTeamTwoLogo.loadImagesWithGlide(
+                pastMatch.opponents.lastOrNull()?.opponent?.imageUrl,
+                R.drawable.placeholder
+            )
 
 
             if (tvTeamOneName.text == winnerName) {

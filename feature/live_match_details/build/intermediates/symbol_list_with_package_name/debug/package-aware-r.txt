@@ -9,7 +9,6 @@ drawable guest_player
 drawable ic_back_btn
 drawable ic_twitch
 drawable ic_youtube
-drawable rounded_back_btn
 drawable rounded_shape
 id buttonGoBack
 id buttonWatchOnTwitch
