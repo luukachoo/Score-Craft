@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".RegisterFragment">
+    tools:context=".screen.RegisterFragment">
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/backBtn"
@@ -91,6 +91,7 @@
         android:fontFamily="@font/urbanist"
         android:gravity="center_vertical"
         android:hint="@string/email"
+        android:inputType="textEmailAddress"
         android:paddingStart="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,6 +108,7 @@
         android:fontFamily="@font/urbanist"
         android:gravity="center_vertical"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:paddingStart="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,6 +125,7 @@
         android:fontFamily="@font/urbanist"
         android:gravity="center_vertical"
         android:hint="@string/confirm_password"
+        android:inputType="textPassword"
         android:paddingStart="20dp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +158,9 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/urbanist"
         android:text="@string/or_register_with"
-        android:textSize="18sp"
+        android:textColor="@color/dark_gray"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registerBtn" />
@@ -184,17 +189,38 @@
         app:layout_constraintStart_toEndOf="@+id/lineTv"
         app:layout_constraintTop_toTopOf="@+id/lineTv" />
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/googleBtn"
+        android:layout_width="130dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_back_btn"
+        android:scaleType="center"
+        android:src="@drawable/ic_google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lineTv" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/alreadyHaveAccTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/urbanist"
-        android:text="@string/already_have_an_accout_login_now"
+        android:text="@string/already_have_an_account_login_now"
         android:textColor="@color/dark"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
