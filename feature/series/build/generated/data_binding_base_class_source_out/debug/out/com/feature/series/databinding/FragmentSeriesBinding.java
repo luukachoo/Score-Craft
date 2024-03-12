@@ -4,15 +4,16 @@ package com.feature.series.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.feature.series.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -25,17 +26,21 @@ public final class FragmentSeriesBinding implements ViewBinding {
   public final AppCompatTextView appCompatTextView;
 
   @NonNull
-  public final FloatingActionButton buttonBack;
+  public final AppCompatImageButton backBtn;
+
+  @NonNull
+  public final ProgressBar progress;
 
   @NonNull
   public final RecyclerView rvSeries;
 
   private FragmentSeriesBinding(@NonNull ConstraintLayout rootView,
-      @NonNull AppCompatTextView appCompatTextView, @NonNull FloatingActionButton buttonBack,
-      @NonNull RecyclerView rvSeries) {
+      @NonNull AppCompatTextView appCompatTextView, @NonNull AppCompatImageButton backBtn,
+      @NonNull ProgressBar progress, @NonNull RecyclerView rvSeries) {
     this.rootView = rootView;
     this.appCompatTextView = appCompatTextView;
-    this.buttonBack = buttonBack;
+    this.backBtn = backBtn;
+    this.progress = progress;
     this.rvSeries = rvSeries;
   }
 
@@ -72,9 +77,15 @@ public final class FragmentSeriesBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.buttonBack;
-      FloatingActionButton buttonBack = ViewBindings.findChildViewById(rootView, id);
-      if (buttonBack == null) {
+      id = R.id.backBtn;
+      AppCompatImageButton backBtn = ViewBindings.findChildViewById(rootView, id);
+      if (backBtn == null) {
+        break missingId;
+      }
+
+      id = R.id.progress;
+      ProgressBar progress = ViewBindings.findChildViewById(rootView, id);
+      if (progress == null) {
         break missingId;
       }
 
@@ -84,8 +95,8 @@ public final class FragmentSeriesBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentSeriesBinding((ConstraintLayout) rootView, appCompatTextView, buttonBack,
-          rvSeries);
+      return new FragmentSeriesBinding((ConstraintLayout) rootView, appCompatTextView, backBtn,
+          progress, rvSeries);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

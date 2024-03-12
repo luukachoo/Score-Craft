@@ -71,6 +71,7 @@ dependencies {
     featureSeries()
     featureLiveMatchDetails()
     featureLiveMatches()
+    featureTournament()
 }
 
 kapt {

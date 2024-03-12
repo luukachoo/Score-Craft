@@ -3,6 +3,7 @@ package com.example.marketmingle.di
 import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.service.LeaguesService
 import com.core.data.service.MatchesService
+import com.core.data.service.SeriesService
 import com.example.marketmingle.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -59,6 +60,12 @@ object AppModule {
     @Singleton
     fun provideLeaguesService(retrofit: Retrofit): LeaguesService {
         return retrofit.create(LeaguesService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSeriesService(retrofit: Retrofit): SeriesService {
+        return retrofit.create(SeriesService::class.java)
     }
 
     @Provides

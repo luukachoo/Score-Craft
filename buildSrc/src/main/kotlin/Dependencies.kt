@@ -175,3 +175,7 @@ fun DependencyHandler.featureLiveMatches() {
 fun DependencyHandler.featureLiveMatchDetails() {
     implementation(project(":feature:live_match_details"))
 }
+
+fun DependencyHandler.featureTournament() {
+    implementation(project(":feature:tournament"))
+}

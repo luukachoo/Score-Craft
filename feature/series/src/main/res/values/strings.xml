@@ -6,4 +6,6 @@
     <string name="test_season">Season 2 2023</string>
     <string name="begin_at">Begins at:</string>
     <string name="test_date">2024 jan 14</string>
+    <string name="end_at">End at:</string>
+    <string name="season">Season:</string>
 </resources>

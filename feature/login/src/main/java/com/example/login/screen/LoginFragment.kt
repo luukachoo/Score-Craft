@@ -10,10 +10,10 @@ import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
+import com.core.common.extension.showSnackbar
 import com.example.login.R
 import com.example.login.databinding.FragmentLoginBinding
 import com.example.login.event.LoginEvent
-import com.example.login.extension.showSnackBar
 import com.example.login.state.LoginState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -87,7 +87,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 if (logInState.isLoading) View.VISIBLE else View.GONE
 
             logInState.errorMessage?.let {
-                root.showSnackBar(message = it)
+                root.showSnackbar(message = it)
                 viewModel.onEvent(LoginEvent.ResetErrorMessage)
             }
         }

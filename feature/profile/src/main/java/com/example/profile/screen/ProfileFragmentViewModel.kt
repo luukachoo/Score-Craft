@@ -99,11 +99,21 @@ class ProfileFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             getAuthUseCase.getUserProfileImageUseCase(userId).collect { resource ->
                 when (resource) {
-                    is Resource.Error -> updateErrorMessage(resource.errorMessage)
+                    is Resource.Error -> {
+                        _profileState.update { currentState ->
+                            currentState.copy(
+                                isLoading = false,
+                                imageFetched = true
+                            )
+                        }
+                    }
 
                     is Resource.Loading -> {
                         _profileState.update { currentState ->
-                            currentState.copy(isLoading = resource.loading)
+                            currentState.copy(
+                                isLoading = resource.loading,
+                                imageFetched = true
+                            )
                         }
                     }
 

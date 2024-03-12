@@ -10,5 +10,5 @@ data class ProfileState(
     val userId: String? = null,
     val imageFetched: Boolean = false,
     val imageUploaded: Boolean = false,
-    val imageIsSet: Boolean = false
+    val imageIsSet: Boolean = false,
 )
