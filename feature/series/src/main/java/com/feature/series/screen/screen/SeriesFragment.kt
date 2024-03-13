@@ -1,16 +1,12 @@
 package com.feature.series.screen.screen
 
 import android.view.View
-import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
-import com.feature.series.R
 import com.feature.series.databinding.FragmentSeriesBinding
 import com.feature.series.screen.adapter.SeriesRecyclerAdapter
 import com.feature.series.screen.event.SeriesEvent
@@ -79,20 +75,9 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
 
     private fun handleNavigationEvents(event: SeriesViewModel.SeriesUiEvent) {
         when (event) {
-            SeriesViewModel.SeriesUiEvent.NavigateToHome -> handleNavigation("market-mingle://feature.home/fragment_home")
+            SeriesViewModel.SeriesUiEvent.NavigateToHome -> findNavController().popBackStack()
 
             else -> {}
         }
-    }
-
-    private fun handleNavigation(uri: String) {
-        val parsedUri = uri.toUri()
-        val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-        val navOptions = navOptions {
-            popUpTo(R.id.seriesFragment) { inclusive = true }
-        }
-
-        findNavController().navigate(request, navOptions)
     }
 }

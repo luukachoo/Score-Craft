@@ -1,17 +1,15 @@
 package com.feature.home.screen
 
-import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.showSnackbar
-import com.feature.home.R
 import com.feature.home.databinding.FragmentHomeBinding
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
@@ -77,7 +75,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 state.imageUri ?: "",
                 onLeagueItemClick = { league ->
                     viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(league.slug))
-                    handleNavigationWithArgs(league.slug)
+                    findNavController().deepLinkNavigateTo(DeepLinkDestination.Series(league.slug), true)
                 },
                 onFavouriteClick = {
                     viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(leagueSlug = it.slug))
@@ -97,7 +95,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun setupClickListeners() {
         mainRecyclerAdapter.onAvatarClick {
-            handleNavigation("market-mingle://feature.profile/fragment_profile")
+            findNavController().deepLinkNavigateTo(DeepLinkDestination.Profile, true)
         }
 
         mainRecyclerAdapter.onNextPageClick {
@@ -111,33 +109,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun handleNavigationEvents(event: HomeNavigationEvents) {
         when (event) {
-            HomeNavigationEvents.NavigateToProfile -> handleNavigation("market-mingle://feature.profile/fragment_profile")
+            HomeNavigationEvents.NavigateToProfile -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Profile, true)
             else -> {}
         }
-    }
-
-    private fun handleNavigationWithArgs(slug: String) {
-        if (slug.isNotEmpty()) {
-            val uri = "market-mingle://feature.series/fragment_series?slug=$slug"
-            val parsedUri = uri.toUri()
-            val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-            val navOptions = navOptions {
-                popUpTo(R.id.homeFragment) { inclusive = true }
-            }
-
-            findNavController().navigate(request, navOptions)
-        }
-    }
-
-    private fun handleNavigation(uri: String) {
-        val parsedUri = uri.toUri()
-        val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-        val navOptions = navOptions {
-            popUpTo(R.id.homeFragment) { inclusive = true }
-        }
-
-        findNavController().navigate(request, navOptions)
     }
 }
