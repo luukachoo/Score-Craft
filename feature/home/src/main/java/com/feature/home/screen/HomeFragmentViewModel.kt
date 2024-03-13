@@ -26,7 +26,6 @@ import kotlin.math.min
 class HomeFragmentViewModel @Inject constructor(
     private val getLeaguesUseCase: GetLeaguesUseCase,
     private val getAuthUseCase: GetAuthUseCase,
-    private val getFavouriteLeaguesUseCase: GetFavouriteLeaguesUseCase
 ) : ViewModel() {
 
     private val _homeState = MutableStateFlow(HomeState())
