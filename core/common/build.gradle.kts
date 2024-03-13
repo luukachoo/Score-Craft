@@ -22,4 +22,5 @@ dependencies {
     firebaseDataBase()
     firebaseStorage()
     workManager()
+    navigationComponent()
 }

@@ -7,8 +7,9 @@ import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.core.common.base.BaseBottomSheetFragment
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.example.image_bottom_sheet.databinding.FragmentImageBottomSheetBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -31,7 +32,9 @@ class ImageBottomSheetFragment :
                 )
                 val compressedUri = compressImage(photoURI, requireContext())
                 if (compressedUri != null) {
-                    navigateBackWithImageUri(compressedUri)
+                    findNavController().deepLinkNavigateTo(
+                        DeepLinkDestination.ProfileWithImageUri(compressedUri), true
+                    )
                 }
             } else {
                 // Handle the failure or cancellation
@@ -43,7 +46,9 @@ class ImageBottomSheetFragment :
             if (uri != null) {
                 val compressedUri = compressImage(uri, requireContext())
                 if (compressedUri != null) {
-                    navigateBackWithImageUri(compressedUri)
+                    findNavController().deepLinkNavigateTo(
+                        DeepLinkDestination.ProfileWithImageUri(compressedUri), true
+                    )
                 }
             } else {
                 // Handle the failure or cancellation
@@ -61,10 +66,6 @@ class ImageBottomSheetFragment :
                 openGallery()
             }
         }
-    }
-
-    override fun bindObserves() {
-        // Observers setup if necessary
     }
 
     private fun openCamera() {
@@ -88,17 +89,6 @@ class ImageBottomSheetFragment :
             ".jpg",
             storageDir
         ).also { photoFile = it }
-    }
-
-    private fun navigateBackWithImageUri(imageUri: Uri) {
-        val encodedUriString = Uri.encode(imageUri.toString())
-        val deepLinkUri =
-            Uri.parse("market-mingle://feature.profile/fragment_profile?imageUri=$encodedUriString")
-
-        val navOptions = navOptions {
-            popUpTo(R.id.imageBottomSheetFragment) { inclusive = true }
-        }
-        findNavController().navigate(deepLinkUri, navOptions)
     }
 
     private fun compressImage(imageUri: Uri, context: Context): Uri? {

@@ -30,7 +30,6 @@ class MainRecyclerAdapter(
     inner class HeaderViewHolder(private val binding: ItemHeaderSectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-
         fun bind(user: Users?, image: String) {
             binding.apply {
                 ivAvatar.setOnClickListener {

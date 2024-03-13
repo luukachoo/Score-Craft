@@ -17,6 +17,4 @@
     <include app:graph="@navigation/feature_profile_nav_graph" />
     <include app:graph="@navigation/feature_image_bottom_sheet_nav_graph" />
     <include app:graph="@navigation/feature_splash_screen_nav_graph" />
-
-    >>>>>>>>> Temporary merge branch 2
 </navigation>

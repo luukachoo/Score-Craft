@@ -1,16 +1,14 @@
 package com.example.splash_screen.screen
 
 import android.animation.Animator
-import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
-import com.example.splash_screen.R
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.example.splash_screen.databinding.FragmentSplashScreenBinding
 import com.example.splash_screen.event.SplashScreenEvent
 import com.example.splash_screen.extension.showSnackBar
@@ -64,10 +62,6 @@ class SplashScreenFragment :
         }
     }
 
-    override fun bindViewActionListeners() {
-
-    }
-
     private fun handleRegisterState(state: SplashScreenState) = binding.apply {
         state.errorMessage?.let {
             root.showSnackBar(message = it)
@@ -77,19 +71,8 @@ class SplashScreenFragment :
 
     private fun handleNavigationEvents(event: SplashScreenViewModel.SplashScreenUiEvent) {
         when (event) {
-            SplashScreenViewModel.SplashScreenUiEvent.NavigateToHome -> handleNavigation("market-mingle://feature.home/fragment_home")
-            SplashScreenViewModel.SplashScreenUiEvent.NavigateToWelcome -> handleNavigation("market-mingle://feature.welcome/fragment_welcome")
+            SplashScreenViewModel.SplashScreenUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
+            SplashScreenViewModel.SplashScreenUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome, true)
         }
-    }
-
-    private fun handleNavigation(uri: String) {
-        val parsedUri = uri.toUri()
-        val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-        val navOptions = navOptions {
-            popUpTo(R.id.splashScreenFragment) { inclusive = true }
-        }
-
-        findNavController().navigate(request, navOptions)
     }
 }

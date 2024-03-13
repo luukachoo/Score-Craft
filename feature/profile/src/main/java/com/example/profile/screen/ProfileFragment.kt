@@ -17,12 +17,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
-import com.example.profile.R
 import com.example.profile.databinding.FragmentProfileBinding
 import com.example.profile.event.ProfileEvent
 import com.example.profile.extension.loadImageWithUri
@@ -67,7 +66,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             }
 
             backBtn.setOnClickListener {
-                handleNavigation("market-mingle://feature.home/fragment_home")
+                findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
             }
 
             logOutBtn.setOnClickListener {
@@ -78,8 +77,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private fun handleNavigationEvents(event: ProfileFragmentViewModel.ProfileUiEvent) {
         when (event) {
-            ProfileFragmentViewModel.ProfileUiEvent.NavigateToHome -> handleNavigation("market-mingle://feature.home/fragment_home")
-            ProfileFragmentViewModel.ProfileUiEvent.NavigateToWelcome -> handleNavigation("market-mingle://feature.welcome/fragment_welcome")
+            ProfileFragmentViewModel.ProfileUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
+            ProfileFragmentViewModel.ProfileUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome, true)
         }
     }
 
@@ -169,9 +168,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             .show()
     }
 
-    private fun showImageBottomSheet() {
-        handleNavigation("market-mingle://feature.image_bottom_sheet/fragment_image_bottom_sheet")
-    }
+    private fun showImageBottomSheet() = findNavController().deepLinkNavigateTo(DeepLinkDestination.BottomSheet)
 
     private fun initializePermissionRequest() {
         requestPermissionLauncher =
@@ -183,16 +180,5 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                     binding.root.showSnackBar("Permissions required for this feature")
                 }
             }
-    }
-
-    private fun handleNavigation(uri: String) {
-        val parsedUri = uri.toUri()
-        val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-        val navOptions = navOptions {
-            popUpTo(R.id.profileFragment) { inclusive = true }
-        }
-
-        findNavController().navigate(request, navOptions)
     }
 }

@@ -41,7 +41,7 @@ class LiveMatchDetailsViewModel @Inject constructor(
                 is LiveMatchDetailsEvents.FetchTeamMembersByMatchId -> fetchOpponentsByMatchId(event.matchId)
                 LiveMatchDetailsEvents.ResetErrorMessage -> updateErrorMessage(null)
                 LiveMatchDetailsEvents.BackButtonClick -> updateNavigationEvent(
-                    LiveMatchDetailsUiEvent.NavigateToDetails
+                    LiveMatchDetailsUiEvent.NavigateToLives
                 )
             }
         }
