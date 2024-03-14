@@ -143,4 +143,31 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Resource.Loading(false))
         }
     }
+
+    override suspend fun addFriend(userName: String): Flow<Resource<String>> = flow {
+        emit(Resource.Loading(true))
+        try {
+            val userId = firebaseAuth.currentUser?.uid
+                ?: throw IllegalStateException("User not logged in")
+
+            // Assuming you have a node called "Usernames" where you can look up users by their username
+            val usersRef = FirebaseDatabase.getInstance().getReference("Usernames")
+            val snapshot = usersRef.child(userName).get().await()
+
+            val friendId = snapshot.value as? String
+
+            if (friendId != null) {
+                // Friend found, add to the user's friend list
+                val userFriendsRef = FirebaseDatabase.getInstance().getReference("UserFriends").child(userId)
+                userFriendsRef.child(friendId).setValue(true).await()
+                emit(Resource.Success("Friend added successfully"))
+            } else {
+                emit(Resource.Error("User with username $userName not found"))
+            }
+        } catch (e: Exception) {
+            emit(Resource.Error("Failed to add friend: ${e.message}"))
+        } finally {
+            emit(Resource.Loading(false))
+        }
+    }
 }
