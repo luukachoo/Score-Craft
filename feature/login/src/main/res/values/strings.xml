@@ -9,4 +9,5 @@
     <string name="don_t_have_an_account_register_now">Don\'t have an account? <font color="#A45EE5"><B>Register Now</B></font></string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="default_web_client_id">977644697938-9nptv2lbmk5cb4qrruvnnecnqc9m64le.apps.googleusercontent.com</string>
+    <string name="back">Back</string>
 </resources>

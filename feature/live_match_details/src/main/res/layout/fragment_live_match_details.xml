@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".screen.LiveMatchDetailsFragment">
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonGoBack"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        style="@style/Widget.Material3.FloatingActionButton.Surface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_back_btn"
-        android:scaleType="center"
+        android:contentDescription="@string/back"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_back_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +35,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
-        android:src="#FF0000"
         app:layout_constraintEnd_toStartOf="@+id/tvTeamOneScore"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +80,6 @@
         android:id="@+id/ivTeamSecondImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvSecondTeamScore"
@@ -89,12 +88,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTeamPlayers"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginVertical="20dp"
         android:background="@drawable/custom_border"
         android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/buttonWatchOnYT"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -104,11 +104,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:overScrollMode="never"
-        android:text="@string/bb_vs_tspirit"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivTeamOneImage" />
+        app:layout_constraintTop_toBottomOf="@+id/ivTeamOneImage"
+        tools:text="@string/bb_vs_tspirit" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonWatchOnYT"
@@ -145,7 +145,7 @@
         app:shapeAppearanceOverlay="@style/roundedShape"
         app:tint="@null" />
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

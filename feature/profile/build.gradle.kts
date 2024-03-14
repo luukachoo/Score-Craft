@@ -18,12 +18,15 @@ android {
 
 dependencies {
     basic()
-    common()
-    domain()
     glide()
     fireBaseAuth()
     daggerHilt()
     navigationComponent()
+
+    // core
+    common()
+    domain()
+    coreUi()
 }
 
 kapt {

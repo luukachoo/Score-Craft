@@ -66,7 +66,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             }
 
             backBtn.setOnClickListener {
-                findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
+                findNavController().popBackStack()
             }
 
             logOutBtn.setOnClickListener {
@@ -77,8 +77,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private fun handleNavigationEvents(event: ProfileFragmentViewModel.ProfileUiEvent) {
         when (event) {
-            ProfileFragmentViewModel.ProfileUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
-            ProfileFragmentViewModel.ProfileUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome, true)
+            ProfileFragmentViewModel.ProfileUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Home,
+                true
+            )
+
+            ProfileFragmentViewModel.ProfileUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Welcome,
+                true
+            )
         }
     }
 
@@ -168,7 +175,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             .show()
     }
 
-    private fun showImageBottomSheet() = findNavController().deepLinkNavigateTo(DeepLinkDestination.BottomSheet)
+    private fun showImageBottomSheet() =
+        findNavController().deepLinkNavigateTo(DeepLinkDestination.BottomSheet)
 
     private fun initializePermissionRequest() {
         requestPermissionLauncher =

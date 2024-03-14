@@ -69,8 +69,15 @@ class ForgotPasswordFragment :
 
     private fun handleNavigationEvents(event: ForgotPasswordViewModel.ForgotPasswordUiEvent) {
         when (event) {
-            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome, true)
-            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToLogin -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome, true)
+            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Welcome,
+                true
+            )
+
+            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToLogin -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Welcome,
+                true
+            )
         }
     }
 }

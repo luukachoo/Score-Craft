@@ -75,7 +75,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 state.imageUri ?: "",
                 onLeagueItemClick = { league ->
                     viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(league.slug))
-                    findNavController().deepLinkNavigateTo(DeepLinkDestination.Series(league.slug), true)
+                    findNavController().deepLinkNavigateTo(
+                        DeepLinkDestination.Series(league.slug),
+                        true
+                    )
                 },
                 onFavouriteClick = {
                     viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(leagueSlug = it.slug))
@@ -109,7 +112,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun handleNavigationEvents(event: HomeNavigationEvents) {
         when (event) {
-            HomeNavigationEvents.NavigateToProfile -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Profile, true)
+            HomeNavigationEvents.NavigateToProfile -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Profile,
+                true
+            )
+
             else -> {}
         }
     }

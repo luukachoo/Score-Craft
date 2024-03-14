@@ -16,11 +16,12 @@ android {
 
 dependencies {
     basic()
-    common()
     fireBaseAuth()
     daggerHilt()
     navigationComponent()
 
     // core
     domain()
+    common()
+    coreUi()
 }

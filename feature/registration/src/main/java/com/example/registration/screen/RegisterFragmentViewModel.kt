@@ -127,7 +127,6 @@ class RegisterFragmentViewModel @Inject constructor(
 
     sealed interface RegisterUiEvent {
         data object NavigateToLogin : RegisterUiEvent
-        data object NavigateToWelcome : RegisterUiEvent
         data class NavigateToLoginWithArgs(val email: String, val password: String) :
             RegisterUiEvent
     }

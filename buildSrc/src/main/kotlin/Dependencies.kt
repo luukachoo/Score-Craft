@@ -184,6 +184,10 @@ fun DependencyHandler.domain() {
     implementation(project(":core:domain"))
 }
 
+fun DependencyHandler.coreUi() {
+    implementation(project(":core:ui"))
+}
+
 fun DependencyHandler.featureTournament() {
     implementation(project(":feature:tournament"))
 }

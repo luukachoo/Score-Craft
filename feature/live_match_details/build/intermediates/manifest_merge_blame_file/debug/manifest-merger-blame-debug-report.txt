@@ -4,4 +4,8 @@
 4
 5    <uses-sdk android:minSdkVersion="24" />
 6
-7</manifest>
+7    <application android:theme="@style/Theme.MarketMingle" />
+7-->C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml:4:5-62
+7-->C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml:4:18-59
+8
+9</manifest>

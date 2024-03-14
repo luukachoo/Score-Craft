@@ -76,7 +76,9 @@ class LivesFragment : BaseFragment<FragmentLivesBinding>(FragmentLivesBinding::i
 
     private fun handleNavigationState(state: LiveFragmentUiEvent) {
         when (state) {
-            is LiveFragmentUiEvent.NavigateToDetails -> findNavController().deepLinkNavigateTo(DeepLinkDestination.LiveMatchDetails(state.id))
+            is LiveFragmentUiEvent.NavigateToDetails -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.LiveMatchDetails(state.id)
+            )
         }
     }
 
