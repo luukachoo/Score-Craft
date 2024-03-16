@@ -12,7 +12,7 @@ interface AuthRepository {
         firstName: String,
         lastName: String,
         email: String,
-        password: String
+        password: String,
     ): Flow<Resource<FirebaseUser>>
 
     suspend fun login(email: String, password: String): Flow<Resource<FirebaseUser>>
@@ -20,8 +20,6 @@ interface AuthRepository {
     suspend fun forgotPassword(email: String): Flow<Resource<Unit>>
     suspend fun getCurrentUser(): Flow<Resource<GetUsers>>
     suspend fun uploadProfileImage(userId: String, imageUri: Uri): Flow<Resource<String>>
-    suspend fun fetchUserProfileImageUrl(userId: String): Flow<Resource<String>>
     suspend fun checkUserSession(): Flow<Resource<Boolean>>
     suspend fun saveFavouriteLeagues(leagueSlug: String): Flow<Resource<String>>
-    suspend fun addFriend(userName: String) : Flow<Resource<String>>
 }

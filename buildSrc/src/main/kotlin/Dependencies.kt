@@ -46,16 +46,15 @@ object Dependencies {
         "com.google.firebase:firebase-storage-ktx:${Versions.firebaseDatabaseVersion}"
     const val firebaseDatabase =
         "com.google.firebase:firebase-database:${Versions.firebaseDatabaseVersion}"
+    const val firebaseMessaging =
+        "com.google.firebase:firebase-messaging:${Versions.firebaseMessaging}"
+    const val firebaseBom =
+        "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
+    const val firebaseAnalytics =
+        "com.google.firebase:firebase-analytics-ktx:${Versions.firebaseAnalytics}"
 
     // WorkManager
     const val workManager = "androidx.work:work-runtime-ktx:${Versions.workManagerVersion}"
-
-    // Coroutine ViewModel Lifecycle Scopes
-    const val coroutineLifecycleScope =
-        "androidx.fragment:fragment-ktx:${Versions.coroutineLifecycleScopeVersion}"
-
-    // Splash Screen
-    const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashVersion}"
 
     const val lottie =
         "com.airbnb.android:lottie:${Versions.lottieVersion}"
@@ -85,6 +84,12 @@ fun DependencyHandler.fireBaseAuth() {
 
 fun DependencyHandler.firebaseStorage() {
     implementation(Dependencies.firebaseStorage)
+}
+
+fun DependencyHandler.firebaseMessaging() {
+    implementation(Dependencies.firebaseMessaging)
+    implementation(Dependencies.firebaseAnalytics)
+    implementation(platform(Dependencies.firebaseBom))
 }
 
 fun DependencyHandler.room() {
@@ -186,4 +191,8 @@ fun DependencyHandler.domain() {
 
 fun DependencyHandler.featureTournament() {
     implementation(project(":feature:tournament"))
+}
+
+fun DependencyHandler.featureChats() {
+    implementation(project(":feature:chats"))
 }

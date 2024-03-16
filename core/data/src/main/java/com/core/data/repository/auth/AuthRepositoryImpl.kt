@@ -8,13 +8,12 @@ import com.core.common.resource.auth.HandleForgotPasswordResponse
 import com.core.common.resource.auth.HandleLoginResponse
 import com.core.common.resource.auth.HandleSessionResponse
 import com.core.common.resource.auth.HandleUserRegistrationResponse
-import com.core.data.worker_util.WorkManagerUtil.enqueueUploadWork
+import com.core.data.worker_util.WorkManagerUtil
 import com.core.domain.model.auth.GetUsers
 import com.core.domain.repository.auth.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -79,6 +78,7 @@ class AuthRepositoryImpl @Inject constructor(
                             lastName = userDetailsMap["lastName"] ?: "",
                             email = userDetailsMap["email"] ?: "",
                             password = userDetailsMap["password"] ?: "",
+                            avatar = userDetailsMap["avatar"] ?: ""
                         )
                         emit(Resource.Success(userDetails))
                     }
@@ -93,27 +93,14 @@ class AuthRepositoryImpl @Inject constructor(
         flow {
             emit(Resource.Loading(true))
             try {
-                enqueueUploadWork(context, userId, imageUri)
-                emit(Resource.Success("Upload scheduled"))
+                WorkManagerUtil.enqueueUploadWork(context, userId, imageUri)
+                emit(Resource.Success("Image upload enqueued successfully"))
             } catch (e: Exception) {
-                emit(Resource.Error("Failed to schedule upload: ${e.localizedMessage}"))
+                emit(Resource.Error("Failed to enqueue image upload: ${e.localizedMessage}"))
+            } finally {
+                emit(Resource.Loading(false))
             }
-
-            emit(Resource.Loading(false))
         }
-
-    override suspend fun fetchUserProfileImageUrl(userId: String): Flow<Resource<String>> = flow {
-        emit(Resource.Loading(true))
-        try {
-            val storageRef =
-                FirebaseStorage.getInstance().reference.child("user_profiles/$userId/profile_picture.jpg")
-            val imageUrl = storageRef.downloadUrl.await()
-            emit(Resource.Success(imageUrl.toString()))
-        } catch (e: Exception) {
-            emit(Resource.Error("Failed to fetch image URL: ${e.message}"))
-        }
-        emit(Resource.Loading(false))
-    }
 
     override suspend fun checkUserSession(): Flow<Resource<Boolean>> {
         return handleSessionResponse.checkUserSession()
@@ -139,33 +126,6 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Resource.Success(message))
         } catch (e: Exception) {
             emit(Resource.Error("Failed to update favourite league: ${e.message}"))
-        } finally {
-            emit(Resource.Loading(false))
-        }
-    }
-
-    override suspend fun addFriend(userName: String): Flow<Resource<String>> = flow {
-        emit(Resource.Loading(true))
-        try {
-            val userId = firebaseAuth.currentUser?.uid
-                ?: throw IllegalStateException("User not logged in")
-
-            // Assuming you have a node called "Usernames" where you can look up users by their username
-            val usersRef = FirebaseDatabase.getInstance().getReference("Usernames")
-            val snapshot = usersRef.child(userName).get().await()
-
-            val friendId = snapshot.value as? String
-
-            if (friendId != null) {
-                // Friend found, add to the user's friend list
-                val userFriendsRef = FirebaseDatabase.getInstance().getReference("UserFriends").child(userId)
-                userFriendsRef.child(friendId).setValue(true).await()
-                emit(Resource.Success("Friend added successfully"))
-            } else {
-                emit(Resource.Error("User with username $userName not found"))
-            }
-        } catch (e: Exception) {
-            emit(Resource.Error("Failed to add friend: ${e.message}"))
         } finally {
             emit(Resource.Loading(false))
         }

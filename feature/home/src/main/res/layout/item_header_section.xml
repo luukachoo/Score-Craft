@@ -85,7 +85,7 @@
         android:layout_marginTop="20dp"
         android:drawableStart="@drawable/ic_arrow_left"
         android:gravity="center"
-        android:text="@string/previous"
+        android:text="@string/prev"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etSearch" />
 

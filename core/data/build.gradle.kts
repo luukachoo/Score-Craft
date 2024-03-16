@@ -17,6 +17,7 @@ dependencies {
     fireBaseAuth()
     firebaseDataBase()
     firebaseStorage()
+    firebaseMessaging()
     workManager()
 
     // core

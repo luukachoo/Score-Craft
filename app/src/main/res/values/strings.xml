@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Market Mingle</string>
+    <string name="channel_name">channel1</string>
+    <string name="channel_description">some channel</string>
 </resources>

@@ -7,5 +7,5 @@ data class GetUsers(
     val lastName: String,
     val email: String,
     val password: String,
-//    val profileImageUri: String
+    val avatar: String
 )
