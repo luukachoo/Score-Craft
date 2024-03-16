@@ -17,19 +17,19 @@ class LiveMatchRecyclerAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(players: Players) = with(binding) {
             ivPlayerFirst.loadImagesWithGlide(
-                players.firstTeamPlayer.imageUrl,
+                players.firstTeamPlayer?.imageUrl,
                 R.drawable.guest_player
             )
             ivPlayerSecond.loadImagesWithGlide(
-                players.secondTeamPlayer.imageUrl,
+                players.secondTeamPlayer?.imageUrl,
                 R.drawable.guest_player
             )
 
-            tvPlayerFirstUsername.text = players.firstTeamPlayer.name
-            tvPlayerFirstNationality.text = players.firstTeamPlayer.nationality
+            tvPlayerFirstUsername.text = players.firstTeamPlayer?.name
+            tvPlayerFirstNationality.text = players.firstTeamPlayer?.nationality
 
-            tvPlayerSecondUsername.text = players.secondTeamPlayer.name
-            tvPlayerSecondNationality.text = players.secondTeamPlayer.nationality
+            tvPlayerSecondUsername.text = players.secondTeamPlayer?.name
+            tvPlayerSecondNationality.text = players.secondTeamPlayer?.nationality
         }
     }
 
@@ -48,7 +48,7 @@ class LiveMatchRecyclerAdapter :
 
     private object PlayersDiffCallback : DiffUtil.ItemCallback<Players>() {
         override fun areItemsTheSame(oldItem: Players, newItem: Players): Boolean =
-            oldItem.firstTeamPlayer.id == newItem.firstTeamPlayer.id
+            oldItem.firstTeamPlayer?.id == newItem.firstTeamPlayer?.id
 
         override fun areContentsTheSame(oldItem: Players, newItem: Players): Boolean =
             oldItem == newItem

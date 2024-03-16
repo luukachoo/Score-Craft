@@ -1,16 +1,14 @@
 package com.example.registration.screen
 
 import android.view.View
-import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
-import com.example.registration.R
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.example.registration.databinding.FragmentRegisterBinding
 import com.example.registration.event.RegisterEvent
 import com.example.registration.extension.showSnackBar
@@ -23,9 +21,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     private val viewModel: RegisterFragmentViewModel by viewModels()
 
-    override fun bind() {
-
-    }
+    override fun bind() {}
 
     override fun bindViewActionListeners() {
         binding.apply {
@@ -50,11 +46,13 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             }
 
             alreadyHaveAccTv.setOnClickListener {
-                handleNavigation("market-mingle://feature.logic/fragment_logic")
+                findNavController().deepLinkNavigateTo(
+                    DeepLinkDestination.LoginWithoutArgument, true
+                )
             }
 
             backBtn.setOnClickListener {
-                handleNavigation("market-mingle://feature.welcome/fragment_welcome")
+                findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome)
             }
         }
     }
@@ -89,41 +87,15 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     private fun handleNavigationEvents(event: RegisterFragmentViewModel.RegisterUiEvent) {
         when (event) {
-            RegisterFragmentViewModel.RegisterUiEvent.NavigateToLogin -> handleNavigation(
-                "market-mingle://feature.login/fragment_login"
+            RegisterFragmentViewModel.RegisterUiEvent.NavigateToLogin -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.LoginWithoutArgument, true
             )
 
-            is RegisterFragmentViewModel.RegisterUiEvent.NavigateToLoginWithArgs -> handleNavigationWithArgs(
-                event.email,
-                event.password
+            is RegisterFragmentViewModel.RegisterUiEvent.NavigateToLoginWithArgs -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Login(event.email, event.password), true
             )
 
             RegisterFragmentViewModel.RegisterUiEvent.NavigateToWelcome -> TODO()
-        }
-    }
-
-    private fun handleNavigation(uri: String) {
-        val parsedUri = uri.toUri()
-        val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-        val navOptions = navOptions {
-            popUpTo(R.id.registerFragment) { inclusive = true }
-        }
-
-        findNavController().navigate(request, navOptions)
-    }
-
-    private fun handleNavigationWithArgs(email: String, password: String) {
-        if (email.isNotEmpty() && password.isNotEmpty()) {
-            val uri = "market-mingle://feature.login/fragment_login?email=$email&password=$password"
-            val parsedUri = uri.toUri()
-            val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-            val navOptions = navOptions {
-                popUpTo(R.id.registerFragment) { inclusive = true }
-            }
-
-            findNavController().navigate(request, navOptions)
         }
     }
 }

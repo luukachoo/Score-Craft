@@ -5,4 +5,8 @@
     <string name="zero">0</string>
     <string name="title">Title</string>
     <string name="test">00/00/0000</string>
+    <string name="no_lives">No one is streaming now, come back later</string>
+
+    <style name="no_live_link">Live is not available</style>
+
 </resources>

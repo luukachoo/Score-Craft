@@ -17,23 +17,3 @@ fun SeriesDto.toDomainModel() = GetSeries(
     winnerType = winnerType,
     year = year
 )
-
-
-//fun TournamentDtoList.toDomainModel() = GetTournamentsList(getTournaments = tournamentDtos.map { it.toDomainModel() })
-//fun TournamentDtoList.TournamentDto.toDomainModel() = GetTournamentsList.GetTournament(
-//    beginAt = beginAt,
-//    detailedStats = detailedStats,
-//    endAt = endAt,
-//    hasBracket = hasBracket,
-//    id = id,
-//    leagueId = leagueId,
-//    liveSupported = liveSupported,
-//    modifiedAt = modifiedAt,
-//    name = name,
-//    prizePool = prizePool,
-//    serieId = serieId,
-//    slug = slug,
-//    tier = tier,
-//    winnerId = winnerId,
-//    winnerType = winnerType
-//)

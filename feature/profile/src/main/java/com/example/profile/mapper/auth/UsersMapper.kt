@@ -9,5 +9,6 @@ fun GetUsers.toPresenter() = Users(
     firstName = firstName,
     lastName = lastName,
     email = email,
-    password = password
+    password = password,
+    avatar = avatar
 )

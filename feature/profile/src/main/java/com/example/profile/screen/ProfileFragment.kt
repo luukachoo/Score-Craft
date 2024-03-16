@@ -17,12 +17,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
-import com.example.profile.R
 import com.example.profile.databinding.FragmentProfileBinding
 import com.example.profile.event.ProfileEvent
 import com.example.profile.extension.loadImageWithUri
@@ -67,7 +66,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             }
 
             backBtn.setOnClickListener {
-                handleNavigation("market-mingle://feature.home/fragment_home")
+                findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
             }
 
             logOutBtn.setOnClickListener {
@@ -78,51 +77,35 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private fun handleNavigationEvents(event: ProfileFragmentViewModel.ProfileUiEvent) {
         when (event) {
-            ProfileFragmentViewModel.ProfileUiEvent.NavigateToHome -> handleNavigation("market-mingle://feature.home/fragment_home")
-            ProfileFragmentViewModel.ProfileUiEvent.NavigateToWelcome -> handleNavigation("market-mingle://feature.welcome/fragment_welcome")
+            ProfileFragmentViewModel.ProfileUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
+            ProfileFragmentViewModel.ProfileUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome, true)
         }
     }
 
     @SuppressLint("SetTextI18n")
     private fun handleRegisterState(state: ProfileState) = binding.apply {
-        progress.visibility =
-            if (state.isLoading) View.VISIBLE else View.GONE
+        progress.visibility = if (state.isLoading) View.VISIBLE else View.GONE
 
-        state.user?.let {
-            tvFullName.text = "${it.firstName} ${it.lastName}"
-            tvUserName.text = "@${it.userName}"
-        }
+        state.user?.let { user ->
+            tvFullName.text = "${user.firstName} ${user.lastName}"
+            tvUserName.text = "@${user.userName}"
 
-        val imageUriString = arguments?.getString("imageUri") ?: ""
+            val imageUriString = arguments?.getString("imageUri")
 
-        if (imageUriString.isNotEmpty() && !state.imageUploaded) {
-            val imageUri = imageUriString.toUri()
-            binding.ivAvatar.loadImageWithUri(imageUri)
-
-            state.user?.userId?.let { userId ->
-                viewModel.onEvent(
-                    ProfileEvent.UploadProfileImage(
-                        userId = userId,
-                        imageUri = imageUri
-                    )
-                )
+            if (!imageUriString.isNullOrEmpty()) {
+                if (!state.imageUploaded) {
+                    ivAvatar.loadImageWithUri(imageUriString.toUri())
+                    user.userId.let { userId ->
+                        viewModel.onEvent(ProfileEvent.UploadProfileImage(userId, imageUriString.toUri()))
+                    }
+                }
+            } else if (user.avatar.isNotEmpty()) {
+                ivAvatar.loadImagesWithGlide(user.avatar)
             }
         }
 
-        if (!state.imageFetched && !state.imageIsSet) {
-            state.user?.userId?.let { userId ->
-                viewModel.onEvent(ProfileEvent.FetchUserProfileImage(userId = userId))
-            }
-        }
-
-        if (!state.imageIsSet) {
-            state.imageUri?.let {
-                binding.ivAvatar.loadImagesWithGlide(it)
-            }
-        }
-
-        state.errorMessage?.let {
-            root.showSnackBar(message = it)
+        state.errorMessage?.let { message ->
+            root.showSnackBar(message)
             viewModel.onEvent(ProfileEvent.ResetErrorMessage)
         }
     }
@@ -169,9 +152,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             .show()
     }
 
-    private fun showImageBottomSheet() {
-        handleNavigation("market-mingle://feature.image_bottom_sheet/fragment_image_bottom_sheet")
-    }
+    private fun showImageBottomSheet() = findNavController().deepLinkNavigateTo(DeepLinkDestination.BottomSheet)
 
     private fun initializePermissionRequest() {
         requestPermissionLauncher =
@@ -183,16 +164,5 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                     binding.root.showSnackBar("Permissions required for this feature")
                 }
             }
-    }
-
-    private fun handleNavigation(uri: String) {
-        val parsedUri = uri.toUri()
-        val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-        val navOptions = navOptions {
-            popUpTo(R.id.profileFragment) { inclusive = true }
-        }
-
-        findNavController().navigate(request, navOptions)
     }
 }

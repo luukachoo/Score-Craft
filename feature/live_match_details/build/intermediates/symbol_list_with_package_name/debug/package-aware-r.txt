@@ -1,18 +1,25 @@
 com.feature.live_match_details
+color black
+color dark
+color gray
+color light_gray
+color white
+drawable custom_border
 drawable guest_player
 drawable ic_back_btn
 drawable ic_twitch
 drawable ic_youtube
 drawable rounded_shape
+id buttonGoBack
 id buttonWatchOnTwitch
 id buttonWatchOnYT
 id feature_live_match_details_nav_graph
-id floatingActionButton
 id guideline
 id ivPlayerFirst
 id ivPlayerSecond
 id ivTeamOneImage
 id ivTeamSecondImage
+id lottieLiveNowAnimation
 id matchDetailsFragment
 id progressBar
 id rvTeamPlayers
@@ -32,6 +39,7 @@ string bb_vs_tspirit
 string ge
 string hello_blank_fragment
 string minus
+string no_live_link
 string watch_on
 string zero
 style roundedShape

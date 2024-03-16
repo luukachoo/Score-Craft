@@ -17,6 +17,7 @@ dependencies {
     basic()
     navigationComponent()
     glide()
+    lottie()
 
     // core
     domain()

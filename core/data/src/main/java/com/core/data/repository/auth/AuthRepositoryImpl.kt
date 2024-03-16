@@ -8,12 +8,12 @@ import com.core.common.resource.auth.HandleForgotPasswordResponse
 import com.core.common.resource.auth.HandleLoginResponse
 import com.core.common.resource.auth.HandleSessionResponse
 import com.core.common.resource.auth.HandleUserRegistrationResponse
-import com.core.data.worker_util.WorkManagerUtil.enqueueUploadWork
+import com.core.data.worker_util.WorkManagerUtil
 import com.core.domain.model.auth.GetUsers
 import com.core.domain.repository.auth.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -28,7 +28,7 @@ class AuthRepositoryImpl @Inject constructor(
     private val handleForgotPasswordResponse: HandleForgotPasswordResponse,
     private val handleUserRegistrationResponse: HandleUserRegistrationResponse,
     private val handleCurrentUserResponse: HandleCurrentUserResponse,
-    private val handleSessionResponse: HandleSessionResponse
+    private val handleSessionResponse: HandleSessionResponse,
 ) : AuthRepository {
     override suspend fun register(
         userName: String,
@@ -78,6 +78,7 @@ class AuthRepositoryImpl @Inject constructor(
                             lastName = userDetailsMap["lastName"] ?: "",
                             email = userDetailsMap["email"] ?: "",
                             password = userDetailsMap["password"] ?: "",
+                            avatar = userDetailsMap["avatar"] ?: ""
                         )
                         emit(Resource.Success(userDetails))
                     }
@@ -92,29 +93,41 @@ class AuthRepositoryImpl @Inject constructor(
         flow {
             emit(Resource.Loading(true))
             try {
-                enqueueUploadWork(context, userId, imageUri)
-                emit(Resource.Success("Upload scheduled"))
+                WorkManagerUtil.enqueueUploadWork(context, userId, imageUri)
+                emit(Resource.Success("Image upload enqueued successfully"))
             } catch (e: Exception) {
-                emit(Resource.Error("Failed to schedule upload: ${e.localizedMessage}"))
+                emit(Resource.Error("Failed to enqueue image upload: ${e.localizedMessage}"))
+            } finally {
+                emit(Resource.Loading(false))
             }
-
-            emit(Resource.Loading(false))
         }
-
-    override suspend fun fetchUserProfileImageUrl(userId: String): Flow<Resource<String>> = flow {
-        emit(Resource.Loading(true))
-        try {
-            val storageRef =
-                FirebaseStorage.getInstance().reference.child("user_profiles/$userId/profile_picture.jpg")
-            val imageUrl = storageRef.downloadUrl.await()
-            emit(Resource.Success(imageUrl.toString()))
-        } catch (e: Exception) {
-            emit(Resource.Error("Failed to fetch image URL: ${e.message}"))
-        }
-        emit(Resource.Loading(false))
-    }
 
     override suspend fun checkUserSession(): Flow<Resource<Boolean>> {
         return handleSessionResponse.checkUserSession()
+    }
+
+    override suspend fun saveFavouriteLeagues(leagueSlug: String): Flow<Resource<String>> = flow {
+        emit(Resource.Loading(true))
+        try {
+            val userId =
+                firebaseAuth.currentUser?.uid ?: throw IllegalStateException("User not logged in")
+            val databaseReference =
+                FirebaseDatabase.getInstance().getReference("UserLeagues").child(userId)
+            val snapshot = databaseReference.child(leagueSlug).get().await()
+
+            val message: String = if (snapshot.exists()) {
+                databaseReference.child(leagueSlug).removeValue().await()
+                "Removed from favourites"
+            } else {
+                databaseReference.child(leagueSlug).setValue("League").await()
+                "Added to favourites"
+            }
+
+            emit(Resource.Success(message))
+        } catch (e: Exception) {
+            emit(Resource.Error("Failed to update favourite league: ${e.message}"))
+        } finally {
+            emit(Resource.Loading(false))
+        }
     }
 }

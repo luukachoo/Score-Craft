@@ -27,16 +27,20 @@
             <option value="$PROJECT_DIR$/core/data" />
             <option value="$PROJECT_DIR$/core/domain" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/chats" />
             <option value="$PROJECT_DIR$/feature/forgot_password" />
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/image_bottom_sheet" />
             <option value="$PROJECT_DIR$/feature/live_match_details" />
             <option value="$PROJECT_DIR$/feature/live_matches" />
             <option value="$PROJECT_DIR$/feature/login" />
+            <option value="$PROJECT_DIR$/feature/past_matches" />
             <option value="$PROJECT_DIR$/feature/profile" />
             <option value="$PROJECT_DIR$/feature/registration" />
             <option value="$PROJECT_DIR$/feature/series" />
             <option value="$PROJECT_DIR$/feature/splash_screen" />
+            <option value="$PROJECT_DIR$/feature/tournament" />
+            <option value="$PROJECT_DIR$/feature/upcoming_matches" />
             <option value="$PROJECT_DIR$/feature/welcome" />
           </set>
         </option>

@@ -1,6 +1,6 @@
 package com.core.domain.model
 
-import com.core.domain.model.live_matches.GetMatchWrapper
+import com.core.domain.model.matches.live.GetMatchWrapper
 
 data class GetGames(
     val beginAt: String?,

@@ -1,19 +1,17 @@
 package com.example.login.screen
 
 import android.view.View
-import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
-import com.example.login.R
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
+import com.core.common.extension.showSnackbar
 import com.example.login.databinding.FragmentLoginBinding
 import com.example.login.event.LoginEvent
-import com.example.login.extension.showSnackBar
 import com.example.login.state.LoginState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -23,8 +21,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private val viewModel: LoginFragmentViewModel by viewModels()
 
-    override fun bind() {
-    }
+    override fun bind() {}
 
     override fun bindViewActionListeners() {
         val emailArg = arguments?.getString("email") ?: ""
@@ -46,7 +43,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             }
 
             backBtn.setOnClickListener {
-                handleNavigation("market-mingle://feature.welcome/fragment_welcome")
+                findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome)
             }
 
             forgotPasswordTv.setOnClickListener {
@@ -75,9 +72,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private fun handleNavigationEvents(event: LoginFragmentViewModel.LogInUiEvent) {
         when (event) {
-            LoginFragmentViewModel.LogInUiEvent.NavigateToForgotPasswordPage -> handleNavigation("market-mingle://feature.forgot_password/fragment_forgot_password")
-            LoginFragmentViewModel.LogInUiEvent.NavigateToHome -> handleNavigation("market-mingle://feature.home/fragment_home")
-            LoginFragmentViewModel.LogInUiEvent.NavigateToRegister -> handleNavigation("market-mingle://feature.register/fragment_register")
+            LoginFragmentViewModel.LogInUiEvent.NavigateToForgotPasswordPage -> findNavController().deepLinkNavigateTo(DeepLinkDestination.ForgotPassword, true)
+            LoginFragmentViewModel.LogInUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
+            LoginFragmentViewModel.LogInUiEvent.NavigateToRegister -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Register, true)
         }
     }
 
@@ -87,20 +84,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 if (logInState.isLoading) View.VISIBLE else View.GONE
 
             logInState.errorMessage?.let {
-                root.showSnackBar(message = it)
+                root.showSnackbar(message = it)
                 viewModel.onEvent(LoginEvent.ResetErrorMessage)
             }
         }
-    }
-
-    private fun handleNavigation(uri: String) {
-        val parsedUri = uri.toUri()
-        val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-        val navOptions = navOptions {
-            popUpTo(R.id.loginFragment) { inclusive = true }
-        }
-
-        findNavController().navigate(request, navOptions)
     }
 }

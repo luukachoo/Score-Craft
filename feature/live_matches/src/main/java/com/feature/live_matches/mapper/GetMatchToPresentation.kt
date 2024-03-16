@@ -1,6 +1,6 @@
 package com.feature.live_matches.mapper
 
-import com.core.domain.model.live_matches.GetMatchWrapper
+import com.core.domain.model.matches.live.GetMatchWrapper
 import com.feature.live_matches.model.MatchWrapper
 
 fun GetMatchWrapper.toPresentationModel() = MatchWrapper(match = match.toPresentationModel())
@@ -15,9 +15,6 @@ fun GetMatchWrapper.GetMatch.toPresentationModel() =
         detailedStats = detailedStats,
         scheduledAt = scheduledAt,
         beginAt = beginAt,
-        videogame = videogame,
-        videoGameTitle = videoGameTitle,
-        forfeit = forfeit,
         streamsList = streamsList.map { it.toPresentationModel() }
     )
 

@@ -43,7 +43,7 @@ public final class MatchWrapper {
         return null;
     }
     
-    @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u00006\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\'\b\u0086\b\u0018\u00002\u00020\u0001:\u000289Bm\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003\u0012\u0006\u0010\u0005\u001a\u00020\u0003\u0012\u0006\u0010\u0006\u001a\u00020\u0007\u0012\u0006\u0010\b\u001a\u00020\u0003\u0012\u0006\u0010\t\u001a\u00020\n\u0012\u0006\u0010\u000b\u001a\u00020\u0003\u0012\u0006\u0010\f\u001a\u00020\u0003\u0012\u0006\u0010\r\u001a\u00020\u000e\u0012\b\u0010\u000f\u001a\u0004\u0018\u00010\u0001\u0012\u0006\u0010\u0010\u001a\u00020\n\u0012\f\u0010\u0011\u001a\b\u0012\u0004\u0012\u00020\u00130\u0012\u00a2\u0006\u0002\u0010\u0014J\t\u0010\'\u001a\u00020\u0003H\u00c6\u0003J\u000b\u0010(\u001a\u0004\u0018\u00010\u0001H\u00c6\u0003J\t\u0010)\u001a\u00020\nH\u00c6\u0003J\u000f\u0010*\u001a\b\u0012\u0004\u0012\u00020\u00130\u0012H\u00c6\u0003J\t\u0010+\u001a\u00020\u0003H\u00c6\u0003J\t\u0010,\u001a\u00020\u0003H\u00c6\u0003J\t\u0010-\u001a\u00020\u0007H\u00c6\u0003J\t\u0010.\u001a\u00020\u0003H\u00c6\u0003J\t\u0010/\u001a\u00020\nH\u00c6\u0003J\t\u00100\u001a\u00020\u0003H\u00c6\u0003J\t\u00101\u001a\u00020\u0003H\u00c6\u0003J\t\u00102\u001a\u00020\u000eH\u00c6\u0003J\u0089\u0001\u00103\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u00032\b\b\u0002\u0010\u0004\u001a\u00020\u00032\b\b\u0002\u0010\u0005\u001a\u00020\u00032\b\b\u0002\u0010\u0006\u001a\u00020\u00072\b\b\u0002\u0010\b\u001a\u00020\u00032\b\b\u0002\u0010\t\u001a\u00020\n2\b\b\u0002\u0010\u000b\u001a\u00020\u00032\b\b\u0002\u0010\f\u001a\u00020\u00032\b\b\u0002\u0010\r\u001a\u00020\u000e2\n\b\u0002\u0010\u000f\u001a\u0004\u0018\u00010\u00012\b\b\u0002\u0010\u0010\u001a\u00020\n2\u000e\b\u0002\u0010\u0011\u001a\b\u0012\u0004\u0012\u00020\u00130\u0012H\u00c6\u0001J\u0013\u00104\u001a\u00020\n2\b\u00105\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u00106\u001a\u00020\u0007H\u00d6\u0001J\t\u00107\u001a\u00020\u0003H\u00d6\u0001R\u0011\u0010\f\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0015\u0010\u0016R\u0011\u0010\t\u001a\u00020\n\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0017\u0010\u0018R\u0011\u0010\u0010\u001a\u00020\n\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u0018R\u0011\u0010\u0006\u001a\u00020\u0007\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001a\u0010\u001bR\u0011\u0010\b\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001c\u0010\u0016R\u0011\u0010\u0005\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u0016R\u0011\u0010\u000b\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001e\u0010\u0016R\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001f\u0010\u0016R\u0011\u0010\u0004\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b \u0010\u0016R\u0017\u0010\u0011\u001a\b\u0012\u0004\u0012\u00020\u00130\u0012\u00a2\u0006\b\n\u0000\u001a\u0004\b!\u0010\"R\u0013\u0010\u000f\u001a\u0004\u0018\u00010\u0001\u00a2\u0006\b\n\u0000\u001a\u0004\b#\u0010$R\u0011\u0010\r\u001a\u00020\u000e\u00a2\u0006\b\n\u0000\u001a\u0004\b%\u0010&\u00a8\u0006:"}, d2 = {"Lcom/feature/live_matches/model/MatchWrapper$Match;", "", "slug", "", "status", "originalScheduledAt", "id", "", "name", "detailedStats", "", "scheduledAt", "beginAt", "videogame", "Lcom/core/domain/model/live_matches/GetMatchWrapper$GetMatch$GetVideoGame;", "videoGameTitle", "forfeit", "streamsList", "", "Lcom/feature/live_matches/model/Stream;", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ZLjava/lang/String;Ljava/lang/String;Lcom/core/domain/model/live_matches/GetMatchWrapper$GetMatch$GetVideoGame;Ljava/lang/Object;ZLjava/util/List;)V", "getBeginAt", "()Ljava/lang/String;", "getDetailedStats", "()Z", "getForfeit", "getId", "()I", "getName", "getOriginalScheduledAt", "getScheduledAt", "getSlug", "getStatus", "getStreamsList", "()Ljava/util/List;", "getVideoGameTitle", "()Ljava/lang/Object;", "getVideogame", "()Lcom/core/domain/model/live_matches/GetMatchWrapper$GetMatch$GetVideoGame;", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "VideoGame", "Winner", "live_matches_debug"})
+    @kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000.\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\u0003\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\u001f\b\u0086\b\u0018\u00002\u00020\u0001:\u0002,-BS\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003\u0012\u0006\u0010\u0005\u001a\u00020\u0003\u0012\u0006\u0010\u0006\u001a\u00020\u0007\u0012\u0006\u0010\b\u001a\u00020\u0003\u0012\u0006\u0010\t\u001a\u00020\n\u0012\u0006\u0010\u000b\u001a\u00020\u0003\u0012\u0006\u0010\f\u001a\u00020\u0003\u0012\f\u0010\r\u001a\b\u0012\u0004\u0012\u00020\u000f0\u000e\u00a2\u0006\u0002\u0010\u0010J\t\u0010\u001e\u001a\u00020\u0003H\u00c6\u0003J\t\u0010\u001f\u001a\u00020\u0003H\u00c6\u0003J\t\u0010 \u001a\u00020\u0003H\u00c6\u0003J\t\u0010!\u001a\u00020\u0007H\u00c6\u0003J\t\u0010\"\u001a\u00020\u0003H\u00c6\u0003J\t\u0010#\u001a\u00020\nH\u00c6\u0003J\t\u0010$\u001a\u00020\u0003H\u00c6\u0003J\t\u0010%\u001a\u00020\u0003H\u00c6\u0003J\u000f\u0010&\u001a\b\u0012\u0004\u0012\u00020\u000f0\u000eH\u00c6\u0003Ji\u0010\'\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u00032\b\b\u0002\u0010\u0004\u001a\u00020\u00032\b\b\u0002\u0010\u0005\u001a\u00020\u00032\b\b\u0002\u0010\u0006\u001a\u00020\u00072\b\b\u0002\u0010\b\u001a\u00020\u00032\b\b\u0002\u0010\t\u001a\u00020\n2\b\b\u0002\u0010\u000b\u001a\u00020\u00032\b\b\u0002\u0010\f\u001a\u00020\u00032\u000e\b\u0002\u0010\r\u001a\b\u0012\u0004\u0012\u00020\u000f0\u000eH\u00c6\u0001J\u0013\u0010(\u001a\u00020\n2\b\u0010)\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u0010*\u001a\u00020\u0007H\u00d6\u0001J\t\u0010+\u001a\u00020\u0003H\u00d6\u0001R\u0011\u0010\f\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0011\u0010\u0012R\u0011\u0010\t\u001a\u00020\n\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0013\u0010\u0014R\u0011\u0010\u0006\u001a\u00020\u0007\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0015\u0010\u0016R\u0011\u0010\b\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0017\u0010\u0012R\u0011\u0010\u0005\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0018\u0010\u0012R\u0011\u0010\u000b\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u0012R\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001a\u0010\u0012R\u0011\u0010\u0004\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u0012R\u0017\u0010\r\u001a\b\u0012\u0004\u0012\u00020\u000f0\u000e\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001c\u0010\u001d\u00a8\u0006."}, d2 = {"Lcom/feature/live_matches/model/MatchWrapper$Match;", "", "slug", "", "status", "originalScheduledAt", "id", "", "name", "detailedStats", "", "scheduledAt", "beginAt", "streamsList", "", "Lcom/feature/live_matches/model/Stream;", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ZLjava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "getBeginAt", "()Ljava/lang/String;", "getDetailedStats", "()Z", "getId", "()I", "getName", "getOriginalScheduledAt", "getScheduledAt", "getSlug", "getStatus", "getStreamsList", "()Ljava/util/List;", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "VideoGame", "Winner", "live_matches_debug"})
     public static final class Match {
         @org.jetbrains.annotations.NotNull()
         private final java.lang.String slug = null;
@@ -60,11 +60,6 @@ public final class MatchWrapper {
         @org.jetbrains.annotations.NotNull()
         private final java.lang.String beginAt = null;
         @org.jetbrains.annotations.NotNull()
-        private final com.core.domain.model.live_matches.GetMatchWrapper.GetMatch.GetVideoGame videogame = null;
-        @org.jetbrains.annotations.Nullable()
-        private final java.lang.Object videoGameTitle = null;
-        private final boolean forfeit = false;
-        @org.jetbrains.annotations.NotNull()
         private final java.util.List<com.feature.live_matches.model.Stream> streamsList = null;
         
         public Match(@org.jetbrains.annotations.NotNull()
@@ -74,8 +69,6 @@ public final class MatchWrapper {
         java.lang.String name, boolean detailedStats, @org.jetbrains.annotations.NotNull()
         java.lang.String scheduledAt, @org.jetbrains.annotations.NotNull()
         java.lang.String beginAt, @org.jetbrains.annotations.NotNull()
-        com.core.domain.model.live_matches.GetMatchWrapper.GetMatch.GetVideoGame videogame, @org.jetbrains.annotations.Nullable()
-        java.lang.Object videoGameTitle, boolean forfeit, @org.jetbrains.annotations.NotNull()
         java.util.List<com.feature.live_matches.model.Stream> streamsList) {
             super();
         }
@@ -119,40 +112,12 @@ public final class MatchWrapper {
         }
         
         @org.jetbrains.annotations.NotNull()
-        public final com.core.domain.model.live_matches.GetMatchWrapper.GetMatch.GetVideoGame getVideogame() {
-            return null;
-        }
-        
-        @org.jetbrains.annotations.Nullable()
-        public final java.lang.Object getVideoGameTitle() {
-            return null;
-        }
-        
-        public final boolean getForfeit() {
-            return false;
-        }
-        
-        @org.jetbrains.annotations.NotNull()
         public final java.util.List<com.feature.live_matches.model.Stream> getStreamsList() {
             return null;
         }
         
         @org.jetbrains.annotations.NotNull()
         public final java.lang.String component1() {
-            return null;
-        }
-        
-        @org.jetbrains.annotations.Nullable()
-        public final java.lang.Object component10() {
-            return null;
-        }
-        
-        public final boolean component11() {
-            return false;
-        }
-        
-        @org.jetbrains.annotations.NotNull()
-        public final java.util.List<com.feature.live_matches.model.Stream> component12() {
             return null;
         }
         
@@ -190,7 +155,7 @@ public final class MatchWrapper {
         }
         
         @org.jetbrains.annotations.NotNull()
-        public final com.core.domain.model.live_matches.GetMatchWrapper.GetMatch.GetVideoGame component9() {
+        public final java.util.List<com.feature.live_matches.model.Stream> component9() {
             return null;
         }
         
@@ -202,8 +167,6 @@ public final class MatchWrapper {
         java.lang.String name, boolean detailedStats, @org.jetbrains.annotations.NotNull()
         java.lang.String scheduledAt, @org.jetbrains.annotations.NotNull()
         java.lang.String beginAt, @org.jetbrains.annotations.NotNull()
-        com.core.domain.model.live_matches.GetMatchWrapper.GetMatch.GetVideoGame videogame, @org.jetbrains.annotations.Nullable()
-        java.lang.Object videoGameTitle, boolean forfeit, @org.jetbrains.annotations.NotNull()
         java.util.List<com.feature.live_matches.model.Stream> streamsList) {
             return null;
         }

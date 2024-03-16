@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.airbnb.lottie.LottieAnimationView;
 import com.feature.live_matches.R;
 import com.google.android.material.card.MaterialCardView;
 import java.lang.NullPointerException;
@@ -24,15 +25,20 @@ public final class ItemLiveBinding implements ViewBinding {
   public final AppCompatImageView ivPreview;
 
   @NonNull
+  public final LottieAnimationView lottieLiveNowAnimation;
+
+  @NonNull
   public final AppCompatTextView tvLeague;
 
   @NonNull
   public final AppCompatTextView tvTitle;
 
   private ItemLiveBinding(@NonNull MaterialCardView rootView, @NonNull AppCompatImageView ivPreview,
-      @NonNull AppCompatTextView tvLeague, @NonNull AppCompatTextView tvTitle) {
+      @NonNull LottieAnimationView lottieLiveNowAnimation, @NonNull AppCompatTextView tvLeague,
+      @NonNull AppCompatTextView tvTitle) {
     this.rootView = rootView;
     this.ivPreview = ivPreview;
+    this.lottieLiveNowAnimation = lottieLiveNowAnimation;
     this.tvLeague = tvLeague;
     this.tvTitle = tvTitle;
   }
@@ -70,6 +76,12 @@ public final class ItemLiveBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.lottieLiveNowAnimation;
+      LottieAnimationView lottieLiveNowAnimation = ViewBindings.findChildViewById(rootView, id);
+      if (lottieLiveNowAnimation == null) {
+        break missingId;
+      }
+
       id = R.id.tvLeague;
       AppCompatTextView tvLeague = ViewBindings.findChildViewById(rootView, id);
       if (tvLeague == null) {
@@ -82,7 +94,8 @@ public final class ItemLiveBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemLiveBinding((MaterialCardView) rootView, ivPreview, tvLeague, tvTitle);
+      return new ItemLiveBinding((MaterialCardView) rootView, ivPreview, lottieLiveNowAnimation,
+          tvLeague, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

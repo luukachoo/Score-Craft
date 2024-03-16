@@ -15,6 +15,6 @@ data class MatchDetails(
 ) {
     data class Result(
         val score: Int,
-        val teamId: Int
+        val teamId: Int?
     )
 }

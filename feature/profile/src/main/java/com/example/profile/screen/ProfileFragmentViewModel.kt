@@ -37,7 +37,6 @@ class ProfileFragmentViewModel @Inject constructor(
                 imageUri = event.imageUri
             )
 
-            is ProfileEvent.FetchUserProfileImage -> fetchUserProfileImage(event.userId)
             ProfileEvent.LogOut -> logOut()
         }
     }
@@ -58,6 +57,7 @@ class ProfileFragmentViewModel @Inject constructor(
                         _profileState.update {
                             it.copy(
                                 user = resource.data.toPresenter(),
+                                imageIsSet = true,
                                 isLoading = false,
                                 errorMessage = null
                             )
@@ -86,33 +86,6 @@ class ProfileFragmentViewModel @Inject constructor(
                                 isLoading = false,
                                 imageUploaded = true,
                                 imageIsSet = true,
-                                errorMessage = null
-                            )
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun fetchUserProfileImage(userId: String) {
-        viewModelScope.launch {
-            getAuthUseCase.getUserProfileImageUseCase(userId).collect { resource ->
-                when (resource) {
-                    is Resource.Error -> updateErrorMessage(resource.errorMessage)
-
-                    is Resource.Loading -> {
-                        _profileState.update { currentState ->
-                            currentState.copy(isLoading = resource.loading)
-                        }
-                    }
-
-                    is Resource.Success -> {
-                        _profileState.update { currentState ->
-                            currentState.copy(
-                                imageUri = resource.data,
-                                isLoading = false,
-                                imageFetched = true,
                                 errorMessage = null
                             )
                         }

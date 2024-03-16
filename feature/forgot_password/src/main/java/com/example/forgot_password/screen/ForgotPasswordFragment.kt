@@ -1,16 +1,14 @@
 package com.example.forgot_password.screen
 
 import android.view.View
-import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.core.common.base.BaseFragment
-import com.example.forgot_password.R
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.example.forgot_password.databinding.FragmentForgotPasswordBinding
 import com.example.forgot_password.event.ForgotPasswordEvent
 import com.example.forgot_password.extension.showSnackBar
@@ -24,8 +22,7 @@ class ForgotPasswordFragment :
 
     private val viewModel: ForgotPasswordViewModel by viewModels()
 
-    override fun bind() {
-    }
+    override fun bind() {}
 
     override fun bindViewActionListeners() {
         binding.apply {
@@ -36,7 +33,7 @@ class ForgotPasswordFragment :
             }
 
             backBtn.setOnClickListener {
-                handleNavigation("market-mingle://feature.welcome/fragment_welcome")
+                findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome)
             }
         }
 
@@ -72,19 +69,8 @@ class ForgotPasswordFragment :
 
     private fun handleNavigationEvents(event: ForgotPasswordViewModel.ForgotPasswordUiEvent) {
         when (event) {
-            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToWelcome -> handleNavigation("market-mingle://feature.welcome/fragment_welcome")
-            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToLogin -> handleNavigation("market-mingle://feature.login/fragment_login")
+            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome, true)
+            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToLogin -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome, true)
         }
-    }
-
-    private fun handleNavigation(uri: String) {
-        val parsedUri = uri.toUri()
-        val request = NavDeepLinkRequest.Builder.fromUri(parsedUri).build()
-
-        val navOptions = navOptions {
-            popUpTo(R.id.forgotPasswordFragment) { inclusive = true }
-        }
-
-        findNavController().navigate(request, navOptions)
     }
 }

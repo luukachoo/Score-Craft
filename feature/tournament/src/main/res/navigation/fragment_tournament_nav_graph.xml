@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_tournament_nav_graph"
+    app:startDestination="@id/tournamentFragment">
+
+    <fragment
+        android:id="@+id/tournamentFragment"
+        android:name="com.example.tournament.screen.TournamentFragment"
+        android:label="fragment_tournament"
+        tools:layout="@layout/fragment_tournament">
+
+        <deepLink app:uri="market-mingle://feature.tournament/fragment_tournament" />
+
+    </fragment>
+</navigation>

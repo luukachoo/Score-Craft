@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feature_past_matches_nav_graph"
+    app:startDestination="@id/pastMatchesFragment">
+
+    <fragment
+        android:id="@+id/pastMatchesFragment"
+        android:name="com.feature.past_matches.screen.PastMatchesFragment"
+        android:label="fragment_past_matches"
+        tools:layout="@layout/fragment_past_matches" />
+</navigation>

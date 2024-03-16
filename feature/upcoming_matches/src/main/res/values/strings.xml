@@ -1,0 +1,10 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test_name">SUMMER 2022 PLAYOFFS ROUND 3</string>
+    <string name="test_date">02/09</string>
+    <string name="test_time">17:00</string>
+    <string name="test_team_one">FNATIC</string>
+    <string name="minus">-</string>
+    <string name="zero">0</string>
+</resources>
