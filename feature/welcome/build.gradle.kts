@@ -1,12 +1,21 @@
+import dependency.basic
+import dependency.common
+import dependency.daggerHilt
+import dependency.lottie
+import dependency.navigationComponent
+import module.ModulePackages
+import plugin.MainGradlePlugin
+import plugin.Plugins
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.feature.welcome"
+    namespace = ModulePackages.FEATURE_WELCOME
 
     buildFeatures {
         viewBinding = true

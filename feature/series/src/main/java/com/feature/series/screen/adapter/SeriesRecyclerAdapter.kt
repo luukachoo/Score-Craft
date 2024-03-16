@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.core.common.extension.convertDate
 import com.feature.series.databinding.ItemSeriesBinding
 import com.feature.series.screen.model.Series
 
@@ -19,8 +20,8 @@ class SeriesRecyclerAdapter :
             model = currentList[adapterPosition]
 
             tvName.text = model.fullName
-            tvBeginDate.text = model.beginAt
-            tvEndDate.text = model.endAt
+            tvBeginDate.text = model.beginAt.convertDate()
+            tvEndDate.text = model.endAt?.convertDate()
             tvSeason.text = model.season
         }
     }

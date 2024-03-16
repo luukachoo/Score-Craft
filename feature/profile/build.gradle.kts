@@ -1,15 +1,25 @@
+import dependency.basic
+import dependency.common
+import dependency.coreUi
+import dependency.daggerHilt
+import dependency.domain
+import dependency.fireBaseAuth
+import dependency.glide
+import dependency.navigationComponent
+import module.ModulePackages
+import plugin.MainGradlePlugin
+import plugin.Plugins
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
-    kotlin("kapt")
-    id("com.google.gms.google-services")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.example.profile"
+    namespace = ModulePackages.FEATURE_PROFILE
 
     buildFeatures {
         viewBinding = true
@@ -27,8 +37,4 @@ dependencies {
     common()
     domain()
     coreUi()
-}
-
-kapt {
-    correctErrorTypes = true
 }

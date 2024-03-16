@@ -1,4 +1,8 @@
+package plugin
+
+import config.DefaultConfig
 import com.android.build.gradle.LibraryExtension
+import dependency.daggerHilt
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -12,20 +16,20 @@ class MainGradlePlugin : Plugin<Project> {
 
     private fun applyPlugins(project: Project) {
         project.apply {
-            plugin("android-library")
-            plugin("kotlin-android")
-            plugin("dagger.hilt.android.plugin")
-            plugin("kotlin-kapt")
+            plugin(Plugins.PLUGIN_ANDROID_LIBRARY)
+            plugin(Plugins.PLUGIN_KOTLIN_ANDROID)
+            plugin(Plugins.DAGGER_HILT)
+            plugin(Plugins.KOTLIN_KAPT)
         }
     }
 
     private fun setProjectConfig(project: Project) {
         project.android().apply {
-            compileSdk = ProjectConfig.compileSdk
+            compileSdk = DefaultConfig.COMPILE_SDK
 
             defaultConfig {
-                minSdk = ProjectConfig.minSdk
-                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                minSdk = DefaultConfig.MIN_SDK
+                testInstrumentationRunner = DefaultConfig.ANDROID_JUNIT_TEST_RUNNER
             }
 
             compileOptions {

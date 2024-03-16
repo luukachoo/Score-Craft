@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.core.common.extension.convertDate
+import com.core.common.extension.convertTime
 import com.core.common.extension.loadImagesWithGlide
 import com.feature.upcoming_matches.databinding.ItemUpcomingMatchBinding
 import com.feature.upcoming_matches.model.UpcomingMatch
@@ -19,8 +21,8 @@ class UpcomingMatchesRecyclerAdapter :
             upcomingMatch?.let {
                 with(binding) {
                     tvName.text = it.name
-                    tvDate.text = it.beginAt?.dropLast(10)
-                    tvTime.text = it.beginAt?.drop(11)?.dropLast(4)
+                    tvDate.text = it.beginAt?.convertDate()
+                    tvTime.text = it.beginAt?.convertTime()
 
                     ivTeamOneLogo.loadImagesWithGlide(it.opponents.firstOrNull()?.opponent?.imageUrl)
                     tvTeamOneName.text = it.opponents.firstOrNull()?.opponent?.name

@@ -5,4 +5,9 @@
     <string name="flostii">Flostii</string>
     <string name="log_out">Log Out</string>
     <string name="back">back</string>
+    <string name="feature_profile_permission_title">Permission Required</string>
+    <string name="feature_profile_message">This feature requires camera and media access to function. Please enable permissions in app settings.</string>
+    <string name="feature_profile_dialog_positive_button">App Settings</string>
+    <string name="feature_profile_dialog_negative_button">Cancel</string>
+    <string name="feature_profile_permission_required_message">Permissions required for this feature</string>
 </resources>

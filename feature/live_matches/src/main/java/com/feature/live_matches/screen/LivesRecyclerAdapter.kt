@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.core.common.R
+import com.core.common.extension.convertDate
 import com.core.common.extension.loadImagesWithGlide
 import com.feature.live_matches.databinding.ItemLiveBinding
 import com.feature.live_matches.extension.checkForPreview
@@ -23,7 +24,7 @@ class LivesRecyclerAdapter :
                 match.streamsList.checkForPreview(),
                 placeHolder = R.drawable.img_stream_error
             )
-            tvLeague.text = match.beginAt.dropLast(10)
+            tvLeague.text = match.beginAt.convertDate()
             tvTitle.text = match.name
 
             if (match.status == "running") {

@@ -33,6 +33,4 @@ class CustomFloatingButton : FloatingActionButton {
         // Set icon
         setImageResource(R.drawable.ic_back_btn)
     }
-
-
 }

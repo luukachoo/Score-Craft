@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.core.common.R
 import com.core.common.extension.bold
+import com.core.common.extension.convertDate
+import com.core.common.extension.convertTime
 import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.normal
 import com.feature.past_matches.databinding.ItemPastMatchBinding
@@ -22,8 +24,8 @@ class PastMatchesRecyclerAdapter :
             val winnerName = pastMatch.winner?.name
 
             tvName.text = pastMatch.name
-            tvDate.text = pastMatch.beginAt?.dropLast(10)
-            tvTime.text = pastMatch.beginAt?.drop(11)?.dropLast(4)
+            tvDate.text = pastMatch.beginAt?.convertDate()
+            tvTime.text = pastMatch.beginAt?.convertTime()
             tvVideoGameTitle.text = pastMatch.videoGame.name
 
             tvTeamOneName.text = pastMatch.opponents.firstOrNull()?.opponent?.name

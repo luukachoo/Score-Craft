@@ -1,13 +1,24 @@
+import dependency.basic
+import dependency.common
+import dependency.coreUi
+import dependency.daggerHilt
+import dependency.domain
+import dependency.fireBaseAuth
+import dependency.navigationComponent
+import module.ModulePackages
+import plugin.MainGradlePlugin
+import plugin.Plugins
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.example.registration"
+    namespace = ModulePackages.FEATURE_REGISTRATION
 
     buildFeatures {
         viewBinding = true

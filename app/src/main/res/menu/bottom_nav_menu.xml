@@ -6,7 +6,7 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/feature_live_matches_nav_graph"
+        android:id="@+id/feature_match_nav_graph"
         android:icon="@drawable/ic_video"
         android:title="@string/live" />
 

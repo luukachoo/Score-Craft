@@ -22,6 +22,7 @@ import com.core.common.base.BaseFragment
 import com.core.common.extension.DeepLinkDestination
 import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
+import com.example.profile.R
 import com.example.profile.databinding.FragmentProfileBinding
 import com.example.profile.event.ProfileEvent
 import com.example.profile.extension.loadImageWithUri
@@ -79,13 +80,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         when (event) {
             ProfileFragmentViewModel.ProfileUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(
                 DeepLinkDestination.Home,
-                true
+                popUpTo = true
             )
 
-            ProfileFragmentViewModel.ProfileUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(
-                DeepLinkDestination.Welcome,
-                true
-            )
+            ProfileFragmentViewModel.ProfileUiEvent.NavigateToWelcome -> {
+                findNavController().deepLinkNavigateTo(
+                    DeepLinkDestination.Welcome,
+                    popUpTo = true
+                )
+            }
         }
     }
 
@@ -163,15 +166,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private fun showRationaleDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Permission Required")
-            .setMessage("This feature requires camera and media access to function. Please enable permissions in app settings.")
-            .setPositiveButton("App Settings") { _, _ ->
+            .setTitle(getString(R.string.feature_profile_permission_title))
+            .setMessage(getString(R.string.feature_profile_message))
+            .setPositiveButton(getString(R.string.feature_profile_dialog_positive_button)) { _, _ ->
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                 val uri = Uri.fromParts("package", requireActivity().packageName, null)
                 intent.data = uri
                 startActivity(intent)
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(R.string.feature_profile_dialog_negative_button, null)
             .show()
     }
 
@@ -185,7 +188,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                 if (allPermissionsGranted) {
                     showImageBottomSheet()
                 } else {
-                    binding.root.showSnackBar("Permissions required for this feature")
+                    binding.root.showSnackBar(getString(R.string.feature_profile_permission_required_message))
                 }
             }
     }

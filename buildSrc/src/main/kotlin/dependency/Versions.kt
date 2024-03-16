@@ -1,0 +1,27 @@
+package dependency
+
+object Versions {
+    const val KOTLIN = "1.9.22"
+    const val CORE_KTX = "1.12.0"
+    const val JUNIT = "4.13.2"
+    const val ANDROIDX_TEST_EXT_JUNIT = "1.1.5"
+    const val ESPRESSO_CORE = "3.5.1"
+    const val APPCOMPAT = "1.6.1"
+    const val MATERIAL = "1.11.0"
+    const val CONSTRAINTLAYOUT = "2.1.4"
+    const val ROOM_VERSION = "2.6.1"
+    const val RETROFIT_VERSION = "2.9.0"
+    const val MOSHI_VERSION = "1.15.1"
+    const val OKHTTP_VERSION = "4.12.0"
+    const val HILT_VERSION = "2.50"
+    const val FIREBASE_AUTH_VERSION = "22.3.1"
+    const val FIREBASE_DATABASE_VERSION = "20.3.0"
+    const val GLIDE_VERSION = "4.16.0"
+    const val NAVIGATION_VERSION = "2.7.7"
+    const val WORK_MANAGER_VERSION = "2.9.0"
+    const val GMS_VERSION = "4.4.1"
+    const val LOTTIE_VERSION = "6.4.0"
+    const val GMS_PLAY_SERVICES_VERSION = "21.0.0"
+    const val GRADLE = "8.2.2"
+    const val JAVAPOET_VERSION = "1.13.0"
+}

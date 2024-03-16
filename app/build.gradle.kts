@@ -1,22 +1,51 @@
+import config.BuildType
+import config.DefaultConfig
+import config.Release
+import dependency.basic
+import dependency.common
+import dependency.coreUi
+import dependency.daggerHilt
+import dependency.data
+import dependency.domain
+import dependency.featureForgotPassword
+import dependency.featureHome
+import dependency.featureImageBottomSheet
+import dependency.featureLiveMatchDetails
+import dependency.featureLiveMatches
+import dependency.featureLogin
+import dependency.featureMatches
+import dependency.featureProfile
+import dependency.featureRegister
+import dependency.featureSeries
+import dependency.featureSplashScreen
+import dependency.featureTournament
+import dependency.featureWelcome
+import dependency.fireBaseAuth
+import dependency.firebaseDataBase
+import dependency.navigationComponent
+import dependency.retrofit
+import module.ModulePackages
+import plugin.Plugins
+
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
-    id("com.google.gms.google-services")
+    id(Plugins.ANDROID_APPLICATION)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.DAGGER_HILT)
+    id(Plugins.GMS_SERVICES)
+    kotlin(Plugins.KAPT)
 }
 
 android {
-    namespace = "com.example.marketmingle"
-    compileSdk = ProjectConfig.compileSdk
+    namespace = ModulePackages.APP
+    compileSdk = DefaultConfig.COMPILE_SDK
 
     defaultConfig {
-        applicationId = ProjectConfig.appId
-        minSdk = ProjectConfig.minSdk
-        targetSdk = ProjectConfig.targetSdk
-        versionCode = ProjectConfig.versionCode
-        versionName = ProjectConfig.versionName
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = ModulePackages.APP
+        minSdk = DefaultConfig.MIN_SDK
+        targetSdk = DefaultConfig.TARGET_SDK
+        versionCode = Release.VERSION_CODE
+        versionName = Release.VERSION_NAME
+        testInstrumentationRunner = DefaultConfig.ANDROID_JUNIT_TEST_RUNNER
     }
 
     buildFeatures {
@@ -26,15 +55,15 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://api.pandascore.co/\"")
+            buildConfigField(BuildType.TYPE, BuildType.NAME, BuildType.URL)
         }
 
         release {
-            buildConfigField("String", "BASE_URL", "\"https://api.pandascore.co/\"")
+            buildConfigField(BuildType.TYPE, BuildType.NAME, BuildType.URL)
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile(BuildType.PROGUARD),
+                BuildType.PROGUARD_RULES
             )
         }
     }
@@ -43,7 +72,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_18
     }
     kotlinOptions {
-        jvmTarget = "18"
+        jvmTarget = DefaultConfig.JVM_TARGET
     }
 }
 
@@ -69,16 +98,14 @@ dependencies {
     featureSeries()
     featureLiveMatches()
     featureLiveMatchDetails()
-    featureUpcomingMatches()
-    featurePastMatches()
     featureForgotPassword()
     featureProfile()
     featureImageBottomSheet()
     featureSplashScreen()
     featureSeries()
     featureLiveMatchDetails()
-    featureLiveMatches()
     featureTournament()
+    featureMatches()
 }
 
 kapt {

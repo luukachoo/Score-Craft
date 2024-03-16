@@ -1,6 +1,14 @@
+import dependency.basic
+import dependency.common
+import dependency.domain
+import dependency.glide
+import dependency.navigationComponent
+import plugin.MainGradlePlugin
+import plugin.Plugins
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
 }
 
 apply<MainGradlePlugin>()

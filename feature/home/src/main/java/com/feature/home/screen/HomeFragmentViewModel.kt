@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
 import com.core.domain.use_case.auth.GetAuthUseCase
-import com.core.domain.use_case.favourite_leagues.GetFavouriteLeaguesUseCase
 import com.core.domain.use_case.leagues.GetLeaguesUseCase
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
@@ -45,7 +44,6 @@ class HomeFragmentViewModel @Inject constructor(
     fun onEvent(event: HomeFragmentEvent) {
         viewModelScope.launch {
             when (event) {
-                HomeFragmentEvent.EditTextClick -> updateNavigationEvent(HomeNavigationEvents.NavigateToSearch)
                 HomeFragmentEvent.FetchCategories -> fetchLeagues()
                 HomeFragmentEvent.FetchProducts -> Unit
                 is HomeFragmentEvent.ItemClick -> updateNavigationEvent(
@@ -53,7 +51,6 @@ class HomeFragmentViewModel @Inject constructor(
                         event.id
                     )
                 )
-
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
                 HomeFragmentEvent.GetCurrentUser -> getCurrentUser()
                 is HomeFragmentEvent.FetchUserProfileImage -> fetchUserProfileImage(event.userId)

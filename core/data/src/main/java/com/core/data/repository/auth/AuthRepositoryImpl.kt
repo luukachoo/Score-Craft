@@ -158,7 +158,8 @@ class AuthRepositoryImpl @Inject constructor(
 
             if (friendId != null) {
                 // Friend found, add to the user's friend list
-                val userFriendsRef = FirebaseDatabase.getInstance().getReference("UserFriends").child(userId)
+                val userFriendsRef =
+                    FirebaseDatabase.getInstance().getReference("UserFriends").child(userId)
                 userFriendsRef.child(friendId).setValue(true).await()
                 emit(Resource.Success("Friend added successfully"))
             } else {

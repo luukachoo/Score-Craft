@@ -17,7 +17,7 @@ fun NavController.deepLinkNavigateTo(
 ) {
     val builder = NavOptions.Builder()
     if (popUpTo) {
-        builder.setPopUpTo(graph.startDestinationId, true)
+        builder.setPopUpTo(graph.id, false)
     }
 
     navigate(
@@ -41,18 +41,10 @@ sealed class DeepLinkDestination(val address: String) {
 
     data object Home : DeepLinkDestination("market-mingle://feature.home/fragment_home")
     data object Welcome : DeepLinkDestination("market-mingle://feature.welcome/fragment_welcome")
-    data object LoginWithoutArgument :
-        DeepLinkDestination("market-mingle://feature.login/fragment_login")
-
+    data object LoginWithoutArgument : DeepLinkDestination("market-mingle://feature.login/fragment_login")
     data object Register : DeepLinkDestination("market-mingle://feature.register/fragment_register")
-    data object ForgotPassword :
-        DeepLinkDestination("market-mingle://feature.forgot_password/fragment_forgot_password")
-
-    data object BottomSheet :
-        DeepLinkDestination("market-mingle://feature.image_bottom_sheet/fragment_image_bottom_sheet")
-
-    data object Tournament :
-        DeepLinkDestination("market-mingle://feature.tournament/fragment_tournament")
-
+    data object ForgotPassword : DeepLinkDestination("market-mingle://feature.forgot_password/fragment_forgot_password")
+    data object BottomSheet : DeepLinkDestination("market-mingle://feature.image_bottom_sheet/fragment_image_bottom_sheet")
+    data object Tournament : DeepLinkDestination("market-mingle://feature.tournament/fragment_tournament")
     data object Profile : DeepLinkDestination("market-mingle://feature.profile/fragment_profile")
 }

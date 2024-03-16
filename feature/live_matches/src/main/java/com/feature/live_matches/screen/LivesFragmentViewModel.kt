@@ -62,7 +62,6 @@ class LivesFragmentViewModel @Inject constructor(private val getMatchesUseCase: 
 
                 res.takeIfError { errorMessage ->
                     updateErrorMessage(errorMessage)
-                    d("ViewModelHttpError", errorMessage)
                 }
             }
         }
