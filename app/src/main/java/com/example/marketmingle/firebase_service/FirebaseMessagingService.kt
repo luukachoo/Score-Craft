@@ -1,6 +1,9 @@
 package com.example.marketmingle.firebase_service
 
 import android.util.Log
+import com.google.android.datatransport.runtime.logging.Logging.d
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -16,12 +19,24 @@ class FirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
         Log.d("FCM Token", "Refreshed token: $token")
-        sendRegistrationToServer(token)
+
+        updateTokenInDatabase(token)
     }
 
-    private fun sendRegistrationToServer(token: String) {
-        // Implement this method to send the token to your app server.
-        Log.d("FCM Token", "Send token to server: $token")
+    private fun updateTokenInDatabase(newToken: String) {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        userId?.let {
+            FirebaseDatabase.getInstance().getReference("Users")
+                .child(it)
+                .child("fcmToken")
+                .setValue(newToken)
+                .addOnSuccessListener {
+                    d("Token Update", "Success")
+                }
+                .addOnFailureListener {
+                    d("Token Update", "Failure")
+                }
+        }
     }
 }
 

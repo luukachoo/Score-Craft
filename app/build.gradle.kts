@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.PackagingOptions
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -25,11 +27,21 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://api.pandascore.co/\"")
+            buildConfigField("String", "BASE_PANDA_SCORE_URL", "\"https://api.pandascore.co/\"")
+            buildConfigField(
+                "String",
+                "BASE_PUSH_NOTIFICATION_URL",
+                "\"https://fcm.googleapis.com/fcm/send/\""
+            )
         }
 
         release {
-            buildConfigField("String", "BASE_URL", "\"https://api.pandascore.co/\"")
+            buildConfigField("String", "BASE_PANDA_SCORE_URL", "\"https://api.pandascore.co/\"")
+            buildConfigField(
+                "String",
+                "BASE_PUSH_NOTIFICATION_URL",
+                "\"https://fcm.googleapis.com/fcm/send/\""
+            )
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -37,6 +49,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_18
         targetCompatibility = JavaVersion.VERSION_18

@@ -58,6 +58,9 @@ object Dependencies {
 
     const val lottie =
         "com.airbnb.android:lottie:${Versions.lottieVersion}"
+
+    const val oauth2 =
+        "com.google.auth:google-auth-library-oauth2-http:${Versions.oauth2}"
 }
 
 fun DependencyHandler.basic() {
@@ -90,6 +93,10 @@ fun DependencyHandler.firebaseMessaging() {
     implementation(Dependencies.firebaseMessaging)
     implementation(Dependencies.firebaseAnalytics)
     implementation(platform(Dependencies.firebaseBom))
+}
+
+fun DependencyHandler.oauth2() {
+    implementation(Dependencies.oauth2)
 }
 
 fun DependencyHandler.room() {

@@ -21,7 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ChatFragmentViewModel @Inject constructor(
     private val friendsUseCase: FriendsUseCase,
-    private val getSendNotificationUseCase: GetSendNotificationUseCase
+    private val getSendNotificationUseCase: GetSendNotificationUseCase,
 ) : ViewModel() {
     private val _chatState = MutableStateFlow(ChatState())
     val chatState: StateFlow<ChatState> = _chatState.asStateFlow()
@@ -34,7 +34,8 @@ class ChatFragmentViewModel @Inject constructor(
             is ChatEvent.AddFriend -> addFriend(event.userName)
             ChatEvent.FetchFriends -> fetchFriends()
             ChatEvent.ResetErrorMessage -> updateErrorMessage(message = null)
-            is ChatEvent.SendFriendRequest -> sendFriendRequest(event.fcmToken)
+//            is ChatEvent.SendFriendRequest -> sendFriendRequest(event.fcmToken)
+            else -> {}
         }
     }
 
@@ -60,7 +61,6 @@ class ChatFragmentViewModel @Inject constructor(
                             )
                         }
                         getFCMTokenForUser(userName)
-                        fetchFriends()
                     }
                 }
             }

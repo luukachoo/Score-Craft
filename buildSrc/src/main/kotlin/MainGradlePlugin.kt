@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.Packaging
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
@@ -31,6 +32,12 @@ class MainGradlePlugin : Plugin<Project> {
             compileOptions {
                 sourceCompatibility = JavaVersion.VERSION_18
                 targetCompatibility = JavaVersion.VERSION_18
+            }
+
+            packaging {
+                resources {
+                    excludes += "META-INF/*"
+                }
             }
         }
 
