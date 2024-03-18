@@ -31,4 +31,8 @@ class MainActivity : AppCompatActivity() {
             request.launch(arrayOf(Manifest.permission.POST_NOTIFICATIONS))
         }
     }
+
+    private fun jibia() {
+        
+    }
 }

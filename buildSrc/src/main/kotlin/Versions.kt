@@ -26,4 +26,5 @@ object Versions {
     const val gmsVersion = "4.4.1"
     const val orgJetbrainsKotlinJvm = "1.9.22"
     const val lottieVersion = "6.4.0"
+    const val oauth2 = "1.23.0"
 }

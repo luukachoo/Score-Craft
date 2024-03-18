@@ -23,7 +23,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/alata"
-        android:text="@string/flostii"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
