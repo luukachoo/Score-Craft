@@ -24,7 +24,7 @@ class AddFriendsRepositoryImpl @Inject constructor(
     override suspend fun addFriend(userName: String): Flow<Resource<String>> = flow {
         emit(Resource.Loading(true))
         try {
-            val userId = firebaseAuth.currentUser?.uid
+            val currentUserId = firebaseAuth.currentUser?.uid
                 ?: throw IllegalStateException("User not logged in")
 
             val usersRef = FirebaseDatabase.getInstance().getReference("Users")
@@ -34,20 +34,72 @@ class AddFriendsRepositoryImpl @Inject constructor(
             if (snapshot.exists()) {
                 val friendId = snapshot.children.first().key
 
-                val userFriendsRef =
-                    FirebaseDatabase.getInstance().getReference("UserFriends").child(userId)
-                userFriendsRef.child(friendId!!).setValue(false).await()
+                if (friendId == currentUserId) {
+                    emit(Resource.Error("You cannot send a friend request to yourself"))
+                    return@flow
+                }
 
-                val friendUserFriendsRef =
-                    FirebaseDatabase.getInstance().getReference("UserFriends").child(friendId)
-                friendUserFriendsRef.child(userId).setValue(false).await()
+                // New reference for friend requests instead of direct user friends
+                val friendRequestsRef = FirebaseDatabase.getInstance().getReference("friendRequests")
 
-                emit(Resource.Success("Friend added successfully"))
+                // Create a new entry for the friend request
+                friendRequestsRef.child(friendId!!).child(currentUserId).setValue(true).await()
+
+                emit(Resource.Success("Friend request sent successfully"))
             } else {
                 emit(Resource.Error("User with username $userName not found"))
             }
         } catch (e: Exception) {
             emit(Resource.Error("Failed to add friend: ${e.message}"))
+        } finally {
+            emit(Resource.Loading(false))
+        }
+    }
+
+    override suspend fun acceptFriendRequest(friendId: String): Flow<Resource<Unit>> = flow {
+        emit(Resource.Loading(true))
+        try {
+            val userId = firebaseAuth.currentUser?.uid
+                ?: throw IllegalStateException("User not logged in")
+
+            // Correct path for removing the friend request
+            val friendRequestsRef = firebaseDatabase.getReference("friendRequests").child(userId).child(friendId)
+
+            // Remove the friend request entry
+            friendRequestsRef.removeValue().await()
+
+            // Update the UserFriends table to reflect the accepted friendship
+            val userFriendsRef = firebaseDatabase.getReference("UserFriends")
+            val userRef = userFriendsRef.child(userId).child(friendId)
+            val friendRef = userFriendsRef.child(friendId).child(userId)
+
+            val userTask = userRef.setValue(true)
+            val friendTask = friendRef.setValue(true)
+
+            userTask.await()
+            friendTask.await()
+
+            emit(Resource.Success(Unit))
+        } catch (e: Exception) {
+            emit(Resource.Error("Failed to accept friend request: ${e.message}"))
+        } finally {
+            emit(Resource.Loading(false))
+        }
+    }
+
+    override suspend fun rejectFriendRequest(friendId: String): Flow<Resource<Unit>> = flow {
+        emit(Resource.Loading(true))
+        try {
+            val userId = firebaseAuth.currentUser?.uid
+                ?: throw IllegalStateException("User not logged in")
+
+            val friendRequestsRef = firebaseDatabase.getReference("friendRequests").child(userId).child(friendId)
+
+            friendRequestsRef.removeValue().await()
+
+            emit(Resource.Success(Unit))
+        } catch (e: Exception) {
+            emit(Resource.Error("Failed to reject friend request: ${e.message}"))
         } finally {
             emit(Resource.Loading(false))
         }
@@ -76,22 +128,51 @@ class AddFriendsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun fetchFriends(): Flow<Resource<List<GetUsers>>> = callbackFlow {
-        val userId =
-            firebaseAuth.currentUser?.uid ?: throw IllegalStateException("User not logged in")
-        val userFriendsRef = firebaseDatabase.getReference("UserFriends").child(userId)
+        val currentUserId = firebaseAuth.currentUser?.uid ?: throw IllegalStateException("User not logged in")
+        val userFriendsRef = firebaseDatabase.getReference("UserFriends").child(currentUserId)
+
+        val friendsDetails = mutableMapOf<String, GetUsers>()
 
         val eventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val friendsDetails = mutableListOf<UserDto>()
                 dataSnapshot.children.forEach { child ->
-                    firebaseDatabase.getReference("Users").child(child.key!!).get()
-                        .addOnSuccessListener { userSnapshot ->
-                            val friendDto = userSnapshot.getValue(UserDto::class.java)
-                            friendDto?.let {
-                                friendsDetails.add(it)
-                                trySend(Resource.Success(friendsDetails.map { dto -> dto.toDomain() }))
-                            }
+                    val friendId = child.key!!
+                    val isFriend = child.getValue(Boolean::class.java) ?: false
+
+                    if (isFriend) {
+                        firebaseDatabase.getReference("UserFriends").child(friendId).child(currentUserId)
+                            .addValueEventListener(object : ValueEventListener {
+                                override fun onDataChange(friendSnapshot: DataSnapshot) {
+                                    val friendStatus = friendSnapshot.getValue(Boolean::class.java) ?: false
+                                    if (friendStatus) {
+                                        firebaseDatabase.getReference("Users").child(friendId).get().addOnSuccessListener { userSnapshot ->
+                                            val userDto = userSnapshot.getValue(UserDto::class.java)
+                                            userDto?.let { dto ->
+                                                synchronized(friendsDetails) {
+                                                    dto.userId = friendId
+                                                    friendsDetails[friendId] = dto.toDomain()
+                                                    trySend(Resource.Success(friendsDetails.values.toList()))
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        synchronized(friendsDetails) {
+                                            friendsDetails.remove(friendId)
+                                            trySend(Resource.Success(friendsDetails.values.toList()))
+                                        }
+                                    }
+                                }
+
+                                override fun onCancelled(databaseError: DatabaseError) {
+                                    // Handle potential cancellation here
+                                }
+                            })
+                    } else {
+                        synchronized(friendsDetails) {
+                            friendsDetails.remove(friendId)
+                            trySend(Resource.Success(friendsDetails.values.toList()))
                         }
+                    }
                 }
             }
 
@@ -102,5 +183,42 @@ class AddFriendsRepositoryImpl @Inject constructor(
 
         userFriendsRef.addValueEventListener(eventListener)
         awaitClose { userFriendsRef.removeEventListener(eventListener) }
+    }
+
+    override suspend fun fetchFriendRequests(): Flow<Resource<List<GetUsers>>> = callbackFlow {
+        val currentUserId = firebaseAuth.currentUser?.uid ?: throw IllegalStateException("User not logged in")
+        val friendRequestsRef = firebaseDatabase.getReference("friendRequests").child(currentUserId)
+
+        val friendRequestsDetails = mutableMapOf<String, GetUsers>()
+
+        val eventListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                synchronized(friendRequestsDetails) {
+                    friendRequestsDetails.clear()
+
+                    dataSnapshot.children.forEach { friendRequestSnapshot ->
+                        val senderId = friendRequestSnapshot.key!!
+                        if (friendRequestSnapshot.getValue(Boolean::class.java) == true) {
+                            firebaseDatabase.getReference("Users").child(senderId).get().addOnSuccessListener { userSnapshot ->
+                                val userDto = userSnapshot.getValue(UserDto::class.java)
+                                userDto?.let { dto ->
+                                    dto.userId = senderId
+                                    friendRequestsDetails[senderId] = dto.toDomain()
+                                    trySend(Resource.Success(friendRequestsDetails.values.toList()))
+                                }
+                            }
+                        }
+                    }
+                    trySend(Resource.Success(friendRequestsDetails.values.toList()))
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                trySend(Resource.Error("Failed to fetch friend requests: ${databaseError.message}"))
+            }
+        }
+
+        friendRequestsRef.addValueEventListener(eventListener)
+        awaitClose { friendRequestsRef.removeEventListener(eventListener) }
     }
 }

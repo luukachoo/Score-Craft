@@ -203,3 +203,7 @@ fun DependencyHandler.featureTournament() {
 fun DependencyHandler.featureChats() {
     implementation(project(":feature:chats"))
 }
+
+fun DependencyHandler.friendRequest() {
+    implementation(project(":feature:friend_request"))
+}
