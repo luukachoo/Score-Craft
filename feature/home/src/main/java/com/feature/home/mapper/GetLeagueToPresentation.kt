@@ -1,6 +1,6 @@
 package com.feature.home.mapper
 
-import com.core.domain.model.GetLeague
+import com.core.domain.model.league.GetLeague
 import com.feature.home.model.League
 
 fun GetLeague.toPresentationModel() = League(

@@ -1,32 +1,3 @@
-import config.BuildType
-import config.DefaultConfig
-import config.Release
-import dependency.basic
-import dependency.common
-import dependency.coreUi
-import dependency.daggerHilt
-import dependency.data
-import dependency.domain
-import dependency.featureForgotPassword
-import dependency.featureHome
-import dependency.featureImageBottomSheet
-import dependency.featureLiveMatchDetails
-import dependency.featureLiveMatches
-import dependency.featureLogin
-import dependency.featureMatches
-import dependency.featureProfile
-import dependency.featureRegister
-import dependency.featureSeries
-import dependency.featureSplashScreen
-import dependency.featureTournament
-import dependency.featureWelcome
-import dependency.fireBaseAuth
-import dependency.firebaseDataBase
-import dependency.navigationComponent
-import dependency.retrofit
-import module.ModulePackages
-import plugin.Plugins
-
 plugins {
     id(Plugins.ANDROID_APPLICATION)
     id(Plugins.KOTLIN_ANDROID)
@@ -88,7 +59,6 @@ dependencies {
     common()
     data()
     domain()
-    coreUi()
 
     // feature
     featureWelcome()
@@ -105,7 +75,6 @@ dependencies {
     featureSeries()
     featureLiveMatchDetails()
     featureTournament()
-    featureMatches()
 }
 
 kapt {

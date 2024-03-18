@@ -1,6 +1,18 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="now_streaming">Now Streaming:</string>
+    <string name="zero">0</string>
+    <string name="title">Title</string>
+    <string name="test">00/00/0000</string>
+    <string name="no_lives">No one is streaming now, come back later</string>
+    <string name="no_live_link">Live is not available</string>
+    <string name="test_name">SUMMER 2022 PLAYOFFS ROUND 3</string>
+    <string name="test_date">02/09</string>
+    <string name="test_time">17:00</string>
+    <string name="test_team_one">FNATIC</string>
+    <string name="minus">-</string>
+    <string name="league_of_legends">League of Legends</string>
     <string name="past">PAST</string>
     <string name="live">LIVE</string>
     <string name="upcoming">UPCOMING</string>

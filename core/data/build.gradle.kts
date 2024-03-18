@@ -1,15 +1,12 @@
-import dependency.basic
-import dependency.common
-import dependency.daggerHilt
-import dependency.domain
-import dependency.fireBaseAuth
-import dependency.firebaseDataBase
-import dependency.firebaseStorage
-import dependency.retrofit
-import dependency.workManager
-import module.ModulePackages
-import plugin.MainGradlePlugin
-import plugin.Plugins
+import basic
+import common
+import daggerHilt
+import domain
+import fireBaseAuth
+import firebaseDataBase
+import firebaseStorage
+import retrofit
+import workManager
 
 plugins {
     id(Plugins.ANDROID_LIBRARY)

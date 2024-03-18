@@ -1,20 +1,12 @@
-import dependency.basic
-import dependency.common
-import dependency.featureLiveMatches
-import dependency.featurePastMatches
-import dependency.featureUpcomingMatches
-import dependency.navigationComponent
-import plugin.MainGradlePlugin
-
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.feature.match"
+    namespace = ModulePackages.FEATURE_LIVE_MATCHES
 
     buildFeatures {
         viewBinding = true
@@ -24,12 +16,10 @@ android {
 dependencies {
     basic()
     navigationComponent()
-
-    // feature
-    featureLiveMatches()
-    featureUpcomingMatches()
-    featurePastMatches()
+    glide()
+    lottie()
 
     // core
+    domain()
     common()
 }

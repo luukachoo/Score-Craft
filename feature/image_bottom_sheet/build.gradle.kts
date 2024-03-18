@@ -1,13 +1,10 @@
-import dependency.basic
-import dependency.common
-import dependency.domain
-import dependency.fireBaseAuth
-import dependency.firebaseDataBase
-import dependency.glide
-import dependency.navigationComponent
-import module.ModulePackages
-import plugin.MainGradlePlugin
-import plugin.Plugins
+import basic
+import common
+import domain
+import fireBaseAuth
+import firebaseDataBase
+import glide
+import navigationComponent
 
 plugins {
     id(Plugins.ANDROID_LIBRARY)

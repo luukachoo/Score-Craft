@@ -1,12 +1,9 @@
-import dependency.basic
-import dependency.common
-import dependency.daggerHilt
-import dependency.domain
-import dependency.lottie
-import dependency.navigationComponent
-import module.ModulePackages
-import plugin.MainGradlePlugin
-import plugin.Plugins
+import basic
+import common
+import daggerHilt
+import domain
+import lottie
+import navigationComponent
 
 plugins {
     id(Plugins.ANDROID_LIBRARY)

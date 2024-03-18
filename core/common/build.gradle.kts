@@ -1,14 +1,11 @@
-import dependency.basic
-import dependency.fireBaseAuth
-import dependency.firebaseDataBase
-import dependency.firebaseStorage
-import dependency.glide
-import dependency.navigationComponent
-import dependency.retrofit
-import dependency.workManager
-import module.ModulePackages
-import plugin.MainGradlePlugin
-import plugin.Plugins
+import basic
+import fireBaseAuth
+import firebaseDataBase
+import firebaseStorage
+import glide
+import navigationComponent
+import retrofit
+import workManager
 
 plugins {
     id(Plugins.ANDROID_LIBRARY)

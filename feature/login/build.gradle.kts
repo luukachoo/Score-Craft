@@ -1,13 +1,10 @@
-import dependency.basic
-import dependency.common
-import dependency.daggerHilt
-import dependency.domain
-import dependency.fireBaseAuth
-import dependency.gmsPlayServices
-import dependency.navigationComponent
-import module.ModulePackages
-import plugin.MainGradlePlugin
-import plugin.Plugins
+import basic
+import common
+import daggerHilt
+import domain
+import fireBaseAuth
+import gmsPlayServices
+import navigationComponent
 
 plugins {
     id(Plugins.ANDROID_LIBRARY)

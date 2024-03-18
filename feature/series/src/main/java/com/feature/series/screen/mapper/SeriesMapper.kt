@@ -1,6 +1,6 @@
 package com.feature.series.screen.mapper
 
-import com.core.domain.model.GetSeries
+import com.core.domain.model.league.GetSeries
 import com.feature.series.screen.model.Series
 
 fun GetSeries.toPresenter() = Series(

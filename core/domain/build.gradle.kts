@@ -1,10 +1,7 @@
-import dependency.basic
-import dependency.common
-import dependency.daggerHilt
-import dependency.fireBaseAuth
-import module.ModulePackages
-import plugin.MainGradlePlugin
-import plugin.Plugins
+import basic
+import common
+import daggerHilt
+import fireBaseAuth
 
 plugins {
     id(Plugins.ANDROID_LIBRARY)

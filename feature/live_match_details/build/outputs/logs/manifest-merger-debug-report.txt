@@ -1,15 +1,11 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml:2:1-5:12
-INJECTED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml:2:1-5:12
+ADDED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml:2:1-3:12
+INJECTED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml:2:1-3:12
 	package
 		INJECTED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml:2:11-69
-application
-ADDED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml:4:5-62
-	android:theme
-		ADDED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml:4:18-59
 uses-sdk
 INJECTED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Luka\OneDrive\Documents\GitHub\Market-Mingle\feature\live_match_details\src\main\AndroidManifest.xml

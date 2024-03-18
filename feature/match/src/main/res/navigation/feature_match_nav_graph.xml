@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/matchFragment"
-        android:name="com.feature.match.MatchFragment"
+        android:name="com.feature.match.screen.matches.MatchFragment"
         android:label="fragment_match"
-        tools:layout="@layout/fragment_match" >
+        tools:layout="@layout/fragment_match">
         <deepLink app:uri="market-mingle://feature.profile/fragment_match" />
     </fragment>
 </navigation>
