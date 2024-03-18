@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.core.common.extension.convertDate
 import com.feature.series.databinding.ItemSeriesBinding
-import com.feature.series.screen.model.Series
+import com.feature.series.model.Series
 
 class SeriesRecyclerAdapter :
     ListAdapter<Series, SeriesRecyclerAdapter.SeriesViewHolder>(SeriesDiffCallBack()) {
+
+    private var onClick: ((Series) -> Unit)? = null
 
     inner class SeriesViewHolder(private val binding: ItemSeriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -23,6 +25,8 @@ class SeriesRecyclerAdapter :
             tvBeginDate.text = model.beginAt.convertDate()
             tvEndDate.text = model.endAt?.convertDate()
             tvSeason.text = model.season
+
+            root.setOnClickListener { onClick?.invoke(model) }
         }
     }
 
@@ -36,5 +40,9 @@ class SeriesRecyclerAdapter :
 
     override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
         holder.bind()
+    }
+
+    fun onClick(click: (Series) -> Unit) {
+        this.onClick = click
     }
 }

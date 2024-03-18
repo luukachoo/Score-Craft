@@ -1,12 +1,12 @@
-package com.feature.series.screen.screen
+package com.feature.series.screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
 import com.core.domain.use_case.series.GetSeriesUseCase
-import com.feature.series.screen.event.SeriesEvent
-import com.feature.series.screen.mapper.toPresenter
-import com.feature.series.screen.state.SeriesState
+import com.feature.series.event.SeriesEvent
+import com.feature.series.mapper.toPresenter
+import com.feature.series.state.SeriesState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,6 +33,7 @@ class SeriesViewModel @Inject constructor(
                 is SeriesEvent.FetchSeriesBySlug -> fetchSeriesBySlug(event.slug)
                 SeriesEvent.ResetErrorMessage -> updateErrorMessage(message = null)
                 SeriesEvent.NavigateToHome -> updateNavigationEvent(SeriesUiEvent.NavigateToHome)
+                is SeriesEvent.NavigateToTournaments -> updateNavigationEvent(SeriesUiEvent.NavigateToTournament(event.slug))
             }
         }
     }
@@ -73,6 +74,6 @@ class SeriesViewModel @Inject constructor(
 
     sealed interface SeriesUiEvent {
         data object NavigateToHome : SeriesUiEvent
-        data object NavigateToTournament : SeriesUiEvent
+        data class NavigateToTournament(val slug: String) : SeriesUiEvent
     }
 }

@@ -5,11 +5,13 @@ import com.core.data.repository.favorite_leagues.FavouriteLeaguesRepositoryImpl
 import com.core.data.repository.league.LeaguesRepositoryImpl
 import com.core.data.repository.match.MatchesRepositoryImpl
 import com.core.data.repository.series.SeriesRepositoryImpl
+import com.core.data.repository.tournament.TournamentRepositoryImpl
 import com.core.domain.repository.MatchesRepository
 import com.core.domain.repository.auth.AuthRepository
 import com.core.domain.repository.favourite_league.FavouriteLeagueRepository
 import com.core.domain.repository.league.LeagueRepository
 import com.core.domain.repository.series.SeriesRepository
+import com.core.domain.repository.tournament.TournamentRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -38,4 +40,8 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindFavouriteLeagueRepository(favouriteLeaguesRepositoryImpl: FavouriteLeaguesRepositoryImpl): FavouriteLeagueRepository
+
+    @Binds
+    @Singleton
+    fun bindTournamentRepository(tournamentRepositoryImpl: TournamentRepositoryImpl): TournamentRepository
 }

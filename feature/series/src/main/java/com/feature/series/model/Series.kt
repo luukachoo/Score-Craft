@@ -1,4 +1,4 @@
-package com.feature.series.screen.model
+package com.feature.series.model
 
 data class Series(
     val beginAt: String,

@@ -1,4 +1,4 @@
-package com.core.data.model.league
+package com.core.data.model.match.live
 
 import com.squareup.moshi.Json
 

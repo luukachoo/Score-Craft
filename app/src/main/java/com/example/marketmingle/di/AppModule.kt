@@ -4,6 +4,7 @@ import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.service.LeaguesService
 import com.core.data.service.MatchesService
 import com.core.data.service.SeriesService
+import com.core.data.service.TournamentsService
 import com.example.marketmingle.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -72,5 +73,11 @@ object AppModule {
     @Singleton
     fun provideMatchesService(retrofit: Retrofit): MatchesService {
         return retrofit.create(MatchesService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTournamentsService(retrofit: Retrofit): TournamentsService {
+        return retrofit.create(TournamentsService::class.java)
     }
 }

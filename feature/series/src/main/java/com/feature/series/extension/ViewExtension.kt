@@ -1,4 +1,4 @@
-package com.feature.series.screen.extension
+package com.feature.series.extension
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar

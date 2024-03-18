@@ -1,4 +1,4 @@
-package com.feature.series.screen.screen
+package com.feature.series.screen
 
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -7,11 +7,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.feature.series.databinding.FragmentSeriesBinding
+import com.feature.series.event.SeriesEvent
+import com.feature.series.extension.showSnackBar
 import com.feature.series.screen.adapter.SeriesRecyclerAdapter
-import com.feature.series.screen.event.SeriesEvent
-import com.feature.series.screen.extension.showSnackBar
-import com.feature.series.screen.state.SeriesState
+import com.feature.series.state.SeriesState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -55,6 +57,9 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
                 viewModel.onEvent(SeriesEvent.NavigateToHome)
             }
         }
+        adapter.onClick {
+            viewModel.onEvent(SeriesEvent.NavigateToTournaments(it.slug))
+        }
     }
 
     private fun handleSeriesState(seriesState: SeriesState) {
@@ -76,8 +81,9 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
     private fun handleNavigationEvents(event: SeriesViewModel.SeriesUiEvent) {
         when (event) {
             SeriesViewModel.SeriesUiEvent.NavigateToHome -> findNavController().popBackStack()
-
-            else -> {}
+            is SeriesViewModel.SeriesUiEvent.NavigateToTournament -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Tournament(event.slug)
+            )
         }
     }
 }

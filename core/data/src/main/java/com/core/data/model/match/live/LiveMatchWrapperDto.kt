@@ -1,6 +1,5 @@
 package com.core.data.model.match.live
 
-import com.core.data.model.league.StreamDto
 import com.squareup.moshi.Json
 
 data class LiveMatchWrapperDto(

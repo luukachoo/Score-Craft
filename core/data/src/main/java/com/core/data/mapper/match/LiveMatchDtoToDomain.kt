@@ -1,6 +1,6 @@
 package com.core.data.mapper.match
 
-import com.core.data.model.league.StreamDto
+import com.core.data.model.match.live.StreamDto
 import com.core.data.model.match.live.LiveMatchDetailsDto
 import com.core.data.model.match.live.LiveMatchWrapperDto
 import com.core.domain.model.match.live.GetStream

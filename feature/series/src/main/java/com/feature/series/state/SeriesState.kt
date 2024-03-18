@@ -1,6 +1,6 @@
-package com.feature.series.screen.state
+package com.feature.series.state
 
-import com.feature.series.screen.model.Series
+import com.feature.series.model.Series
 
 data class SeriesState(
     val series: List<Series>? = emptyList(),

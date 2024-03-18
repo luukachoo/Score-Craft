@@ -1,7 +1,7 @@
-package com.feature.series.screen.mapper
+package com.feature.series.mapper
 
 import com.core.domain.model.league.GetSeries
-import com.feature.series.screen.model.Series
+import com.feature.series.model.Series
 
 fun GetSeries.toPresenter() = Series(
     beginAt = beginAt,
