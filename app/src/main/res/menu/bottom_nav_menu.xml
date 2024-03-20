@@ -11,6 +11,11 @@
         android:title="@string/live" />
 
     <item
+        android:id="@+id/feature_chat_nav_graph"
+        android:icon="@drawable/ic_chats"
+        android:title="@string/social" />
+
+    <item
         android:id="@+id/feature_profile_nav_graph"
         android:icon="@drawable/ic_profile"
         android:title="@string/profile" />

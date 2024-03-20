@@ -27,12 +27,20 @@ android {
     buildTypes {
         debug {
             buildConfigField(BuildType.TYPE, BuildType.NAME_PANDA, BuildType.URL_PANDA)
-            buildConfigField(BuildType.TYPE, BuildType.NAME_NOTIFICATION, BuildType.URL_NOTIFICATIONS)
+            buildConfigField(
+                BuildType.TYPE,
+                BuildType.NAME_NOTIFICATION,
+                BuildType.URL_NOTIFICATIONS
+            )
         }
 
         release {
             buildConfigField(BuildType.TYPE, BuildType.NAME_PANDA, BuildType.URL_PANDA)
-            buildConfigField(BuildType.TYPE, BuildType.NAME_NOTIFICATION, BuildType.URL_NOTIFICATIONS)
+            buildConfigField(
+                BuildType.TYPE,
+                BuildType.NAME_NOTIFICATION,
+                BuildType.URL_NOTIFICATIONS
+            )
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile(BuildType.PROGUARD),

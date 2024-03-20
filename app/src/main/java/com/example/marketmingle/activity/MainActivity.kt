@@ -48,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                 com.example.registration.R.id.registerFragment -> bottomNavigationView.isVisible =
                     false
 
+                com.example.friend_request.R.id.friendRequestFragment -> bottomNavigationView.isVisible = false
+
+                com.example.message.R.id.messageFragment -> bottomNavigationView.isVisible = false
+
                 com.feature.welcome.R.id.welcomeFragment -> bottomNavigationView.isVisible = false
                 else -> bottomNavigationView.isVisible = true
             }
@@ -59,9 +63,5 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             request.launch(arrayOf(Manifest.permission.POST_NOTIFICATIONS))
         }
-    }
-
-    private fun jibia() {
-        
     }
 }
