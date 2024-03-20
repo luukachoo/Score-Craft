@@ -26,23 +26,13 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField(BuildType.TYPE, BuildType.NAME, BuildType.URL)
-            buildConfigField("String", "BASE_PANDA_SCORE_URL", "\"https://api.pandascore.co/\"")
-            buildConfigField(
-                "String",
-                "BASE_PUSH_NOTIFICATION_URL",
-                "\"https://fcm.googleapis.com/fcm/send/\""
-            )
+            buildConfigField(BuildType.TYPE, BuildType.NAME_PANDA, BuildType.URL_PANDA)
+            buildConfigField(BuildType.TYPE, BuildType.NAME_NOTIFICATION, BuildType.URL_NOTIFICATIONS)
         }
 
         release {
-            buildConfigField(BuildType.TYPE, BuildType.NAME, BuildType.URL)
-            buildConfigField("String", "BASE_PANDA_SCORE_URL", "\"https://api.pandascore.co/\"")
-            buildConfigField(
-                "String",
-                "BASE_PUSH_NOTIFICATION_URL",
-                "\"https://fcm.googleapis.com/fcm/send/\""
-            )
+            buildConfigField(BuildType.TYPE, BuildType.NAME_PANDA, BuildType.URL_PANDA)
+            buildConfigField(BuildType.TYPE, BuildType.NAME_NOTIFICATION, BuildType.URL_NOTIFICATIONS)
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile(BuildType.PROGUARD),

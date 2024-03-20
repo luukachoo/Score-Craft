@@ -9,6 +9,8 @@
     <include app:graph="@navigation/feature_profile_nav_graph" />
     <include app:graph="@navigation/feature_image_bottom_sheet_nav_graph" />
     <include app:graph="@navigation/feature_home_nav_graph" />
-    <include app:graph="@navigation/feature_match_nav_graph" />
     <include app:graph="@navigation/fragment_tournament_nav_graph" />
+    <include app:graph="@navigation/feature_chat_nav_graph" />
+    <include app:graph="@navigation/feature_friend_request_nav_graph" />
+    <include app:graph="@navigation/feature_match_nav_graph" />
 </navigation>

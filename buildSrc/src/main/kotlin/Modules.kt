@@ -13,6 +13,7 @@ object Modules {
     const val FEATURE_TOURNAMENT = ":feature:tournament"
     const val FEATURE_TOURNAMENT_DETAILS = ":feature:tournament_details"
     const val FEATURE_CHATS = ":feature:chats"
+    const val FEATURE_FRIEND_REQUEST = ":feature:friend_request"
 
     const val CORE_DATA = ":core:data"
     const val CORE_COMMON = ":core:common"

@@ -92,7 +92,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTournamentsService(retrofit: Retrofit): TournamentsService {
+    fun provideTournamentsService(@PandaScoreRetrofit retrofit: Retrofit): TournamentsService {
         return retrofit.create(TournamentsService::class.java)
     }
 

@@ -6,6 +6,5 @@
 
     <include app:graph="@navigation/nav_graph_auth" />
     <include app:graph="@navigation/nav_graph_logged_in" />
-    <include app:graph="@navigation/feature_chat_nav_graph" />
-    <include app:graph="@navigation/feature_friend_request_nav_graph" />
+
 </navigation>

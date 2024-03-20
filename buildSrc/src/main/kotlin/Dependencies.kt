@@ -51,11 +51,9 @@ object Dependencies {
     // Lottie
     const val LOTTIE = "com.airbnb.android:lottie:${Versions.LOTTIE_VERSION}"
 
-    const val lottie =
-        "com.airbnb.android:lottie:${Versions.lottieVersion}"
-
     const val oauth2 =
-        "com.google.auth:google-auth-library-oauth2-http:${Versions.oauth2}"
+        "com.google.auth:google-auth-library-oauth2-http:${Versions.OAUTH2}"
+    
     // Kotlin Gradle
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
 
@@ -203,5 +201,5 @@ fun DependencyHandler.featureChats() {
 }
 
 fun DependencyHandler.friendRequest() {
-    implementation(project(":feature:friend_request"))
+    implementation(project(Modules.FEATURE_FRIEND_REQUEST))
 }

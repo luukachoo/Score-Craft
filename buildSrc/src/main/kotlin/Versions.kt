@@ -25,5 +25,5 @@ object Versions {
     const val GMS_PLAY_SERVICES_VERSION = "21.0.0"
     const val GRADLE = "8.2.2"
     const val JAVAPOET_VERSION = "1.13.0"
-    const val oauth2 = "1.23.0"
+    const val OAUTH2 = "1.23.0"
 }
