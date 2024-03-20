@@ -39,10 +39,8 @@ class AddFriendsRepositoryImpl @Inject constructor(
                     return@flow
                 }
 
-                // New reference for friend requests instead of direct user friends
                 val friendRequestsRef = FirebaseDatabase.getInstance().getReference("friendRequests")
 
-                // Create a new entry for the friend request
                 friendRequestsRef.child(friendId!!).child(currentUserId).setValue(true).await()
 
                 emit(Resource.Success("Friend request sent successfully"))
@@ -62,13 +60,10 @@ class AddFriendsRepositoryImpl @Inject constructor(
             val userId = firebaseAuth.currentUser?.uid
                 ?: throw IllegalStateException("User not logged in")
 
-            // Correct path for removing the friend request
             val friendRequestsRef = firebaseDatabase.getReference("friendRequests").child(userId).child(friendId)
 
-            // Remove the friend request entry
             friendRequestsRef.removeValue().await()
 
-            // Update the UserFriends table to reflect the accepted friendship
             val userFriendsRef = firebaseDatabase.getReference("UserFriends")
             val userRef = userFriendsRef.child(userId).child(friendId)
             val friendRef = userFriendsRef.child(friendId).child(userId)
@@ -100,6 +95,24 @@ class AddFriendsRepositoryImpl @Inject constructor(
             emit(Resource.Success(Unit))
         } catch (e: Exception) {
             emit(Resource.Error("Failed to reject friend request: ${e.message}"))
+        } finally {
+            emit(Resource.Loading(false))
+        }
+    }
+
+    override suspend fun fetchFriendWithId(friendId: String): Flow<Resource<GetUsers>> = flow {
+        emit(Resource.Loading(true))
+        try {
+            val userSnapshot = firebaseDatabase.getReference("Users").child(friendId).get().await()
+            val userDto = userSnapshot.getValue(UserDto::class.java)
+            if (userDto != null) {
+                val friendDetails = userDto.toDomain()
+                emit(Resource.Success(friendDetails))
+            } else {
+                emit(Resource.Error("Friend not found"))
+            }
+        } catch (e: Exception) {
+            emit(Resource.Error("Failed to fetch friend details: ${e.message}"))
         } finally {
             emit(Resource.Loading(false))
         }

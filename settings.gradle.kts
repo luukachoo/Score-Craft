@@ -32,5 +32,7 @@ include(":feature:live_match_details")
 include(":feature:tournament")
 include(":feature:chats")
 include(":feature:friend_request")
+include(":feature:message")
+
 include(":feature:friend_request")
 include(":feature:chats")

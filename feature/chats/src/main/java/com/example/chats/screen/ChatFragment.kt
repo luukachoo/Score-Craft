@@ -5,7 +5,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.example.chats.adapters.ChatRecyclerAdapter
 import com.example.chats.databinding.FragmentChatBinding
 import com.example.chats.event.ChatEvent
@@ -23,13 +26,16 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
 
     override fun bind() {
         binding.apply {
-            adapter = ChatRecyclerAdapter()
+            adapter = ChatRecyclerAdapter { userId ->
+                handleUserClick(userId)
+            }
             chatRv.adapter = adapter
             chatRv.addItemDecoration(CustomDividerItemDecoration(requireContext()))
         }
 
         viewModel.onEvent(ChatEvent.FetchFriends)
     }
+
 
     override fun bindObserves() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -40,13 +46,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
             }
         }
 
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            repeatOnLifecycle(Lifecycle.State.STARTED) {
-//                viewModel.uiEvent.collect {
-//                    handleNavigationEvents(event = it)
-//                }
-//            }
-//        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiEvent.collect {
+                    handleNavigationEvents(event = it)
+                }
+            }
+        }
     }
 
     override fun bindViewActionListeners() {
@@ -79,11 +85,27 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         }
     }
 
-//    private fun handleNavigationEvents(event: SeriesViewModel.SeriesUiEvent) {
-//        when (event) {
-//            SeriesViewModel.SeriesUiEvent.NavigateToHome -> findNavController().popBackStack()
-//
-//            else -> {}
-//        }
-//    }
+    private fun handleUserClick(userId: String) {
+        findNavController().deepLinkNavigateTo(DeepLinkDestination.Message(userId), true)
+    }
+
+
+    private fun handleNavigationEvents(event: ChatFragmentViewModel.ChatUiEvent) {
+        when (event) {
+            ChatFragmentViewModel.ChatUiEvent.NavigateToFriendRequest -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.FriendRequest,
+                true
+            )
+
+            ChatFragmentViewModel.ChatUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Home,
+                true
+            )
+
+            is ChatFragmentViewModel.ChatUiEvent.NavigateToMessage -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Message(event.friendId),
+                true
+            )
+        }
+    }
 }

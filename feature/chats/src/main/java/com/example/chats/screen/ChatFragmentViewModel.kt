@@ -155,7 +155,8 @@ class ChatFragmentViewModel @Inject constructor(
     }
 
     sealed interface ChatUiEvent {
+        data class NavigateToMessage(val friendId: String) : ChatUiEvent
         data object NavigateToHome : ChatUiEvent
-        data object NavigateToWelcome : ChatUiEvent
+        data object NavigateToFriendRequest : ChatUiEvent
     }
 }

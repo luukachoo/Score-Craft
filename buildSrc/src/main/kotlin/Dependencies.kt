@@ -203,3 +203,7 @@ fun DependencyHandler.featureChats() {
 fun DependencyHandler.friendRequest() {
     implementation(project(Modules.FEATURE_FRIEND_REQUEST))
 }
+
+fun DependencyHandler.message() {
+    implementation(project(Modules.FEATURE_MESSAGE))
+}
