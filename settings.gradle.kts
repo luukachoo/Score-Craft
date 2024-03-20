@@ -30,3 +30,5 @@ include(":feature:image_bottom_sheet")
 include(":feature:splash_screen")
 include(":feature:live_match_details")
 include(":feature:tournament")
+include(":feature:chats")
+

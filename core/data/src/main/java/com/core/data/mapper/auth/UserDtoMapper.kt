@@ -10,5 +10,5 @@ fun UserDto.toDomain() = GetUsers(
     lastName = lastName,
     email = email,
     password = password,
-//    profileImageUri = profileImageUri
+    avatar = avatar
 )

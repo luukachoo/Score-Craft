@@ -94,44 +94,28 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     @SuppressLint("SetTextI18n")
     private fun handleRegisterState(state: ProfileState) = binding.apply {
-        progress.visibility =
-            if (state.isLoading) View.VISIBLE else View.GONE
+        progress.visibility = if (state.isLoading) View.VISIBLE else View.GONE
 
-        state.user?.let {
-            tvFullName.text = "${it.firstName} ${it.lastName}"
-            tvUserName.text = "@${it.userName}"
-        }
+        state.user?.let { user ->
+            tvFullName.text = "${user.firstName} ${user.lastName}"
+            tvUserName.text = "@${user.userName}"
 
-        val imageUriString = arguments?.getString("imageUri") ?: ""
+            val imageUriString = arguments?.getString("imageUri")
 
-        if (imageUriString.isNotEmpty() && !state.imageUploaded) {
-            val imageUri = imageUriString.toUri()
-            binding.ivAvatar.loadImageWithUri(imageUri)
-
-            state.user?.userId?.let { userId ->
-                viewModel.onEvent(
-                    ProfileEvent.UploadProfileImage(
-                        userId = userId,
-                        imageUri = imageUri
-                    )
-                )
+            if (!imageUriString.isNullOrEmpty()) {
+                if (!state.imageUploaded) {
+                    ivAvatar.loadImageWithUri(imageUriString.toUri())
+                    user.userId.let { userId ->
+                        viewModel.onEvent(ProfileEvent.UploadProfileImage(userId, imageUriString.toUri()))
+                    }
+                }
+            } else if (user.avatar.isNotEmpty()) {
+                ivAvatar.loadImagesWithGlide(user.avatar)
             }
         }
 
-        if (!state.imageFetched && !state.imageIsSet) {
-            state.user?.userId?.let { userId ->
-                viewModel.onEvent(ProfileEvent.FetchUserProfileImage(userId = userId))
-            }
-        }
-
-        if (!state.imageIsSet) {
-            state.imageUri?.let {
-                binding.ivAvatar.loadImagesWithGlide(it)
-            }
-        }
-
-        state.errorMessage?.let {
-            root.showSnackBar(message = it)
+        state.errorMessage?.let { message ->
+            root.showSnackBar(message)
             viewModel.onEvent(ProfileEvent.ResetErrorMessage)
         }
     }

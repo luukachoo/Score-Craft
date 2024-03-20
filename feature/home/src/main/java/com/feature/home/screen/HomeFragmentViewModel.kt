@@ -53,7 +53,6 @@ class HomeFragmentViewModel @Inject constructor(
                 )
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
                 HomeFragmentEvent.GetCurrentUser -> getCurrentUser()
-                is HomeFragmentEvent.FetchUserProfileImage -> fetchUserProfileImage(event.userId)
                 HomeFragmentEvent.LoadNextPage -> loadNextPage()
                 HomeFragmentEvent.LoadPreviousPage -> loadPreviousPage()
                 is HomeFragmentEvent.SaveFavouriteLeague -> saveFavouriteLeague(event.leagueSlug)
@@ -151,39 +150,6 @@ class HomeFragmentViewModel @Inject constructor(
                                 user = res.data.toPresenter(),
                                 isLoading = false,
                                 errorMessage = null
-                            )
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun fetchUserProfileImage(userId: String) {
-        viewModelScope.launch {
-            getAuthUseCase.getUserProfileImageUseCase(userId).collect { resource ->
-                when (resource) {
-                    is Resource.Error -> {
-                        _homeState.update { currentState ->
-                            currentState.copy(
-                                isLoading = false,
-                                imageFetched = true
-                            )
-                        }
-                    }
-
-                    is Resource.Loading -> {
-                        _homeState.update { currentState ->
-                            currentState.copy(isLoading = resource.loading)
-                        }
-                    }
-
-                    is Resource.Success -> {
-                        _homeState.update { currentState ->
-                            currentState.copy(
-                                imageUri = resource.data,
-                                isLoading = false,
-                                imageFetched = true
                             )
                         }
                     }

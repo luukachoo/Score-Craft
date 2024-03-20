@@ -30,6 +30,7 @@ dependencies {
     fireBaseAuth()
     firebaseDataBase()
     firebaseStorage()
+    firebaseMessaging()
     workManager()
     navigationComponent()
 }

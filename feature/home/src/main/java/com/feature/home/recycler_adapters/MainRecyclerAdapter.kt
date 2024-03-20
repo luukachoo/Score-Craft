@@ -53,7 +53,7 @@ class MainRecyclerAdapter(
 
                 tvUserName.text = spannableString
 
-                ivAvatar.loadImagesWithGlide(image)
+                ivAvatar.loadImagesWithGlide(user?.avatar)
 
                 nextBtn.setOnClickListener {
                     onNextPageClick?.invoke()

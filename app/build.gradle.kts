@@ -54,6 +54,7 @@ dependencies {
     retrofit()
     fireBaseAuth()
     firebaseDataBase()
+    firebaseMessaging()
 
     // core
     common()
@@ -75,6 +76,7 @@ dependencies {
     featureSeries()
     featureLiveMatchDetails()
     featureTournament()
+    featureChats()
 }
 
 kapt {
