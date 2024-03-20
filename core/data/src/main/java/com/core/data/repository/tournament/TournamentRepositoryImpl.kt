@@ -23,4 +23,12 @@ class TournamentRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun getTournamentDetails(slug: String): Flow<Resource<GetTournament>> {
+        return responseHandler.apiCall {
+            service.getTournamentDetails(slug = slug)
+        }.asResource {
+            it.toDomainModel()
+        }
+    }
 }

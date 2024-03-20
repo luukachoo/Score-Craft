@@ -1,21 +1,22 @@
 package com.core.data.model.league
 
-import com.core.data.model.match.MatchDto
 import com.squareup.moshi.Json
 
 data class TournamentDto(
     @Json(name = "slug")
     val slug: String,
     @Json(name = "prizepool")
-    val prizePool: String,
+    val prizePool: String?,
     @Json(name = "begin_at")
-    val beginAt: String,
+    val beginAt: String?,
     @Json(name = "matches")
-    val matches: List<MatchDto>,
+    val matches: List<TournamentMatchDto>,
     @Json(name = "teams")
     val teams: List<TeamDto>,
     @Json(name = "name")
     val name: String,
     @Json(name = "id")
-    val id: Int
+    val id: Int,
+    @Json(name = "league")
+    val league: LeagueDto
 )

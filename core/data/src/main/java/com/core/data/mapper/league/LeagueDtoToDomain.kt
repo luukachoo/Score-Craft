@@ -8,7 +8,7 @@ fun LeagueDto.toDomainModel() = GetLeague(
     imageUrl = imageUrl,
     modifiedAt = modifiedAt,
     name = name,
-    getSeriesList = seriesDtoList.map { it.toDomainModel() },
+    getSeriesList = seriesDtoList?.map { it.toDomainModel() } ?: emptyList(),
     slug = slug,
     url = url,
 )

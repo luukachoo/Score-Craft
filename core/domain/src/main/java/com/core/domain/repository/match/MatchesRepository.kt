@@ -1,10 +1,10 @@
-package com.core.domain.repository
+package com.core.domain.repository.match
 
 import com.core.common.resource.Resource
+import com.core.domain.model.match.GetMatch
+import com.core.domain.model.match.GetTeamWrapper
 import com.core.domain.model.match.live.GetLiveMatchDetails
 import com.core.domain.model.match.live.GetLiveMatchWrapper
-import com.core.domain.model.match.GetTeamWrapper
-import com.core.domain.model.match.GetMatch
 import kotlinx.coroutines.flow.Flow
 
 interface MatchesRepository {

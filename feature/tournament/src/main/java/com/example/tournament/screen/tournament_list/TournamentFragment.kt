@@ -1,16 +1,18 @@
-package com.example.tournament.screen
+package com.example.tournament.screen.tournament_list
 
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.core.common.extension.showSnackbar
-import com.example.tournament.databinding.FragmentTournamentBinding
-import com.example.tournament.event.TournamentEvent
-import com.example.tournament.screen.adapter.TournamentRecyclerAdapter
-import com.example.tournament.state.TournamentState
+import com.example.tournament.event.tournament_list.TournamentEvent
+import com.example.tournament.event.tournament_list.TournamentNavigationEvents
+import com.example.tournament.screen.tournament_list.adapter.TournamentRecyclerAdapter
+import com.example.tournament.state.tournament_list.TournamentState
+import com.feature.tournament_details.databinding.FragmentTournamentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -23,8 +25,8 @@ class TournamentFragment :
 
     override fun bind() {
         setUpRecycler()
-        val slugArg = arguments?.getString("slug") ?: ""
-        viewModel.onEvent(TournamentEvent.FetchTournaments(slugArg))
+        val slugArg = arguments?.getString("slug")
+        viewModel.onEvent(TournamentEvent.FetchTournaments(slugArg!!))
     }
 
     override fun bindViewActionListeners() {
@@ -38,6 +40,14 @@ class TournamentFragment :
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.viewState.collect {
                     handleTournamentState(it)
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.tournamentUiState.collect {
+                    handleNavigationEvents(it)
                 }
             }
         }
@@ -56,8 +66,17 @@ class TournamentFragment :
         }
     }
 
+    private fun handleNavigationEvents(event: TournamentNavigationEvents) {
+        when (event) {
+            is TournamentNavigationEvents.NavigateToDetails -> findNavController().navigate(
+                TournamentFragmentDirections.actionTournamentFragmentToTournamentDetailsFragment(
+                    event.slug
+                )
+            )
+        }
+    }
+
     private fun setUpRecycler() {
         binding.rvTournaments.adapter = adapter
-
     }
 }

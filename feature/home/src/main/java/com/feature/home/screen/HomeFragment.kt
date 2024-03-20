@@ -74,7 +74,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 user,
                 state.imageUri ?: "",
                 onLeagueItemClick = { league ->
-                    viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(league.slug))
+//                    viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(league.slug))
                     findNavController().deepLinkNavigateTo(
                         DeepLinkDestination.Series(league.slug)
                     )

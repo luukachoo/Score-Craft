@@ -41,7 +41,7 @@ class LivesFragment : BaseFragment<FragmentLivesBinding>(FragmentLivesBinding::i
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiEvent.collect {
-                    handleNavigationState(it)
+                    handleNavigationEvents(it)
                 }
             }
         }
@@ -75,10 +75,10 @@ class LivesFragment : BaseFragment<FragmentLivesBinding>(FragmentLivesBinding::i
         }
     }
 
-    private fun handleNavigationState(state: LiveFragmentUiEvent) {
-        when (state) {
+    private fun handleNavigationEvents(event: LiveFragmentUiEvent) {
+        when (event) {
             is LiveFragmentUiEvent.NavigateToDetails -> findNavController().deepLinkNavigateTo(
-                DeepLinkDestination.LiveMatchDetails(state.id)
+                DeepLinkDestination.LiveMatchDetails(event.id)
             )
         }
     }

@@ -5,6 +5,7 @@ object ModulePackages {
     const val FEATURE_LOGIN = "com.example.login"
     const val FEATURE_SPLASH_SCREEN = "com.example.splash_screen"
     const val FEATURE_TOURNAMENT = "com.example.tournament"
+    const val FEATURE_TOURNAMENT_DETAILS = "com.feature.tournament_details"
     const val FEATURE_WELCOME = "com.feature.welcome"
     const val FEATURE_SERIES = "com.feature.series"
     const val FEATURE_LIVE_MATCHES = "com.feature.live_matches"

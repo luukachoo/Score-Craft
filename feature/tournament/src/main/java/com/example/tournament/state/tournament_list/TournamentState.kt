@@ -1,4 +1,4 @@
-package com.example.tournament.state
+package com.example.tournament.state.tournament_list
 
 import com.example.tournament.model.Tournament
 

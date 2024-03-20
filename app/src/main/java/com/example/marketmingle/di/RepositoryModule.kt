@@ -6,7 +6,7 @@ import com.core.data.repository.league.LeaguesRepositoryImpl
 import com.core.data.repository.match.MatchesRepositoryImpl
 import com.core.data.repository.series.SeriesRepositoryImpl
 import com.core.data.repository.tournament.TournamentRepositoryImpl
-import com.core.domain.repository.MatchesRepository
+import com.core.domain.repository.match.MatchesRepository
 import com.core.domain.repository.auth.AuthRepository
 import com.core.domain.repository.favourite_league.FavouriteLeagueRepository
 import com.core.domain.repository.league.LeagueRepository

@@ -11,6 +11,7 @@ object Modules {
     const val FEATURE_LIVE_MATCH_DETAILS = ":feature:live_match_details"
     const val FEATURE_SERIES = ":feature:series"
     const val FEATURE_TOURNAMENT = ":feature:tournament"
+    const val FEATURE_TOURNAMENT_DETAILS = ":feature:tournament_details"
 
     const val CORE_DATA = ":core:data"
     const val CORE_COMMON = ":core:common"

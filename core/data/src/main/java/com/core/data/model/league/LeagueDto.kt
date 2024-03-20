@@ -12,7 +12,7 @@ data class LeagueDto(
     @Json(name = "name")
     val name: String,
     @Json(name = "series")
-    val seriesDtoList: List<SeriesDto>,
+    val seriesDtoList: List<SeriesDto>?,
     @Json(name = "slug")
     val slug: String,
     @Json(name = "url")

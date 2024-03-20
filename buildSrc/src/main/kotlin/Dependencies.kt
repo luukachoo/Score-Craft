@@ -164,6 +164,10 @@ fun DependencyHandler.featureTournament() {
     implementation(project(Modules.FEATURE_TOURNAMENT))
 }
 
+fun DependencyHandler.featureTournamentDetails() {
+    implementation(project(Modules.FEATURE_TOURNAMENT_DETAILS))
+}
+
 fun DependencyHandler.data() {
     implementation(project(Modules.CORE_DATA))
 }

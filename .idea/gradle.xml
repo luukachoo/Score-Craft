@@ -38,6 +38,7 @@
             <option value="$PROJECT_DIR$/feature/series" />
             <option value="$PROJECT_DIR$/feature/splash_screen" />
             <option value="$PROJECT_DIR$/feature/tournament" />
+            <option value="$PROJECT_DIR$/feature/tournament_details" />
             <option value="$PROJECT_DIR$/feature/welcome" />
           </set>
         </option>
