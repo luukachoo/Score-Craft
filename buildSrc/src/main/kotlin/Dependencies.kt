@@ -207,3 +207,7 @@ fun DependencyHandler.featureChats() {
 fun DependencyHandler.friendRequest() {
     implementation(project(":feature:friend_request"))
 }
+
+fun DependencyHandler.message() {
+    implementation(project(":feature:message"))
+}

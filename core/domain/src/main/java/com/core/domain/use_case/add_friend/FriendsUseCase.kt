@@ -8,5 +8,6 @@ data class FriendsUseCase @Inject constructor(
     val getFCMTokenUseCase: GetFCMTokenUseCase,
     val getAcceptFriendRequestUseCase: GetAcceptFriendRequestUseCase,
     val getRejectFriendRequestUseCase: GetRejectFriendRequestUseCase,
-    val getFetchFriendRequestsUseCase: GetFetchFriendRequestsUseCase
+    val getFetchFriendRequestsUseCase: GetFetchFriendRequestsUseCase,
+    val getFetchFriendWithId: GetFetchFriendWithId
 )

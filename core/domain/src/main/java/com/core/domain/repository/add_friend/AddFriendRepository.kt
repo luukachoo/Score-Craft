@@ -11,4 +11,5 @@ interface AddFriendRepository {
     suspend fun getFCMTokenForUser(userName: String) : Flow<Resource<String>>
     suspend fun acceptFriendRequest(friendId: String) : Flow<Resource<Unit>>
     suspend fun rejectFriendRequest(friendId: String) : Flow<Resource<Unit>>
+    suspend fun fetchFriendWithId(friendId: String) : Flow<Resource<GetUsers>>
 }

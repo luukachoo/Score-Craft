@@ -93,6 +93,7 @@ dependencies {
     featureTournament()
     featureChats()
     friendRequest()
+    message()
 }
 
 kapt {

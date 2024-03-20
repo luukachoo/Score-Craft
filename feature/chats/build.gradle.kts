@@ -19,6 +19,5 @@ dependencies {
     domain()
     glide()
     fireBaseAuth()
-    daggerHilt()
     navigationComponent()
 }
