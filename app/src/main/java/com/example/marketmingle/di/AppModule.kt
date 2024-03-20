@@ -7,6 +7,8 @@ import com.core.data.service.SeriesService
 import com.core.data.service.TournamentsService
 import com.core.data.service.send_notification.SendNotificationService
 import com.example.marketmingle.BuildConfig
+import com.example.marketmingle.helper.annotation.PandaScoreRetrofit
+import com.example.marketmingle.helper.annotation.PushNotificationRetrofit
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -42,11 +44,23 @@ object AppModule {
         return okHttpBuilder.build()
     }
 
-    @Singleton
     @Provides
+    @Singleton
+    @PandaScoreRetrofit
     fun provideRetrofitProduct(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BuildConfig.BASE_PANDA_SCORE_URL)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .client(okHttpClient)
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    @PushNotificationRetrofit
+    fun provideRetrofitPushNotification(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_PUSH_NOTIFICATION_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
             .build()
@@ -60,19 +74,19 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLeaguesService(retrofit: Retrofit): LeaguesService {
+    fun provideLeaguesService(@PandaScoreRetrofit retrofit: Retrofit): LeaguesService {
         return retrofit.create(LeaguesService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideSeriesService(retrofit: Retrofit): SeriesService {
+    fun provideSeriesService(@PandaScoreRetrofit retrofit: Retrofit): SeriesService {
         return retrofit.create(SeriesService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideMatchesService(retrofit: Retrofit): MatchesService {
+    fun provideMatchesService(@PandaScoreRetrofit retrofit: Retrofit): MatchesService {
         return retrofit.create(MatchesService::class.java)
     }
 
@@ -84,7 +98,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSendNotificationService(retrofit: Retrofit): SendNotificationService {
+    fun provideSendNotificationService(@PushNotificationRetrofit retrofit: Retrofit): SendNotificationService {
         return retrofit.create(SendNotificationService::class.java)
     }
 }

@@ -35,7 +35,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.chatState.collect {
-                    handleSeriesState(state = it)
+                    handleChatState(state = it)
                 }
             }
         }
@@ -59,7 +59,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         }
     }
 
-    private fun handleSeriesState(state: ChatState) {
+    private fun handleChatState(state: ChatState) {
         binding.apply {
             progress.visibility =
                 if (state.isLoading) View.VISIBLE else View.GONE
@@ -73,9 +73,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                 viewModel.onEvent(ChatEvent.ResetErrorMessage)
             }
 
-            state.fcmToken?.let {
-                viewModel.onEvent(ChatEvent.SendFriendRequest(it))
-            }
+//            state.fcmToken?.let {
+//                viewModel.onEvent(ChatEvent.SendFriendRequest(it))
+//            }
         }
     }
 

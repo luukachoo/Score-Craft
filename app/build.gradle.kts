@@ -27,10 +27,22 @@ android {
     buildTypes {
         debug {
             buildConfigField(BuildType.TYPE, BuildType.NAME, BuildType.URL)
+            buildConfigField("String", "BASE_PANDA_SCORE_URL", "\"https://api.pandascore.co/\"")
+            buildConfigField(
+                "String",
+                "BASE_PUSH_NOTIFICATION_URL",
+                "\"https://fcm.googleapis.com/fcm/send/\""
+            )
         }
 
         release {
             buildConfigField(BuildType.TYPE, BuildType.NAME, BuildType.URL)
+            buildConfigField("String", "BASE_PANDA_SCORE_URL", "\"https://api.pandascore.co/\"")
+            buildConfigField(
+                "String",
+                "BASE_PUSH_NOTIFICATION_URL",
+                "\"https://fcm.googleapis.com/fcm/send/\""
+            )
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile(BuildType.PROGUARD),
@@ -38,6 +50,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_18
         targetCompatibility = JavaVersion.VERSION_18
@@ -77,6 +90,7 @@ dependencies {
     featureLiveMatchDetails()
     featureTournament()
     featureChats()
+    friendRequest()
 }
 
 kapt {

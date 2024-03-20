@@ -51,6 +51,11 @@ object Dependencies {
     // Lottie
     const val LOTTIE = "com.airbnb.android:lottie:${Versions.LOTTIE_VERSION}"
 
+    const val lottie =
+        "com.airbnb.android:lottie:${Versions.lottieVersion}"
+
+    const val oauth2 =
+        "com.google.auth:google-auth-library-oauth2-http:${Versions.oauth2}"
     // Kotlin Gradle
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
 
@@ -90,6 +95,10 @@ fun DependencyHandler.firebaseMessaging() {
     implementation(Dependencies.FIREBASE_MESSAGING)
     implementation(Dependencies.FIREBASE_ANALYTICS)
     implementation(platform(Dependencies.FIREBASE_BOM))
+}
+
+fun DependencyHandler.oauth2() {
+    implementation(Dependencies.oauth2)
 }
 
 fun DependencyHandler.room() {
@@ -191,4 +200,8 @@ fun DependencyHandler.domain() {
 
 fun DependencyHandler.featureChats() {
     implementation(project(Modules.FEATURE_CHATS))
+}
+
+fun DependencyHandler.friendRequest() {
+    implementation(project(":feature:friend_request"))
 }
