@@ -12,6 +12,7 @@ object Modules {
     const val FEATURE_SERIES = ":feature:series"
     const val FEATURE_TOURNAMENT = ":feature:tournament"
     const val FEATURE_TOURNAMENT_DETAILS = ":feature:tournament_details"
+    const val FEATURE_CHATS = ":feature:chats"
 
     const val CORE_DATA = ":core:data"
     const val CORE_COMMON = ":core:common"

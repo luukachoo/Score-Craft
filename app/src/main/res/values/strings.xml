@@ -3,4 +3,6 @@
     <string name="home">Home</string>
     <string name="live">Live</string>
     <string name="profile">Profile</string>
+    <string name="channel_name">notif_channel</string>
+    <string name="channel_description">notif_description</string>
 </resources>

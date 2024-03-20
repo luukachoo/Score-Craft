@@ -54,6 +54,16 @@ class LivesFragment : BaseFragment<FragmentLivesBinding>(FragmentLivesBinding::i
     }
 
     private fun handleLiveState(state: LiveState) = with(binding) {
+
+        if (state.liveMatches?.isEmpty() == true) {
+            lottieNoLivesAnimation.visibility = View.VISIBLE
+            lottieNoLivesAnimation.isAnimating
+            tvNoLives.visibility = View.VISIBLE
+        } else {
+            tvNoLives.visibility = View.GONE
+            lottieNoLivesAnimation.visibility = View.GONE
+        }
+
         progressBar.isVisible = state.isLoading
 
         state.liveMatches?.let {
@@ -63,15 +73,6 @@ class LivesFragment : BaseFragment<FragmentLivesBinding>(FragmentLivesBinding::i
         state.errorMessage?.let {
             root.showSnackbar(message = it)
             viewModel.onEvent(LivesFragmentEvent.ResetErrorMessage)
-        }
-
-        if (state.liveMatches?.isEmpty() == true) {
-            lottieNoLivesAnimation.visibility = View.VISIBLE
-            lottieNoLivesAnimation.isAnimating
-            tvNoLives.visibility = View.VISIBLE
-        } else {
-            tvNoLives.visibility = View.GONE
-            lottieNoLivesAnimation.visibility = View.GONE
         }
     }
 

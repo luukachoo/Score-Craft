@@ -41,12 +41,9 @@ object Dependencies {
     const val GMS_PLAY_SERVICES = "com.google.android.gms:play-services-auth:${Versions.GMS_PLAY_SERVICES_VERSION}"
     const val FIREBASE_STORAGE = "com.google.firebase:firebase-storage-ktx:${Versions.FIREBASE_DATABASE_VERSION}"
     const val FIREBASE_DATABASE = "com.google.firebase:firebase-database:${Versions.FIREBASE_DATABASE_VERSION}"
-    const val firebaseMessaging =
-        "com.google.firebase:firebase-messaging:${Versions.firebaseMessaging}"
-    const val firebaseBom =
-        "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
-    const val firebaseAnalytics =
-        "com.google.firebase:firebase-analytics-ktx:${Versions.firebaseAnalytics}"
+    const val FIREBASE_MESSAGING = "com.google.firebase:firebase-messaging:${Versions.FIREBASE_MESSAGING}"
+    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versions.FIREBASE_BOM}"
+    const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx:${Versions.FIREBASE_ANALYTICS}"
 
     // WorkManager
     const val WORK_MANAGER = "androidx.work:work-runtime-ktx:${Versions.WORK_MANAGER_VERSION}"
@@ -90,9 +87,9 @@ fun DependencyHandler.firebaseStorage() {
 }
 
 fun DependencyHandler.firebaseMessaging() {
-    implementation(Dependencies.firebaseMessaging)
-    implementation(Dependencies.firebaseAnalytics)
-    implementation(platform(Dependencies.firebaseBom))
+    implementation(Dependencies.FIREBASE_MESSAGING)
+    implementation(Dependencies.FIREBASE_ANALYTICS)
+    implementation(platform(Dependencies.FIREBASE_BOM))
 }
 
 fun DependencyHandler.room() {
@@ -193,5 +190,5 @@ fun DependencyHandler.domain() {
 }
 
 fun DependencyHandler.featureChats() {
-    implementation(project(":feature:chats"))
+    implementation(project(Modules.FEATURE_CHATS))
 }

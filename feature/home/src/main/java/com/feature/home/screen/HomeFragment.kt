@@ -65,16 +65,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         progressBar.isVisible = state.isLoading
 
         state.user?.let { user ->
-            if (!state.imageFetched) {
-                viewModel.onEvent(HomeFragmentEvent.FetchUserProfileImage(user.userId))
-            }
-
             mainRecyclerAdapter = MainRecyclerAdapter(
                 state.leagues ?: emptyList(),
                 user,
                 state.imageUri ?: "",
                 onLeagueItemClick = { league ->
-//                    viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(league.slug))
                     findNavController().deepLinkNavigateTo(
                         DeepLinkDestination.Series(league.slug)
                     )

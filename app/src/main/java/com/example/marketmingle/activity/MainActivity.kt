@@ -3,7 +3,6 @@ package com.example.marketmingle.activity
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -11,10 +10,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.marketmingle.R
-import com.google.android.datatransport.runtime.logging.Logging
-import com.google.android.datatransport.runtime.logging.Logging.d
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 import com.example.marketmingle.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -58,7 +53,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         requestPermission()
-        setContentView(R.layout.activity_main)
     }
 
     private fun requestPermission() {
