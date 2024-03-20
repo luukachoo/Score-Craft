@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_logged_in"
+    app:startDestination="@id/feature_home_nav_graph">
+
+    <include app:graph="@navigation/feature_series_nav_graph" />
+    <include app:graph="@navigation/feature_live_match_details_nav_graph" />
+    <include app:graph="@navigation/feature_profile_nav_graph" />
+    <include app:graph="@navigation/feature_image_bottom_sheet_nav_graph" />
+    <include app:graph="@navigation/feature_home_nav_graph" />
+    <include app:graph="@navigation/fragment_tournament_nav_graph" />
+    <include app:graph="@navigation/feature_chat_nav_graph" />
+    <include app:graph="@navigation/feature_friend_request_nav_graph" />
+    <include app:graph="@navigation/feature_match_nav_graph" />
+</navigation>

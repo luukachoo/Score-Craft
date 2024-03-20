@@ -1,13 +1,21 @@
+import basic
+import common
+import daggerHilt
+import domain
+import fireBaseAuth
+import gmsPlayServices
+import navigationComponent
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.example.login"
+    namespace = ModulePackages.FEATURE_LOGIN
 
     buildFeatures {
         viewBinding = true
@@ -16,12 +24,12 @@ android {
 
 dependencies {
     basic()
-    common()
-    domain()
     fireBaseAuth()
     daggerHilt()
     navigationComponent()
-    implementation("com.google.android.gms:play-services-auth:20.2.0")
+    gmsPlayServices()
 
-
+    // core
+    common()
+    domain()
 }

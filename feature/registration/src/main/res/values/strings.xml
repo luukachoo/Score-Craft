@@ -10,4 +10,7 @@
     <string name="register">Register</string>
     <string name="or_register_with">Or Register with</string>
     <string name="already_have_an_account_login_now">Already have an account? <font color="#A45EE5"><B>Login Now</B></font></string>
+    <string name="fields_are_not_valid">Fields are not valid!</string>
+    <string name="passwords_do_not_match">Passwords do not match!</string>
+    <string name="back">Back</string>
 </resources>

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Market Mingle</string>
-    <string name="channel_name">channel1</string>
-    <string name="channel_description">some channel</string>
+    <string name="home">Home</string>
+    <string name="live">Live</string>
+    <string name="profile">Profile</string>
+    <string name="channel_name">notif_channel</string>
+    <string name="channel_description">notif_description</string>
 </resources>

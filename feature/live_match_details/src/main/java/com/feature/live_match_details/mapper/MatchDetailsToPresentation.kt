@@ -1,9 +1,9 @@
 package com.feature.live_match_details.mapper
 
-import com.core.domain.model.matches.live.GetMatchDetails
+import com.core.domain.model.match.live.GetLiveMatchDetails
 import com.feature.live_match_details.model.MatchDetails
 
-fun GetMatchDetails.toPresentationModel() = MatchDetails(
+fun GetLiveMatchDetails.toPresentationModel() = MatchDetails(
     slug = slug,
     status = status,
     originalScheduledAt = originalScheduledAt,
@@ -17,7 +17,7 @@ fun GetMatchDetails.toPresentationModel() = MatchDetails(
     results = results.map { it.toPresentationModel() }
 )
 
-fun GetMatchDetails.GetResult.toPresentationModel() = MatchDetails.Result(
+fun GetLiveMatchDetails.GetResult.toPresentationModel() = MatchDetails.Result(
     score = score,
     teamId = teamId
 )

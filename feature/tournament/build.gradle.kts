@@ -1,12 +1,13 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.SAFE_ARGS)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.example.tournament"
+    namespace = ModulePackages.FEATURE_TOURNAMENT_DETAILS
 
     buildFeatures {
         viewBinding = true

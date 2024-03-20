@@ -2,38 +2,37 @@ import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 fun DependencyHandler.implementation(dependency: String) {
-    add("implementation", dependency)
+    add(ConfigurationNames.IMPLEMENTATION, dependency)
 }
 
-// Extension function for implementing modules easily
 fun DependencyHandler.implementation(dependency: Dependency) {
-    add("implementation", dependency)
+    add(ConfigurationNames.IMPLEMENTATION, dependency)
 }
 
 fun DependencyHandler.api(dependency: Dependency) {
-    add("api", dependency)
+    add(ConfigurationNames.API, dependency)
 }
 
 fun DependencyHandler.test(dependency: String) {
-    add("test", dependency)
+    add(ConfigurationNames.TEST, dependency)
 }
 
 fun DependencyHandler.androidTest(dependency: String) {
-    add("androidTest", dependency)
+    add(ConfigurationNames.ANDROID_TEST, dependency)
 }
 
 fun DependencyHandler.testImplementation(dependency: String) {
-    add("testImplementation", dependency)
+    add(ConfigurationNames.TEST_IMPLEMENTATION, dependency)
 }
 
 fun DependencyHandler.androidTestImplementation(dependency: String) {
-    add("androidTestImplementation", dependency)
+    add(ConfigurationNames.ANDROID_TEST_IMPLEMENTATION, dependency)
 }
 
 fun DependencyHandler.kapt(dependency: String) {
-    add("kapt", dependency)
+    add(ConfigurationNames.KAPT, dependency)
 }
 
 fun DependencyHandler.ksp(dependency: String) {
-    add("ksp", dependency)
+    add(ConfigurationNames.KSP, dependency)
 }

@@ -1,6 +1,6 @@
 package com.feature.home.mapper
 
-import com.core.domain.model.GetSeries
+import com.core.domain.model.league.GetSeries
 import com.feature.home.model.Series
 
 fun GetSeries.toPresentationModel() = Series(

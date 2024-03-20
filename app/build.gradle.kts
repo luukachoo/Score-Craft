@@ -1,51 +1,42 @@
-import com.android.build.api.dsl.PackagingOptions
-
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
-    id("com.google.gms.google-services")
+    id(Plugins.ANDROID_APPLICATION)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.DAGGER_HILT)
+    id(Plugins.GMS_SERVICES)
+    kotlin(Plugins.KAPT)
 }
 
 android {
-    namespace = "com.example.marketmingle"
-    compileSdk = ProjectConfig.compileSdk
+    namespace = ModulePackages.APP
+    compileSdk = DefaultConfig.COMPILE_SDK
 
     defaultConfig {
-        applicationId = ProjectConfig.appId
-        minSdk = ProjectConfig.minSdk
-        targetSdk = ProjectConfig.targetSdk
-        versionCode = ProjectConfig.versionCode
-        versionName = ProjectConfig.versionName
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = ModulePackages.APP
+        minSdk = DefaultConfig.MIN_SDK
+        targetSdk = DefaultConfig.TARGET_SDK
+        versionCode = Release.VERSION_CODE
+        versionName = Release.VERSION_NAME
+        testInstrumentationRunner = DefaultConfig.ANDROID_JUNIT_TEST_RUNNER
     }
 
     buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_PANDA_SCORE_URL", "\"https://api.pandascore.co/\"")
-            buildConfigField(
-                "String",
-                "BASE_PUSH_NOTIFICATION_URL",
-                "\"https://fcm.googleapis.com/fcm/send/\""
-            )
+            buildConfigField(BuildType.TYPE, BuildType.NAME_PANDA, BuildType.URL_PANDA)
+            buildConfigField(BuildType.TYPE, BuildType.NAME_NOTIFICATION, BuildType.URL_NOTIFICATIONS)
         }
 
         release {
-            buildConfigField("String", "BASE_PANDA_SCORE_URL", "\"https://api.pandascore.co/\"")
-            buildConfigField(
-                "String",
-                "BASE_PUSH_NOTIFICATION_URL",
-                "\"https://fcm.googleapis.com/fcm/send/\""
-            )
+            buildConfigField(BuildType.TYPE, BuildType.NAME_PANDA, BuildType.URL_PANDA)
+            buildConfigField(BuildType.TYPE, BuildType.NAME_NOTIFICATION, BuildType.URL_NOTIFICATIONS)
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile(BuildType.PROGUARD),
+                BuildType.PROGUARD_RULES
             )
         }
     }
@@ -55,7 +46,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_18
     }
     kotlinOptions {
-        jvmTarget = "18"
+        jvmTarget = DefaultConfig.JVM_TARGET
     }
 }
 
@@ -81,15 +72,12 @@ dependencies {
     featureSeries()
     featureLiveMatches()
     featureLiveMatchDetails()
-    featureUpcomingMatches()
-    featurePastMatches()
     featureForgotPassword()
     featureProfile()
     featureImageBottomSheet()
     featureSplashScreen()
     featureSeries()
     featureLiveMatchDetails()
-    featureLiveMatches()
     featureTournament()
     featureChats()
     friendRequest()

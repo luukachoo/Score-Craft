@@ -1,12 +1,12 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.feature.series"
+    namespace = ModulePackages.FEATURE_SERIES
 
     buildFeatures {
         viewBinding = true

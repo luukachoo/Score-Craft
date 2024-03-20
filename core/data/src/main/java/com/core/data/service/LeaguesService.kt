@@ -1,6 +1,6 @@
 package com.core.data.service
 
-import com.core.data.model.LeagueDto
+import com.core.data.model.league.LeagueDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers

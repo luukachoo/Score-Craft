@@ -7,17 +7,17 @@ import com.core.data.repository.league.LeaguesRepositoryImpl
 import com.core.data.repository.match.MatchesRepositoryImpl
 import com.core.data.repository.send_notification.SendNotificationRepositoryImpl
 import com.core.data.repository.series.SeriesRepositoryImpl
-import com.core.domain.repository.MatchesRepository
+import com.core.data.repository.tournament.TournamentRepositoryImpl
 import com.core.domain.repository.add_friend.AddFriendRepository
 import com.core.domain.repository.auth.AuthRepository
 import com.core.domain.repository.favourite_league.FavouriteLeagueRepository
 import com.core.domain.repository.league.LeagueRepository
+import com.core.domain.repository.match.MatchesRepository
 import com.core.domain.repository.send_notification.SendNotificationRepository
 import com.core.domain.repository.series.SeriesRepository
-import com.google.firebase.messaging.FirebaseMessaging
+import com.core.domain.repository.tournament.TournamentRepository
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
@@ -52,4 +52,8 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindSendNotificationRepository(sendNotificationRepositoryImpl: SendNotificationRepositoryImpl): SendNotificationRepository
+
+    @Binds
+    @Singleton
+    fun bindTournamentRepository(tournamentRepositoryImpl: TournamentRepositoryImpl): TournamentRepository
 }

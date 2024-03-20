@@ -1,13 +1,13 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.example.forgot_password"
+    namespace = ModulePackages.FEATURE_FORGOT_PASSWORD
 
     buildFeatures {
         viewBinding = true
@@ -16,9 +16,11 @@ android {
 
 dependencies {
     basic()
-    common()
-    domain()
     fireBaseAuth()
     daggerHilt()
     navigationComponent()
+
+    // core
+    common()
+    domain()
 }

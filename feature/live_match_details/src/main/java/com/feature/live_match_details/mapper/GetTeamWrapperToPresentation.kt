@@ -1,6 +1,6 @@
 package com.feature.live_match_details.mapper
 
-import com.core.domain.model.matches.live.GetTeamWrapper
+import com.core.domain.model.match.GetTeamWrapper
 import com.feature.live_match_details.model.TeamWrapper
 
 fun GetTeamWrapper.toPresentationModel() =

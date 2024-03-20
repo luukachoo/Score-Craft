@@ -4,6 +4,7 @@ import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.service.LeaguesService
 import com.core.data.service.MatchesService
 import com.core.data.service.SeriesService
+import com.core.data.service.TournamentsService
 import com.core.data.service.send_notification.SendNotificationService
 import com.example.marketmingle.BuildConfig
 import com.example.marketmingle.helper.annotation.PandaScoreRetrofit
@@ -87,6 +88,12 @@ object AppModule {
     @Singleton
     fun provideMatchesService(@PandaScoreRetrofit retrofit: Retrofit): MatchesService {
         return retrofit.create(MatchesService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTournamentsService(@PandaScoreRetrofit retrofit: Retrofit): TournamentsService {
+        return retrofit.create(TournamentsService::class.java)
     }
 
     @Provides

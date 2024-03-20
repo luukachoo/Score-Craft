@@ -20,7 +20,10 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBind
             }
 
             loginBtn.setOnClickListener {
-                findNavController().deepLinkNavigateTo(DeepLinkDestination.LoginWithoutArgument, true)
+                findNavController().deepLinkNavigateTo(
+                    DeepLinkDestination.LoginWithoutArgument,
+                    true
+                )
             }
         }
     }

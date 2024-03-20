@@ -1,13 +1,21 @@
+import basic
+import common
+import domain
+import fireBaseAuth
+import firebaseDataBase
+import glide
+import navigationComponent
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.example.image_bottom_sheet"
+    namespace = ModulePackages.FEATURE_BOTTOM_SHEET
 
     buildFeatures {
         viewBinding = true
