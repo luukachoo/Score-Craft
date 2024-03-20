@@ -44,7 +44,6 @@ class HomeFragmentViewModel @Inject constructor(
     fun onEvent(event: HomeFragmentEvent) {
         viewModelScope.launch {
             when (event) {
-                HomeFragmentEvent.EditTextClick -> updateNavigationEvent(HomeNavigationEvents.NavigateToSearch)
                 HomeFragmentEvent.FetchCategories -> fetchLeagues()
                 HomeFragmentEvent.FetchProducts -> Unit
                 is HomeFragmentEvent.ItemClick -> updateNavigationEvent(
@@ -52,7 +51,6 @@ class HomeFragmentViewModel @Inject constructor(
                         event.id
                     )
                 )
-
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
                 HomeFragmentEvent.GetCurrentUser -> getCurrentUser()
                 HomeFragmentEvent.LoadNextPage -> loadNextPage()

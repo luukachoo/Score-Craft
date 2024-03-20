@@ -4,28 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".screen.ProfileFragment">
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/backBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        style="@style/Widget.Material3.FloatingActionButton.Surface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_back_btn"
-        android:scaleType="center"
+        android:contentDescription="@string/back"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_back_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/logOutBtn"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
+        style="@style/Widget.Material3.Button.IconButton.Outlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/rounded_back_btn"
         android:fontFamily="@font/alata"
         android:gravity="center"
         android:scaleType="center"
@@ -41,7 +41,6 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/urbanist"
         android:text="@string/profile"
-        android:textColor="@color/dark"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,12 +60,12 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFullName"
+        style="@style/TextAppearance.Material3.BodyMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/alata"
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/ivAvatar"
@@ -74,13 +73,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvUserName"
+        style="@style/TextAppearance.Material3.BodySmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/urbanist"
-        android:textColor="@color/dark_gray"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/ivAvatar"

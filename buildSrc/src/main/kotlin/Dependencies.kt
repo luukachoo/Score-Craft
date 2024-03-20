@@ -2,97 +2,97 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.project
 
 object Dependencies {
-    const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
-    const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-    const val material = "com.google.android.material:material:${Versions.material}"
-    const val constraintlayout =
-        "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
-    const val junit = "junit:junit:${Versions.junit}"
-    const val androidxTestExtJunit = "androidx.test.ext:junit:${Versions.androidxTestExtJunit}"
-    const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
+    const val APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
+    const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
+    const val CONSTRAINTLAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINTLAYOUT}"
+    const val JUNIT = "junit:junit:${Versions.JUNIT}"
+    const val ANDROIDX_TEST_JUNIT = "androidx.test.ext:junit:${Versions.ANDROIDX_TEST_EXT_JUNIT}"
+    const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
 
     // Retrofit and Moshi with OkHttp
-    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
-    const val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofitVersion}"
-    const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshiVersion}"
-    const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttpVersion}"
-    const val okhttpInterceptor =
-        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpVersion}"
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT_VERSION}"
+    const val MOSHI_CONVERTER = "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT_VERSION}"
+    const val MOSHI = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI_VERSION}"
+    const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP_VERSION}"
+    const val OKHTTP_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP_VERSION}"
 
     // Dagger - Hilt
-    const val daggerHilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
-    const val daggerHiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
-    const val daggerHiltAgp = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion}"
+    const val DAGGER_HILT = "com.google.dagger:hilt-android:${Versions.HILT_VERSION}"
+    const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT_VERSION}"
+    const val DAGGER_HILT_AGP = "com.google.dagger:hilt-android-gradle-plugin:${Versions.HILT_VERSION}"
 
     // Glide
-    const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+    const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE_VERSION}"
 
     // Room
-    const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
-    const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
-    const val roomCoroutine = "androidx.room:room-ktx:${Versions.roomVersion}"
+    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.ROOM_VERSION}"
+    const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.ROOM_VERSION}"
+    const val ROOM_COROUTINE = "androidx.room:room-ktx:${Versions.ROOM_VERSION}"
 
     // Navigation Component
-    const val navigationFragment =
-        "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
-    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
-    const val androidxNavigationSafeArgsGradlePlugin =
-        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationVersion}"
+    const val NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION_VERSION}"
+    const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION_VERSION}"
+    const val ANDROIDX_SAFE_ARGS_PLUGIN = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NAVIGATION_VERSION}"
 
     // Firebase
-    const val firebaseAgp = "com.google.gms:google-services:${Versions.gmsVersion}"
-    const val firebaseAuth = "com.google.firebase:firebase-auth:${Versions.firebaseAuthVersion}"
-    const val firebaseStorage =
-        "com.google.firebase:firebase-storage-ktx:${Versions.firebaseDatabaseVersion}"
-    const val firebaseDatabase =
-        "com.google.firebase:firebase-database:${Versions.firebaseDatabaseVersion}"
-    const val firebaseMessaging =
-        "com.google.firebase:firebase-messaging:${Versions.firebaseMessaging}"
-    const val firebaseBom =
-        "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
-    const val firebaseAnalytics =
-        "com.google.firebase:firebase-analytics-ktx:${Versions.firebaseAnalytics}"
+    const val FIREBASE_AGP = "com.google.gms:google-services:${Versions.GMS_VERSION}"
+    const val FIREBASE_AUTH = "com.google.firebase:firebase-auth:${Versions.FIREBASE_AUTH_VERSION}"
+    const val GMS_PLAY_SERVICES = "com.google.android.gms:play-services-auth:${Versions.GMS_PLAY_SERVICES_VERSION}"
+    const val FIREBASE_STORAGE = "com.google.firebase:firebase-storage-ktx:${Versions.FIREBASE_DATABASE_VERSION}"
+    const val FIREBASE_DATABASE = "com.google.firebase:firebase-database:${Versions.FIREBASE_DATABASE_VERSION}"
+    const val FIREBASE_MESSAGING = "com.google.firebase:firebase-messaging:${Versions.FIREBASE_MESSAGING}"
+    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versions.FIREBASE_BOM}"
+    const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx:${Versions.FIREBASE_ANALYTICS}"
 
     // WorkManager
-    const val workManager = "androidx.work:work-runtime-ktx:${Versions.workManagerVersion}"
+    const val WORK_MANAGER = "androidx.work:work-runtime-ktx:${Versions.WORK_MANAGER_VERSION}"
 
-    const val lottie =
-        "com.airbnb.android:lottie:${Versions.lottieVersion}"
+    // Lottie
+    const val LOTTIE = "com.airbnb.android:lottie:${Versions.LOTTIE_VERSION}"
 
     const val oauth2 =
-        "com.google.auth:google-auth-library-oauth2-http:${Versions.oauth2}"
+        "com.google.auth:google-auth-library-oauth2-http:${Versions.OAUTH2}"
+    
+    // Kotlin Gradle
+    const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
+
 }
 
 fun DependencyHandler.basic() {
-    implementation(Dependencies.coreKtx)
-    implementation(Dependencies.appcompat)
-    implementation(Dependencies.material)
-    implementation(Dependencies.constraintlayout)
-    testImplementation(Dependencies.junit)
-    androidTestImplementation(Dependencies.androidxTestExtJunit)
-    androidTestImplementation(Dependencies.espressoCore)
+    implementation(Dependencies.CORE_KTX)
+    implementation(Dependencies.APPCOMPAT)
+    implementation(Dependencies.MATERIAL)
+    implementation(Dependencies.CONSTRAINTLAYOUT)
+    testImplementation(Dependencies.JUNIT)
+    androidTestImplementation(Dependencies.ANDROIDX_TEST_JUNIT)
+    androidTestImplementation(Dependencies.ESPRESSO_CORE)
 }
 
 fun DependencyHandler.workManager() {
-    implementation(Dependencies.workManager)
+    implementation(Dependencies.WORK_MANAGER)
 }
 
 fun DependencyHandler.firebaseDataBase() {
-    implementation(Dependencies.firebaseDatabase)
+    implementation(Dependencies.FIREBASE_DATABASE)
 }
 
 fun DependencyHandler.fireBaseAuth() {
-    implementation(Dependencies.firebaseAuth)
+    implementation(Dependencies.FIREBASE_AUTH)
+}
+
+fun DependencyHandler.gmsPlayServices() {
+    implementation(Dependencies.GMS_PLAY_SERVICES)
 }
 
 fun DependencyHandler.firebaseStorage() {
-    implementation(Dependencies.firebaseStorage)
+    implementation(Dependencies.FIREBASE_STORAGE)
 }
 
 fun DependencyHandler.firebaseMessaging() {
-    implementation(Dependencies.firebaseMessaging)
-    implementation(Dependencies.firebaseAnalytics)
-    implementation(platform(Dependencies.firebaseBom))
+    implementation(Dependencies.FIREBASE_MESSAGING)
+    implementation(Dependencies.FIREBASE_ANALYTICS)
+    implementation(platform(Dependencies.FIREBASE_BOM))
 }
 
 fun DependencyHandler.oauth2() {
@@ -100,114 +100,106 @@ fun DependencyHandler.oauth2() {
 }
 
 fun DependencyHandler.room() {
-    implementation(Dependencies.roomRuntime)
-    implementation(Dependencies.roomCoroutine)
-    ksp(Dependencies.roomCompiler)
+    implementation(Dependencies.ROOM_RUNTIME)
+    implementation(Dependencies.ROOM_COROUTINE)
+    ksp(Dependencies.ROOM_COMPILER)
 }
 
 fun DependencyHandler.retrofit() {
-    implementation(Dependencies.retrofit)
-    implementation(Dependencies.moshiConverter)
-    implementation(Dependencies.moshi)
-    implementation(Dependencies.okhttp)
-    implementation(Dependencies.okhttpInterceptor)
+    implementation(Dependencies.RETROFIT)
+    implementation(Dependencies.MOSHI_CONVERTER)
+    implementation(Dependencies.MOSHI)
+    implementation(Dependencies.OKHTTP)
+    implementation(Dependencies.OKHTTP_INTERCEPTOR)
 }
 
 fun DependencyHandler.daggerHilt() {
-    implementation(Dependencies.daggerHilt)
-    kapt(Dependencies.daggerHiltCompiler)
+    implementation(Dependencies.DAGGER_HILT)
+    kapt(Dependencies.DAGGER_HILT_COMPILER)
 }
 
 fun DependencyHandler.navigationComponent() {
-    implementation(Dependencies.navigationFragment)
-    implementation(Dependencies.navigationUi)
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
+    implementation(Dependencies.NAVIGATION_UI)
 }
 
 fun DependencyHandler.lottie() {
-    implementation(Dependencies.lottie)
+    implementation(Dependencies.LOTTIE)
 }
 
 fun DependencyHandler.glide() {
-    implementation(Dependencies.glide)
+    implementation(Dependencies.GLIDE)
 }
 
 // example of how to implement modules
 fun DependencyHandler.featureWelcome() {
-    implementation(project(":feature:welcome"))
+    implementation(project(Modules.FEATURE_WELCOME))
 }
 
 fun DependencyHandler.featureLogin() {
-    implementation(project(":feature:login"))
+    implementation(project(Modules.FEATURE_LOGIN))
 }
 
 fun DependencyHandler.featureRegister() {
-    implementation(project(":feature:registration"))
+    implementation(project(Modules.FEATURE_REGISTER))
 }
 
 fun DependencyHandler.featureHome() {
-    implementation(project(":feature:home"))
+    implementation(project(Modules.FEATURE_HOME))
 }
 
 fun DependencyHandler.featureForgotPassword() {
-    implementation(project(":feature:forgot_password"))
+    implementation(project(Modules.FEATURE_FORGOT_PASSWORD))
 }
 
 fun DependencyHandler.featureProfile() {
-    implementation(project(":feature:profile"))
+    implementation(project(Modules.FEATURE_PROFILE))
 }
 
 fun DependencyHandler.featureImageBottomSheet() {
-    implementation(project(":feature:image_bottom_sheet"))
+    implementation(project(Modules.FEATURE_BOTTOM_SHEET))
 }
 
 fun DependencyHandler.featureSplashScreen() {
-    implementation(project(":feature:splash_screen"))
+    implementation(project(Modules.FEATURE_SPLASH))
 }
 
 fun DependencyHandler.featureLiveMatches() {
-    implementation(project(":feature:live_matches"))
-}
-
-fun DependencyHandler.featurePastMatches() {
-    implementation(project(":feature:past_matches"))
+    implementation(project(Modules.FEATURE_MATCH))
 }
 
 fun DependencyHandler.featureSeries() {
-    implementation(project(":feature:series"))
-}
-
-fun DependencyHandler.featureUpcomingMatches() {
-    implementation(project(":feature:upcoming_matches"))
+    implementation(project(Modules.FEATURE_SERIES))
 }
 
 fun DependencyHandler.featureLiveMatchDetails() {
-    implementation(project(":feature:live_match_details"))
-}
-
-fun DependencyHandler.data() {
-    implementation(project(":core:data"))
-}
-
-fun DependencyHandler.common() {
-    implementation(project(":core:common"))
-}
-
-fun DependencyHandler.domain() {
-    implementation(project(":core:domain"))
+    implementation(project(Modules.FEATURE_LIVE_MATCH_DETAILS))
 }
 
 fun DependencyHandler.featureTournament() {
-    implementation(project(":feature:tournament"))
+    implementation(project(Modules.FEATURE_TOURNAMENT))
+}
+
+fun DependencyHandler.featureTournamentDetails() {
+    implementation(project(Modules.FEATURE_TOURNAMENT_DETAILS))
+}
+
+fun DependencyHandler.data() {
+    implementation(project(Modules.CORE_DATA))
+}
+
+fun DependencyHandler.common() {
+    implementation(project(Modules.CORE_COMMON))
+}
+
+fun DependencyHandler.domain() {
+    implementation(project(Modules.CORE_DOMAIN))
 }
 
 fun DependencyHandler.featureChats() {
-    implementation(project(":feature:chats"))
+    implementation(project(Modules.FEATURE_CHATS))
 }
 
 fun DependencyHandler.friendRequest() {
-    implementation(project(":feature:friend_request"))
-}
-
-fun DependencyHandler.message() {
-    implementation(project(":feature:message"))
+    implementation(project(Modules.FEATURE_FRIEND_REQUEST))
 }

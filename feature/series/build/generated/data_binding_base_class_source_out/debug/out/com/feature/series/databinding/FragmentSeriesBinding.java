@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.feature.series.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -26,7 +26,7 @@ public final class FragmentSeriesBinding implements ViewBinding {
   public final AppCompatTextView appCompatTextView;
 
   @NonNull
-  public final AppCompatImageButton backBtn;
+  public final FloatingActionButton backBtn;
 
   @NonNull
   public final ProgressBar progress;
@@ -35,7 +35,7 @@ public final class FragmentSeriesBinding implements ViewBinding {
   public final RecyclerView rvSeries;
 
   private FragmentSeriesBinding(@NonNull ConstraintLayout rootView,
-      @NonNull AppCompatTextView appCompatTextView, @NonNull AppCompatImageButton backBtn,
+      @NonNull AppCompatTextView appCompatTextView, @NonNull FloatingActionButton backBtn,
       @NonNull ProgressBar progress, @NonNull RecyclerView rvSeries) {
     this.rootView = rootView;
     this.appCompatTextView = appCompatTextView;
@@ -78,7 +78,7 @@ public final class FragmentSeriesBinding implements ViewBinding {
       }
 
       id = R.id.backBtn;
-      AppCompatImageButton backBtn = ViewBindings.findChildViewById(rootView, id);
+      FloatingActionButton backBtn = ViewBindings.findChildViewById(rootView, id);
       if (backBtn == null) {
         break missingId;
       }

@@ -25,11 +25,11 @@ class LiveMatchRecyclerAdapter :
                 R.drawable.guest_player
             )
 
-            tvPlayerFirstUsername.text = players.firstTeamPlayer?.name
-            tvPlayerFirstNationality.text = players.firstTeamPlayer?.nationality
+            tvPlayerFirstUsername.text = players.firstTeamPlayer?.name ?: "No name"
+            tvPlayerFirstNationality.text = players.firstTeamPlayer?.nationality ?: "N/A"
 
-            tvPlayerSecondUsername.text = players.secondTeamPlayer?.name
-            tvPlayerSecondNationality.text = players.secondTeamPlayer?.nationality
+            tvPlayerSecondUsername.text = players.secondTeamPlayer?.name ?: "No name"
+            tvPlayerSecondNationality.text = players.secondTeamPlayer?.nationality ?: "N/A"
         }
     }
 

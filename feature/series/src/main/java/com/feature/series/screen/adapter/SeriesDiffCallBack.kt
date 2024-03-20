@@ -1,7 +1,7 @@
 package com.feature.series.screen.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.feature.series.screen.model.Series
+import com.feature.series.model.Series
 
 class SeriesDiffCallBack : DiffUtil.ItemCallback<Series>() {
     override fun areItemsTheSame(oldItem: Series, newItem: Series): Boolean {

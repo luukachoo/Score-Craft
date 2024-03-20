@@ -71,8 +71,15 @@ class SplashScreenFragment :
 
     private fun handleNavigationEvents(event: SplashScreenViewModel.SplashScreenUiEvent) {
         when (event) {
-            SplashScreenViewModel.SplashScreenUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
-            SplashScreenViewModel.SplashScreenUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome, true)
+            SplashScreenViewModel.SplashScreenUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Home,
+                true
+            )
+
+            SplashScreenViewModel.SplashScreenUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Welcome,
+                true
+            )
         }
     }
 }

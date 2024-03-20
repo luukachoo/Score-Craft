@@ -6,4 +6,5 @@
     <string name="email">Email</string>
     <string name="send_code">Send Code</string>
     <string name="remember_password_login">Remember Password? <font color="#A45EE5"><B>Login</B></font></string>
+    <string name="back">Back</string>
 </resources>

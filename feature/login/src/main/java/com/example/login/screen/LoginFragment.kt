@@ -43,7 +43,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             }
 
             backBtn.setOnClickListener {
-                findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome)
+                findNavController().popBackStack()
             }
 
             forgotPasswordTv.setOnClickListener {
@@ -72,9 +72,18 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private fun handleNavigationEvents(event: LoginFragmentViewModel.LogInUiEvent) {
         when (event) {
-            LoginFragmentViewModel.LogInUiEvent.NavigateToForgotPasswordPage -> findNavController().deepLinkNavigateTo(DeepLinkDestination.ForgotPassword, true)
-            LoginFragmentViewModel.LogInUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Home, true)
-            LoginFragmentViewModel.LogInUiEvent.NavigateToRegister -> findNavController().deepLinkNavigateTo(DeepLinkDestination.Register, true)
+            LoginFragmentViewModel.LogInUiEvent.NavigateToForgotPasswordPage -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.ForgotPassword
+            )
+
+            LoginFragmentViewModel.LogInUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Home,
+                true
+            )
+
+            LoginFragmentViewModel.LogInUiEvent.NavigateToRegister -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Register
+            )
         }
     }
 

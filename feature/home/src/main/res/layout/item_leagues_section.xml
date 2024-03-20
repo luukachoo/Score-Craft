@@ -13,7 +13,6 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/alata"
         android:text="@string/leagues"
-        android:textColor="@color/dark"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

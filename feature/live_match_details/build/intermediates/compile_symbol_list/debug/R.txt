@@ -8,6 +8,7 @@ int drawable guest_player 0x0
 int drawable ic_back_btn 0x0
 int drawable ic_twitch 0x0
 int drawable ic_youtube 0x0
+int drawable rounded_back_btn 0x0
 int drawable rounded_shape 0x0
 int id buttonGoBack 0x0
 int id buttonWatchOnTwitch 0x0
