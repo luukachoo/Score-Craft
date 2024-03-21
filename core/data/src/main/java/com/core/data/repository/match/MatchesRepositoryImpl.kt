@@ -5,10 +5,10 @@ import com.core.common.resource.Resource
 import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.mapper.match.toDomainModel
 import com.core.data.service.MatchesService
+import com.core.domain.model.match.GetMatch
+import com.core.domain.model.match.GetTeamWrapper
 import com.core.domain.model.match.live.GetLiveMatchDetails
 import com.core.domain.model.match.live.GetLiveMatchWrapper
-import com.core.domain.model.match.GetTeamWrapper
-import com.core.domain.model.match.GetMatch
 import com.core.domain.repository.match.MatchesRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

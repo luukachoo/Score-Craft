@@ -5,14 +5,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
 import com.example.message.R
 import com.example.message.adapter.MessageRecyclerAdapter
 import com.example.message.databinding.FragmentMessageBinding
 import com.example.message.event.MessageEvent
 import com.example.message.extension.showSnackBar
-import com.example.message.model.Message
 import com.example.message.model.Users
 import com.example.message.state.MessageState
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +41,14 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
                 }
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiEvent.collect {
+                    handleNavigationEvents(event = it)
+                }
+            }
+        }
     }
 
     override fun bindViewActionListeners() {
@@ -58,6 +68,10 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
                     viewModel.onEvent(MessageEvent.SendMessage(friendId, messageText))
                     etTextField.text?.clear()
                 }
+            }
+
+            backBtn.setOnClickListener {
+                viewModel.onEvent(MessageEvent.OnBackButtonClick)
             }
         }
     }
@@ -96,6 +110,12 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
                     viewModel.onEvent(MessageEvent.ResetErrorMessage)
                 }
             }
+        }
+    }
+
+    private fun handleNavigationEvents(event: MessageFragmentViewModel.MessageUiEvent) {
+        when (event) {
+            MessageFragmentViewModel.MessageUiEvent.NavigateToChats -> findNavController().popBackStack()
         }
     }
 }

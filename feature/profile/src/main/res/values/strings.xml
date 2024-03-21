@@ -10,4 +10,6 @@
     <string name="feature_profile_dialog_positive_button">App Settings</string>
     <string name="feature_profile_dialog_negative_button">Cancel</string>
     <string name="feature_profile_permission_required_message">Permissions required for this feature</string>
+    <string name="favourite_leagues">Favourite Leagues</string>
+    <string name="add_to_favourites_button">Add to favourites button</string>
 </resources>

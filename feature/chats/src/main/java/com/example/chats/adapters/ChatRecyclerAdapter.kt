@@ -8,11 +8,14 @@ import com.core.common.extension.loadImagesWithGlide
 import com.example.chats.databinding.ChatItemLayoutBinding
 import com.example.chats.model.Users
 
-class ChatRecyclerAdapter(private val onChatClicked: (userId: String) -> Unit) :
-    ListAdapter<Users, ChatRecyclerAdapter.ChatViewHolder>(ChatDiffCallBack()) {
+class ChatRecyclerAdapter(
+    private val onChatClicked: (userId: String) -> Unit,
+    private val onRemoveFriendClicked: (userId: String) -> Unit
+) : ListAdapter<Users, ChatRecyclerAdapter.ChatViewHolder>(ChatDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
-        val binding = ChatItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ChatItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ChatViewHolder(binding, onChatClicked)
     }
 
@@ -32,6 +35,10 @@ class ChatRecyclerAdapter(private val onChatClicked: (userId: String) -> Unit) :
                 ivAvatar.loadImagesWithGlide(user.avatar)
                 root.setOnClickListener {
                     onChatClicked(user.userId)
+                }
+
+                btnRemoveFriend.setOnClickListener {
+                    onRemoveFriendClicked(user.userId)
                 }
             }
         }

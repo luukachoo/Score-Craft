@@ -3,7 +3,7 @@ package com.example.friend_request.screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
-import com.core.domain.use_case.add_friend.FriendsUseCase
+import com.core.domain.use_case.friend.FriendsUseCase
 import com.example.friend_request.event.FriendRequestEvent
 import com.example.friend_request.mapper.toPresenter
 import com.example.friend_request.state.FriendRequestState
@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class FriendRequestViewModel @Inject constructor(
     private val friendsUseCase: FriendsUseCase
-): ViewModel() {
+) : ViewModel() {
     private val _friendRequestState = MutableStateFlow(FriendRequestState())
     val friendRequestState: StateFlow<FriendRequestState> = _friendRequestState.asStateFlow()
 

@@ -1,7 +1,7 @@
 package com.example.profile.mapper.auth
 
 import com.core.domain.model.auth.GetUsers
-import com.example.profile.model.Users
+import com.example.profile.model.user.Users
 
 fun GetUsers.toPresenter() = Users(
     userId = userId,

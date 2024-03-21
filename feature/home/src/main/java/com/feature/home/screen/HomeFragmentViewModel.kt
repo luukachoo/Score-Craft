@@ -3,11 +3,12 @@ package com.feature.home.screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
-import com.core.domain.use_case.auth.GetAuthUseCase
-import com.core.domain.use_case.leagues.GetLeaguesUseCase
+import com.core.domain.use_case.leagues.LeagueUseCase
+import com.core.domain.use_case.user.GetUserUseCase
 import com.feature.home.event.HomeFragmentEvent
 import com.feature.home.event.HomeNavigationEvents
 import com.feature.home.mapper.auth.toPresenter
+import com.feature.home.mapper.toDomain
 import com.feature.home.mapper.toPresentationModel
 import com.feature.home.model.League
 import com.feature.home.state.HomeState
@@ -23,8 +24,8 @@ import kotlin.math.min
 
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(
-    private val getLeaguesUseCase: GetLeaguesUseCase,
-    private val getAuthUseCase: GetAuthUseCase,
+    private val leaguesUseCase: LeagueUseCase,
+    private val getUserUseCase: GetUserUseCase
 ) : ViewModel() {
 
     private val _homeState = MutableStateFlow(HomeState())
@@ -51,11 +52,12 @@ class HomeFragmentViewModel @Inject constructor(
                         event.id
                     )
                 )
+
                 HomeFragmentEvent.ResetErrorMessage -> updateErrorMessage(message = null)
                 HomeFragmentEvent.GetCurrentUser -> getCurrentUser()
                 HomeFragmentEvent.LoadNextPage -> loadNextPage()
                 HomeFragmentEvent.LoadPreviousPage -> loadPreviousPage()
-                is HomeFragmentEvent.SaveFavouriteLeague -> saveFavouriteLeague(event.leagueSlug)
+                is HomeFragmentEvent.SaveFavouriteLeague -> saveFavouriteLeague(event.league)
             }
         }
     }
@@ -71,7 +73,7 @@ class HomeFragmentViewModel @Inject constructor(
                     (items.size / localItemsPerPage) - (currentApiPage - 1) * (pageSize / localItemsPerPage)
 
                 if (currentLocalPage > localPagesDisplayed) {
-                    getLeaguesUseCase(currentApiPage, pageSize).collect { res ->
+                    leaguesUseCase.getLeaguesUseCase(currentApiPage, pageSize).collect { res ->
                         when (res) {
                             is Resource.Success -> {
                                 val updatedItems = items.toMutableList()
@@ -136,7 +138,7 @@ class HomeFragmentViewModel @Inject constructor(
 
     private fun getCurrentUser() {
         viewModelScope.launch {
-            getAuthUseCase.getCurrentUserUseCase().collect { res ->
+            getUserUseCase.getCurrentUserUseCase().collect { res ->
                 when (res) {
                     is Resource.Error -> {
                         updateErrorMessage(res.errorMessage)
@@ -158,9 +160,9 @@ class HomeFragmentViewModel @Inject constructor(
         }
     }
 
-    private fun saveFavouriteLeague(leagueSlug: String) {
+    private fun saveFavouriteLeague(league: League) {
         viewModelScope.launch {
-            getAuthUseCase.getSaveFavouriteLeagues(leagueSlug).collect { resource ->
+            leaguesUseCase.getSaveFavouriteLeagues(league.toDomain()).collect { resource ->
                 when (resource) {
                     is Resource.Error -> {
                         updateErrorMessage(resource.errorMessage)

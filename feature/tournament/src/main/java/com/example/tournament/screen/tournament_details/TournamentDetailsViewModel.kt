@@ -25,9 +25,12 @@ class TournamentDetailsViewModel @Inject constructor(
     val viewState = _viewState.asStateFlow()
 
     fun onEvent(event: TournamentDetailsEvent) {
-        when(event) {
+        when (event) {
             TournamentDetailsEvent.BackButtonClick -> TODO()
-            is TournamentDetailsEvent.FetchTournamentDetailsBySlug -> fetchTournamentDetailsBySlug(event.slug)
+            is TournamentDetailsEvent.FetchTournamentDetailsBySlug -> fetchTournamentDetailsBySlug(
+                event.slug
+            )
+
             TournamentDetailsEvent.ResetErrorMessage -> updateErrorMessage(null)
         }
     }
@@ -36,7 +39,7 @@ class TournamentDetailsViewModel @Inject constructor(
     private fun fetchTournamentDetailsBySlug(slug: String) {
         viewModelScope.launch {
             getTournamentDetailsUseCase(slug = slug).collect { res ->
-                res.takeIfSuccess {  getTournament ->
+                res.takeIfSuccess { getTournament ->
                     _viewState.update {
                         it.copy(
                             tournamentDetails = getTournament.toPresentationModel(),

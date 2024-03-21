@@ -3,7 +3,6 @@ package com.core.data.repository.messaging
 import com.core.common.resource.Resource
 import com.core.domain.model.messaging.GetMessage
 import com.core.domain.repository.send_message.MessagingRepository
-import com.core.domain.use_case.auth.GetAuthUseCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -22,7 +21,10 @@ class MessagingRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : MessagingRepository {
 
-    override suspend fun sendMessage(receiverId: String, messageText: String): Flow<Resource<Unit>> = flow {
+    override suspend fun sendMessage(
+        receiverId: String,
+        messageText: String
+    ): Flow<Resource<Unit>> = flow {
         val currentUser = firebaseAuth.currentUser
         if (currentUser == null) {
             emit(Resource.Error("No authenticated user found"))
@@ -43,8 +45,10 @@ class MessagingRepositoryImpl @Inject constructor(
                 "messageText" to messageText
             )
 
-            messagesRef.child(sendId).child(receiverId).child(messageKey).setValue(messageData).await()
-            messagesRef.child(receiverId).child(sendId).child(messageKey).setValue(messageData).await()
+            messagesRef.child(sendId).child(receiverId).child(messageKey).setValue(messageData)
+                .await()
+            messagesRef.child(receiverId).child(sendId).child(messageKey).setValue(messageData)
+                .await()
 
             emit(Resource.Success(Unit))
         } catch (e: Exception) {

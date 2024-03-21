@@ -1,4 +1,4 @@
-package com.feature.series.screen.adapter
+package com.feature.series.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

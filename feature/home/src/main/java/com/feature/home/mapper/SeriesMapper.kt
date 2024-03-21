@@ -17,3 +17,18 @@ fun GetSeries.toPresentationModel() = Series(
     winnerType = winnerType,
     year = year
 )
+
+fun Series.toDomain() = GetSeries(
+    beginAt = beginAt,
+    endAt = endAt,
+    fullName = fullName,
+    id = id,
+    leagueId = leagueId,
+    modifiedAt = modifiedAt,
+    name = name,
+    season = season,
+    slug = slug,
+    winnerId = winnerId,
+    winnerType = winnerType,
+    year = year
+)

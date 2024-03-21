@@ -4,9 +4,12 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
+import com.core.domain.repository.league.LeagueRepository
 import com.core.domain.use_case.auth.GetAuthUseCase
+import com.core.domain.use_case.user.GetUserUseCase
 import com.example.profile.event.ProfileEvent
 import com.example.profile.mapper.auth.toPresenter
+import com.example.profile.mapper.league.toPresentationModel
 import com.example.profile.state.ProfileState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -20,6 +23,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileFragmentViewModel @Inject constructor(
+    private val getUserUseCase: GetUserUseCase,
+    private val leagueRepository: LeagueRepository,
     private val getAuthUseCase: GetAuthUseCase
 ) : ViewModel() {
     private val _profileState = MutableStateFlow(ProfileState())
@@ -38,12 +43,13 @@ class ProfileFragmentViewModel @Inject constructor(
             )
 
             ProfileEvent.LogOut -> logOut()
+            ProfileEvent.FetchFavouriteLeagues -> fetchFavouriteLeagues()
         }
     }
 
     private fun getCurrentUser() {
         viewModelScope.launch {
-            getAuthUseCase.getCurrentUserUseCase().collect { resource ->
+            getUserUseCase.getCurrentUserUseCase().collect { resource ->
                 when (resource) {
                     is Resource.Error -> updateErrorMessage(resource.errorMessage)
 
@@ -70,7 +76,7 @@ class ProfileFragmentViewModel @Inject constructor(
 
     private fun uploadProfileImage(userId: String, imageUri: Uri) {
         viewModelScope.launch {
-            getAuthUseCase.getUploadProfileImageUseCase(userId, imageUri).collect { resource ->
+            getUserUseCase.getUploadProfileImageUseCase(userId, imageUri).collect { resource ->
                 when (resource) {
                     is Resource.Error -> updateErrorMessage(resource.errorMessage)
 
@@ -86,6 +92,32 @@ class ProfileFragmentViewModel @Inject constructor(
                                 isLoading = false,
                                 imageUploaded = true,
                                 imageIsSet = true,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun fetchFavouriteLeagues() {
+        viewModelScope.launch {
+            leagueRepository.fetchFavouriteLeagues().collect { resource ->
+                when (resource) {
+                    is Resource.Error -> updateErrorMessage(resource.errorMessage)
+
+                    is Resource.Loading -> {
+                        _profileState.update { currentState ->
+                            currentState.copy(isLoading = resource.loading)
+                        }
+                    }
+
+                    is Resource.Success -> {
+                        _profileState.update { it ->
+                            it.copy(
+                                leagues = resource.data.map { it.toPresentationModel() },
+                                isLoading = false,
                                 errorMessage = null
                             )
                         }

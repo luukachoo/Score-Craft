@@ -1,4 +1,3 @@
-import com.android.build.api.dsl.Packaging
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin

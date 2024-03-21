@@ -5,4 +5,5 @@
     <string name="button_send">button send</string>
     <string name="full_name_format">%1$s %2$s</string>
     <string name="username_format">"@%1$s"</string>
+    <string name="back">Back</string>
 </resources>

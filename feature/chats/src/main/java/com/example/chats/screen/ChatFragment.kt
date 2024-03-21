@@ -26,16 +26,20 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
 
     override fun bind() {
         binding.apply {
-            adapter = ChatRecyclerAdapter { userId ->
-                handleUserClick(userId)
-            }
+            adapter = ChatRecyclerAdapter(
+                onChatClicked = { userId ->
+                    viewModel.onEvent(ChatEvent.OnFriendClick(userId))
+                },
+                onRemoveFriendClicked = { userId ->
+                    viewModel.onEvent(ChatEvent.RemoveFriend(userId))
+                }
+            )
             chatRv.adapter = adapter
             chatRv.addItemDecoration(CustomDividerItemDecoration(requireContext()))
         }
 
         viewModel.onEvent(ChatEvent.FetchFriends)
     }
-
 
     override fun bindObserves() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -62,6 +66,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
 
                 viewModel.onEvent(ChatEvent.AddFriend(userName))
             }
+
+            ivFriendRequest.setOnClickListener {
+                viewModel.onEvent(ChatEvent.OnRequestClick)
+            }
         }
     }
 
@@ -85,26 +93,14 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         }
     }
 
-    private fun handleUserClick(userId: String) {
-        findNavController().deepLinkNavigateTo(DeepLinkDestination.Message(userId), true)
-    }
-
-
     private fun handleNavigationEvents(event: ChatFragmentViewModel.ChatUiEvent) {
         when (event) {
             ChatFragmentViewModel.ChatUiEvent.NavigateToFriendRequest -> findNavController().deepLinkNavigateTo(
                 DeepLinkDestination.FriendRequest,
-                true
-            )
-
-            ChatFragmentViewModel.ChatUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(
-                DeepLinkDestination.Home,
-                true
             )
 
             is ChatFragmentViewModel.ChatUiEvent.NavigateToMessage -> findNavController().deepLinkNavigateTo(
                 DeepLinkDestination.Message(event.friendId),
-                true
             )
         }
     }

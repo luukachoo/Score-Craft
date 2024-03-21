@@ -12,7 +12,8 @@ class CustomDividerItemDecoration(context: Context) : RecyclerView.ItemDecoratio
 
     init {
         paint.color = ContextCompat.getColor(context, android.R.color.darker_gray) // Set line color
-        paint.strokeWidth = context.resources.displayMetrics.density * thickness // Set line thickness
+        paint.strokeWidth =
+            context.resources.displayMetrics.density * thickness // Set line thickness
     }
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {

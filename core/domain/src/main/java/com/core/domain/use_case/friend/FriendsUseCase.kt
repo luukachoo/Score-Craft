@@ -1,4 +1,4 @@
-package com.core.domain.use_case.add_friend
+package com.core.domain.use_case.friend
 
 import javax.inject.Inject
 
@@ -9,5 +9,6 @@ data class FriendsUseCase @Inject constructor(
     val getAcceptFriendRequestUseCase: GetAcceptFriendRequestUseCase,
     val getRejectFriendRequestUseCase: GetRejectFriendRequestUseCase,
     val getFetchFriendRequestsUseCase: GetFetchFriendRequestsUseCase,
-    val getFetchFriendWithId: GetFetchFriendWithId
+    val getFetchFriendWithId: GetFetchFriendWithId,
+    val getRemoveFriendUseCase: GetRemoveFriendUseCase
 )

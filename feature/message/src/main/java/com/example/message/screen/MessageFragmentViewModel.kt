@@ -3,10 +3,9 @@ package com.example.message.screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
-import com.core.domain.use_case.add_friend.FriendsUseCase
-import com.core.domain.use_case.add_friend.GetAddFriendsUseCase
-import com.core.domain.use_case.auth.GetAuthUseCase
+import com.core.domain.use_case.friend.FriendsUseCase
 import com.core.domain.use_case.messaging.MessagingUseCase
+import com.core.domain.use_case.user.GetUserUseCase
 import com.example.message.event.MessageEvent
 import com.example.message.mapper.toPresenter
 import com.example.message.state.MessageState
@@ -24,8 +23,8 @@ import javax.inject.Inject
 class MessageFragmentViewModel @Inject constructor(
     private val messagingUseCase: MessagingUseCase,
     private val friendsUseCase: FriendsUseCase,
-    private val getAuthUseCase: GetAuthUseCase
-): ViewModel() {
+    private val getUserUseCase: GetUserUseCase
+) : ViewModel() {
     private val _messageState = MutableStateFlow(MessageState())
     val messageState: StateFlow<MessageState> = _messageState.asStateFlow()
 
@@ -35,10 +34,16 @@ class MessageFragmentViewModel @Inject constructor(
     fun onEvent(event: MessageEvent) {
         when (event) {
             is MessageEvent.FetchFriend -> fetchFriend(event.friendId)
-            is MessageEvent.SendMessage -> sendMessage(receiverId = event.receiverId, messageText = event.messageText)
+            is MessageEvent.SendMessage -> sendMessage(
+                receiverId = event.receiverId,
+                messageText = event.messageText
+            )
+
             is MessageEvent.FetchMessages -> fetchMessages(event.friendId)
             MessageEvent.ResetErrorMessage -> updateErrorMessage(message = null)
             MessageEvent.GetCurrentUser -> getCurrentUser()
+            MessageEvent.OnBackButtonClick -> updateNavigationEvent(MessageUiEvent.NavigateToChats)
+//            is MessageEvent.OnAvatarClick -> TODO()
         }
     }
 
@@ -127,7 +132,7 @@ class MessageFragmentViewModel @Inject constructor(
 
     private fun getCurrentUser() {
         viewModelScope.launch {
-            getAuthUseCase.getCurrentUserUseCase().collect { resource ->
+            getUserUseCase.getCurrentUserUseCase().collect { resource ->
                 when (resource) {
                     is Resource.Error -> updateErrorMessage(message = resource.errorMessage)
 
@@ -157,8 +162,14 @@ class MessageFragmentViewModel @Inject constructor(
         _messageState.update { currentState -> currentState.copy(errorMessage = message) }
     }
 
+    private fun updateNavigationEvent(events: MessageUiEvent) {
+        viewModelScope.launch {
+            _uiEvent.emit(events)
+        }
+    }
+
     sealed interface MessageUiEvent {
-        data object NavigateToHome : MessageUiEvent
-        data object NavigateToWelcome : MessageUiEvent
+        data object NavigateToChats: MessageUiEvent
+//        data object NavigateToFriendProfile : MessageUiEvent
     }
 }

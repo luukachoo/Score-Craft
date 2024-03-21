@@ -29,19 +29,16 @@ class LivesFragmentViewModel @Inject constructor(private val getMatchesUseCase: 
     val uiEvent get() = _uiEvent
 
     fun onEvent(event: LivesFragmentEvent) {
-        viewModelScope.launch {
-            when (event) {
-                LivesFragmentEvent.FetchLiveMatches -> fetchLiveMatches()
-                is LivesFragmentEvent.ItemClick -> updateNavigationEvent(
-                    LiveFragmentUiEvent.NavigateToDetails(
-                        event.id
-                    )
+        when (event) {
+            LivesFragmentEvent.FetchLiveMatches -> fetchLiveMatches()
+            is LivesFragmentEvent.ItemClick -> updateNavigationEvent(
+                LiveFragmentUiEvent.NavigateToDetails(
+                    event.id
                 )
+            )
 
-                LivesFragmentEvent.ResetErrorMessage -> updateErrorMessage(null)
-            }
+            LivesFragmentEvent.ResetErrorMessage -> updateErrorMessage(null)
         }
-
     }
 
     private fun fetchLiveMatches() {
@@ -72,6 +69,9 @@ class LivesFragmentViewModel @Inject constructor(private val getMatchesUseCase: 
     private fun updateErrorMessage(message: String?) =
         _liveState.update { it.copy(errorMessage = message) }
 
-    private suspend fun updateNavigationEvent(events: LiveFragmentUiEvent) =
-        _uiEvent.emit(events)
+    private fun updateNavigationEvent(events: LiveFragmentUiEvent) {
+        viewModelScope.launch {
+            _uiEvent.emit(events)
+        }
+    }
 }

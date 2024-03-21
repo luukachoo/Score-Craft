@@ -10,7 +10,6 @@ import com.example.friend_request.adapter.FriendRequestRecyclerAdapter
 import com.example.friend_request.databinding.FragmentFriendRequestBinding
 import com.example.friend_request.event.FriendRequestEvent
 import com.example.friend_request.extension.showSnackBar
-import com.example.friend_request.model.Users
 import com.example.friend_request.state.FriendRequestState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

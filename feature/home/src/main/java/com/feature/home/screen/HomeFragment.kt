@@ -29,7 +29,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             MainRecyclerAdapter(
                 emptyList(),
                 null,
-                "",
                 onLeagueItemClick = { _ -> },
                 onFavouriteClick = { _ -> })
         binding.mainRecyclerView.adapter = mainRecyclerAdapter
@@ -68,14 +67,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             mainRecyclerAdapter = MainRecyclerAdapter(
                 state.leagues ?: emptyList(),
                 user,
-                state.imageUri ?: "",
                 onLeagueItemClick = { league ->
                     findNavController().deepLinkNavigateTo(
                         DeepLinkDestination.Series(league.slug)
                     )
                 },
                 onFavouriteClick = {
-                    viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(leagueSlug = it.slug))
+                    viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(league = it))
                 }
             )
 

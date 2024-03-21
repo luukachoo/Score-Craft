@@ -23,6 +23,7 @@ import com.core.common.extension.DeepLinkDestination
 import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
 import com.example.profile.R
+import com.example.profile.adapter.ProfileRecyclerAdapter
 import com.example.profile.databinding.FragmentProfileBinding
 import com.example.profile.event.ProfileEvent
 import com.example.profile.extension.loadImageWithUri
@@ -36,9 +37,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private val viewModel: ProfileFragmentViewModel by viewModels()
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
+    private lateinit var adapter: ProfileRecyclerAdapter
 
     override fun bind() {
+        adapter = ProfileRecyclerAdapter()
+        binding.rvLeague.adapter = adapter
+
+        viewModel.onEvent(ProfileEvent.FetchFavouriteLeagues)
         viewModel.onEvent(ProfileEvent.GetCurrentUser)
+        viewModel.onEvent(ProfileEvent.FetchFavouriteLeagues)
         initializePermissionRequest()
     }
 
@@ -64,10 +71,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         binding.apply {
             ivAvatar.setOnClickListener {
                 checkAndRequestPermissions()
-            }
-
-            backBtn.setOnClickListener {
-                findNavController().popBackStack()
             }
 
             logOutBtn.setOnClickListener {
@@ -96,6 +99,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     private fun handleRegisterState(state: ProfileState) = binding.apply {
         progress.visibility = if (state.isLoading) View.VISIBLE else View.GONE
 
+        state.leagues?.let {
+            adapter.submitList(it)
+        }
+
         state.user?.let { user ->
             tvFullName.text = "${user.firstName} ${user.lastName}"
             tvUserName.text = "@${user.userName}"
@@ -106,7 +113,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                 if (!state.imageUploaded) {
                     ivAvatar.loadImageWithUri(imageUriString.toUri())
                     user.userId.let { userId ->
-                        viewModel.onEvent(ProfileEvent.UploadProfileImage(userId, imageUriString.toUri()))
+                        viewModel.onEvent(
+                            ProfileEvent.UploadProfileImage(
+                                userId,
+                                imageUriString.toUri()
+                            )
+                        )
                     }
                 }
             } else if (user.avatar.isNotEmpty()) {

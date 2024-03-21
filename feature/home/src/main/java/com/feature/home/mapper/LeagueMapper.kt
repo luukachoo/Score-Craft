@@ -12,3 +12,13 @@ fun GetLeague.toPresentationModel() = League(
     slug = slug,
     url = url
 )
+
+fun League.toDomain() = GetLeague (
+    id = id,
+    imageUrl = imageUrl,
+    modifiedAt = modifiedAt,
+    name = name,
+    getSeriesList = getSeriesList.map { it.toDomain() },
+    slug = slug,
+    url = url
+)

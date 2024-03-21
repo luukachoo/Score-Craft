@@ -1,9 +1,9 @@
 package com.core.data.service
 
+import com.core.data.model.match.MatchDto
+import com.core.data.model.match.TeamWrapperDto
 import com.core.data.model.match.live.LiveMatchDetailsDto
 import com.core.data.model.match.live.LiveMatchWrapperDto
-import com.core.data.model.match.TeamWrapperDto
-import com.core.data.model.match.MatchDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers

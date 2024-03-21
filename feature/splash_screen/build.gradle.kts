@@ -1,10 +1,3 @@
-import basic
-import common
-import daggerHilt
-import domain
-import lottie
-import navigationComponent
-
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)

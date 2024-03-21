@@ -3,7 +3,7 @@ package com.example.splash_screen.screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
-import com.core.domain.use_case.auth.GetAuthUseCase
+import com.core.domain.use_case.user.GetUserUseCase
 import com.example.splash_screen.event.SplashScreenEvent
 import com.example.splash_screen.state.SplashScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashScreenViewModel @Inject constructor(
-    private val getAuthUseCase: GetAuthUseCase
+    private val getUserUseCase: GetUserUseCase
 ) : ViewModel() {
     private val _splashScreenState = MutableStateFlow(SplashScreenState())
     val splashScreenState: StateFlow<SplashScreenState> = _splashScreenState.asStateFlow()
@@ -35,7 +35,7 @@ class SplashScreenViewModel @Inject constructor(
 
     private fun checkUserSession() {
         viewModelScope.launch {
-            getAuthUseCase.getCheckUserSessionsUseCase().collect { resource ->
+            getUserUseCase.getCheckUserSessionUseCase().collect { resource ->
                 when (resource) {
                     is Resource.Error -> updateErrorMessage(resource.errorMessage)
 

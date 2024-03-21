@@ -101,56 +101,6 @@
         app:layout_constraintTop_toBottomOf="@id/forgotPasswordTv" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lineTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/urbanist"
-        android:text="@string/or_login_with"
-        android:textColor="@color/dark_gray"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginBtn" />
-
-    <View
-        android:id="@+id/leftLine"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="10dp"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@+id/lineTv"
-        app:layout_constraintEnd_toStartOf="@+id/lineTv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lineTv" />
-
-    <View
-        android:id="@+id/rightLine"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@+id/lineTv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lineTv"
-        app:layout_constraintTop_toTopOf="@+id/lineTv" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/googleBtn"
-        android:layout_width="130dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_back_btn"
-        android:scaleType="center"
-        android:src="@drawable/ic_google"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lineTv" />
-
-    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/dontHaveAccTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.feature.series.screen.adapter
+package com.feature.series.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.feature.series.model.Series

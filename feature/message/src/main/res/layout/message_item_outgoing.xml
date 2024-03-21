@@ -19,16 +19,16 @@
             android:id="@+id/tvMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="70dp"
-            android:maxWidth="280dp" />
+            android:maxWidth="280dp"
+            android:minWidth="70dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTimestamp"
             android:layout_width="wrap_content"
-            android:textSize="12sp"
-            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            android:layout_marginTop="5dp"
+            android:textSize="12sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

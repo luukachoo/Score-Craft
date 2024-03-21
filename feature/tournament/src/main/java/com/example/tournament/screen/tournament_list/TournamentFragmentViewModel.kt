@@ -31,13 +31,16 @@ class TournamentFragmentViewModel @Inject constructor(
     val tournamentUiState get() = _tournamentUiState.asSharedFlow()
 
     fun onEvent(event: TournamentEvent) {
-        viewModelScope.launch {
-            when(event) {
-                is TournamentEvent.FetchTournaments -> fetchTournaments(event.slug)
-                TournamentEvent.ResetErrorMessage -> updateErrorMessage(null)
-                is TournamentEvent.ItemClick -> updateNavigationEvent(TournamentNavigationEvents.NavigateToDetails(event.slug))
-            }
+        when (event) {
+            is TournamentEvent.FetchTournaments -> fetchTournaments(event.slug)
+            TournamentEvent.ResetErrorMessage -> updateErrorMessage(null)
+            is TournamentEvent.ItemClick -> updateNavigationEvent(
+                TournamentNavigationEvents.NavigateToDetails(
+                    event.slug
+                )
+            )
         }
+
     }
 
     private fun fetchTournaments(slug: String) {
@@ -46,7 +49,7 @@ class TournamentFragmentViewModel @Inject constructor(
                 res.takeIfSuccess { data ->
                     _viewState.update {
                         it.copy(
-                            tournaments = data.map { getTournament ->  getTournament.toPresentationModel() },
+                            tournaments = data.map { getTournament -> getTournament.toPresentationModel() },
                             errorMessage = null,
                             isLoading = false
                         )
@@ -66,6 +69,9 @@ class TournamentFragmentViewModel @Inject constructor(
     private fun updateErrorMessage(message: String?) =
         _viewState.update { it.copy(errorMessage = message) }
 
-    private suspend fun updateNavigationEvent(events: TournamentNavigationEvents) =
-        _tournamentUiState.emit(events)
+    private fun updateNavigationEvent(events: TournamentNavigationEvents) {
+        viewModelScope.launch {
+            _tournamentUiState.emit(events)
+        }
+    }
 }
