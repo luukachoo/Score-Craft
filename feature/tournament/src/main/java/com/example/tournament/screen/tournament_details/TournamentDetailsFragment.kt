@@ -6,8 +6,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.core.common.base.BaseFragment
 import com.core.common.extension.loadImagesWithGlide
+import com.core.common.extension.showSnackbar
+import com.example.tournament.event.tournament_details.TournamentDetailsEvent
+import com.example.tournament.screen.tournament_details.adapter.ViewPagerAdapter
 import com.example.tournament.state.tournament_details.TournamentDetailsState
+import com.feature.tournament_details.R
 import com.feature.tournament_details.databinding.FragmentTournamentDetailsBinding
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -16,9 +21,13 @@ class TournamentDetailsFragment :
     BaseFragment<FragmentTournamentDetailsBinding>(FragmentTournamentDetailsBinding::inflate) {
 
     private val viewModel: TournamentDetailsViewModel by viewModels()
+    private var pagerAdapter: ViewPagerAdapter? = null
 
     override fun bind() {
+        setUpPagerAdapter()
+        setUpTabLayout()
         val arg = arguments?.getString("slug")
+        viewModel.onEvent(TournamentDetailsEvent.FetchTournamentDetailsBySlug(arg!!))
     }
 
     override fun bindObserves() {
@@ -31,10 +40,6 @@ class TournamentDetailsFragment :
         }
     }
 
-    override fun bindViewActionListeners() {
-
-    }
-
     private fun handleTournamentDetailsState(state: TournamentDetailsState) = with(binding) {
         state.tournamentDetails?.let {
             ivLeagueLogo.loadImagesWithGlide(
@@ -43,5 +48,26 @@ class TournamentDetailsFragment :
             )
             tvLeagueName.text = state.tournamentDetails.name
         }
+
+        state.errorMessage?.let {
+            root.showSnackbar(it)
+            viewModel.onEvent(TournamentDetailsEvent.ResetErrorMessage)
+        }
+    }
+
+    private fun setUpTabLayout() = binding.apply {
+        TabLayoutMediator(tournamentTabs, vpTournamentDetails) { tab, position ->
+            when (position) {
+                0 -> tab.text = getString(R.string.standings)
+                1 -> tab.text = getString(R.string.test)
+            }
+        }.attach()
+    }
+
+    private fun setUpPagerAdapter() {
+        pagerAdapter = ViewPagerAdapter(childFragmentManager, lifecycle)
+        binding.vpTournamentDetails.adapter = pagerAdapter
+
+        binding.vpTournamentDetails.offscreenPageLimit
     }
 }

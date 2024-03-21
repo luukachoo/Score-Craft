@@ -1,5 +1,7 @@
 package com.example.chats.model
 
+import com.core.common.resource.Recyclable
+
 data class Users(
     val userId: String,
     val userName: String,
@@ -8,4 +10,7 @@ data class Users(
     val email: String,
     val password: String,
     val avatar: String
-)
+) : Recyclable<Users>() {
+    override val uniqueValue: Users
+        get() = this
+}

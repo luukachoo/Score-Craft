@@ -1,11 +1,7 @@
 package com.feature.match.screen.upcoming_matches.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.core.common.R
+import com.core.common.base.BaseRecyclerAdapter
 import com.core.common.extension.convertDate
 import com.core.common.extension.convertTime
 import com.core.common.extension.loadImagesWithGlide
@@ -13,12 +9,14 @@ import com.feature.live_matches.databinding.ItemMatchBinding
 import com.feature.match.model.match.Match
 
 class UpcomingMatchesRecyclerAdapter :
-    ListAdapter<Match, UpcomingMatchesRecyclerAdapter.UpcomingMatchViewHolder>(
-        DiffUtilCallback
+    BaseRecyclerAdapter<Match, ItemMatchBinding>(
+        inflater = {layoutInflater, parent, attachToParent ->
+            ItemMatchBinding.inflate(layoutInflater, parent, attachToParent)
+        }
     ) {
-    inner class UpcomingMatchViewHolder(private val binding: ItemMatchBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(match: Match?) {
+    override fun onBind(binding: ItemMatchBinding, position: Int) {
+        val match = getItem(position)
+        binding.apply {
             match?.let {
                 with(binding) {
                     tvName.text = it.name
@@ -42,25 +40,5 @@ class UpcomingMatchesRecyclerAdapter :
                 }
             }
         }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = UpcomingMatchViewHolder(
-        ItemMatchBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-    )
-
-    override fun onBindViewHolder(holder: UpcomingMatchViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
-
-    private object DiffUtilCallback : DiffUtil.ItemCallback<Match>() {
-        override fun areItemsTheSame(oldItem: Match, newItem: Match): Boolean =
-            oldItem.id == newItem.id
-
-        override fun areContentsTheSame(oldItem: Match, newItem: Match): Boolean =
-            oldItem == newItem
     }
 }

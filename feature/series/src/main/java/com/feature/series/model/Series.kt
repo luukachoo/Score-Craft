@@ -1,5 +1,7 @@
 package com.feature.series.model
 
+import com.core.common.resource.Recyclable
+
 data class Series(
     val beginAt: String,
     val endAt: String?,
@@ -13,4 +15,7 @@ data class Series(
     val winnerId: Int?,
     val winnerType: String?,
     val year: Int
-)
+) : Recyclable<Series>() {
+    override val uniqueValue: Series
+        get() = this
+}

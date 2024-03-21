@@ -32,7 +32,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
             chatRv.adapter = adapter
             chatRv.addItemDecoration(CustomDividerItemDecoration(requireContext()))
         }
-
         viewModel.onEvent(ChatEvent.FetchFriends)
     }
 
@@ -59,7 +58,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         binding.apply {
             ivAddFriend.setOnClickListener {
                 val userName = etAddFriend.text.toString()
-
                 viewModel.onEvent(ChatEvent.AddFriend(userName))
             }
         }
@@ -86,7 +84,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
     }
 
     private fun handleUserClick(userId: String) {
-        findNavController().deepLinkNavigateTo(DeepLinkDestination.Message(userId), true)
+        findNavController().deepLinkNavigateTo(DeepLinkDestination.Message(userId))
     }
 
 

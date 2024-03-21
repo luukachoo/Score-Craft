@@ -4,7 +4,8 @@ import com.core.common.mapper.asResource
 import com.core.common.resource.Resource
 import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.mapper.league.toDomainModel
-import com.core.data.service.TournamentsService
+import com.core.data.service.tournament.TournamentsService
+import com.core.domain.model.league.GetTeamStanding
 import com.core.domain.model.league.GetTournament
 import com.core.domain.repository.tournament.TournamentRepository
 import kotlinx.coroutines.flow.Flow
@@ -29,6 +30,16 @@ class TournamentRepositoryImpl @Inject constructor(
             service.getTournamentDetails(slug = slug)
         }.asResource {
             it.toDomainModel()
+        }
+    }
+
+    override suspend fun getTeamStandingsBySlug(slug: String): Flow<Resource<List<GetTeamStanding>>> {
+        return responseHandler.apiCall {
+            service.getTeamStandings(slug = slug)
+        }.asResource {
+            it.map {  dto ->
+                dto.toDomainModel()
+            }
         }
     }
 }

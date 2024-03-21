@@ -1,10 +1,10 @@
 package com.example.marketmingle.di
 
 import com.core.common.resource.retrofit.HandleRetrofitResponse
-import com.core.data.service.LeaguesService
-import com.core.data.service.MatchesService
-import com.core.data.service.SeriesService
-import com.core.data.service.TournamentsService
+import com.core.data.service.league.LeaguesService
+import com.core.data.service.match.MatchesService
+import com.core.data.service.serie.SeriesService
+import com.core.data.service.tournament.TournamentsService
 import com.core.data.service.send_notification.SendNotificationService
 import com.example.marketmingle.BuildConfig
 import com.example.marketmingle.helper.annotation.PandaScoreRetrofit

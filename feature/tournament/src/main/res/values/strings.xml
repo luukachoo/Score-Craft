@@ -6,4 +6,8 @@
     <string name="begins_at">Begins at:</string>
     <string name="prize_pool">Prize pool:</string>
     <string name="no_prize_pool">No Prize pool</string>
+    <string name="back">Back</string>
+    <string name="first">1.</string>
+    <string name="standings">STANDINGS</string>
+    <string name="test">TEST</string>
 </resources>

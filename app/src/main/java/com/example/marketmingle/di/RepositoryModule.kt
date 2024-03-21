@@ -20,7 +20,6 @@ import com.core.domain.repository.series.SeriesRepository
 import com.core.domain.repository.tournament.TournamentRepository
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton

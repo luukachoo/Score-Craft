@@ -1,4 +1,4 @@
-package com.core.data.service
+package com.core.data.service.league
 
 import com.core.data.model.league.LeagueDto
 import retrofit2.Response

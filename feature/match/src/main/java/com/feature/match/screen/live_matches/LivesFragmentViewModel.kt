@@ -37,7 +37,6 @@ class LivesFragmentViewModel @Inject constructor(private val getMatchesUseCase: 
                         event.id
                     )
                 )
-
                 LivesFragmentEvent.ResetErrorMessage -> updateErrorMessage(null)
             }
         }
