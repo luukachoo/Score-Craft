@@ -6,11 +6,7 @@ import com.feature.series.databinding.ItemSeriesBinding
 import com.feature.series.model.Series
 
 class SeriesRecyclerAdapter :
-    BaseRecyclerAdapter<Series, ItemSeriesBinding>(
-        inflater = { layoutInflater, parent, attachToParent ->
-            ItemSeriesBinding.inflate(layoutInflater, parent, attachToParent)
-        }
-    ) {
+    BaseRecyclerAdapter<Series, ItemSeriesBinding>(ItemSeriesBinding::inflate) {
     private var onClick: ((Series) -> Unit)? = null
 
     override fun onBind(binding: ItemSeriesBinding, position: Int) {

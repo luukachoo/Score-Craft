@@ -6,7 +6,6 @@ data class GetTournament(
     val name: String,
     val prizePool: String,
     val slug: String,
-    val matches: List<GetTournamentMatch>,
     val teams: List<GetTeam>,
     val league: GetLeague
 )

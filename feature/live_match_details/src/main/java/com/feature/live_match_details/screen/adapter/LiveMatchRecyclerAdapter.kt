@@ -1,4 +1,4 @@
-package com.feature.live_match_details.screen
+package com.feature.live_match_details.screen.adapter
 
 import com.core.common.base.BaseRecyclerAdapter
 import com.core.common.extension.loadImagesWithGlide
@@ -7,11 +7,7 @@ import com.feature.live_match_details.databinding.ItemPlayerBinding
 import com.feature.live_match_details.model.Players
 
 class LiveMatchRecyclerAdapter :
-    BaseRecyclerAdapter<Players, ItemPlayerBinding>(
-        inflater =  { layoutInflater, parent, attachToParent ->
-            ItemPlayerBinding.inflate(layoutInflater, parent, attachToParent)
-        }
-    ) {
+    BaseRecyclerAdapter<Players, ItemPlayerBinding>(ItemPlayerBinding::inflate) {
     override fun onBind(binding: ItemPlayerBinding, position: Int) {
         val players = getItem(position)
         binding.apply {

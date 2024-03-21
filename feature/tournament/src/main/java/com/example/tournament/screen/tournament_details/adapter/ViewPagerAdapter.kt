@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.tournament.screen.standings.TeamStandingsFragment
-import com.example.tournament.screen.test.TestFragment
+import com.example.tournament.screen.test.TournamentMatchesFragment
 
 class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -15,7 +15,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> TeamStandingsFragment()
-            else -> TestFragment()
+            else -> TournamentMatchesFragment()
         }
     }
 }

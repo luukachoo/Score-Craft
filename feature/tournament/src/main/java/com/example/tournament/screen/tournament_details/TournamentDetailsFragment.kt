@@ -4,9 +4,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.showSnackbar
+import com.example.tournament.event.tournament_details.TournamentDetailUiEvent
 import com.example.tournament.event.tournament_details.TournamentDetailsEvent
 import com.example.tournament.screen.tournament_details.adapter.ViewPagerAdapter
 import com.example.tournament.state.tournament_details.TournamentDetailsState
@@ -38,6 +40,20 @@ class TournamentDetailsFragment :
                 }
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiEvent.collect {
+                    handleTournamentUiEvents(it)
+                }
+            }
+        }
+    }
+
+    override fun bindViewActionListeners() {
+        binding.backBtn.setOnClickListener {
+            viewModel.onEvent(TournamentDetailsEvent.BackButtonClick)
+        }
     }
 
     private fun handleTournamentDetailsState(state: TournamentDetailsState) = with(binding) {
@@ -55,11 +71,17 @@ class TournamentDetailsFragment :
         }
     }
 
+    private fun handleTournamentUiEvents(event: TournamentDetailUiEvent) {
+        when(event) {
+            TournamentDetailUiEvent.NavigateToTournaments -> findNavController().popBackStack()
+        }
+    }
+
     private fun setUpTabLayout() = binding.apply {
         TabLayoutMediator(tournamentTabs, vpTournamentDetails) { tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.standings)
-                1 -> tab.text = getString(R.string.test)
+                1 -> tab.text = getString(R.string.matches)
             }
         }.attach()
     }

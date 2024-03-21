@@ -6,11 +6,7 @@ import com.example.tournament.model.Tournament
 import com.feature.tournament_details.databinding.ItemTournamentBinding
 
 class TournamentRecyclerAdapter :
-    BaseRecyclerAdapter<Tournament, ItemTournamentBinding>(
-        inflater = { layoutInflater, parent, attachToParent ->
-            ItemTournamentBinding.inflate(layoutInflater, parent, attachToParent)
-        }
-    ) {
+    BaseRecyclerAdapter<Tournament, ItemTournamentBinding>(ItemTournamentBinding::inflate) {
     private var onClick: ((Tournament) -> Unit)? = null
 
     override fun onBind(binding: ItemTournamentBinding, position: Int) {

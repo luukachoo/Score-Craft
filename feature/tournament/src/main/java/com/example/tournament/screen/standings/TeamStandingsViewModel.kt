@@ -31,7 +31,6 @@ class TeamStandingsViewModel @Inject constructor(
         }
     }
 
-
     private fun fetchTeamStandings(slug: String) {
         viewModelScope.launch {
             getTeamStandingsUseCase(slug).collect { res ->

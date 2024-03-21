@@ -9,11 +9,7 @@ import com.feature.match.extension.checkForPreview
 import com.feature.match.model.match.MatchWrapper
 
 class LivesRecyclerAdapter :
-    BaseRecyclerAdapter<MatchWrapper.Match, ItemLiveBinding>(
-        inflater = { layoutInflater, parent, attachToParent ->
-            ItemLiveBinding.inflate(layoutInflater, parent, attachToParent)
-        }
-    ) {
+    BaseRecyclerAdapter<MatchWrapper.Match, ItemLiveBinding>(ItemLiveBinding::inflate) {
     private var onClick: ((MatchWrapper.Match) -> Unit)? = null
 
     override fun onBind(binding: ItemLiveBinding, position: Int) {

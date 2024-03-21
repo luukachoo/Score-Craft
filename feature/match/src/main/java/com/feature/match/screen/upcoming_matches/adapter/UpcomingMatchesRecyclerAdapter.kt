@@ -9,11 +9,7 @@ import com.feature.live_matches.databinding.ItemMatchBinding
 import com.feature.match.model.match.Match
 
 class UpcomingMatchesRecyclerAdapter :
-    BaseRecyclerAdapter<Match, ItemMatchBinding>(
-        inflater = {layoutInflater, parent, attachToParent ->
-            ItemMatchBinding.inflate(layoutInflater, parent, attachToParent)
-        }
-    ) {
+    BaseRecyclerAdapter<Match, ItemMatchBinding>(ItemMatchBinding::inflate) {
     override fun onBind(binding: ItemMatchBinding, position: Int) {
         val match = getItem(position)
         binding.apply {

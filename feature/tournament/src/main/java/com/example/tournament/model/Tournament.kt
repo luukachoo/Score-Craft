@@ -8,7 +8,6 @@ data class Tournament(
     val name: String,
     val prizePool: String,
     val slug: String,
-    val matches: List<TournamentMatch>,
     val teams: List<Team>,
     val league: League
 ) : Recyclable<Tournament>() {

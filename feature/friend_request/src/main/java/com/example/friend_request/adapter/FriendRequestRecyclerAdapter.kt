@@ -8,11 +8,7 @@ import com.example.friend_request.model.Users
 class FriendRequestRecyclerAdapter(
     private val onAccept: (Users) -> Unit,
     private val onReject: (Users) -> Unit
-) : BaseRecyclerAdapter<Users, FriendItemLayoutBinding>(
-    inflater = { layoutInflater, parent, attachToParent ->
-        FriendItemLayoutBinding.inflate(layoutInflater, parent, attachToParent)
-    }
-) {
+) : BaseRecyclerAdapter<Users, FriendItemLayoutBinding>(FriendItemLayoutBinding::inflate) {
     override fun onBind(binding: FriendItemLayoutBinding, position: Int) {
         val model = getItem(position)
         binding.apply {

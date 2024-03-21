@@ -2,6 +2,7 @@ package com.core.data.service.tournament
 
 import com.core.data.model.league.TeamStandingDto
 import com.core.data.model.league.TournamentDto
+import com.core.data.model.league.TournamentMatchDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -19,4 +20,8 @@ interface TournamentsService {
     @GET("tournaments/{slug}/standings")
     @Headers("Authorization: 6x3HK0azW0zGDCZa7HTqv4de5n8EzkUuApWGYaIsBlKeiMnStOI")
     suspend fun getTeamStandings(@Path("slug") slug: String): Response<List<TeamStandingDto>>
+
+    @GET("tournaments/{slug}/matches")
+    @Headers("Authorization: 6x3HK0azW0zGDCZa7HTqv4de5n8EzkUuApWGYaIsBlKeiMnStOI")
+    suspend fun getTournamentMatches(@Path("slug") slug: String): Response<List<TournamentMatchDto>>
 }
