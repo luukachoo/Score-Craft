@@ -12,7 +12,6 @@ android {
 
 dependencies {
     basic()
-    daggerHilt()
     fireBaseAuth()
 
     // core

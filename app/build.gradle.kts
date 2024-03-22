@@ -88,8 +88,8 @@ dependencies {
     featureLiveMatchDetails()
     featureTournament()
     featureChats()
-    friendRequest()
-    message()
+    featureFriendRequest()
+    featureMessage()
 }
 
 kapt {
