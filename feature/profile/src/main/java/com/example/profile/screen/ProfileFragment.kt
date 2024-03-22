@@ -29,6 +29,7 @@ import com.example.profile.event.ProfileEvent
 import com.example.profile.extension.loadImageWithUri
 import com.example.profile.extension.showSnackBar
 import com.example.profile.state.ProfileState
+import com.example.profile.util.CustomDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -40,14 +41,19 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     private lateinit var adapter: ProfileRecyclerAdapter
 
     override fun bind() {
-        adapter = ProfileRecyclerAdapter()
+        initializePermissionRequest()
+        adapter = ProfileRecyclerAdapter(onRemoveFavouriteClick = { league ->
+            viewModel.onEvent(ProfileEvent.RemoveFavouriteLeague(league))
+        })
         binding.rvLeague.adapter = adapter
+
+        val itemDecoration = CustomDividerItemDecoration(requireContext())
+        binding.rvLeague.addItemDecoration(itemDecoration)
 
         viewModel.onEvent(ProfileEvent.FetchFavouriteLeagues)
         viewModel.onEvent(ProfileEvent.GetCurrentUser)
-        viewModel.onEvent(ProfileEvent.FetchFavouriteLeagues)
-        initializePermissionRequest()
     }
+
 
     override fun bindObserves() {
         viewLifecycleOwner.lifecycleScope.launch {

@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetFCMTokenUseCase @Inject constructor(
     private val friendRepository: FriendRepository
 ) {
-    suspend operator fun invoke(userName: String) = friendRepository.addFriend(userName)
+    suspend operator fun invoke(userName: String) = friendRepository.getFCMTokenForUser(userName)
 }

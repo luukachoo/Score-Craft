@@ -69,6 +69,8 @@ object Dependencies {
     // Kotlin Gradle
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
 
+    // Java Poet
+    const val JAVA_POET = "com.squareup:javapoet:${Versions.JAVAPOET_VERSION}"
 }
 
 fun DependencyHandler.basic() {
@@ -128,6 +130,10 @@ fun DependencyHandler.retrofit() {
 fun DependencyHandler.daggerHilt() {
     implementation(Dependencies.DAGGER_HILT)
     kapt(Dependencies.DAGGER_HILT_COMPILER)
+}
+
+fun DependencyHandler.javaPoet() {
+    implementation(Dependencies.JAVA_POET)
 }
 
 fun DependencyHandler.navigationComponent() {
@@ -212,10 +218,10 @@ fun DependencyHandler.featureChats() {
     implementation(project(Modules.FEATURE_CHATS))
 }
 
-fun DependencyHandler.friendRequest() {
+fun DependencyHandler.featureFriendRequest() {
     implementation(project(Modules.FEATURE_FRIEND_REQUEST))
 }
 
-fun DependencyHandler.message() {
+fun DependencyHandler.featureMessage() {
     implementation(project(Modules.FEATURE_MESSAGE))
 }

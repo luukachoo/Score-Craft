@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseBottomSheetFragment
 import com.core.common.extension.DeepLinkDestination
 import com.core.common.extension.deepLinkNavigateTo
+import com.core.common.extension.showSnackbar
 import com.example.image_bottom_sheet.databinding.FragmentImageBottomSheetBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -37,7 +38,7 @@ class ImageBottomSheetFragment :
                     )
                 }
             } else {
-                // Handle the failure or cancellation
+                binding.root.showSnackbar("Camera selection cancelled")
             }
         }
 
@@ -51,7 +52,7 @@ class ImageBottomSheetFragment :
                     )
                 }
             } else {
-                // Handle the failure or cancellation
+                binding.root.showSnackbar("Gallery selection cancelled")
             }
         }
 
@@ -111,5 +112,4 @@ class ImageBottomSheetFragment :
             return null
         }
     }
-
 }

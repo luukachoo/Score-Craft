@@ -13,7 +13,7 @@ fun GetLeague.toPresentationModel() = League(
     url = url
 )
 
-fun League.toDomain() = GetLeague (
+fun League.toDomain() = GetLeague(
     id = id,
     imageUrl = imageUrl,
     modifiedAt = modifiedAt,

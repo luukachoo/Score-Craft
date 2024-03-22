@@ -68,10 +68,10 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/shapable_input_field"
         android:gravity="center_vertical"
         android:hint="@string/send_a_message"
         android:paddingStart="10dp"
-        android:background="@drawable/shapable_input_field"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnSend"
         app:layout_constraintStart_toStartOf="parent" />
@@ -83,8 +83,8 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:scaleType="center"
         android:contentDescription="@string/button_send"
+        android:scaleType="center"
         android:src="@drawable/ic_send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

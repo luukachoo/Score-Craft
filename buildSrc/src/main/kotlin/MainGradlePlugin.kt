@@ -32,12 +32,6 @@ class MainGradlePlugin : Plugin<Project> {
                 sourceCompatibility = JavaVersion.VERSION_18
                 targetCompatibility = JavaVersion.VERSION_18
             }
-
-            packaging {
-                resources {
-                    excludes += "META-INF/*"
-                }
-            }
         }
 
         project.dependencies {

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:layout_marginVertical="20dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivAvatar"
@@ -33,14 +33,14 @@
         android:id="@+id/btnRemoveFriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
         android:contentDescription="@string/friend_remove_button"
         android:src="@drawable/ic_remove"
-        android:layout_marginEnd="5dp"
-        app:rippleColor="@color/white"
-        app:shapeAppearanceOverlay="@style/roundedShape"
-        app:tint="@null"
         app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivAvatar" />
+        app:layout_constraintTop_toTopOf="@id/ivAvatar"
+        app:rippleColor="@color/white"
+        app:shapeAppearanceOverlay="@style/roundedShape"
+        app:tint="@null" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

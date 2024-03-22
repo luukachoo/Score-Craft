@@ -6,4 +6,5 @@
     <string name="channel_name">notif_channel</string>
     <string name="channel_description">notif_description</string>
     <string name="social">Social</string>
+    <string name="default_notification_channel_id">"CHANNEL_ONE</string>
 </resources>

@@ -169,7 +169,7 @@ class MessageFragmentViewModel @Inject constructor(
     }
 
     sealed interface MessageUiEvent {
-        data object NavigateToChats: MessageUiEvent
+        data object NavigateToChats : MessageUiEvent
 //        data object NavigateToFriendProfile : MessageUiEvent
     }
 }

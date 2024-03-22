@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.example.friend_request.adapter.FriendRequestRecyclerAdapter
 import com.example.friend_request.databinding.FragmentFriendRequestBinding
@@ -22,10 +23,6 @@ class FriendRequestFragment :
     private lateinit var adapter: FriendRequestRecyclerAdapter
 
     override fun bind() {
-        binding.apply {
-            adapter = FriendRequestRecyclerAdapter(onAccept = { _ -> }, onReject = { _ -> })
-            friendRequestRv.adapter = adapter
-        }
         viewModel.onEvent(FriendRequestEvent.FetchFriends)
     }
 
@@ -34,6 +31,14 @@ class FriendRequestFragment :
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.friendRequestState.collect {
                     handleFriendRequestState(state = it)
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiEvent.collect {
+                    handleNavigationEvents(event = it)
                 }
             }
         }
@@ -50,6 +55,10 @@ class FriendRequestFragment :
                 }
             )
             friendRequestRv.adapter = adapter
+
+            backBtn.setOnClickListener {
+                viewModel.onEvent(FriendRequestEvent.OnBackButtonClick)
+            }
         }
     }
 
@@ -67,6 +76,12 @@ class FriendRequestFragment :
                 viewModel.onEvent(FriendRequestEvent.ResetErrorMessage)
             }
 
+        }
+    }
+
+    private fun handleNavigationEvents(event: FriendRequestViewModel.FriendRequestUiEvent) {
+        when (event) {
+            FriendRequestViewModel.FriendRequestUiEvent.NavigateToChats -> findNavController().popBackStack()
         }
     }
 }

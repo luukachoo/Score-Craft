@@ -7,8 +7,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
-import com.core.common.extension.DeepLinkDestination
-import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
 import com.example.message.R
 import com.example.message.adapter.MessageRecyclerAdapter

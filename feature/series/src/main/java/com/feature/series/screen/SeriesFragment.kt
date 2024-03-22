@@ -9,10 +9,10 @@ import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.core.common.extension.DeepLinkDestination
 import com.core.common.extension.deepLinkNavigateTo
+import com.feature.series.adapter.SeriesRecyclerAdapter
 import com.feature.series.databinding.FragmentSeriesBinding
 import com.feature.series.event.SeriesEvent
 import com.feature.series.extension.showSnackBar
-import com.feature.series.adapter.SeriesRecyclerAdapter
 import com.feature.series.state.SeriesState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

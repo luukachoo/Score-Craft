@@ -106,20 +106,12 @@ class ChatFragmentViewModel @Inject constructor(
 
                     is Resource.Loading -> {
                         _chatState.update { currentState ->
-                            currentState.copy(
-                                isLoading = resource.loading
-                            )
+                            currentState.copy(isLoading = resource.loading)
                         }
                     }
 
                     is Resource.Success -> {
-                        _chatState.update { currentState ->
-                            currentState.copy(
-                                fcmToken = resource.data,
-                                isLoading = false,
-                                errorMessage = null
-                            )
-                        }
+                        sendFriendRequest(resource.data)
                     }
                 }
             }

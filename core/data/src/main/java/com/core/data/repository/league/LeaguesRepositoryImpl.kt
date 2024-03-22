@@ -8,8 +8,13 @@ import com.core.data.service.LeaguesService
 import com.core.domain.model.league.GetLeague
 import com.core.domain.repository.league.LeagueRepository
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -32,8 +37,10 @@ class LeaguesRepositoryImpl @Inject constructor(
     override suspend fun saveFavouriteLeagues(league: GetLeague): Flow<Resource<String>> = flow {
         emit(Resource.Loading(true))
         try {
-            val userId = firebaseAuth.currentUser?.uid ?: throw IllegalStateException("User not logged in")
-            val databaseReference = FirebaseDatabase.getInstance().getReference("UserLeagues").child(userId)
+            val userId =
+                firebaseAuth.currentUser?.uid ?: throw IllegalStateException("User not logged in")
+            val databaseReference =
+                FirebaseDatabase.getInstance().getReference("UserLeagues").child(userId)
             val snapshot = databaseReference.child(league.slug).get().await()
 
             val message: String = if (snapshot.exists()) {
@@ -52,22 +59,35 @@ class LeaguesRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun fetchFavouriteLeagues(): Flow<Resource<List<GetLeague>>> = flow {
-        emit(Resource.Loading(true))
-        try {
-            val userId = firebaseAuth.currentUser?.uid ?: throw IllegalStateException("User not logged in")
-            val databaseReference = FirebaseDatabase.getInstance().getReference("UserLeagues").child(userId)
-            val snapshot = databaseReference.get().await()
+    override suspend fun fetchFavouriteLeagues(): Flow<Resource<List<GetLeague>>> = callbackFlow {
+        trySend(Resource.Loading(true)).isSuccess
 
-            val favourites = snapshot.children.mapNotNull { childSnapshot ->
-                childSnapshot.getValue(GetLeague::class.java)
+        val userId =
+            firebaseAuth.currentUser?.uid ?: throw IllegalStateException("User not logged in")
+        val databaseReference =
+            FirebaseDatabase.getInstance().getReference("UserLeagues").child(userId)
+
+        val eventListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val favourites = snapshot.children.mapNotNull { childSnapshot ->
+                    childSnapshot.getValue(GetLeague::class.java)
+                }
+                try {
+                    trySend(Resource.Success(favourites)).isSuccess
+                } catch (e: Exception) {
+                    trySend(Resource.Error("Failed to fetch favourite leagues: ${e.message}")).isSuccess
+                }
             }
 
-            emit(Resource.Success(favourites))
-        } catch (e: Exception) {
-            emit(Resource.Error("Failed to fetch favourite leagues: ${e.message}"))
-        } finally {
-            emit(Resource.Loading(false))
+            override fun onCancelled(error: DatabaseError) {
+                trySend(Resource.Error("Failed to fetch favourite leagues: ${error.message}")).isSuccess
+            }
+        }
+
+        databaseReference.addValueEventListener(eventListener)
+
+        awaitClose {
+            databaseReference.removeEventListener(eventListener)
         }
     }
 }

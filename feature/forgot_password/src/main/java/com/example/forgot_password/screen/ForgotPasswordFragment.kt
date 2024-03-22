@@ -27,9 +27,7 @@ class ForgotPasswordFragment :
     override fun bindViewActionListeners() {
         binding.apply {
             sendCodeBtn.setOnClickListener {
-                val email: String = emailEt.text.toString()
-
-                viewModel.onEvent(ForgotPasswordEvent.ForgotPassword(email))
+                viewModel.onEvent(ForgotPasswordEvent.ForgotPassword(emailEt.text.toString()))
             }
 
             backBtn.setOnClickListener {

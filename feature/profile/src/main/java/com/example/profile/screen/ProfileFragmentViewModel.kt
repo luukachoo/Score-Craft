@@ -4,12 +4,14 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
-import com.core.domain.repository.league.LeagueRepository
 import com.core.domain.use_case.auth.GetAuthUseCase
+import com.core.domain.use_case.leagues.LeagueUseCase
 import com.core.domain.use_case.user.GetUserUseCase
 import com.example.profile.event.ProfileEvent
 import com.example.profile.mapper.auth.toPresenter
+import com.example.profile.mapper.league.toDomain
 import com.example.profile.mapper.league.toPresentationModel
+import com.example.profile.model.league.League
 import com.example.profile.state.ProfileState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -24,7 +26,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileFragmentViewModel @Inject constructor(
     private val getUserUseCase: GetUserUseCase,
-    private val leagueRepository: LeagueRepository,
+    private val leagueUseCase: LeagueUseCase,
     private val getAuthUseCase: GetAuthUseCase
 ) : ViewModel() {
     private val _profileState = MutableStateFlow(ProfileState())
@@ -44,6 +46,7 @@ class ProfileFragmentViewModel @Inject constructor(
 
             ProfileEvent.LogOut -> logOut()
             ProfileEvent.FetchFavouriteLeagues -> fetchFavouriteLeagues()
+            is ProfileEvent.RemoveFavouriteLeague -> removeFavouriteLeague(event.league)
         }
     }
 
@@ -103,7 +106,7 @@ class ProfileFragmentViewModel @Inject constructor(
 
     private fun fetchFavouriteLeagues() {
         viewModelScope.launch {
-            leagueRepository.fetchFavouriteLeagues().collect { resource ->
+            leagueUseCase.getFavouriteLeaguesUseCase().collect { resource ->
                 when (resource) {
                     is Resource.Error -> updateErrorMessage(resource.errorMessage)
 
@@ -117,6 +120,31 @@ class ProfileFragmentViewModel @Inject constructor(
                         _profileState.update { it ->
                             it.copy(
                                 leagues = resource.data.map { it.toPresentationModel() },
+                                isLoading = false,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun removeFavouriteLeague(league: League) {
+        viewModelScope.launch {
+            leagueUseCase.getSaveFavouriteLeagues(league.toDomain()).collect { resource ->
+                when (resource) {
+                    is Resource.Error -> updateErrorMessage(resource.errorMessage)
+
+                    is Resource.Loading -> {
+                        _profileState.update { currentState ->
+                            currentState.copy(isLoading = resource.loading)
+                        }
+                    }
+
+                    is Resource.Success -> {
+                        _profileState.update {
+                            it.copy(
                                 isLoading = false,
                                 errorMessage = null
                             )

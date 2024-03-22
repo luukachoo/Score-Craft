@@ -33,6 +33,7 @@ class FriendRequestViewModel @Inject constructor(
             FriendRequestEvent.FetchFriends -> fetchFriendRequests()
             is FriendRequestEvent.RejectFriendRequest -> rejectFriendRequest(event.friendId)
             FriendRequestEvent.ResetErrorMessage -> updateErrorMessage(message = null)
+            FriendRequestEvent.OnBackButtonClick -> updateNavigationEvent(FriendRequestUiEvent.NavigateToChats)
         }
     }
 
@@ -122,8 +123,13 @@ class FriendRequestViewModel @Inject constructor(
         _friendRequestState.update { currentState -> currentState.copy(errorMessage = message) }
     }
 
+    private fun updateNavigationEvent(events: FriendRequestUiEvent) {
+        viewModelScope.launch {
+            _uiEvent.emit(events)
+        }
+    }
+
     sealed interface FriendRequestUiEvent {
-        data object NavigateToHome : FriendRequestUiEvent
-        data object NavigateToWelcome : FriendRequestUiEvent
+        data object NavigateToChats : FriendRequestUiEvent
     }
 }
