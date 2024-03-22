@@ -1,4 +1,4 @@
-package com.example.profile.event
+package com.example.profile.event.profile
 
 import android.net.Uri
 

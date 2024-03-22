@@ -25,12 +25,5 @@ id tvSeasonText
 layout fragment_series
 layout item_series
 navigation feature_series_nav_graph
-string back
-string begin_at
-string end_at
 string hello_blank_fragment
-string season
-string series
-string test_date
-string test_season
 style roundedShape

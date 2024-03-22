@@ -1,4 +1,4 @@
-package com.example.profile.screen
+package com.example.profile.screen.profile
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.util.Log.d
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -18,16 +19,16 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.core.common.R
 import com.core.common.base.BaseFragment
 import com.core.common.extension.DeepLinkDestination
 import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
-import com.example.profile.R
 import com.example.profile.databinding.FragmentProfileBinding
-import com.example.profile.event.ProfileEvent
+import com.example.profile.event.profile.ProfileEvent
 import com.example.profile.extension.loadImageWithUri
 import com.example.profile.extension.showSnackBar
-import com.example.profile.state.ProfileState
+import com.example.profile.state.profile.ProfileState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -38,6 +39,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
 
     override fun bind() {
+        d("ThemeDebug", "Binding fragment bottom sheet")
         viewModel.onEvent(ProfileEvent.GetCurrentUser)
         initializePermissionRequest()
     }
@@ -66,12 +68,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                 checkAndRequestPermissions()
             }
 
-            backBtn.setOnClickListener {
-                findNavController().popBackStack()
-            }
-
-            logOutBtn.setOnClickListener {
-                viewModel.onEvent(ProfileEvent.LogOut)
+            buttonSettings.setOnClickListener {
+                showSettingsBottomSheet()
             }
         }
     }
@@ -106,7 +104,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                 if (!state.imageUploaded) {
                     ivAvatar.loadImageWithUri(imageUriString.toUri())
                     user.userId.let { userId ->
-                        viewModel.onEvent(ProfileEvent.UploadProfileImage(userId, imageUriString.toUri()))
+                        viewModel.onEvent(
+                            ProfileEvent.UploadProfileImage(
+                                userId,
+                                imageUriString.toUri()
+                            )
+                        )
                     }
                 }
             } else if (user.avatar.isNotEmpty()) {
@@ -164,6 +167,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private fun showImageBottomSheet() =
         findNavController().deepLinkNavigateTo(DeepLinkDestination.BottomSheet)
+
+    private fun showSettingsBottomSheet() =
+        findNavController().deepLinkNavigateTo(DeepLinkDestination.ShowSettingsBottomSheet)
 
     private fun initializePermissionRequest() {
         requestPermissionLauncher =

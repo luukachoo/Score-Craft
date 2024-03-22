@@ -27,6 +27,7 @@ class SplashScreenFragment :
             speed = 2.0f
             addAnimatorListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
+                    viewModel.onEvent(SplashScreenEvent.FetchUserDarkModePreference)
                 }
 
                 override fun onAnimationEnd(animation: Animator) {

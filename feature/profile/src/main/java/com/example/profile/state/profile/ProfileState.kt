@@ -1,4 +1,4 @@
-package com.example.profile.state
+package com.example.profile.state.profile
 
 import com.example.profile.model.Users
 

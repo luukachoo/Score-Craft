@@ -1,4 +1,4 @@
-package com.example.image_bottom_sheet
+package com.example.image_bottom_sheet.screen.image_bottom_sheet
 
 import android.content.Context
 import android.graphics.Bitmap

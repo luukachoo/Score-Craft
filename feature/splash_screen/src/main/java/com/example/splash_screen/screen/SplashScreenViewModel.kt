@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
 import com.core.domain.use_case.auth.GetAuthUseCase
+import com.core.domain.use_case.settings.GetDarkModeUseCase
 import com.example.splash_screen.event.SplashScreenEvent
 import com.example.splash_screen.state.SplashScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashScreenViewModel @Inject constructor(
-    private val getAuthUseCase: GetAuthUseCase
+    private val getAuthUseCase: GetAuthUseCase,
+    private val getDarkModeUseCase: GetDarkModeUseCase
 ) : ViewModel() {
     private val _splashScreenState = MutableStateFlow(SplashScreenState())
     val splashScreenState: StateFlow<SplashScreenState> = _splashScreenState.asStateFlow()
@@ -26,10 +28,28 @@ class SplashScreenViewModel @Inject constructor(
     private val _uiEvent = MutableSharedFlow<SplashScreenUiEvent>(replay = 1)
     val uiEvent: SharedFlow<SplashScreenUiEvent> get() = _uiEvent
 
+    init {
+
+    }
+
     fun onEvent(event: SplashScreenEvent) {
         when (event) {
             SplashScreenEvent.CheckUserSessions -> checkUserSession()
             SplashScreenEvent.ResetErrorMessage -> updateErrorMessage(message = null)
+            SplashScreenEvent.FetchUserDarkModePreference -> fetchUserDarkModePreference()
+        }
+    }
+
+
+    private fun fetchUserDarkModePreference() {
+        viewModelScope.launch {
+            getDarkModeUseCase().collect { darkThemeConfig ->
+                _splashScreenState.update {
+                    it.copy(
+                        darkThemeConfig = darkThemeConfig
+                    )
+                }
+            }
         }
     }
 

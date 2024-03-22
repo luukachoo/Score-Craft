@@ -1,13 +1,13 @@
-package com.example.profile.screen
+package com.example.profile.screen.profile
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
 import com.core.domain.use_case.auth.GetAuthUseCase
-import com.example.profile.event.ProfileEvent
+import com.example.profile.event.profile.ProfileEvent
 import com.example.profile.mapper.auth.toPresenter
-import com.example.profile.state.ProfileState
+import com.example.profile.state.profile.ProfileState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

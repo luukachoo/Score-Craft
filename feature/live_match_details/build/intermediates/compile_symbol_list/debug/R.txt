@@ -34,13 +34,5 @@ int id tvTitle 0x0
 int layout fragment_live_match_details 0x0
 int layout item_player 0x0
 int navigation feature_live_match_details_nav_graph 0x0
-int string back 0x0
-int string bb_vs_tspirit 0x0
-int string ge 0x0
-int string hello_blank_fragment 0x0
-int string minus 0x0
-int string no_live_link 0x0
-int string watch_on 0x0
-int string zero 0x0
 int style roundedShape 0x0
 int style roundedShapeForImageView 0x0

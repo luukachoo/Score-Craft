@@ -1,8 +1,3 @@
-import basic
-import common
-import daggerHilt
-import fireBaseAuth
-
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)
@@ -19,6 +14,7 @@ dependencies {
     basic()
     daggerHilt()
     fireBaseAuth()
+    dataStore()
 
     // core
     common()

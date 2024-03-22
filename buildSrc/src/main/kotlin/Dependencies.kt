@@ -57,6 +57,9 @@ object Dependencies {
     // Kotlin Gradle
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
 
+    // DataStore
+    const val DATASTORE = "androidx.datastore:datastore-preferences:${Versions.DATASTORE}"
+
 }
 
 fun DependencyHandler.basic() {
@@ -71,6 +74,10 @@ fun DependencyHandler.basic() {
 
 fun DependencyHandler.workManager() {
     implementation(Dependencies.WORK_MANAGER)
+}
+
+fun DependencyHandler.dataStore() {
+    implementation(Dependencies.DATASTORE)
 }
 
 fun DependencyHandler.firebaseDataBase() {
