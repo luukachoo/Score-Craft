@@ -3,6 +3,7 @@ package com.core.common.resource.auth
 import com.core.common.resource.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
@@ -20,6 +21,8 @@ class HandleSessionResponse @Inject constructor(private val firebaseAuth: Fireba
             }
         } catch (e: FirebaseAuthInvalidCredentialsException) {
             emit(Resource.Error("Session expired, please log in again"))
+        } catch (e: FirebaseAuthInvalidUserException) {
+            emit(Resource.Error("User account is disabled or deleted"))
         } catch (e: Exception) {
             emit(Resource.Error("Failed to check user session: ${e.message}"))
         }

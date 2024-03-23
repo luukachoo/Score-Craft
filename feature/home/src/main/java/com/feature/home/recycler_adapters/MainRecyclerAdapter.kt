@@ -67,7 +67,7 @@ class MainRecyclerAdapter(
 
     inner class LeaguesViewHolder(private val binding: ItemLeaguesSectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bindCategories(leagues: List<League>) = binding.apply {
+            fun bindCategories(leagues: List<League>) = binding.apply {
             val leagueAdapter = LeaguesAdapter().apply {
                 onLeagueClick { league ->
                     onLeagueItemClick(league)

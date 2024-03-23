@@ -64,18 +64,32 @@ class FriendRequestFragment :
 
     private fun handleFriendRequestState(state: FriendRequestState) {
         binding.apply {
-            progress.visibility =
-                if (state.isLoading) View.VISIBLE else View.GONE
+            progress.visibility = if (state.isLoading) View.VISIBLE else View.GONE
 
-            state.friends?.let {
-                adapter.submitList(it)
+            state.friends?.let { friendList ->
+                adapter.submitList(friendList)
+
+                if (friendList.isEmpty()) {
+                    animationView.apply {
+                        if (!isAnimating) {
+                            playAnimation()
+                        }
+                        visibility = View.VISIBLE
+                    }
+                } else {
+                    animationView.apply {
+                        if (isAnimating) {
+                            pauseAnimation()
+                        }
+                        visibility = View.GONE
+                    }
+                }
             }
 
-            state.errorMessage?.let {
-                root.showSnackBar(message = it)
+            state.errorMessage?.let { message ->
+                root.showSnackBar(message = message)
                 viewModel.onEvent(FriendRequestEvent.ResetErrorMessage)
             }
-
         }
     }
 

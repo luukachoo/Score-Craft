@@ -62,9 +62,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
     override fun bindViewActionListeners() {
         binding.apply {
             ivAddFriend.setOnClickListener {
-                val userName = etAddFriend.text.toString()
-
-                viewModel.onEvent(ChatEvent.AddFriend(userName))
+                viewModel.onEvent(ChatEvent.AddFriend(etAddFriend.text.toString().trim()))
             }
 
             ivFriendRequest.setOnClickListener {

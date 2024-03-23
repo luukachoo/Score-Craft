@@ -30,6 +30,7 @@ class ForgotPasswordViewModel @Inject constructor(
         when (event) {
             is ForgotPasswordEvent.ForgotPassword -> forgotPassword(event.email)
             ForgotPasswordEvent.ResetErrorMessage -> updateErrorMessage(message = null)
+            ForgotPasswordEvent.OnItemClick -> updateNavigationEvent(ForgotPasswordUiEvent.NavigateToLogin)
         }
     }
 
@@ -59,12 +60,17 @@ class ForgotPasswordViewModel @Inject constructor(
         }
     }
 
+    private fun updateNavigationEvent(events: ForgotPasswordUiEvent) {
+        viewModelScope.launch {
+            _uiEvent.emit(events)
+        }
+    }
+
     private fun updateErrorMessage(message: String?) {
         _forgotPasswordState.update { currentState -> currentState.copy(errorMessage = message) }
     }
 
     sealed interface ForgotPasswordUiEvent {
         data object NavigateToLogin : ForgotPasswordUiEvent
-        data object NavigateToWelcome : ForgotPasswordUiEvent
     }
 }

@@ -31,7 +31,11 @@ class ForgotPasswordFragment :
             }
 
             backBtn.setOnClickListener {
-                findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome)
+                viewModel.onEvent(ForgotPasswordEvent.OnItemClick)
+            }
+
+            dontHaveAccTv.setOnClickListener {
+                viewModel.onEvent(ForgotPasswordEvent.OnItemClick)
             }
         }
 
@@ -67,15 +71,7 @@ class ForgotPasswordFragment :
 
     private fun handleNavigationEvents(event: ForgotPasswordViewModel.ForgotPasswordUiEvent) {
         when (event) {
-            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(
-                DeepLinkDestination.Welcome,
-                true
-            )
-
-            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToLogin -> findNavController().deepLinkNavigateTo(
-                DeepLinkDestination.Welcome,
-                true
-            )
+            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToLogin -> findNavController().popBackStack()
         }
     }
 }

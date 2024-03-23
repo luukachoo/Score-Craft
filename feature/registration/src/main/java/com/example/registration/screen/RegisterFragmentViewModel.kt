@@ -40,6 +40,15 @@ class RegisterFragmentViewModel @Inject constructor(
                 password = event.password,
                 confirmPassword = event.confirmPassword
             )
+
+            RegisterEvent.OnAlreadyRegisteredClick -> updateNavigationEvent(RegisterUiEvent.NavigateToLogin)
+            RegisterEvent.OnBackButtonClick -> updateNavigationEvent(RegisterUiEvent.NavigateToWelcome)
+            is RegisterEvent.OnRegisterClick -> updateNavigationEvent(
+                RegisterUiEvent.NavigateToLoginWithArgs(
+                    email = event.email,
+                    password = event.password
+                )
+            )
         }
     }
 
@@ -121,11 +130,18 @@ class RegisterFragmentViewModel @Inject constructor(
         )
     }
 
+    private fun updateNavigationEvent(events: RegisterUiEvent) {
+        viewModelScope.launch {
+            _uiEvent.emit(events)
+        }
+    }
+
     private fun updateErrorMessage(message: String?) {
         _registerState.update { currentState -> currentState.copy(errorMessage = message) }
     }
 
     sealed interface RegisterUiEvent {
+        data object NavigateToWelcome : RegisterUiEvent
         data object NavigateToLogin : RegisterUiEvent
         data class NavigateToLoginWithArgs(val email: String, val password: String) :
             RegisterUiEvent
