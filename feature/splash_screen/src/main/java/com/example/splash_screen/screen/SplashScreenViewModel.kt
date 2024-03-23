@@ -1,5 +1,6 @@
 package com.example.splash_screen.screen
 
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
@@ -28,10 +29,6 @@ class SplashScreenViewModel @Inject constructor(
     private val _uiEvent = MutableSharedFlow<SplashScreenUiEvent>(replay = 1)
     val uiEvent: SharedFlow<SplashScreenUiEvent> get() = _uiEvent
 
-    init {
-
-    }
-
     fun onEvent(event: SplashScreenEvent) {
         when (event) {
             SplashScreenEvent.CheckUserSessions -> checkUserSession()
@@ -40,6 +37,13 @@ class SplashScreenViewModel @Inject constructor(
         }
     }
 
+    private fun applyDarkModePreference(darkThemeConfig: String?) {
+        when(darkThemeConfig) {
+            "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            "system_default" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+    }
 
     private fun fetchUserDarkModePreference() {
         viewModelScope.launch {
@@ -49,6 +53,7 @@ class SplashScreenViewModel @Inject constructor(
                         darkThemeConfig = darkThemeConfig
                     )
                 }
+                applyDarkModePreference(darkThemeConfig)
             }
         }
     }

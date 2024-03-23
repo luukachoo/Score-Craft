@@ -10,19 +10,16 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class DataStoreRepositoryImpl @Inject constructor(private val dataStore: DataStore<Preferences>) : DataStoreRepository {
-
     override suspend fun setDarkModeConfig(theme: String) {
+        d("DataStoreRepositoryImpl", "Saved dark mode theme: $theme")
         dataStore.edit { preferences ->
             preferences[PreferencesKey.darkModeConfig] = theme
         }
-        // Log the saved theme
-        d("DataStoreRepositoryImpl", "Saved dark mode theme: $theme")
     }
 
     override fun getDarkModeConfig(): Flow<String?> {
         return dataStore.data.map { preferences ->
             val theme = preferences[PreferencesKey.darkModeConfig]
-            // Log the retrieved theme
             d("DataStoreRepositoryImpl", "Retrieved dark mode theme: $theme")
             theme
         }

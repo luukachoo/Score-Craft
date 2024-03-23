@@ -1,6 +1,5 @@
 package com.example.image_bottom_sheet.screen.settings
 
-import android.util.Log.d
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -20,19 +19,15 @@ class SettingsFragment : BaseBottomSheetFragment<FragmentSettingsBinding>(Fragme
     private val viewModel: SettingsFragmentViewModel by viewModels()
 
     override fun bind() {
-        d("ThemeDebug", "Binding fragment settings")
         binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                com.example.image_bottom_sheet.R.id.tbSystemDefault -> {
-                    d("ThemeDebug", "System default selected")
+                com.example.image_bottom_sheet.R.id.rbSystemDefault -> {
                     viewModel.onEvent(SettingsEvent.SetDarkModeConfig(getString(R.string.system_default_lowercase)))
                 }
                 com.example.image_bottom_sheet.R.id.rbDark -> {
-                    d("ThemeDebug", "Dark selected")
                     viewModel.onEvent(SettingsEvent.SetDarkModeConfig(getString(R.string.dark_lowercase)))
                 }
                 com.example.image_bottom_sheet.R.id.rbLight -> {
-                    d("ThemeDebug", "Light selected")
                     viewModel.onEvent(SettingsEvent.SetDarkModeConfig(getString(R.string.light_lowercase)))
                 }
             }
@@ -43,34 +38,38 @@ class SettingsFragment : BaseBottomSheetFragment<FragmentSettingsBinding>(Fragme
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.settingsState.collect {
-                    d("ThemeDebug", "ViewModel state updated: $it")
                     handleSettingsState(it)
                 }
             }
         }
     }
 
-    private fun handleSettingsState(state: SettingsState) {
-        d("ThemeDebug", "Current theme: ${state.darkThemeConfig}")
+    private fun handleSettingsState(state: SettingsState) = with(binding) {
         when(state.darkThemeConfig) {
-            getString(R.string.system_default_lowercase) -> setSystemDefaultTheme()
-            getString(R.string.dark_lowercase) -> setDarkTheme()
-            getString(R.string.light_lowercase) -> setLightTheme()
+            getString(R.string.system_default_lowercase) -> {
+                rbSystemDefault.isChecked = true
+                setSystemDefaultTheme()
+            }
+            getString(R.string.dark_lowercase) -> {
+                rbDark.isChecked = true
+                setDarkTheme()
+            }
+            getString(R.string.light_lowercase) -> {
+                rbLight.isChecked = true
+                setLightTheme()
+            }
         }
     }
 
     private fun setDarkTheme() {
-        d("ThemeDebug", "Setting dark theme")
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
     }
 
     private fun setLightTheme() {
-        d("ThemeDebug", "Setting light theme")
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     private fun setSystemDefaultTheme() {
-        d("ThemeDebug", "Setting system default theme")
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
     }
 }
