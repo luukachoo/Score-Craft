@@ -20,6 +20,7 @@ dependencies {
     glide()
     fireBaseAuth()
     firebaseDataBase()
+    coreUi()
 
     // core
     domain()

@@ -60,6 +60,9 @@ object Dependencies {
     // DataStore
     const val DATASTORE = "androidx.datastore:datastore-preferences:${Versions.DATASTORE}"
 
+    // SplashScreen API
+    const val SPLASHSCREEN_API = "androidx.core:core-splashscreen:${Versions.SPLASH_API}"
+
 }
 
 fun DependencyHandler.basic() {
@@ -70,6 +73,10 @@ fun DependencyHandler.basic() {
     testImplementation(Dependencies.JUNIT)
     androidTestImplementation(Dependencies.ANDROIDX_TEST_JUNIT)
     androidTestImplementation(Dependencies.ESPRESSO_CORE)
+}
+
+fun DependencyHandler.splashApi() {
+    implementation(Dependencies.SPLASHSCREEN_API)
 }
 
 fun DependencyHandler.workManager() {
@@ -201,6 +208,10 @@ fun DependencyHandler.common() {
 
 fun DependencyHandler.domain() {
     implementation(project(Modules.CORE_DOMAIN))
+}
+
+fun DependencyHandler.coreUi() {
+    implementation(project(Modules.CORE_UI))
 }
 
 fun DependencyHandler.featureChats() {

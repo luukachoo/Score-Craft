@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.showSnackbar
-import com.core.common.R
+import com.ui.core_ui.R
 import com.feature.live_match_details.databinding.FragmentLiveMatchDetailsBinding
 import com.feature.live_match_details.event.LiveMatchDetailsEvents
 import com.feature.live_match_details.event.LiveMatchDetailsUiEvent

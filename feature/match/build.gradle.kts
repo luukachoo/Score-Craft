@@ -21,5 +21,6 @@ dependencies {
 
     // core
     domain()
+    coreUi()
     common()
 }

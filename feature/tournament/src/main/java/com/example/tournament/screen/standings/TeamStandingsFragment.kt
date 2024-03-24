@@ -6,11 +6,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.core.common.base.BaseFragment
 import com.core.common.extension.showSnackbar
+import com.example.tournament.databinding.FragmentTeamStandingsBinding
 import com.example.tournament.event.tournament_team_standings.TournamentTeamStandingEvents
 import com.example.tournament.screen.standings.adapter.TeamStandingsAdapter
 import com.example.tournament.screen.tournament_details.TournamentDetailsFragment
 import com.example.tournament.state.tournament_team_standings.TournamentTeamStandingsState
-import com.feature.tournament_details.databinding.FragmentTeamStandingsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

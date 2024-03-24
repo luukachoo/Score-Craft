@@ -2,8 +2,8 @@ package com.example.tournament.screen.tournament_list.adapter
 
 import com.core.common.base.BaseRecyclerAdapter
 import com.core.common.extension.convertDate
+import com.example.tournament.databinding.ItemTournamentBinding
 import com.example.tournament.model.Tournament
-import com.feature.tournament_details.databinding.ItemTournamentBinding
 
 class TournamentRecyclerAdapter :
     BaseRecyclerAdapter<Tournament, ItemTournamentBinding>(ItemTournamentBinding::inflate) {

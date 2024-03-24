@@ -1,11 +1,3 @@
-import basic
-import common
-import domain
-import fireBaseAuth
-import firebaseDataBase
-import glide
-import navigationComponent
-
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)
@@ -32,4 +24,5 @@ dependencies {
     // core
     domain()
     common()
+    coreUi()
 }

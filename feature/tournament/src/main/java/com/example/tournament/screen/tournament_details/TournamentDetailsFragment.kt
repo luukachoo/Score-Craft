@@ -5,16 +5,16 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.core.common.R
 import com.core.common.base.BaseFragment
 import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.showSnackbar
+import com.example.tournament.databinding.FragmentTournamentDetailsBinding
 import com.example.tournament.event.tournament_details.TournamentDetailUiEvent
 import com.example.tournament.event.tournament_details.TournamentDetailsEvent
 import com.example.tournament.screen.tournament_details.adapter.ViewPagerAdapter
 import com.example.tournament.state.tournament_details.TournamentDetailsState
-import com.feature.tournament_details.databinding.FragmentTournamentDetailsBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import com.ui.core_ui.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -60,7 +60,7 @@ class TournamentDetailsFragment :
         state.tournamentDetails?.let {
             ivLeagueLogo.loadImagesWithGlide(
                 state.tournamentDetails.league.imageUrl,
-                com.core.common.R.drawable.placeholder
+                R.drawable.placeholder
             )
             tvLeagueName.text = state.tournamentDetails.name
         }

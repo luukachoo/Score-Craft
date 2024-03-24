@@ -5,8 +5,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.core.common.R
 import com.core.common.base.BaseBottomSheetFragment
+import com.ui.core_ui.R
 import com.example.image_bottom_sheet.databinding.FragmentSettingsBinding
 import com.example.image_bottom_sheet.event.settings.SettingsEvent
 import com.example.image_bottom_sheet.state.SettingsState

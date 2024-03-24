@@ -31,6 +31,7 @@
     <string name="test_date">2024 jan 14</string>
     <string name="end_at">End at:</string>
     <string name="season">Season:</string>
+    <string name="no_name">no name</string>
 
     <!--  :feature:tournament -->
     <string name="tournament">Tournaments</string>

@@ -16,6 +16,7 @@ android {
 dependencies {
     basic()
     common()
+    coreUi()
     domain()
     glide()
     fireBaseAuth()

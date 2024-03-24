@@ -42,7 +42,7 @@ class MainRecyclerAdapter(
                 val userNameStart = welcomeText.indexOf("${user?.userName}")
                 val userNameEnd = userNameStart + (user?.userName?.length ?: 0)
 
-                val purpleColor = Color.parseColor("#A45EE5")
+                val purpleColor = Color.parseColor("#6F5DD5")
 
                 spannableString.setSpan(
                     ForegroundColorSpan(purpleColor),
