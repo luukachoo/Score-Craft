@@ -34,11 +34,9 @@ class ChatFragmentViewModel @Inject constructor(
             is ChatEvent.AddFriend -> addFriend(event.userName)
             ChatEvent.FetchFriends -> fetchFriends()
             ChatEvent.ResetErrorMessage -> updateErrorMessage(message = null)
-//            is ChatEvent.SendFriendRequest -> sendFriendRequest(event.fcmToken)
             is ChatEvent.OnFriendClick -> updateNavigationEvent(ChatUiEvent.NavigateToMessage(event.userId))
             ChatEvent.OnRequestClick -> updateNavigationEvent(ChatUiEvent.NavigateToFriendRequest)
             is ChatEvent.RemoveFriend -> removeFriend(event.friendId)
-            else -> {}
         }
     }
 

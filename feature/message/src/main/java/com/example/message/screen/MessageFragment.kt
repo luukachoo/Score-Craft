@@ -7,6 +7,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
 import com.example.message.R
 import com.example.message.adapter.MessageRecyclerAdapter
@@ -71,6 +73,10 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
             backBtn.setOnClickListener {
                 viewModel.onEvent(MessageEvent.OnBackButtonClick)
             }
+
+            ivAvatar.setOnClickListener {
+                viewModel.onEvent(MessageEvent.OnAvatarClick(friendId))
+            }
         }
     }
 
@@ -114,6 +120,9 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
     private fun handleNavigationEvents(event: MessageFragmentViewModel.MessageUiEvent) {
         when (event) {
             MessageFragmentViewModel.MessageUiEvent.NavigateToChats -> findNavController().popBackStack()
+            is MessageFragmentViewModel.MessageUiEvent.NavigateToFriendProfile -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.FriendProfile(event.friendId)
+            )
         }
     }
 }

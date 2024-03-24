@@ -116,16 +116,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             val imageUriString = arguments?.getString("imageUri")
 
             if (!imageUriString.isNullOrEmpty()) {
-                if (!state.imageUploaded) {
-                    ivAvatar.loadImageWithUri(imageUriString.toUri())
-                    user.userId.let { userId ->
-                        viewModel.onEvent(
-                            ProfileEvent.UploadProfileImage(
-                                userId,
-                                imageUriString.toUri()
-                            )
+                ivAvatar.loadImageWithUri(imageUriString.toUri())
+                user.userId.let { userId ->
+                    viewModel.onEvent(
+                        ProfileEvent.UploadProfileImage(
+                            userId,
+                            imageUriString.toUri()
                         )
-                    }
+                    )
                 }
             } else if (user.avatar.isNotEmpty()) {
                 ivAvatar.loadImagesWithGlide(user.avatar)

@@ -10,6 +10,4 @@ data class ProfileState(
     val imageUri: String? = null,
     val userId: String? = null,
     val leagues: List<League>? = emptyList(),
-    val imageUploaded: Boolean = false,
-    val imageIsSet: Boolean = false,
 )

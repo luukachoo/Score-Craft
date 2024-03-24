@@ -14,4 +14,5 @@
     <include app:graph="@navigation/feature_friend_request_nav_graph" />
     <include app:graph="@navigation/feature_match_nav_graph" />
     <include app:graph="@navigation/feature_message_nav_graph" />
+    <include app:graph="@navigation/feature_friend_profile_nav_graph" />
 </navigation>

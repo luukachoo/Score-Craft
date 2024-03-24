@@ -1,6 +1,6 @@
 package com.core.domain.use_case.messaging
 
-import com.core.domain.repository.send_message.MessagingRepository
+import com.core.domain.repository.messaging.MessagingRepository
 import javax.inject.Inject
 
 class GetSendMessageUseCase @Inject constructor(

@@ -225,3 +225,7 @@ fun DependencyHandler.featureFriendRequest() {
 fun DependencyHandler.featureMessage() {
     implementation(project(Modules.FEATURE_MESSAGE))
 }
+
+fun DependencyHandler.featureFriendProfile() {
+    implementation(project(Modules.FEATURE_FRIEND_PROFILE))
+}

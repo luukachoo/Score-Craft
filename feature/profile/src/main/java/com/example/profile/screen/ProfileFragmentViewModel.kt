@@ -66,7 +66,6 @@ class ProfileFragmentViewModel @Inject constructor(
                         _profileState.update {
                             it.copy(
                                 user = resource.data.toPresenter(),
-                                imageIsSet = true,
                                 isLoading = false,
                                 errorMessage = null
                             )
@@ -93,8 +92,6 @@ class ProfileFragmentViewModel @Inject constructor(
                         _profileState.update {
                             it.copy(
                                 isLoading = false,
-                                imageUploaded = true,
-                                imageIsSet = true,
                                 errorMessage = null
                             )
                         }

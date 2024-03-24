@@ -62,6 +62,9 @@ sealed class DeepLinkDestination(val address: String) {
     class Message(friendId: String) :
         DeepLinkDestination("market-mingle://feature.message/fragment_message?friendId=${friendId}")
 
+    class FriendProfile(friendId: String) :
+        DeepLinkDestination("market-mingle://feature.friend_profile/fragment_friend_profile?friendId=${friendId}")
+
     data object FriendRequest :
         DeepLinkDestination("market-mingle://feature.friend_request/fragment_friend_request")
 }

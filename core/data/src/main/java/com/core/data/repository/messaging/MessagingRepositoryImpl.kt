@@ -2,7 +2,7 @@ package com.core.data.repository.messaging
 
 import com.core.common.resource.Resource
 import com.core.domain.model.messaging.GetMessage
-import com.core.domain.repository.send_message.MessagingRepository
+import com.core.domain.repository.messaging.MessagingRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -73,7 +73,7 @@ class MessagingRepositoryImpl @Inject constructor(
                 val message = snapshot.getValue(GetMessage::class.java)
                 message?.let {
                     messagesList.add(it)
-                    trySend(Resource.Success(messagesList.toList()))  // Sending the updated list of messages
+                    trySend(Resource.Success(messagesList.toList()))
                 }
             }
 
@@ -96,5 +96,50 @@ class MessagingRepositoryImpl @Inject constructor(
 
         messagesRef.addChildEventListener(messageListener)
         awaitClose { messagesRef.removeEventListener(messageListener) }
+    }
+
+    override suspend fun removeChatForCurrentUser(friendId: String): Flow<Resource<Unit>> = flow {
+        val currentUser = firebaseAuth.currentUser
+        if (currentUser == null) {
+            emit(Resource.Error("No authenticated user found"))
+            return@flow
+        }
+
+        val userId = currentUser.uid
+
+        try {
+            emit(Resource.Loading(true))
+
+            val userMessagesRef = firebaseDatabase.getReference("Messages").child(userId).child(friendId)
+            userMessagesRef.setValue(null).await()
+
+            emit(Resource.Success(Unit))
+        } catch (e: Exception) {
+            emit(Resource.Error("Failed to remove chat: ${e.message}"))
+        }
+    }
+
+    override suspend fun removeChatForBothUsers(friendId: String): Flow<Resource<Unit>> = flow {
+        val currentUser = firebaseAuth.currentUser
+        if (currentUser == null) {
+            emit(Resource.Error("No authenticated user found"))
+            return@flow
+        }
+
+        val userId = currentUser.uid
+
+        try {
+            emit(Resource.Loading(true))
+
+            val userMessagesRef = firebaseDatabase.getReference("Messages").child(userId).child(friendId)
+            val friendMessagesRef = firebaseDatabase.getReference("Messages").child(friendId).child(userId)
+
+            userMessagesRef.setValue(null).await()
+            friendMessagesRef.setValue(null).await()
+
+            emit(Resource.Success(Unit))
+        } catch (e: Exception) {
+            emit(Resource.Error("Failed to remove chat: ${e.message}"))
+        }
     }
 }

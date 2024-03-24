@@ -43,7 +43,7 @@ class MessageFragmentViewModel @Inject constructor(
             MessageEvent.ResetErrorMessage -> updateErrorMessage(message = null)
             MessageEvent.GetCurrentUser -> getCurrentUser()
             MessageEvent.OnBackButtonClick -> updateNavigationEvent(MessageUiEvent.NavigateToChats)
-//            is MessageEvent.OnAvatarClick -> TODO()
+            is MessageEvent.OnAvatarClick -> updateNavigationEvent(MessageUiEvent.NavigateToFriendProfile(event.friendId))
         }
     }
 
@@ -170,6 +170,6 @@ class MessageFragmentViewModel @Inject constructor(
 
     sealed interface MessageUiEvent {
         data object NavigateToChats : MessageUiEvent
-//        data object NavigateToFriendProfile : MessageUiEvent
+        data class NavigateToFriendProfile(val friendId: String) : MessageUiEvent
     }
 }

@@ -90,4 +90,34 @@ class LeaguesRepositoryImpl @Inject constructor(
             databaseReference.removeEventListener(eventListener)
         }
     }
+
+    override suspend fun fetchFriendFavouriteLeague(friendId: String): Flow<Resource<List<GetLeague>>> = callbackFlow {
+        trySend(Resource.Loading(true)).isSuccess
+
+        val databaseReference = FirebaseDatabase.getInstance().getReference("UserLeagues").child(friendId)
+
+        val eventListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val favourites = snapshot.children.mapNotNull { childSnapshot ->
+                    childSnapshot.getValue(GetLeague::class.java)
+                }
+                try {
+                    trySend(Resource.Success(favourites)).isSuccess
+                } catch (e: Exception) {
+                    trySend(Resource.Error("Failed to fetch favourite leagues of friend: ${e.message}")).isSuccess
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                trySend(Resource.Error("Failed to fetch favourite leagues of friend: ${error.message}")).isSuccess
+            }
+        }
+
+        databaseReference.addValueEventListener(eventListener)
+
+        awaitClose {
+            databaseReference.removeEventListener(eventListener)
+        }
+    }
+
 }

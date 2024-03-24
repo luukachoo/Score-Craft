@@ -1,36 +1,33 @@
 package com.core.common.resource.auth
 
-import android.util.Log.d
 import com.core.common.resource.Resource
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.*
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
 class HandleCurrentUserResponse @Inject constructor(private val databaseReference: DatabaseReference) {
-    fun getUserDetails(userId: String): Flow<Resource<Map<String, String>>> = flow {
-        emit(Resource.Loading(true))
-        try {
-            val snapshot = databaseReference.child("Users").child(userId).get().await()
-            d("FirebaseDebug", "Snapshot: ${snapshot.value}")
-            val userDetails = snapshot.value as? Map<String, String>
-            if (userDetails != null && userDetails.keys.containsAll(
-                    listOf(
-                        "email",
-                        "firstName",
-                        "lastName",
-                        "userName"
-                    )
-                )
-            ) {
-                emit(Resource.Success(userDetails))
-            } else {
-                emit(Resource.Error("User details not found"))
+    fun getUserDetails(userId: String): Flow<Resource<Map<String, String>>> = callbackFlow {
+        val userRef = databaseReference.child("Users").child(userId)
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val typeIndicator = object : GenericTypeIndicator<Map<String, String>>() {}
+                val userDetails = snapshot.getValue(typeIndicator) ?: emptyMap()
+
+                if (userDetails.isNotEmpty()) {
+                    trySend(Resource.Success(userDetails)).isSuccess
+                } else {
+                    trySend(Resource.Error("User details not found")).isSuccess
+                }
             }
-        } catch (e: Exception) {
-            emit(Resource.Error("An error occurred while retrieving user details: ${e.message}"))
+
+            override fun onCancelled(error: DatabaseError) {
+                trySend(Resource.Error("Failed to fetch user details: ${error.message}")).isSuccess
+            }
         }
-        emit(Resource.Loading(false))
+
+        userRef.addValueEventListener(listener)
+        awaitClose { userRef.removeEventListener(listener) }
     }
 }

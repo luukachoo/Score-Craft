@@ -84,10 +84,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                 root.showSnackBar(message = it)
                 viewModel.onEvent(ChatEvent.ResetErrorMessage)
             }
-
-//            state.fcmToken?.let {
-//                viewModel.onEvent(ChatEvent.SendFriendRequest(it))
-//            }
         }
     }
 

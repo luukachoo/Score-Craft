@@ -1,4 +1,4 @@
-package com.core.domain.repository.send_message
+package com.core.domain.repository.messaging
 
 import com.core.common.resource.Resource
 import com.core.domain.model.messaging.GetMessage
@@ -11,4 +11,6 @@ interface MessagingRepository {
     ): Flow<Resource<Unit>>
 
     fun fetchMessages(friendId: String): Flow<Resource<List<GetMessage>>>
+    suspend fun removeChatForCurrentUser(friendId: String): Flow<Resource<Unit>>
+    suspend fun removeChatForBothUsers(friendId: String): Flow<Resource<Unit>>
 }

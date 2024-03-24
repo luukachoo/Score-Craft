@@ -90,6 +90,7 @@ dependencies {
     featureChats()
     featureFriendRequest()
     featureMessage()
+    featureFriendProfile()
 }
 
 kapt {
