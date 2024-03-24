@@ -28,4 +28,7 @@ object Versions {
     const val OAUTH2 = "1.23.0"
     const val DATASTORE = "1.0.0"
     const val SPLASH_API = "1.0.0"
+    const val MOCKITO_CORE_VERSION = "4.0.0"
+    const val MOCKITO_INLINE_VERSION = "4.0.0"
+    const val COROUTINES_TEST_VERSION = "1.5.2"
 }

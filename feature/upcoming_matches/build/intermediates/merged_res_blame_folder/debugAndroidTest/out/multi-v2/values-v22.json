@@ -1,0 +1,20 @@
+{
+  "logs": [
+    {
+      "outputFile": "com.feature.upcoming_matches.test.upcoming_matches-mergeDebugAndroidTestResources-63:/values-v22/values-v22.xml",
+      "map": [
+        {
+          "source": "C:\\Users\\Sani\\.gradle\\caches\\transforms-3\\a3415969892edae84ccca4db17be4af6\\transformed\\appcompat-1.6.1\\res\\values-v22\\values-v22.xml",
+          "from": {
+            "startLines": "2,3,4,9",
+            "startColumns": "4,4,4,4",
+            "startOffsets": "55,130,217,487",
+            "endLines": "2,3,8,13",
+            "endColumns": "74,86,12,12",
+            "endOffsets": "125,212,482,764"
+          }
+        }
+      ]
+    }
+  ]
+}
