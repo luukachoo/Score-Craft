@@ -1,15 +1,6 @@
-import basic
-import common
-import domain
-import fireBaseAuth
-import firebaseDataBase
-import glide
-import navigationComponent
-
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)
-    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
@@ -26,8 +17,6 @@ dependencies {
     basic()
     navigationComponent()
     glide()
-    fireBaseAuth()
-    firebaseDataBase()
 
     // core
     domain()

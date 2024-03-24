@@ -17,8 +17,6 @@ android {
 dependencies {
     basic()
     glide()
-    fireBaseAuth()
-    daggerHilt()
     navigationComponent()
 
     // core

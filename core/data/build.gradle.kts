@@ -13,7 +13,6 @@ android {
 dependencies {
     basic()
     retrofit()
-    daggerHilt()
     fireBaseAuth()
     firebaseDataBase()
     firebaseStorage()

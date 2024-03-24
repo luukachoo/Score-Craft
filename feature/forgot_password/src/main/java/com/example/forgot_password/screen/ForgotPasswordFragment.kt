@@ -27,13 +27,15 @@ class ForgotPasswordFragment :
     override fun bindViewActionListeners() {
         binding.apply {
             sendCodeBtn.setOnClickListener {
-                val email: String = emailEt.text.toString()
-
-                viewModel.onEvent(ForgotPasswordEvent.ForgotPassword(email))
+                viewModel.onEvent(ForgotPasswordEvent.ForgotPassword(emailEt.text.toString()))
             }
 
             backBtn.setOnClickListener {
-                findNavController().deepLinkNavigateTo(DeepLinkDestination.Welcome)
+                viewModel.onEvent(ForgotPasswordEvent.OnItemClick)
+            }
+
+            dontHaveAccTv.setOnClickListener {
+                viewModel.onEvent(ForgotPasswordEvent.OnItemClick)
             }
         }
 
@@ -69,15 +71,7 @@ class ForgotPasswordFragment :
 
     private fun handleNavigationEvents(event: ForgotPasswordViewModel.ForgotPasswordUiEvent) {
         when (event) {
-            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToWelcome -> findNavController().deepLinkNavigateTo(
-                DeepLinkDestination.Welcome,
-                true
-            )
-
-            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToLogin -> findNavController().deepLinkNavigateTo(
-                DeepLinkDestination.Welcome,
-                true
-            )
+            ForgotPasswordViewModel.ForgotPasswordUiEvent.NavigateToLogin -> findNavController().popBackStack()
         }
     }
 }

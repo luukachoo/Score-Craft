@@ -29,13 +29,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             MainRecyclerAdapter(
                 emptyList(),
                 null,
-                "",
                 onLeagueItemClick = { _ -> },
                 onFavouriteClick = { _ -> })
         binding.mainRecyclerView.adapter = mainRecyclerAdapter
 
         viewModel.onEvent(HomeFragmentEvent.FetchCategories)
-        viewModel.onEvent(HomeFragmentEvent.FetchProducts)
         viewModel.onEvent(HomeFragmentEvent.GetCurrentUser)
     }
 
@@ -54,7 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.homeUiEvent.collect {
+                viewModel.uiEvent.collect {
                     handleNavigationEvents(it)
                 }
             }
@@ -68,17 +66,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             mainRecyclerAdapter = MainRecyclerAdapter(
                 state.leagues ?: emptyList(),
                 user,
-                state.imageUri ?: "",
                 onLeagueItemClick = { league ->
-                    findNavController().deepLinkNavigateTo(
-                        DeepLinkDestination.Series(league.slug)
-                    )
+                    viewModel.onEvent(HomeFragmentEvent.OnLeagueClick(league.slug))
                 },
                 onFavouriteClick = {
-                    viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(leagueSlug = it.slug))
+                    viewModel.onEvent(HomeFragmentEvent.SaveFavouriteLeague(league = it))
                 }
             )
-
             binding.mainRecyclerView.adapter = mainRecyclerAdapter
 
             setupClickListeners()
@@ -92,7 +86,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun setupClickListeners() {
         mainRecyclerAdapter.onAvatarClick {
-            findNavController().deepLinkNavigateTo(DeepLinkDestination.Profile)
+            viewModel.onEvent(HomeFragmentEvent.OnProfileClick)
         }
 
         mainRecyclerAdapter.onNextPageClick {
@@ -110,7 +104,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 DeepLinkDestination.Profile
             )
 
-            else -> {}
+            is HomeNavigationEvents.NavigateToSeries -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Series(event.slug)
+            )
         }
     }
 }

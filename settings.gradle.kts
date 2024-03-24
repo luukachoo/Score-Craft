@@ -35,3 +35,5 @@ include(":feature:friend_request")
 include(":feature:message")
 include(":feature:friend_request")
 include(":feature:chats")
+include(":feature:friend_profile")
+

@@ -1,6 +1,9 @@
 package com.example.splash_screen.screen
 
 import android.animation.Animator
+import android.app.AlertDialog
+import android.content.Intent
+import android.provider.Settings
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -81,6 +84,22 @@ class SplashScreenFragment :
                 DeepLinkDestination.Welcome,
                 true
             )
+
+            SplashScreenViewModel.SplashScreenUiEvent.ShowNetworkError -> showNetworkErrorDialog()
         }
+    }
+
+    private fun showNetworkErrorDialog() {
+        AlertDialog.Builder(context)
+            .setTitle("No Internet Connection")
+            .setMessage("Please check your network settings and try again.")
+            .setPositiveButton("Retry") { _, _ ->
+                viewModel.onEvent(SplashScreenEvent.CheckUserSessions)
+            }
+            .setNegativeButton("Turn on WiFi") { _, _ ->
+                startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
+            }
+            .setCancelable(false)
+            .show()
     }
 }

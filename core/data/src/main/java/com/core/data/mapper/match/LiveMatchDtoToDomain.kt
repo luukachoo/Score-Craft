@@ -1,11 +1,11 @@
 package com.core.data.mapper.match
 
-import com.core.data.model.match.live.StreamDto
 import com.core.data.model.match.live.LiveMatchDetailsDto
 import com.core.data.model.match.live.LiveMatchWrapperDto
-import com.core.domain.model.match.live.GetStream
+import com.core.data.model.match.live.StreamDto
 import com.core.domain.model.match.live.GetLiveMatchDetails
 import com.core.domain.model.match.live.GetLiveMatchWrapper
+import com.core.domain.model.match.live.GetStream
 
 
 fun LiveMatchWrapperDto.toDomainModel() = GetLiveMatchWrapper(match = match.toDomainModel())
@@ -30,10 +30,11 @@ fun StreamDto.toDomainModel() = GetStream(
     rawUrl = rawUrl
 )
 
-fun LiveMatchWrapperDto.LiveMatchDto.WinnerDto.toDomainModel() = GetLiveMatchWrapper.GetMatch.GetWinner(
-    id = id,
-    type = type
-)
+fun LiveMatchWrapperDto.LiveMatchDto.WinnerDto.toDomainModel() =
+    GetLiveMatchWrapper.GetMatch.GetWinner(
+        id = id,
+        type = type
+    )
 
 fun LiveMatchDetailsDto.toDomainModel() = GetLiveMatchDetails(
     slug = slug,

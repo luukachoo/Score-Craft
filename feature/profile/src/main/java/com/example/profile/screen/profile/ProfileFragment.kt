@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
-import android.util.Log.d
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -24,11 +23,13 @@ import com.core.common.base.BaseFragment
 import com.core.common.extension.DeepLinkDestination
 import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
+import com.example.profile.adapter.ProfileRecyclerAdapter
 import com.example.profile.databinding.FragmentProfileBinding
 import com.example.profile.event.profile.ProfileEvent
 import com.example.profile.extension.loadImageWithUri
 import com.example.profile.extension.showSnackBar
 import com.example.profile.state.profile.ProfileState
+import com.example.profile.util.CustomDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -37,12 +38,23 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private val viewModel: ProfileFragmentViewModel by viewModels()
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
+    private lateinit var adapter: ProfileRecyclerAdapter
 
     override fun bind() {
-        d("ThemeDebug", "Binding fragment bottom sheet")
         viewModel.onEvent(ProfileEvent.GetCurrentUser)
         initializePermissionRequest()
+        adapter = ProfileRecyclerAdapter(onRemoveFavouriteClick = { league ->
+            viewModel.onEvent(ProfileEvent.RemoveFavouriteLeague(league))
+        })
+        binding.rvLeague.adapter = adapter
+
+        val itemDecoration = CustomDividerItemDecoration(requireContext())
+        binding.rvLeague.addItemDecoration(itemDecoration)
+
+        viewModel.onEvent(ProfileEvent.FetchFavouriteLeagues)
+        viewModel.onEvent(ProfileEvent.GetCurrentUser)
     }
+
 
     override fun bindObserves() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -69,7 +81,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             }
 
             buttonSettings.setOnClickListener {
-                showSettingsBottomSheet()
+                viewModel.onEvent(ProfileEvent.OnSettingsBottomSheetClick)
             }
 
             buttonLogout.setOnClickListener {
@@ -91,12 +103,19 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                     popUpTo = true
                 )
             }
+
+            ProfileFragmentViewModel.ProfileUiEvent.ShowImageBottomSheet -> findNavController().deepLinkNavigateTo(DeepLinkDestination.ShowImageBottomSheet)
+            ProfileFragmentViewModel.ProfileUiEvent.ShowSettingsBottomSheet -> findNavController().deepLinkNavigateTo(DeepLinkDestination.ShowSettingsBottomSheet)
         }
     }
 
     @SuppressLint("SetTextI18n")
     private fun handleRegisterState(state: ProfileState) = binding.apply {
         progress.visibility = if (state.isLoading) View.VISIBLE else View.GONE
+
+        state.leagues?.let {
+            adapter.submitList(it)
+        }
 
         state.user?.let { user ->
             tvFullName.text = "${user.firstName} ${user.lastName}"
@@ -105,34 +124,36 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             val imageUriString = arguments?.getString("imageUri")
 
             if (!imageUriString.isNullOrEmpty()) {
-                if (!state.imageUploaded) {
-                    ivAvatar.loadImageWithUri(imageUriString.toUri())
-                    user.userId.let { userId ->
-                        viewModel.onEvent(
-                            ProfileEvent.UploadProfileImage(
-                                userId,
-                                imageUriString.toUri()
-                            )
+                ivAvatar.loadImageWithUri(imageUriString.toUri())
+                user.userId.let { userId ->
+                    viewModel.onEvent(
+                        ProfileEvent.UploadProfileImage(
+                            userId,
+                            imageUriString.toUri()
                         )
-                    }
+                    )
                 }
             } else if (user.avatar.isNotEmpty()) {
                 ivAvatar.loadImagesWithGlide(user.avatar)
             }
-        }
 
-        state.errorMessage?.let { message ->
-            root.showSnackBar(message)
-            viewModel.onEvent(ProfileEvent.ResetErrorMessage)
+            state.errorMessage?.let { message ->
+                root.showSnackBar(message)
+                viewModel.onEvent(ProfileEvent.ResetErrorMessage)
+            }
         }
     }
 
     private fun checkAndRequestPermissions() {
-        val requiredPermissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.CAMERA)
-        } else {
-            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
-        }
+        val requiredPermissions =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                arrayOf(Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.CAMERA)
+            } else {
+                arrayOf(
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA
+                )
+            }
         val missingPermissions = requiredPermissions.filter {
             ContextCompat.checkSelfPermission(
                 requireContext(),
@@ -151,7 +172,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                 requestPermissionLauncher.launch(missingPermissions)
             }
         } else {
-            showImageBottomSheet()
+            viewModel.onEvent(ProfileEvent.OnImageBottomSheetClick)
         }
     }
 
@@ -169,18 +190,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             .show()
     }
 
-    private fun showImageBottomSheet() =
-        findNavController().deepLinkNavigateTo(DeepLinkDestination.BottomSheet)
-
-    private fun showSettingsBottomSheet() =
-        findNavController().deepLinkNavigateTo(DeepLinkDestination.ShowSettingsBottomSheet)
-
     private fun initializePermissionRequest() {
         requestPermissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
                 val allPermissionsGranted = permissions.entries.all { it.value }
                 if (allPermissionsGranted) {
-                    showImageBottomSheet()
+                    viewModel.onEvent(ProfileEvent.OnImageBottomSheetClick)
                 } else {
                     binding.root.showSnackBar(getString(R.string.feature_profile_permission_required_message))
                 }

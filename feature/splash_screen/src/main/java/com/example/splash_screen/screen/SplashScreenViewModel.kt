@@ -6,8 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
 import com.core.domain.use_case.auth.GetAuthUseCase
 import com.core.domain.use_case.settings.GetDarkModeUseCase
+import com.core.domain.use_case.user.GetUserUseCase
 import com.example.splash_screen.event.SplashScreenEvent
 import com.example.splash_screen.state.SplashScreenState
+import com.example.splash_screen.util.NetworkUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +22,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashScreenViewModel @Inject constructor(
-    private val getAuthUseCase: GetAuthUseCase,
+    private val getUserUseCase: GetUserUseCase,
+    private val networkUtils: NetworkUtils,
     private val getDarkModeUseCase: GetDarkModeUseCase
 ) : ViewModel() {
     private val _splashScreenState = MutableStateFlow(SplashScreenState())
@@ -60,7 +63,12 @@ class SplashScreenViewModel @Inject constructor(
 
     private fun checkUserSession() {
         viewModelScope.launch {
-            getAuthUseCase.getCheckUserSessionsUseCase().collect { resource ->
+            if (!networkUtils.isNetworkAvailable()) {
+                _uiEvent.emit(SplashScreenUiEvent.ShowNetworkError)
+                return@launch
+            }
+
+            getUserUseCase.getCheckUserSessionUseCase().collect { resource ->
                 when (resource) {
                     is Resource.Error -> updateErrorMessage(resource.errorMessage)
 
@@ -96,5 +104,6 @@ class SplashScreenViewModel @Inject constructor(
     sealed interface SplashScreenUiEvent {
         data object NavigateToHome : SplashScreenUiEvent
         data object NavigateToWelcome : SplashScreenUiEvent
+        data object ShowNetworkError : SplashScreenUiEvent
     }
 }

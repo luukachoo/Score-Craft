@@ -5,22 +5,27 @@ object Dependencies {
     const val CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
     const val APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
-    const val CONSTRAINTLAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINTLAYOUT}"
+    const val CONSTRAINTLAYOUT =
+        "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINTLAYOUT}"
     const val JUNIT = "junit:junit:${Versions.JUNIT}"
     const val ANDROIDX_TEST_JUNIT = "androidx.test.ext:junit:${Versions.ANDROIDX_TEST_EXT_JUNIT}"
     const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
 
     // Retrofit and Moshi with OkHttp
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT_VERSION}"
-    const val MOSHI_CONVERTER = "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT_VERSION}"
+    const val MOSHI_CONVERTER =
+        "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT_VERSION}"
     const val MOSHI = "com.squareup.moshi:moshi-kotlin:${Versions.MOSHI_VERSION}"
     const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.OKHTTP_VERSION}"
-    const val OKHTTP_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP_VERSION}"
+    const val OKHTTP_INTERCEPTOR =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP_VERSION}"
 
     // Dagger - Hilt
     const val DAGGER_HILT = "com.google.dagger:hilt-android:${Versions.HILT_VERSION}"
-    const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT_VERSION}"
-    const val DAGGER_HILT_AGP = "com.google.dagger:hilt-android-gradle-plugin:${Versions.HILT_VERSION}"
+    const val DAGGER_HILT_COMPILER =
+        "com.google.dagger:hilt-android-compiler:${Versions.HILT_VERSION}"
+    const val DAGGER_HILT_AGP =
+        "com.google.dagger:hilt-android-gradle-plugin:${Versions.HILT_VERSION}"
 
     // Glide
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE_VERSION}"
@@ -31,19 +36,26 @@ object Dependencies {
     const val ROOM_COROUTINE = "androidx.room:room-ktx:${Versions.ROOM_VERSION}"
 
     // Navigation Component
-    const val NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION_VERSION}"
+    const val NAVIGATION_FRAGMENT =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION_VERSION}"
     const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION_VERSION}"
-    const val ANDROIDX_SAFE_ARGS_PLUGIN = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NAVIGATION_VERSION}"
+    const val ANDROIDX_SAFE_ARGS_PLUGIN =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NAVIGATION_VERSION}"
 
     // Firebase
     const val FIREBASE_AGP = "com.google.gms:google-services:${Versions.GMS_VERSION}"
     const val FIREBASE_AUTH = "com.google.firebase:firebase-auth:${Versions.FIREBASE_AUTH_VERSION}"
-    const val GMS_PLAY_SERVICES = "com.google.android.gms:play-services-auth:${Versions.GMS_PLAY_SERVICES_VERSION}"
-    const val FIREBASE_STORAGE = "com.google.firebase:firebase-storage-ktx:${Versions.FIREBASE_DATABASE_VERSION}"
-    const val FIREBASE_DATABASE = "com.google.firebase:firebase-database:${Versions.FIREBASE_DATABASE_VERSION}"
-    const val FIREBASE_MESSAGING = "com.google.firebase:firebase-messaging:${Versions.FIREBASE_MESSAGING}"
+    const val GMS_PLAY_SERVICES =
+        "com.google.android.gms:play-services-auth:${Versions.GMS_PLAY_SERVICES_VERSION}"
+    const val FIREBASE_STORAGE =
+        "com.google.firebase:firebase-storage-ktx:${Versions.FIREBASE_DATABASE_VERSION}"
+    const val FIREBASE_DATABASE =
+        "com.google.firebase:firebase-database:${Versions.FIREBASE_DATABASE_VERSION}"
+    const val FIREBASE_MESSAGING =
+        "com.google.firebase:firebase-messaging:${Versions.FIREBASE_MESSAGING}"
     const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versions.FIREBASE_BOM}"
-    const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx:${Versions.FIREBASE_ANALYTICS}"
+    const val FIREBASE_ANALYTICS =
+        "com.google.firebase:firebase-analytics-ktx:${Versions.FIREBASE_ANALYTICS}"
 
     // WorkManager
     const val WORK_MANAGER = "androidx.work:work-runtime-ktx:${Versions.WORK_MANAGER_VERSION}"
@@ -53,13 +65,15 @@ object Dependencies {
 
     const val oauth2 =
         "com.google.auth:google-auth-library-oauth2-http:${Versions.OAUTH2}"
-    
+
     // Kotlin Gradle
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
 
     // DataStore
     const val DATASTORE = "androidx.datastore:datastore-preferences:${Versions.DATASTORE}"
 
+    // Java Poet
+    const val JAVA_POET = "com.squareup:javapoet:${Versions.JAVAPOET_VERSION}"
 }
 
 fun DependencyHandler.basic() {
@@ -123,6 +137,10 @@ fun DependencyHandler.retrofit() {
 fun DependencyHandler.daggerHilt() {
     implementation(Dependencies.DAGGER_HILT)
     kapt(Dependencies.DAGGER_HILT_COMPILER)
+}
+
+fun DependencyHandler.javaPoet() {
+    implementation(Dependencies.JAVA_POET)
 }
 
 fun DependencyHandler.navigationComponent() {
@@ -207,10 +225,14 @@ fun DependencyHandler.featureChats() {
     implementation(project(Modules.FEATURE_CHATS))
 }
 
-fun DependencyHandler.friendRequest() {
+fun DependencyHandler.featureFriendRequest() {
     implementation(project(Modules.FEATURE_FRIEND_REQUEST))
 }
 
-fun DependencyHandler.message() {
+fun DependencyHandler.featureMessage() {
     implementation(project(Modules.FEATURE_MESSAGE))
+}
+
+fun DependencyHandler.featureFriendProfile() {
+    implementation(project(Modules.FEATURE_FRIEND_PROFILE))
 }

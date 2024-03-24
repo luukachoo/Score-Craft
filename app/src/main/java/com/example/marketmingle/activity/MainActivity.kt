@@ -18,7 +18,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private var request = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {}
+
+
+    private var request =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +49,8 @@ class MainActivity : AppCompatActivity() {
                 com.example.registration.R.id.registerFragment -> bottomNavigationView.isVisible =
                     false
 
-                com.example.friend_request.R.id.friendRequestFragment -> bottomNavigationView.isVisible = false
+                com.example.friend_request.R.id.friendRequestFragment -> bottomNavigationView.isVisible =
+                    false
 
                 com.example.message.R.id.messageFragment -> bottomNavigationView.isVisible = false
 

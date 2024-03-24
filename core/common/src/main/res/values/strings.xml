@@ -12,6 +12,7 @@
     <string name="feature_profile_dialog_positive_button">App Settings</string>
     <string name="feature_profile_dialog_negative_button">Cancel</string>
     <string name="feature_profile_permission_required_message">Permissions required for this feature</string>
+    <string name="favourite_leagues">Favourite Leagues</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="settings">Settings</string>
@@ -80,6 +81,7 @@
     <string name="chat">Chat</string>
     <string name="add_friend">Add Friend</string>
     <string name="friends">Friends</string>
+    <string name="friend_request">Friend Request</string>
 
     <!--  :feature:friend_request -->
     <string name="accept">Accept</string>
@@ -125,4 +127,15 @@
     <string name="previous">Previous</string>
     <string name="next">Next</string>
     <string name="explore_leagues">Explore Leagues</string>
+
+<!--    :feature:league-->
+    <string name="add_to_favourites_button">Add to favourites button</string>
+
+<!--    :feature:chat_item_layout-->
+    <string name="friend_remove_button">Friend remove button</string>
+    <string name="friend_requests">Friend Requests</string>
+    <string name="remove_chat_for_everyone">Remove chat for everyone</string>
+
+    <!--    :feature:friend_profile-->
+
 </resources>

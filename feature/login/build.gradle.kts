@@ -1,15 +1,6 @@
-import basic
-import common
-import daggerHilt
-import domain
-import fireBaseAuth
-import gmsPlayServices
-import navigationComponent
-
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)
-    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
@@ -25,9 +16,7 @@ android {
 dependencies {
     basic()
     fireBaseAuth()
-    daggerHilt()
     navigationComponent()
-    gmsPlayServices()
 
     // core
     common()

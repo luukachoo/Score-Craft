@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 class CustomDividerItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
     private val paint: Paint = Paint()
     private val thickness: Int = 1
+    private val margin: Int = (context.resources.displayMetrics.density * 30).toInt()
 
     init {
         paint.color = ContextCompat.getColor(context, android.R.color.darker_gray)
@@ -16,8 +17,8 @@ class CustomDividerItemDecoration(context: Context) : RecyclerView.ItemDecoratio
     }
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        val left = parent.paddingLeft
-        val right = parent.width - parent.paddingRight
+        val left = parent.paddingLeft + margin
+        val right = parent.width - parent.paddingRight - margin
 
         for (i in 0 until parent.childCount - 1) {
             val child = parent.getChildAt(i)

@@ -5,8 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
 import com.core.domain.use_case.auth.GetAuthUseCase
+import com.core.domain.use_case.leagues.LeagueUseCase
+import com.core.domain.use_case.user.GetUserUseCase
 import com.example.profile.event.profile.ProfileEvent
 import com.example.profile.mapper.auth.toPresenter
+import com.example.profile.mapper.league.toDomain
+import com.example.profile.mapper.league.toPresentationModel
+import com.example.profile.model.league.League
 import com.example.profile.state.profile.ProfileState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -20,6 +25,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileFragmentViewModel @Inject constructor(
+    private val getUserUseCase: GetUserUseCase,
+    private val leagueUseCase: LeagueUseCase,
     private val getAuthUseCase: GetAuthUseCase
 ) : ViewModel() {
     private val _profileState = MutableStateFlow(ProfileState())
@@ -38,12 +45,16 @@ class ProfileFragmentViewModel @Inject constructor(
             )
 
             ProfileEvent.LogOut -> logOut()
+            ProfileEvent.FetchFavouriteLeagues -> fetchFavouriteLeagues()
+            is ProfileEvent.RemoveFavouriteLeague -> removeFavouriteLeague(event.league)
+            ProfileEvent.OnImageBottomSheetClick -> updateNavigationEvent(ProfileUiEvent.ShowImageBottomSheet)
+            ProfileEvent.OnSettingsBottomSheetClick -> updateNavigationEvent(ProfileUiEvent.ShowSettingsBottomSheet)
         }
     }
 
     private fun getCurrentUser() {
         viewModelScope.launch {
-            getAuthUseCase.getCurrentUserUseCase().collect { resource ->
+            getUserUseCase.getCurrentUserUseCase().collect { resource ->
                 when (resource) {
                     is Resource.Error -> updateErrorMessage(resource.errorMessage)
 
@@ -57,7 +68,6 @@ class ProfileFragmentViewModel @Inject constructor(
                         _profileState.update {
                             it.copy(
                                 user = resource.data.toPresenter(),
-                                imageIsSet = true,
                                 isLoading = false,
                                 errorMessage = null
                             )
@@ -70,7 +80,7 @@ class ProfileFragmentViewModel @Inject constructor(
 
     private fun uploadProfileImage(userId: String, imageUri: Uri) {
         viewModelScope.launch {
-            getAuthUseCase.getUploadProfileImageUseCase(userId, imageUri).collect { resource ->
+            getUserUseCase.getUploadProfileImageUseCase(userId, imageUri).collect { resource ->
                 when (resource) {
                     is Resource.Error -> updateErrorMessage(resource.errorMessage)
 
@@ -84,8 +94,57 @@ class ProfileFragmentViewModel @Inject constructor(
                         _profileState.update {
                             it.copy(
                                 isLoading = false,
-                                imageUploaded = true,
-                                imageIsSet = true,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun fetchFavouriteLeagues() {
+        viewModelScope.launch {
+            leagueUseCase.getFavouriteLeaguesUseCase().collect { resource ->
+                when (resource) {
+                    is Resource.Error -> updateErrorMessage(resource.errorMessage)
+
+                    is Resource.Loading -> {
+                        _profileState.update { currentState ->
+                            currentState.copy(isLoading = resource.loading)
+                        }
+                    }
+
+                    is Resource.Success -> {
+                        _profileState.update { it ->
+                            it.copy(
+                                leagues = resource.data.map { it.toPresentationModel() },
+                                isLoading = false,
+                                errorMessage = null
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun removeFavouriteLeague(league: League) {
+        viewModelScope.launch {
+            leagueUseCase.getSaveFavouriteLeagues(league.toDomain()).collect { resource ->
+                when (resource) {
+                    is Resource.Error -> updateErrorMessage(resource.errorMessage)
+
+                    is Resource.Loading -> {
+                        _profileState.update { currentState ->
+                            currentState.copy(isLoading = resource.loading)
+                        }
+                    }
+
+                    is Resource.Success -> {
+                        _profileState.update {
+                            it.copy(
+                                isLoading = false,
                                 errorMessage = null
                             )
                         }
@@ -102,6 +161,12 @@ class ProfileFragmentViewModel @Inject constructor(
         }
     }
 
+    private fun updateNavigationEvent(events: ProfileUiEvent) {
+        viewModelScope.launch {
+            _uiEvent.emit(events)
+        }
+    }
+
     private fun updateErrorMessage(message: String?) {
         _profileState.update { currentState -> currentState.copy(errorMessage = message) }
     }
@@ -109,5 +174,7 @@ class ProfileFragmentViewModel @Inject constructor(
     sealed interface ProfileUiEvent {
         data object NavigateToHome : ProfileUiEvent
         data object NavigateToWelcome : ProfileUiEvent
+        data object ShowImageBottomSheet : ProfileUiEvent
+        data object ShowSettingsBottomSheet : ProfileUiEvent
     }
 }

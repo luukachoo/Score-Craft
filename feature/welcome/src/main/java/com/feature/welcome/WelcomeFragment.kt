@@ -16,13 +16,12 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBind
     override fun bindViewActionListeners() {
         binding.apply {
             registerBtn.setOnClickListener {
-                findNavController().deepLinkNavigateTo(DeepLinkDestination.Register, true)
+                findNavController().deepLinkNavigateTo(DeepLinkDestination.Register)
             }
 
             loginBtn.setOnClickListener {
                 findNavController().deepLinkNavigateTo(
                     DeepLinkDestination.LoginWithoutArgument,
-                    true
                 )
             }
         }
