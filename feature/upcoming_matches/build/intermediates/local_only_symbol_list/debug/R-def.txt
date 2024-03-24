@@ -1,0 +1,27 @@
+R_DEF: Internal format may change without notice
+local
+color gray
+id feature_upcoming_matches_nav_graph
+id ivTeamOneLogo
+id ivTeamTwoLogo
+id progressBar
+id rvUpcomingMatches
+id tvDate
+id tvMinus
+id tvName
+id tvTeamOneName
+id tvTeamOneScore
+id tvTeamTwoName
+id tvTeamTwoScore
+id tvTime
+id upcomingMatchesFragment
+layout fragment_upcoming_matches
+layout item_upcoming_match
+navigation feature_upcoming_matches_nav_graph
+string hello_blank_fragment
+string minus
+string test_date
+string test_name
+string test_team_one
+string test_time
+string zero

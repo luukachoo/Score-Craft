@@ -74,6 +74,11 @@ object Dependencies {
 
     // Java Poet
     const val JAVA_POET = "com.squareup:javapoet:${Versions.JAVAPOET_VERSION}"
+
+//    Unit testing
+    const val MOCKITO_CORE = "org.mockito:mockito-core:${Versions.MOCKITO_CORE_VERSION}"
+    const val MOCKITO_INLINE = "org.mockito:mockito-core:${Versions.MOCKITO_INLINE_VERSION}"
+    const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_TEST_VERSION}"
 }
 
 fun DependencyHandler.basic() {
@@ -82,6 +87,9 @@ fun DependencyHandler.basic() {
     implementation(Dependencies.MATERIAL)
     implementation(Dependencies.CONSTRAINTLAYOUT)
     testImplementation(Dependencies.JUNIT)
+    testImplementation(Dependencies.MOCKITO_CORE)
+    testImplementation(Dependencies.MOCKITO_INLINE)
+    testImplementation(Dependencies.COROUTINES_TEST)
     androidTestImplementation(Dependencies.ANDROIDX_TEST_JUNIT)
     androidTestImplementation(Dependencies.ESPRESSO_CORE)
 }
