@@ -44,18 +44,15 @@ class SettingsFragment : BaseBottomSheetFragment<FragmentSettingsBinding>(Fragme
         }
     }
 
-    private fun handleSettingsState(state: SettingsState) = with(binding) {
+    private fun handleSettingsState(state: SettingsState) {
         when(state.darkThemeConfig) {
             getString(R.string.system_default_lowercase) -> {
-                rbSystemDefault.isChecked = true
                 setSystemDefaultTheme()
             }
             getString(R.string.dark_lowercase) -> {
-                rbDark.isChecked = true
                 setDarkTheme()
             }
             getString(R.string.light_lowercase) -> {
-                rbLight.isChecked = true
                 setLightTheme()
             }
         }

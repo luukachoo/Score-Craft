@@ -20,14 +20,18 @@ class SettingsFragmentViewModel @Inject constructor(private val settingsUseCase:
     fun onEvent(event: SettingsEvent) {
         when (event) {
             is SettingsEvent.SetDarkModeConfig -> {
-                viewModelScope.launch {
-                    settingsUseCase.setDarkModeUseCase(event.config)
-                    _settingsState.update {
-                        it.copy(
-                            darkThemeConfig = event.config
-                        )
-                    }
-                }
+                setDarkModeConfig(event.config)
+            }
+        }
+    }
+
+    private fun setDarkModeConfig(config: String) {
+        viewModelScope.launch {
+            settingsUseCase.setDarkModeUseCase(config)
+            _settingsState.update {
+                it.copy(
+                    darkThemeConfig = config
+                )
             }
         }
     }

@@ -8,7 +8,7 @@
     style="@style/BottomSheetDialogTheme"
     android:elevation="8dp"
     android:padding="16dp"
-    tools:context="com.example.image_bottom_sheet.settings.SettingsFragment">
+    tools:context="com.example.image_bottom_sheet.screen.settings.SettingsFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvDarkModePreference"

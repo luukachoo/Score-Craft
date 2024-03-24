@@ -71,6 +71,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             buttonSettings.setOnClickListener {
                 showSettingsBottomSheet()
             }
+
+            buttonLogout.setOnClickListener {
+                viewModel.onEvent(ProfileEvent.LogOut)
+            }
         }
     }
 
