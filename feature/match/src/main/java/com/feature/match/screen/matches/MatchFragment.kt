@@ -1,7 +1,7 @@
 package com.feature.match.screen.matches
 
 import com.core.common.base.BaseFragment
-import com.ui.core_ui.R
+import com.core.common.R
 import com.feature.live_matches.databinding.FragmentMatchBinding
 import com.feature.match.screen.matches.adapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
