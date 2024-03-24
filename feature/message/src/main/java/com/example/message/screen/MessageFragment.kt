@@ -25,9 +25,9 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
 
     private val viewModel: MessageFragmentViewModel by viewModels()
     private var adapter: MessageRecyclerAdapter? = null
+    private val friendId by lazy { arguments?.getString("friendId") ?: "" }
 
     override fun bind() {
-        val friendId = arguments?.getString("friendId") ?: ""
         viewModel.onEvent(MessageEvent.GetCurrentUser)
         viewModel.onEvent(MessageEvent.FetchFriend(friendId))
         viewModel.onEvent(MessageEvent.FetchMessages(friendId))
@@ -52,8 +52,6 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
     }
 
     override fun bindViewActionListeners() {
-        val friendId = arguments?.getString("friendId") ?: ""
-
         binding.apply {
             btnSend.isEnabled = etTextField.text!!.isNotBlank()
 
