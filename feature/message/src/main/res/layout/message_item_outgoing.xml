@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="5dp"
-    android:layout_marginEnd="10dp">
+    android:layout_marginVertical="5dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/messageBox"
@@ -19,17 +18,19 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvMessage"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
-            android:maxWidth="280dp"
-            android:minWidth="70dp" />
+            android:minWidth="70dp"
+            android:maxWidth="280dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTimestamp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:textSize="12sp"
+            android:textColor="@color/white"
             android:layout_marginTop="5dp"
-            android:textSize="12sp" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="end" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

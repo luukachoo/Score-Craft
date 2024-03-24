@@ -5,7 +5,6 @@ object ModulePackages {
     const val FEATURE_LOGIN = "com.example.login"
     const val FEATURE_SPLASH_SCREEN = "com.example.splash_screen"
     const val FEATURE_TOURNAMENT = "com.example.tournament"
-    const val FEATURE_TOURNAMENT_DETAILS = "com.feature.tournament_details"
     const val FEATURE_WELCOME = "com.feature.welcome"
     const val FEATURE_SERIES = "com.feature.series"
     const val FEATURE_LIVE_MATCHES = "com.feature.live_matches"
@@ -15,7 +14,7 @@ object ModulePackages {
     const val FEATURE_FORGOT_PASSWORD = "com.example.forgot_password"
     const val FEATURE_MESSAGE = "com.example.message"
     const val CORE_DATA = "com.core.data"
+    const val CORE_UI = "com.ui.core_ui"
     const val CORE_DOMAIN = "com.core.domain"
     const val CORE_COMMON = "com.core.common"
-    const val CORE_DATASTORE = "com.core.datastore"
 }

@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:background="@drawable/outgoing_item_layout"
+        android:background="@drawable/incoming_item_layout"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintStart_toEndOf="@id/ivAvatar"
@@ -32,6 +32,7 @@
             android:id="@+id/tvMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:maxWidth="280dp"
             android:minWidth="70dp" />
 
@@ -40,9 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:textColor="@color/white"
             android:layout_marginTop="5dp"
             android:textSize="12sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

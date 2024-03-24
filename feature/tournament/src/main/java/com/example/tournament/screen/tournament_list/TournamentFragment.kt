@@ -8,11 +8,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.core.common.extension.showSnackbar
+import com.example.tournament.databinding.FragmentTournamentBinding
 import com.example.tournament.event.tournament_list.TournamentEvent
 import com.example.tournament.event.tournament_list.TournamentNavigationEvents
 import com.example.tournament.screen.tournament_list.adapter.TournamentRecyclerAdapter
 import com.example.tournament.state.tournament_list.TournamentState
-import com.feature.tournament_details.databinding.FragmentTournamentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

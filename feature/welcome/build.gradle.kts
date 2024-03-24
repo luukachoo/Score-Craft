@@ -21,4 +21,5 @@ dependencies {
 
     // core
     common()
+    coreUi()
 }

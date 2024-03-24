@@ -4,15 +4,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.core.common.extension.showSnackbar
-import com.example.tournament.event.tournament_details.TournamentDetailUiEvent
+import com.example.tournament.databinding.FragmentTournamentMatchesBinding
 import com.example.tournament.event.tournament_matches.TournamentMatchesEvent
 import com.example.tournament.screen.test.adapter.TournamentMatchesAdapter
 import com.example.tournament.screen.tournament_details.TournamentDetailsFragment
 import com.example.tournament.state.tournament_matches.TournamentMatchesState
-import com.feature.tournament_details.databinding.FragmentTournamentMatchesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

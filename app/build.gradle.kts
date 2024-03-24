@@ -72,6 +72,7 @@ dependencies {
     common()
     data()
     domain()
+    coreUi()
 
     // feature
     featureWelcome()
