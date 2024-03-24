@@ -4,7 +4,7 @@ import com.core.common.mapper.asResource
 import com.core.common.resource.Resource
 import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.mapper.match.toDomainModel
-import com.core.data.service.MatchesService
+import com.core.data.service.match.MatchesService
 import com.core.domain.model.match.live.GetLiveMatchDetails
 import com.core.domain.model.match.live.GetLiveMatchWrapper
 import com.core.domain.model.match.GetTeamWrapper

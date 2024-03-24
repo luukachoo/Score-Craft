@@ -18,11 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-
-
-    private var request = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
-
-    }
+    private var request = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

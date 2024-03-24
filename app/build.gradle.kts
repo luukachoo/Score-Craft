@@ -66,6 +66,7 @@ dependencies {
     fireBaseAuth()
     firebaseDataBase()
     firebaseMessaging()
+    dataStore()
 
     // core
     common()

@@ -33,6 +33,10 @@ class TournamentFragment :
         adapter.onClick {
             viewModel.onEvent(TournamentEvent.ItemClick(it.slug))
         }
+
+        binding.backBtn.setOnClickListener {
+            viewModel.onEvent(TournamentEvent.BackButtonClick)
+        }
     }
 
     override fun bindObserves() {
@@ -73,6 +77,8 @@ class TournamentFragment :
                     event.slug
                 )
             )
+
+            TournamentNavigationEvents.NavigateToSeries -> findNavController().popBackStack()
         }
     }
 

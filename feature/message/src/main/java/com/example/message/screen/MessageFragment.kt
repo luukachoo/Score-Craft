@@ -7,7 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.core.common.base.BaseFragment
 import com.core.common.extension.loadImagesWithGlide
-import com.example.message.R
+import com.core.common.R
 import com.example.message.adapter.MessageRecyclerAdapter
 import com.example.message.databinding.FragmentMessageBinding
 import com.example.message.event.MessageEvent

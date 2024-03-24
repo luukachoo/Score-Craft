@@ -1,9 +1,11 @@
 package com.example.splash_screen.screen
 
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.resource.Resource
 import com.core.domain.use_case.auth.GetAuthUseCase
+import com.core.domain.use_case.settings.GetDarkModeUseCase
 import com.example.splash_screen.event.SplashScreenEvent
 import com.example.splash_screen.state.SplashScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashScreenViewModel @Inject constructor(
-    private val getAuthUseCase: GetAuthUseCase
+    private val getAuthUseCase: GetAuthUseCase,
+    private val getDarkModeUseCase: GetDarkModeUseCase
 ) : ViewModel() {
     private val _splashScreenState = MutableStateFlow(SplashScreenState())
     val splashScreenState: StateFlow<SplashScreenState> = _splashScreenState.asStateFlow()
@@ -30,6 +33,28 @@ class SplashScreenViewModel @Inject constructor(
         when (event) {
             SplashScreenEvent.CheckUserSessions -> checkUserSession()
             SplashScreenEvent.ResetErrorMessage -> updateErrorMessage(message = null)
+            SplashScreenEvent.FetchUserDarkModePreference -> fetchUserDarkModePreference()
+        }
+    }
+
+    private fun applyDarkModePreference(darkThemeConfig: String?) {
+        when(darkThemeConfig) {
+            "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            "system_default" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+    }
+
+    private fun fetchUserDarkModePreference() {
+        viewModelScope.launch {
+            getDarkModeUseCase().collect { darkThemeConfig ->
+                _splashScreenState.update {
+                    it.copy(
+                        darkThemeConfig = darkThemeConfig
+                    )
+                }
+                applyDarkModePreference(darkThemeConfig)
+            }
         }
     }
 

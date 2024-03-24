@@ -7,4 +7,3 @@ data class GetTeam(
     val location: String,
     val name: String
 )
-

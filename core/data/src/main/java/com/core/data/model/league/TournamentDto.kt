@@ -9,8 +9,6 @@ data class TournamentDto(
     val prizePool: String?,
     @Json(name = "begin_at")
     val beginAt: String?,
-    @Json(name = "matches")
-    val matches: List<TournamentMatchDto>,
     @Json(name = "teams")
     val teams: List<TeamDto>,
     @Json(name = "name")

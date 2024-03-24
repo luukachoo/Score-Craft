@@ -1,13 +1,3 @@
-import basic
-import common
-import daggerHilt
-import domain
-import fireBaseAuth
-import firebaseDataBase
-import firebaseStorage
-import retrofit
-import workManager
-
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)
@@ -29,6 +19,7 @@ dependencies {
     firebaseStorage()
     firebaseMessaging()
     workManager()
+    dataStore()
 
     // core
     domain()

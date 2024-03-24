@@ -35,13 +35,5 @@ id tvTitle
 layout fragment_live_match_details
 layout item_player
 navigation feature_live_match_details_nav_graph
-string back
-string bb_vs_tspirit
-string ge
-string hello_blank_fragment
-string minus
-string no_live_link
-string watch_on
-string zero
 style roundedShape
 style roundedShapeForImageView
