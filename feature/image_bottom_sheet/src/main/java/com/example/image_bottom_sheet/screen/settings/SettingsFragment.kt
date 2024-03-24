@@ -45,16 +45,34 @@ class SettingsFragment : BaseBottomSheetFragment<FragmentSettingsBinding>(Fragme
     }
 
     private fun handleSettingsState(state: SettingsState) {
+        // Temporarily remove listener to avoid triggering events when programmatically setting checked state
+        binding.radioGroup.setOnCheckedChangeListener(null)
+
         when(state.darkThemeConfig) {
-            getString(R.string.system_default_lowercase) -> {
-                setSystemDefaultTheme()
+            getString(R.string.system_default_lowercase) -> binding.rbSystemDefault.isChecked = true
+            getString(R.string.dark_lowercase) -> binding.rbDark.isChecked = true
+            getString(R.string.light_lowercase) -> binding.rbLight.isChecked = true
+            else -> binding.radioGroup.clearCheck()  // Clear selection if config is unknown or null
+        }
+
+        // Apply theme settings if needed
+        applyThemeBasedOnConfig(state.darkThemeConfig)
+
+        // Re-attach listener after updating the radio buttons
+        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.rbSystemDefault -> viewModel.onEvent(SettingsEvent.SetDarkModeConfig(getString(R.string.system_default_lowercase)))
+                R.id.rbDark -> viewModel.onEvent(SettingsEvent.SetDarkModeConfig(getString(R.string.dark_lowercase)))
+                R.id.rbLight -> viewModel.onEvent(SettingsEvent.SetDarkModeConfig(getString(R.string.light_lowercase)))
             }
-            getString(R.string.dark_lowercase) -> {
-                setDarkTheme()
-            }
-            getString(R.string.light_lowercase) -> {
-                setLightTheme()
-            }
+        }
+    }
+
+    private fun applyThemeBasedOnConfig(config: String?) {
+        when(config) {
+            getString(R.string.system_default_lowercase) -> setSystemDefaultTheme()
+            getString(R.string.dark_lowercase) -> setDarkTheme()
+            getString(R.string.light_lowercase) -> setLightTheme()
         }
     }
 
