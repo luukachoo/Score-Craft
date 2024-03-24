@@ -80,7 +80,6 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
         }
     }
 
-
     private fun handleMessageState(state: MessageState) {
         binding.apply {
             var user: Users? = null

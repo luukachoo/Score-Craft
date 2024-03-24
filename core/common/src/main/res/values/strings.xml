@@ -134,6 +134,7 @@
 <!--    :feature:chat_item_layout-->
     <string name="friend_remove_button">Friend remove button</string>
     <string name="friend_requests">Friend Requests</string>
+    <string name="remove_chat_for_everyone">Remove chat for everyone</string>
 
     <!--    :feature:friend_profile-->
 
