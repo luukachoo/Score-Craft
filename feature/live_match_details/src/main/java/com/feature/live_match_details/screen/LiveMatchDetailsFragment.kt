@@ -11,10 +11,11 @@ import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
 import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.showSnackbar
-import com.feature.live_match_details.R
+import com.core.common.R
 import com.feature.live_match_details.databinding.FragmentLiveMatchDetailsBinding
 import com.feature.live_match_details.event.LiveMatchDetailsEvents
 import com.feature.live_match_details.event.LiveMatchDetailsUiEvent
+import com.feature.live_match_details.screen.adapter.LiveMatchRecyclerAdapter
 import com.feature.live_match_details.state.LiveMatchDetailsState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

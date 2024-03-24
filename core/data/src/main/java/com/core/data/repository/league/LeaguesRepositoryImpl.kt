@@ -4,7 +4,7 @@ import com.core.common.mapper.asResource
 import com.core.common.resource.Resource
 import com.core.common.resource.retrofit.HandleRetrofitResponse
 import com.core.data.mapper.league.toDomainModel
-import com.core.data.service.LeaguesService
+import com.core.data.service.league.LeaguesService
 import com.core.domain.model.league.GetLeague
 import com.core.domain.repository.league.LeagueRepository
 import com.google.firebase.auth.FirebaseAuth

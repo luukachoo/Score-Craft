@@ -51,11 +51,11 @@ sealed class DeepLinkDestination(val address: String) {
         DeepLinkDestination("market-mingle://feature.login/fragment_login")
 
     data object Register : DeepLinkDestination("market-mingle://feature.register/fragment_register")
-    data object ForgotPassword :
-        DeepLinkDestination("market-mingle://feature.forgot_password/fragment_forgot_password")
+    data object ForgotPassword : DeepLinkDestination("market-mingle://feature.forgot_password/fragment_forgot_password")
+    data object ShowImageBottomSheet : DeepLinkDestination("market-mingle://feature.image_bottom_sheet/fragment_image_bottom_sheet")
+    data object ShowSettingsBottomSheet : DeepLinkDestination("market-mingle://feature.image_bottom_sheet/fragment_settings")
 
-    data object BottomSheet :
-        DeepLinkDestination("market-mingle://feature.image_bottom_sheet/fragment_image_bottom_sheet")
+
 
     data object Profile : DeepLinkDestination("market-mingle://feature.profile/fragment_profile")
     data object Chat : DeepLinkDestination("market-mingle://feature.chat/fragment_chat")

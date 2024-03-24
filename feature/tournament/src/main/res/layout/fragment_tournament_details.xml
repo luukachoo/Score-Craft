@@ -5,24 +5,39 @@
     android:layout_height="match_parent"
     tools:context="com.example.tournament.screen.tournament_details.TournamentDetailsFragment">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backBtn"
+        style="@style/Widget.Material3.FloatingActionButton.Surface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/back"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivLeagueLogo"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_trophy"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/tournamentTabs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_trophy" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvLeagueName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/ivLeagueLogo"
-        app:layout_constraintStart_toEndOf="@+id/ivLeagueLogo"
-        app:layout_constraintTop_toTopOf="@+id/ivLeagueLogo"
+        app:layout_constraintEnd_toStartOf="@+id/ivLeagueLogo"
+        app:layout_constraintStart_toEndOf="@+id/backBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.509"
         tools:text="test ragaca teqsti" />
 
     <com.google.android.material.tabs.TabLayout

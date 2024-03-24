@@ -13,6 +13,7 @@ android {
 dependencies {
     basic()
     fireBaseAuth()
+    dataStore()
 
     // core
     common()

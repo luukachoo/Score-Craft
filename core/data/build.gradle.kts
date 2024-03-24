@@ -18,6 +18,7 @@ dependencies {
     firebaseStorage()
     firebaseMessaging()
     workManager()
+    dataStore()
 
     // core
     domain()

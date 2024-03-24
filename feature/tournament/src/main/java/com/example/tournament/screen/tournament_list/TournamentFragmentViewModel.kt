@@ -39,8 +39,8 @@ class TournamentFragmentViewModel @Inject constructor(
                     event.slug
                 )
             )
+            TournamentEvent.BackButtonClick -> updateNavigationEvent(TournamentNavigationEvents.NavigateToSeries)
         }
-
     }
 
     private fun fetchTournaments(slug: String) {
@@ -69,9 +69,7 @@ class TournamentFragmentViewModel @Inject constructor(
     private fun updateErrorMessage(message: String?) =
         _viewState.update { it.copy(errorMessage = message) }
 
-    private fun updateNavigationEvent(events: TournamentNavigationEvents) {
-        viewModelScope.launch {
-            _tournamentUiState.emit(events)
-        }
+    private fun updateNavigationEvent(events: TournamentNavigationEvents) = viewModelScope.launch {
+        _tournamentUiState.emit(events)
     }
 }

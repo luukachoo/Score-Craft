@@ -1,0 +1,30 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color dark
+color dark_gray
+color gray
+color light_gray
+color white
+drawable ic_back_btn
+drawable rounded_back_btn
+font alata
+font urbanist
+id appCompatTextView
+id backBtn
+id feature_series_nav_graph
+id progress
+id rvSeries
+id seriesFragment
+id tvBegin
+id tvBeginDate
+id tvEnd
+id tvEndDate
+id tvName
+id tvSeason
+id tvSeasonText
+layout fragment_series
+layout item_series
+navigation feature_series_nav_graph
+string hello_blank_fragment
+style roundedShape

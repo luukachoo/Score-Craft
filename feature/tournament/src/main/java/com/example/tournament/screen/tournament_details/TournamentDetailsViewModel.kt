@@ -6,11 +6,14 @@ import com.core.common.resource.takeIfError
 import com.core.common.resource.takeIfLoading
 import com.core.common.resource.takeIfSuccess
 import com.core.domain.use_case.tournament.GetTournamentDetailsUseCase
+import com.example.tournament.event.tournament_details.TournamentDetailUiEvent
 import com.example.tournament.event.tournament_details.TournamentDetailsEvent
 import com.example.tournament.mapper.toPresentationModel
 import com.example.tournament.state.tournament_details.TournamentDetailsState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -24,13 +27,13 @@ class TournamentDetailsViewModel @Inject constructor(
     private val _viewState = MutableStateFlow(TournamentDetailsState())
     val viewState = _viewState.asStateFlow()
 
-    fun onEvent(event: TournamentDetailsEvent) {
-        when (event) {
-            TournamentDetailsEvent.BackButtonClick -> TODO()
-            is TournamentDetailsEvent.FetchTournamentDetailsBySlug -> fetchTournamentDetailsBySlug(
-                event.slug
-            )
+    private val _uiEvent = MutableSharedFlow<TournamentDetailUiEvent>()
+    val uiEvent get() = _uiEvent.asSharedFlow()
 
+    fun onEvent(event: TournamentDetailsEvent) {
+        when(event) {
+            TournamentDetailsEvent.BackButtonClick -> updateNavigationEvent(TournamentDetailUiEvent.NavigateToTournaments)
+            is TournamentDetailsEvent.FetchTournamentDetailsBySlug -> fetchTournamentDetailsBySlug(event.slug)
             TournamentDetailsEvent.ResetErrorMessage -> updateErrorMessage(null)
         }
     }
@@ -39,7 +42,7 @@ class TournamentDetailsViewModel @Inject constructor(
     private fun fetchTournamentDetailsBySlug(slug: String) {
         viewModelScope.launch {
             getTournamentDetailsUseCase(slug = slug).collect { res ->
-                res.takeIfSuccess { getTournament ->
+                res.takeIfSuccess {  getTournament ->
                     _viewState.update {
                         it.copy(
                             tournamentDetails = getTournament.toPresentationModel(),
@@ -61,4 +64,8 @@ class TournamentDetailsViewModel @Inject constructor(
 
     private fun updateErrorMessage(message: String?) =
         _viewState.update { it.copy(errorMessage = message) }
+
+    private fun updateNavigationEvent(events: TournamentDetailUiEvent) = viewModelScope.launch {
+        _uiEvent.emit(events)
+    }
 }

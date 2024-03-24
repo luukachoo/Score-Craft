@@ -1,9 +1,10 @@
 package com.feature.match.mapper.match
 
 import com.core.domain.model.match.GetOpponentWrapper
+import com.feature.match.model.match.OpponentWrapper
 
 fun GetOpponentWrapper.GetOpponent.toPresentationModel() =
-    com.feature.match.model.match.OpponentWrapper.Opponent(
+    OpponentWrapper.Opponent(
         id = id,
         imageUrl = imageUrl,
         name = name,
@@ -11,4 +12,4 @@ fun GetOpponentWrapper.GetOpponent.toPresentationModel() =
     )
 
 fun GetOpponentWrapper.toPresentationModel() =
-    com.feature.match.model.match.OpponentWrapper(opponent = opponent.toPresentationModel())
+    OpponentWrapper(opponent = opponent.toPresentationModel())

@@ -17,4 +17,5 @@ object ModulePackages {
     const val CORE_DATA = "com.core.data"
     const val CORE_DOMAIN = "com.core.domain"
     const val CORE_COMMON = "com.core.common"
+    const val CORE_DATASTORE = "com.core.datastore"
 }

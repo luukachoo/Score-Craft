@@ -1,13 +1,13 @@
 package com.core.data.mapper.league
 
 import com.core.data.mapper.match.toDomainModel
+import com.core.data.model.league.ResultDto
 import com.core.data.model.league.TeamDto
 import com.core.data.model.league.TournamentDto
-import com.core.data.model.league.TournamentMatchDto
 import com.core.data.model.match.MatchDto
+import com.core.domain.model.league.GetResult
 import com.core.domain.model.league.GetTeam
 import com.core.domain.model.league.GetTournament
-import com.core.domain.model.league.GetTournamentMatch
 import com.core.domain.model.match.GetMatch
 
 fun TournamentDto.toDomainModel() = GetTournament(
@@ -16,7 +16,6 @@ fun TournamentDto.toDomainModel() = GetTournament(
     name = name,
     prizePool = prizePool ?: "No Prize Pool",
     slug = slug,
-    matches = matches.map { it.toDomainModel() },
     teams = teams.map { it.toDomainModel() },
     league = league.toDomainModel()
 )
@@ -40,9 +39,4 @@ fun TeamDto.toDomainModel() = GetTeam(
     name = name
 )
 
-fun TournamentMatchDto.toDomainModel() = GetTournamentMatch(
-    id = id,
-    beginAt = beginAt,
-    name = name,
-    winnerId = winnerId
-)
+fun ResultDto.toDomainModel() = GetResult(score = score, teamId = teamId)

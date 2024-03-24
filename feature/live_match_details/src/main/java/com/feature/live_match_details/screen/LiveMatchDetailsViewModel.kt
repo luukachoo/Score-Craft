@@ -35,15 +35,13 @@ class LiveMatchDetailsViewModel @Inject constructor(
     val liveMatchUiEvent get() = _liveMatchUiEvent.asSharedFlow()
 
     fun onEvent(event: LiveMatchDetailsEvents) {
-        viewModelScope.launch {
-            when (event) {
-                is LiveMatchDetailsEvents.FetchMatchDetailsById -> fetchMatchDetailsById(event.matchId)
-                is LiveMatchDetailsEvents.FetchTeamMembersByMatchId -> fetchOpponentsByMatchId(event.matchId)
-                LiveMatchDetailsEvents.ResetErrorMessage -> updateErrorMessage(null)
-                LiveMatchDetailsEvents.BackButtonClick -> updateNavigationEvent(
-                    LiveMatchDetailsUiEvent.NavigateToLives
-                )
-            }
+        when (event) {
+            is LiveMatchDetailsEvents.FetchMatchDetailsById -> fetchMatchDetailsById(event.matchId)
+            is LiveMatchDetailsEvents.FetchTeamMembersByMatchId -> fetchOpponentsByMatchId(event.matchId)
+            LiveMatchDetailsEvents.ResetErrorMessage -> updateErrorMessage(null)
+            LiveMatchDetailsEvents.BackButtonClick -> updateNavigationEvent(
+                LiveMatchDetailsUiEvent.NavigateToLives
+            )
         }
     }
 
@@ -87,6 +85,7 @@ class LiveMatchDetailsViewModel @Inject constructor(
     private fun updateErrorMessage(message: String?) =
         _liveMatchesState.update { it.copy(errorMessage = message) }
 
-    private suspend fun updateNavigationEvent(events: LiveMatchDetailsUiEvent) =
+    private fun updateNavigationEvent(events: LiveMatchDetailsUiEvent) = viewModelScope.launch {
         _liveMatchUiEvent.emit(events)
+    }
 }

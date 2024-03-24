@@ -1,9 +1,0 @@
-<resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="send_a_message">Send a message</string>
-    <string name="button_send">button send</string>
-    <string name="full_name_format">%1$s %2$s</string>
-    <string name="username_format">"@%1$s"</string>
-    <string name="back">Back</string>
-</resources>

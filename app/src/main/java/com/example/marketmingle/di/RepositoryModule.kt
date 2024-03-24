@@ -1,6 +1,7 @@
 package com.example.marketmingle.di
 
 import com.core.data.repository.auth.AuthRepositoryImpl
+import com.core.data.repository.datastore.DataStoreRepositoryImpl
 import com.core.data.repository.friends.FriendRepositoryImpl
 import com.core.data.repository.league.LeaguesRepositoryImpl
 import com.core.data.repository.match.MatchesRepositoryImpl
@@ -10,6 +11,7 @@ import com.core.data.repository.series.SeriesRepositoryImpl
 import com.core.data.repository.tournament.TournamentRepositoryImpl
 import com.core.data.repository.user.UserRepositoryImpl
 import com.core.domain.repository.auth.AuthRepository
+import com.core.domain.repository.datastore.DataStoreRepository
 import com.core.domain.repository.friends.FriendRepository
 import com.core.domain.repository.league.LeagueRepository
 import com.core.domain.repository.match.MatchesRepository
@@ -62,4 +64,8 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindSendMessageRepository(sendMessageRepositoryImpl: MessagingRepositoryImpl): MessagingRepository
+
+    @Binds
+    @Singleton
+    fun bindDataStoreRepository(dataStoreRepositoryImpl: DataStoreRepositoryImpl): DataStoreRepository
 }

@@ -26,4 +26,5 @@ object Versions {
     const val GRADLE = "8.2.2"
     const val JAVAPOET_VERSION = "1.13.0"
     const val OAUTH2 = "1.23.0"
+    const val DATASTORE = "1.0.0"
 }
