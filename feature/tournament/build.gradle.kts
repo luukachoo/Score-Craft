@@ -7,7 +7,7 @@ plugins {
 apply<MainGradlePlugin>()
 
 android {
-    namespace = ModulePackages.FEATURE_TOURNAMENT_DETAILS
+    namespace = ModulePackages.FEATURE_TOURNAMENT
 
     buildFeatures {
         viewBinding = true
@@ -22,4 +22,5 @@ dependencies {
     // core
     domain()
     common()
+    coreUi()
 }

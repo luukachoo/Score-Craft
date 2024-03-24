@@ -1,11 +1,11 @@
 package com.example.tournament.screen.standings.adapter
 
 import android.annotation.SuppressLint
-import com.core.common.R
 import com.core.common.base.BaseRecyclerAdapter
 import com.core.common.extension.loadImagesWithGlide
+import com.example.tournament.databinding.ItemTeamBinding
 import com.example.tournament.model.TeamStanding
-import com.feature.tournament_details.databinding.ItemTeamBinding
+import com.ui.core_ui.R
 
 class TeamStandingsAdapter :
     BaseRecyclerAdapter<TeamStanding, ItemTeamBinding>(ItemTeamBinding::inflate) {

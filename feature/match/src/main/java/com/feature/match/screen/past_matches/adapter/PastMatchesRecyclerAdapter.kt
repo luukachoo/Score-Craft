@@ -1,6 +1,6 @@
 package com.feature.match.screen.past_matches.adapter
 
-import com.core.common.R
+import com.ui.core_ui.R
 import com.core.common.base.BaseRecyclerAdapter
 import com.core.common.extension.bold
 import com.core.common.extension.convertDate

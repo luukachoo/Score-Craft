@@ -55,7 +55,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginVertical="20dp"
-        android:background="@color/white"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/etTextField"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,28 +64,32 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etTextField"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/shapable_input_field"
         android:gravity="center_vertical"
+        android:padding="10dp"
         android:hint="@string/send_a_message"
+        android:background="@drawable/custom_edit_text"
         android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/md_theme_dark_scrim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnSend"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnSend"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:contentDescription="@string/button_send"
-        android:scaleType="center"
         android:src="@drawable/ic_send"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etTextField"
+        app:shapeAppearanceOverlay="@style/roundedShape" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

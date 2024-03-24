@@ -17,6 +17,9 @@ dependencies {
     basic()
     navigationComponent()
     glide()
+    fireBaseAuth()
+    firebaseDataBase()
+    coreUi()
 
     // core
     domain()

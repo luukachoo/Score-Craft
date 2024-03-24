@@ -2,8 +2,8 @@ package com.example.tournament.screen.test.adapter
 
 import com.core.common.base.BaseRecyclerAdapter
 import com.core.common.extension.loadImagesWithGlide
+import com.example.tournament.databinding.ItemTournamentMatchBinding
 import com.example.tournament.model.TournamentMatch
-import com.feature.tournament_details.databinding.ItemTournamentMatchBinding
 
 class TournamentMatchesAdapter :
     BaseRecyclerAdapter<TournamentMatch, ItemTournamentMatchBinding>(ItemTournamentMatchBinding::inflate) {

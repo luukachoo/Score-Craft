@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".screen.ChatFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -15,33 +14,36 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/alata"
         android:text="@string/chat"
-        android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ivAddFriend"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        app:icon="@drawable/ic_add_friend"
+        app:iconSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutAddFriend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layoutAddFriend" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/ivFriendRequest"
+        style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:contentDescription="@string/friend_request"
-        android:src="@drawable/ic_friend_request"
+        app:icon="@drawable/ic_friend_request"
         app:layout_constraintBottom_toBottomOf="@id/chatTitleTv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/chatTitleTv" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivAddFriend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:contentDescription="@string/add_friend"
-        android:src="@drawable/ic_add_friend"
-        app:layout_constraintBottom_toBottomOf="@id/layoutAddFriend"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/layoutAddFriend" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutAddFriend"
@@ -70,7 +72,6 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/alata"
         android:text="@string/friends"
-        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
