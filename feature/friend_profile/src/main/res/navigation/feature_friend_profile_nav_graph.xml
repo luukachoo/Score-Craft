@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feature_friend_profile_nav_graph"
+    app:startDestination="@id/friendProfileFragment">
+
+    <fragment
+        android:id="@+id/friendProfileFragment"
+        android:name="com.example.friend_profile.screen.FriendProfileFragment"
+        android:label="fragment_friend_profile_fragment"
+        tools:layout="@layout/fragment_friend_profile_fragment" >
+
+        <argument
+            android:name="friendId"
+            app:argType="string" />
+
+        <deepLink app:uri="market-mingle://feature.friend_profile/fragment_friend_profile?friendId={friendId}" />
+
+    </fragment>
+</navigation>
