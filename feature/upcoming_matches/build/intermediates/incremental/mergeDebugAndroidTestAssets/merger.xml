@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3">
+    <dataSet config=":core:common"
+        ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~">
+        <source
+            path="C:\Users\Sani\Desktop\Market-Mingle\core\common\build\intermediates\library_assets\debug\out" />
+    </dataSet>
+    <dataSet config=":core:domain"
+        ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~">
+        <source
+            path="C:\Users\Sani\Desktop\Market-Mingle\core\domain\build\intermediates\library_assets\debug\out" />
+    </dataSet>
+    <dataSet config=":feature:upcoming_matches"
+        ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~">
+        <source
+            path="C:\Users\Sani\Desktop\Market-Mingle\feature\upcoming_matches\build\intermediates\library_assets\debug\out" />
+    </dataSet>
+    <dataSet config="androidTest"
+        ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~">
+        <source
+            path="C:\Users\Sani\Desktop\Market-Mingle\feature\upcoming_matches\src\androidTest\assets" />
+    </dataSet>
+    <dataSet config="androidTestDebug"
+        ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~">
+        <source
+            path="C:\Users\Sani\Desktop\Market-Mingle\feature\upcoming_matches\src\androidTestDebug\assets" />
+    </dataSet>
+    <dataSet config="generated"
+        ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~">
+        <source
+            path="C:\Users\Sani\Desktop\Market-Mingle\feature\upcoming_matches\build\intermediates\shader_assets\debugAndroidTest\out" />
+    </dataSet>
+</merger>

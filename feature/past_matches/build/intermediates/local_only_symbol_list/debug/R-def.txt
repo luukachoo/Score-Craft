@@ -1,0 +1,29 @@
+R_DEF: Internal format may change without notice
+local
+color gray
+id feature_past_matches_nav_graph
+id ivTeamOneLogo
+id ivTeamTwoLogo
+id pastMatchesFragment
+id progressBar
+id rvPastMatches
+id tvDate
+id tvMinus
+id tvName
+id tvTeamOneName
+id tvTeamOneScore
+id tvTeamTwoName
+id tvTeamTwoScore
+id tvTime
+id tvVideoGameTitle
+layout fragment_past_matches
+layout item_past_match
+navigation feature_past_matches_nav_graph
+string hello_blank_fragment
+string league_of_legends
+string minus
+string test_date
+string test_name
+string test_team_one
+string test_time
+string zero

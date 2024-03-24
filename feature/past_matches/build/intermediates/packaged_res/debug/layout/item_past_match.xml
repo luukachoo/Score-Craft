@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@color/gray"
+    app:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_name"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/test_date"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/ivTeamOneLogo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMinus" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_time"
+            app:layout_constraintEnd_toEndOf="@+id/tvDate"
+            app:layout_constraintStart_toStartOf="@+id/tvDate"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTeamOneName"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="@string/test_team_one"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivTeamOneLogo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivTeamOneLogo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTeamOneName"
+            app:layout_constraintEnd_toStartOf="@+id/tvTeamOneScore"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvTeamOneName"
+            app:layout_constraintTop_toTopOf="@+id/tvTeamOneName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTeamOneScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivTeamOneLogo"
+            app:layout_constraintEnd_toStartOf="@+id/tvMinus"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivTeamOneLogo"
+            app:layout_constraintTop_toTopOf="@+id/ivTeamOneLogo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMinus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minus"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTeamOneScore"
+            app:layout_constraintEnd_toStartOf="@+id/tvTeamTwoScore"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvTeamOneScore"
+            app:layout_constraintTop_toTopOf="@+id/tvTeamOneScore" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTeamTwoScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTeamOneScore"
+            app:layout_constraintEnd_toStartOf="@+id/ivTeamTwoLogo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvMinus"
+            app:layout_constraintTop_toTopOf="@+id/tvTeamOneScore" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivTeamTwoLogo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/ivTeamOneLogo"
+            app:layout_constraintEnd_toStartOf="@+id/tvTeamTwoName"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvTeamTwoScore"
+            app:layout_constraintTop_toTopOf="@+id/ivTeamOneLogo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTeamTwoName"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/test_team_one"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivTeamTwoLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivTeamTwoLogo"
+            app:layout_constraintTop_toTopOf="@+id/ivTeamTwoLogo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvVideoGameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:text="@string/league_of_legends"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/ivTeamTwoLogo"
+            app:layout_constraintTop_toTopOf="@+id/tvDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
