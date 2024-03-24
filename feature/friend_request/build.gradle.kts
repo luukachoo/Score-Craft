@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
 }
 
 apply<MainGradlePlugin>()
@@ -15,10 +15,12 @@ android {
 
 dependencies {
     basic()
+    glide()
+    lottie()
+    navigationComponent()
+
+    //data
     common()
     coreUi()
     domain()
-    glide()
-    fireBaseAuth()
-    navigationComponent()
 }

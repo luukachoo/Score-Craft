@@ -28,13 +28,15 @@ class SeriesViewModel @Inject constructor(
     val uiEvent: SharedFlow<SeriesUiEvent> get() = _uiEvent
 
     fun onEvent(event: SeriesEvent) {
-        viewModelScope.launch {
-            when (event) {
-                is SeriesEvent.FetchSeriesBySlug -> fetchSeriesBySlug(event.slug)
-                SeriesEvent.ResetErrorMessage -> updateErrorMessage(message = null)
-                SeriesEvent.NavigateToHome -> updateNavigationEvent(SeriesUiEvent.NavigateToHome)
-                is SeriesEvent.NavigateToTournaments -> updateNavigationEvent(SeriesUiEvent.NavigateToTournament(event.slug))
-            }
+        when (event) {
+            is SeriesEvent.FetchSeriesBySlug -> fetchSeriesBySlug(event.slug)
+            SeriesEvent.ResetErrorMessage -> updateErrorMessage(message = null)
+            SeriesEvent.NavigateToHome -> updateNavigationEvent(SeriesUiEvent.NavigateToHome)
+            is SeriesEvent.NavigateToTournaments -> updateNavigationEvent(
+                SeriesUiEvent.NavigateToTournament(
+                    event.slug
+                )
+            )
         }
     }
 
@@ -69,8 +71,12 @@ class SeriesViewModel @Inject constructor(
     private fun updateErrorMessage(message: String?) =
         _seriesState.update { it.copy(errorMessage = message) }
 
-    private suspend fun updateNavigationEvent(event: SeriesUiEvent) =
-        _uiEvent.emit(event)
+    private fun updateNavigationEvent(event: SeriesUiEvent) {
+        viewModelScope.launch {
+            _uiEvent.emit(event)
+
+        }
+    }
 
     sealed interface SeriesUiEvent {
         data object NavigateToHome : SeriesUiEvent

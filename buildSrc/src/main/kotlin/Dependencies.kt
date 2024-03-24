@@ -53,7 +53,7 @@ object Dependencies {
 
     const val oauth2 =
         "com.google.auth:google-auth-library-oauth2-http:${Versions.OAUTH2}"
-    
+
     // Kotlin Gradle
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
 
@@ -218,10 +218,14 @@ fun DependencyHandler.featureChats() {
     implementation(project(Modules.FEATURE_CHATS))
 }
 
-fun DependencyHandler.friendRequest() {
+fun DependencyHandler.featureFriendRequest() {
     implementation(project(Modules.FEATURE_FRIEND_REQUEST))
 }
 
-fun DependencyHandler.message() {
+fun DependencyHandler.featureMessage() {
     implementation(project(Modules.FEATURE_MESSAGE))
+}
+
+fun DependencyHandler.featureFriendProfile() {
+    implementation(project(Modules.FEATURE_FRIEND_PROFILE))
 }

@@ -1,6 +1,6 @@
 package com.core.data.model.messaging
 
-data class MessageDto (
+data class MessageDto(
     val senderId: String? = null,
     val receiverId: String? = null,
     val messageText: String? = null,

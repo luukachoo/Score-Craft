@@ -15,6 +15,7 @@ object Modules {
     const val FEATURE_CHATS = ":feature:chats"
     const val FEATURE_FRIEND_REQUEST = ":feature:friend_request"
     const val FEATURE_MESSAGE = ":feature:message"
+    const val FEATURE_FRIEND_PROFILE = ":feature:friend_profile"
 
     const val CORE_DATA = ":core:data"
     const val CORE_COMMON = ":core:common"

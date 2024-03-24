@@ -12,7 +12,7 @@ object ModulePackages {
     const val FEATURE_BOTTOM_SHEET = "com.example.image_bottom_sheet"
     const val FEATURE_HOME = "com.feature.home"
     const val FEATURE_FORGOT_PASSWORD = "com.example.forgot_password"
-
+    const val FEATURE_MESSAGE = "com.example.message"
     const val CORE_DATA = "com.core.data"
     const val CORE_UI = "com.ui.core_ui"
     const val CORE_DOMAIN = "com.core.domain"

@@ -41,7 +41,8 @@ class HandleUserRegistrationResponse @Inject constructor(
                 "email" to email,
                 "fcmToken" to fcmToken
             )
-            firebaseDatabase.getReference("Users").child(firebaseUser.uid).setValue(userToSave).await()
+            firebaseDatabase.getReference("Users").child(firebaseUser.uid).setValue(userToSave)
+                .await()
 
             emit(Resource.Success(firebaseUser))
         } catch (e: FirebaseAuthUserCollisionException) {

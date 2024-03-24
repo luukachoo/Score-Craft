@@ -12,8 +12,8 @@ data class Series(
     val name: String?,
     val season: String?,
     val slug: String,
-    val winnerId: Int?,
-    val winnerType: String?,
+    val winnerId: Any?,
+    val winnerType: Any?,
     val year: Int
 ) : Recyclable<Series>() {
     override val uniqueValue: Series

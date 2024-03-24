@@ -9,8 +9,8 @@
         android:id="@+id/friendRequestFragment"
         android:name="com.example.friend_request.screen.FriendRequestFragment"
         android:label="fragment_friend_request"
-        tools:layout="@layout/fragment_friend_request" >
+        tools:layout="@layout/fragment_friend_request">
 
-        <deepLink app:uri="market-mingle://feature.friend_request/fragment_friend_request"/>
+        <deepLink app:uri="market-mingle://feature.friend_request/fragment_friend_request" />
     </fragment>
 </navigation>

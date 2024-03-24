@@ -10,10 +10,11 @@
         android:id="@+id/chatTitleTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/alata"
         android:text="@string/chat"
-        android:textSize="26sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,17 +32,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/chatTitleTv" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etAddFriend"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivAddFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/add_friend"
+        android:src="@drawable/ic_add_friend"
+        app:layout_constraintBottom_toBottomOf="@id/layoutAddFriend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layoutAddFriend" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutAddFriend"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
-        android:hint="@string/add_friend"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivAddFriend"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chatTitleTv" />
+        app:layout_constraintTop_toBottomOf="@id/chatTitleTv">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAddFriend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/urbanist"
+            android:hint="@string/add_friend" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFriends"
@@ -51,10 +70,11 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/alata"
         android:text="@string/friends"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etAddFriend" />
+        app:layout_constraintTop_toBottomOf="@id/layoutAddFriend" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRv"

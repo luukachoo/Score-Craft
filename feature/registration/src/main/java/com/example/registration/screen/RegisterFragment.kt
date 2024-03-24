@@ -46,13 +46,11 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             }
 
             alreadyHaveAccTv.setOnClickListener {
-                findNavController().deepLinkNavigateTo(
-                    DeepLinkDestination.LoginWithoutArgument
-                )
+                viewModel.onEvent(RegisterEvent.OnAlreadyRegisteredClick)
             }
 
             backBtn.setOnClickListener {
-                findNavController().popBackStack()
+                viewModel.onEvent(RegisterEvent.OnBackButtonClick)
             }
         }
     }
@@ -95,6 +93,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 DeepLinkDestination.Login(event.email, event.password), true
             )
 
+            RegisterFragmentViewModel.RegisterUiEvent.NavigateToWelcome -> findNavController().popBackStack()
         }
     }
 }

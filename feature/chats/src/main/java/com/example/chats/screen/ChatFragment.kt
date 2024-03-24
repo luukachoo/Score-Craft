@@ -26,15 +26,20 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
 
     override fun bind() {
         binding.apply {
-            adapter = ChatRecyclerAdapter { userId ->
-                handleUserClick(userId)
-            }
+            adapter = ChatRecyclerAdapter(
+                onChatClicked = { userId ->
+                    viewModel.onEvent(ChatEvent.OnFriendClick(userId))
+                },
+                onRemoveFriendClicked = { userId ->
+                    viewModel.onEvent(ChatEvent.RemoveFriend(userId))
+                }
+            )
             chatRv.adapter = adapter
             chatRv.addItemDecoration(CustomDividerItemDecoration(requireContext()))
         }
+
         viewModel.onEvent(ChatEvent.FetchFriends)
     }
-
 
     override fun bindObserves() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -57,8 +62,11 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
     override fun bindViewActionListeners() {
         binding.apply {
             ivAddFriend.setOnClickListener {
-                val userName = etAddFriend.text.toString()
-                viewModel.onEvent(ChatEvent.AddFriend(userName))
+                viewModel.onEvent(ChatEvent.AddFriend(etAddFriend.text.toString().trim()))
+            }
+
+            ivFriendRequest.setOnClickListener {
+                viewModel.onEvent(ChatEvent.OnRequestClick)
             }
         }
     }
@@ -76,33 +84,17 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                 root.showSnackBar(message = it)
                 viewModel.onEvent(ChatEvent.ResetErrorMessage)
             }
-
-//            state.fcmToken?.let {
-//                viewModel.onEvent(ChatEvent.SendFriendRequest(it))
-//            }
         }
     }
-
-    private fun handleUserClick(userId: String) {
-        findNavController().deepLinkNavigateTo(DeepLinkDestination.Message(userId))
-    }
-
 
     private fun handleNavigationEvents(event: ChatFragmentViewModel.ChatUiEvent) {
         when (event) {
             ChatFragmentViewModel.ChatUiEvent.NavigateToFriendRequest -> findNavController().deepLinkNavigateTo(
                 DeepLinkDestination.FriendRequest,
-                true
-            )
-
-            ChatFragmentViewModel.ChatUiEvent.NavigateToHome -> findNavController().deepLinkNavigateTo(
-                DeepLinkDestination.Home,
-                true
             )
 
             is ChatFragmentViewModel.ChatUiEvent.NavigateToMessage -> findNavController().deepLinkNavigateTo(
                 DeepLinkDestination.Message(event.friendId),
-                true
             )
         }
     }

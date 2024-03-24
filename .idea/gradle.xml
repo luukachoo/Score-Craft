@@ -30,6 +30,7 @@
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/chats" />
             <option value="$PROJECT_DIR$/feature/forgot_password" />
+            <option value="$PROJECT_DIR$/feature/friend_profile" />
             <option value="$PROJECT_DIR$/feature/friend_request" />
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/image_bottom_sheet" />

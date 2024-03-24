@@ -1,12 +1,3 @@
-import basic
-import fireBaseAuth
-import firebaseDataBase
-import firebaseStorage
-import glide
-import navigationComponent
-import retrofit
-import workManager
-
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)

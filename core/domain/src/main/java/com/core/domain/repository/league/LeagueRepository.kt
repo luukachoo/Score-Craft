@@ -6,4 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface LeagueRepository {
     suspend fun getLeagues(page: Int, limit: Int): Flow<Resource<List<GetLeague>>>
+    suspend fun saveFavouriteLeagues(league: GetLeague): Flow<Resource<String>>
+    suspend fun fetchFavouriteLeagues(): Flow<Resource<List<GetLeague>>>
+    suspend fun fetchFriendFavouriteLeague(friendId: String): Flow<Resource<List<GetLeague>>>
 }

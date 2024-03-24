@@ -15,7 +15,6 @@ android {
 
 dependencies {
     basic()
-    daggerHilt()
     navigationComponent()
     lottie()
 

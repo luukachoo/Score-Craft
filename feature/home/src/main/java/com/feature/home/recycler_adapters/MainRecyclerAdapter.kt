@@ -18,7 +18,6 @@ import com.feature.home.recycler_adapters.leagues.LeaguesAdapter
 class MainRecyclerAdapter(
     private val leagues: List<League>,
     private val model: Users?,
-    private val imageUri: String,
     private val onLeagueItemClick: (League) -> Unit,
     private val onFavouriteClick: ((League) -> Unit)
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -30,7 +29,7 @@ class MainRecyclerAdapter(
     inner class HeaderViewHolder(private val binding: ItemHeaderSectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bind(user: Users?, image: String) {
+        fun bind(user: Users?) {
             binding.apply {
                 ivAvatar.setOnClickListener {
                     onAvatarClick?.invoke()
@@ -68,7 +67,7 @@ class MainRecyclerAdapter(
 
     inner class LeaguesViewHolder(private val binding: ItemLeaguesSectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bindCategories(leagues: List<League>) = binding.apply {
+            fun bindCategories(leagues: List<League>) = binding.apply {
             val leagueAdapter = LeaguesAdapter().apply {
                 onLeagueClick { league ->
                     onLeagueItemClick(league)
@@ -107,7 +106,7 @@ class MainRecyclerAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is HeaderViewHolder -> holder.bind(model, imageUri)
+            is HeaderViewHolder -> holder.bind(model)
             is LeaguesViewHolder -> holder.bindCategories(leagues)
         }
     }

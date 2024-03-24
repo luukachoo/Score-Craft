@@ -6,10 +6,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 
 class UploadImageWorker(
     context: Context,
@@ -22,7 +19,8 @@ class UploadImageWorker(
         val imageUri = Uri.parse(imageUriString)
 
         return try {
-            val storageReference = FirebaseStorage.getInstance().reference.child("user_profiles/$userId/profile_picture.jpg")
+            val storageReference =
+                FirebaseStorage.getInstance().reference.child("user_profiles/$userId/profile_picture.jpg")
             storageReference.putFile(imageUri).await()
             val imageUrl = storageReference.downloadUrl.await().toString()
 

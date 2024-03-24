@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".screen.MessageFragment">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backBtn"
+        style="@style/Widget.Material3.FloatingActionButton.Surface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/back"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFullName"
         android:layout_width="wrap_content"
@@ -31,6 +44,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:scaleType="centerCrop"
+        android:src="@drawable/ic_person"
         app:layout_constraintBottom_toBottomOf="@id/tvUserName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvFullName"
@@ -40,7 +54,8 @@
         android:id="@+id/rvChat"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="10dp"
+        android:layout_marginVertical="20dp"
+        android:background="@color/white"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/etTextField"
         app:layout_constraintEnd_toEndOf="parent"

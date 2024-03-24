@@ -1,7 +1,6 @@
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)
-    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
@@ -17,9 +16,7 @@ android {
 dependencies {
     basic()
     fireBaseAuth()
-    daggerHilt()
     navigationComponent()
-    gmsPlayServices()
 
     // core
     common()
