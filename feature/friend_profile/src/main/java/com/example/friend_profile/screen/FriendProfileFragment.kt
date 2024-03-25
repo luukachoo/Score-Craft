@@ -8,6 +8,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.core.common.base.BaseFragment
+import com.core.common.extension.DeepLinkDestination
+import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
 import com.example.friend_profile.adapter.FriendProfileRecyclerAdapter
 import com.example.friend_profile.databinding.FragmentFriendProfileFragmentBinding
@@ -91,7 +93,9 @@ class FriendProfileFragment :
 
     private fun handleNavigationEvents(event: FriendProfileViewModel.FriendProfileUiEvent) {
         when (event) {
-            FriendProfileViewModel.FriendProfileUiEvent.NavigateToMessage -> findNavController().popBackStack()
+            FriendProfileViewModel.FriendProfileUiEvent.NavigateToMessage -> {
+                findNavController().deepLinkNavigateTo(DeepLinkDestination.Message(friendId))
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.profile.model.league
 
+import com.core.common.resource.Recyclable
 import com.example.profile.model.series.Series
 
 data class League(
@@ -10,4 +11,7 @@ data class League(
     val getSeriesList: List<Series>,
     val slug: String,
     val url: Any?,
-)
+) : Recyclable<League>() {
+    override val uniqueValue: League
+        get() = this
+}

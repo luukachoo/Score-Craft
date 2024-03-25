@@ -17,5 +17,6 @@
         <item name="colorOnSurfaceVariant">@color/md_theme_dark_onSurfaceVariant</item>
         <item name="android:statusBarColor">@color/md_theme_dark_background</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_dark_surface</item>
+        <item name="android:shadowColor">@color/md_theme_dark_background</item>
     </style>
 </resources>

@@ -19,6 +19,7 @@
             android:id="@+id/tvMessage"
             android:layout_width="wrap_content"
             android:textColor="@color/white"
+            android:fontFamily="@font/urbanist"
             android:layout_height="wrap_content"
             android:minWidth="70dp"
             android:maxWidth="280dp" />
@@ -27,6 +28,7 @@
             android:id="@+id/tvTimestamp"
             android:layout_width="wrap_content"
             android:textSize="12sp"
+            android:fontFamily="@font/urbanist"
             android:textColor="@color/white"
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content"

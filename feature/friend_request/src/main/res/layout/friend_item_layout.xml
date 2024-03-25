@@ -11,6 +11,7 @@
         android:background="@drawable/circle_border"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_person"
+        app:layout_constraintBottom_toBottomOf="@+id/btnReject"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/roundedShape" />
@@ -20,30 +21,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/alata"
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivAvatar"
         app:layout_constraintStart_toEndOf="@id/ivAvatar"
         app:layout_constraintTop_toTopOf="@id/ivAvatar" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAccept"
+        style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:drawableEnd="@drawable/ic_request_accept"
+        android:drawablePadding="20dp"
         android:text="@string/accept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnReject"
+        style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:drawableEnd="@drawable/ic_request_reject"
+        android:drawablePadding="20dp"
+        android:paddingHorizontal="10dp"
         android:text="@string/reject"
+        android:textColor="#ED2939"
         app:layout_constraintStart_toStartOf="@id/btnAccept"
         app:layout_constraintTop_toBottomOf="@id/btnAccept" />
 
