@@ -8,10 +8,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.core.common.R
 import com.core.common.base.BaseFragment
 import com.core.common.extension.loadImagesWithGlide
 import com.core.common.extension.showSnackbar
-import com.core.common.R
 import com.feature.live_match_details.databinding.FragmentLiveMatchDetailsBinding
 import com.feature.live_match_details.event.LiveMatchDetailsEvents
 import com.feature.live_match_details.event.LiveMatchDetailsUiEvent
@@ -31,7 +31,7 @@ class LiveMatchDetailsFragment :
 
     override fun bind() {
         setUpRecycler()
-        val matchId = arguments?.getInt("matchId")
+        val matchId = arguments?.getInt(getString(R.string.matchid))
         viewModel.onEvent(LiveMatchDetailsEvents.FetchMatchDetailsById(matchId!!))
         viewModel.onEvent(LiveMatchDetailsEvents.FetchTeamMembersByMatchId(matchId))
     }
@@ -94,14 +94,14 @@ class LiveMatchDetailsFragment :
 
         if (state.matchDetails?.streamsList != null) {
             twitchStreamLink = state.matchDetails.streamsList.find {
-                it.rawUrl.contains("twitch.tv")
+                it.rawUrl.contains(getString(R.string.twitch_tv))
             }?.rawUrl ?: ""
             youtubeStreamLink = state.matchDetails.streamsList.find {
-                it.rawUrl.contains("youtube.com")
+                it.rawUrl.contains(getString(R.string.youtube_com))
             }?.rawUrl ?: ""
         }
 
-        if (state.matchDetails?.status == "running") {
+        if (state.matchDetails?.status == getString(R.string.running)) {
             buttonWatchOnTwitch.isEnabled = true
             buttonWatchOnYT.isEnabled = true
             lottieLiveNowAnimation.isAnimating

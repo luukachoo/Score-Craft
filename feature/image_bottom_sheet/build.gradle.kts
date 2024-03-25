@@ -22,4 +22,5 @@ dependencies {
     domain()
     common()
     coreUi()
+    workManager()
 }

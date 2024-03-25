@@ -16,6 +16,7 @@ import com.feature.series.extension.showSnackBar
 import com.feature.series.state.SeriesState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import com.core.common.R
 
 @AndroidEntryPoint
 class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding::inflate) {
@@ -29,7 +30,7 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
             rvSeries.adapter = adapter
         }
 
-        val slugArg = arguments?.getString("slug") ?: ""
+        val slugArg = arguments?.getString(getString(R.string.slug)) ?: ""
         viewModel.onEvent(SeriesEvent.FetchSeriesBySlug(slugArg))
     }
 

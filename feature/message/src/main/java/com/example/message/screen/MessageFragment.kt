@@ -25,7 +25,7 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
 
     private val viewModel: MessageFragmentViewModel by viewModels()
     private var adapter: MessageRecyclerAdapter? = null
-    private val friendId by lazy { arguments?.getString("friendId") ?: "" }
+    private val friendId by lazy { arguments?.getString(getString(R.string.friendid)) ?: "" }
 
     override fun bind() {
         viewModel.onEvent(MessageEvent.GetCurrentUser)
@@ -116,7 +116,9 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
 
     private fun handleNavigationEvents(event: MessageFragmentViewModel.MessageUiEvent) {
         when (event) {
-            MessageFragmentViewModel.MessageUiEvent.NavigateToChats -> findNavController().popBackStack()
+            MessageFragmentViewModel.MessageUiEvent.NavigateToChats -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Chat, popUpTo = true
+            )
             is MessageFragmentViewModel.MessageUiEvent.NavigateToFriendProfile -> findNavController().deepLinkNavigateTo(
                 DeepLinkDestination.FriendProfile(event.friendId)
             )

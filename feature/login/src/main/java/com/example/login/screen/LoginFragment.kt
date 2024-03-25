@@ -15,7 +15,7 @@ import com.example.login.event.LoginEvent
 import com.example.login.state.LoginState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-
+import com.core.common.R
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
@@ -25,8 +25,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     override fun bind() {}
 
     override fun bindViewActionListeners() {
-        val emailArg = arguments?.getString("email") ?: ""
-        val passwordArg = arguments?.getString("password") ?: ""
+        val emailArg = arguments?.getString(getString(R.string.email_no_capital)) ?: ""
+        val passwordArg = arguments?.getString(getString(R.string.password_no_capital)) ?: ""
 
         binding.apply {
             emailEt.setText(emailArg)

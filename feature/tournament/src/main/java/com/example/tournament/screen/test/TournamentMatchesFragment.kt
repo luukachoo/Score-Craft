@@ -13,6 +13,7 @@ import com.example.tournament.screen.tournament_details.TournamentDetailsFragmen
 import com.example.tournament.state.tournament_matches.TournamentMatchesState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import com.core.common.R
 
 @AndroidEntryPoint
 class TournamentMatchesFragment :
@@ -24,7 +25,7 @@ class TournamentMatchesFragment :
         setUpRecycler()
         val parentFragment = parentFragment
         if (parentFragment is TournamentDetailsFragment) {
-            val slug = parentFragment.arguments?.getString("slug")
+            val slug = parentFragment.arguments?.getString(getString(R.string.slug))
             viewModel.onEvent(TournamentMatchesEvent.FetchTournamentMatches(slug!!))
         }
     }

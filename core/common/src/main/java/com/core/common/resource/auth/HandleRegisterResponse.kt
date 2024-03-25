@@ -1,10 +1,8 @@
 package com.core.common.resource.auth
 
 import com.core.common.resource.Resource
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.FirebaseTooManyRequestsException
+import com.google.firebase.auth.*
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.flow.Flow
@@ -41,14 +39,21 @@ class HandleUserRegistrationResponse @Inject constructor(
                 "email" to email,
                 "fcmToken" to fcmToken
             )
-            firebaseDatabase.getReference("Users").child(firebaseUser.uid).setValue(userToSave)
-                .await()
+            firebaseDatabase.getReference("Users").child(firebaseUser.uid).setValue(userToSave).await()
 
             emit(Resource.Success(firebaseUser))
+        } catch (e: FirebaseAuthWeakPasswordException) {
+            emit(Resource.Error("The password is not strong enough. Please choose a stronger password."))
+        } catch (e: FirebaseAuthInvalidCredentialsException) {
+            emit(Resource.Error("The email address is badly formatted."))
         } catch (e: FirebaseAuthUserCollisionException) {
             emit(Resource.Error("An account already exists with the same email address."))
+        } catch (e: FirebaseAuthInvalidUserException) {
+            emit(Resource.Error("The user account does not exist or has been disabled."))
+        } catch (e: FirebaseTooManyRequestsException) {
+            emit(Resource.Error("We have blocked all requests from this device due to unusual activity. Try again later."))
         } catch (e: Exception) {
-            emit(Resource.Error("Registration failed: ${e.message ?: "An unknown error occurred"}"))
+            emit(Resource.Error("Registration failed: ${e.message ?: "An unknown error occurred."}"))
         } finally {
             emit(Resource.Loading(false))
         }
