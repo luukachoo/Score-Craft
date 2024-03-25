@@ -32,8 +32,11 @@
         android:layout_height="wrap_content"
         android:text="@string/no_lives"
         android:textSize="20sp"
+        android:fontFamily="@font/urbanist"
+        android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

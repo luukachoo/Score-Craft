@@ -32,17 +32,19 @@
             android:id="@+id/tvMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:fontFamily="@font/urbanist"
             android:maxWidth="280dp"
-            android:minWidth="70dp" />
+            android:minWidth="70dp"
+            android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:textColor="@color/white"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/urbanist"
+            android:textColor="@color/white"
             android:textSize="12sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

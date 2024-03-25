@@ -11,4 +11,5 @@ android {
 
 dependencies {
     basic()
+    common()
 }
