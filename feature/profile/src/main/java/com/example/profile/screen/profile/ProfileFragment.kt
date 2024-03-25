@@ -1,7 +1,6 @@
 package com.example.profile.screen.profile
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -109,7 +108,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun handleRegisterState(state: ProfileState) = binding.apply {
         progress.visibility = if (state.isLoading) View.VISIBLE else View.GONE
 
@@ -118,10 +116,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         }
 
         state.user?.let { user ->
-            tvFullName.text = "${user.firstName} ${user.lastName}"
-            tvUserName.text = "@${user.userName}"
+            tvFullName.text = getString(R.string.full_name_format, user.firstName, user.lastName)
+            tvUserName.text = getString(R.string.username_format, user.userName)
 
-            val imageUriString = arguments?.getString("imageUri")
+            val imageUriString = arguments?.getString(getString(R.string.imageuri))
 
             if (!imageUriString.isNullOrEmpty()) {
                 ivAvatar.loadImageWithUri(imageUriString.toUri())

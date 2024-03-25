@@ -1,12 +1,12 @@
 package com.example.friend_profile.screen
 
-import android.annotation.SuppressLint
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.core.common.R
 import com.core.common.base.BaseFragment
 import com.core.common.extension.DeepLinkDestination
 import com.core.common.extension.deepLinkNavigateTo
@@ -25,7 +25,7 @@ class FriendProfileFragment :
 
     private val viewModel: FriendProfileViewModel by viewModels()
     private lateinit var adapter: FriendProfileRecyclerAdapter
-    private val friendId by lazy { arguments?.getString("friendId") ?: "" }
+    private val friendId by lazy { arguments?.getString(getString(R.string.friendid)) ?: "" }
 
     override fun bind() {
         viewModel.onEvent(FriendProfileEvent.FetchFriendData(friendId))
@@ -69,14 +69,13 @@ class FriendProfileFragment :
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun handleFriendRequestState(state: FriendProfileState) {
         binding.apply {
             progressBar.visibility = if (state.isLoading) View.VISIBLE else View.GONE
 
             state.friend?.let {
                 ivAvatar.loadImagesWithGlide(it.avatar)
-                tvFullName.text = "${it.firstName} ${it.lastName}"
+                tvFullName.text = getString(R.string.full_name, it.firstName, it.lastName)
                 tvUserName.text = it.userName
             }
 
@@ -93,9 +92,9 @@ class FriendProfileFragment :
 
     private fun handleNavigationEvents(event: FriendProfileViewModel.FriendProfileUiEvent) {
         when (event) {
-            FriendProfileViewModel.FriendProfileUiEvent.NavigateToMessage -> {
-                findNavController().deepLinkNavigateTo(DeepLinkDestination.Message(friendId))
-            }
+            FriendProfileViewModel.FriendProfileUiEvent.NavigateToMessage -> findNavController().deepLinkNavigateTo(
+                DeepLinkDestination.Message(friendId), popUpTo = true
+            )
         }
     }
 }

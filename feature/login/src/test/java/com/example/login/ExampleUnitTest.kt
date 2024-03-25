@@ -5,69 +5,73 @@ import com.core.domain.use_case.auth.GetAuthUseCase
 import com.core.domain.use_case.validation.ValidationUseCase
 import com.example.login.event.LoginEvent
 import com.example.login.screen.LoginFragmentViewModel
+import com.google.firebase.auth.FirebaseUser
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
+import org.mockito.Mock
+import org.mockito.Mockito.*
+import org.mockito.MockitoAnnotations
 
 @ExperimentalCoroutinesApi
 class LoginFragmentViewModelTest {
 
-    @get:Rule
-    val rule = InstantTaskExecutorRule()
+    @Mock
+    private lateinit var getAuthUseCase: GetAuthUseCase
 
-    @get:Rule
-    val mockitoRule = MockitoJUnit.rule()
+    @Mock
+    private lateinit var validationUseCase: ValidationUseCase
+
+    @Mock
+    private lateinit var mockFirebaseUser: FirebaseUser
 
     private lateinit var viewModel: LoginFragmentViewModel
-    private lateinit var getAuthUseCase: GetAuthUseCase
-    private lateinit var validationUseCase: ValidationUseCase
 
     @Before
     fun setUp() {
-        getAuthUseCase = mock(GetAuthUseCase::class.java)
-        validationUseCase = mock(ValidationUseCase::class.java)
+        MockitoAnnotations.openMocks(this)
         viewModel = LoginFragmentViewModel(getAuthUseCase, validationUseCase)
     }
 
     @Test
-    fun `login event triggers validation and login process`() = runTest {
-        // Given
+    fun `onEvent LogIn should update state and emit NavigateToHome when login is successful`() = runTest {
         val email = "test@example.com"
-        val password = "password123"
-        val authResource = Resource.Success(null)  // Assuming null for simplicity, use proper type
+        val password = "password"
+        `when`(getAuthUseCase.getLoginUseCase(email, password)).thenReturn(flowOf(Resource.Success(mockFirebaseUser)))
+        `when`(validationUseCase.fieldValidatorUseCase(listOf(password))).thenReturn(true)
 
-        `when`(validationUseCase.fieldValidatorUseCase(anyList())).thenReturn(true)
-        `when`(getAuthUseCase.getLoginUseCase(email, password)).thenReturn(flow { emit(authResource) })
-
-        // When
         viewModel.onEvent(LoginEvent.LogIn(email, password))
 
-        // Then
-        verify(validationUseCase).fieldValidatorUseCase(anyList())
         verify(getAuthUseCase).getLoginUseCase(email, password)
+        assertEquals(null, viewModel.logInState.value.errorMessage)
     }
 
     @Test
-    fun `navigateToForgotPasswordPage triggers navigation event`() = runTest {
-        // When
-        viewModel.navigateToForgotPasswordPage()
+    fun `onEvent LogIn should update state with error message when login is unsuccessful`() = runTest {
+        val email = "test@example.com"
+        val password = "password"
+        val errorMessage = "Login failed"
+        `when`(getAuthUseCase.getLoginUseCase(email, password)).thenReturn(flowOf(Resource.Error(errorMessage)))
+        `when`(validationUseCase.fieldValidatorUseCase(listOf(password))).thenReturn(true)
 
-        // Then
-        viewModel.uiEvent.collect { event ->
-            assertThat(event).isEqualTo(LoginFragmentViewModel.LogInUiEvent.NavigateToForgotPasswordPage)
-        }
+        viewModel.onEvent(LoginEvent.LogIn(email, password))
+
+        verify(getAuthUseCase).getLoginUseCase(email, password)
+        assertEquals(errorMessage, viewModel.logInState.value.errorMessage)
     }
 
     @Test
-    fun `navigateToRegister triggers navigation event`() = runTest {
-        // When
-        viewModel.navigateToRegister()
+    fun `onEvent LogIn should not proceed when fields are not valid`() = runTest {
+        val email = "test@example.com"
+        val password = "password"
+        `when`(validationUseCase.fieldValidatorUseCase(listOf(password))).thenReturn(false)
 
-        // Then
-        viewModel.uiEvent.collect { event ->
-            assertThat(event).isEqualTo(LoginFragmentViewModel.LogInUiEvent.NavigateToRegister)
-        }
+        viewModel.onEvent(LoginEvent.LogIn(email, password))
+
+        verify(validationUseCase).fieldValidatorUseCase(listOf(password))
+        assertEquals("Fields are not valid!", viewModel.logInState.value.errorMessage)
     }
 }

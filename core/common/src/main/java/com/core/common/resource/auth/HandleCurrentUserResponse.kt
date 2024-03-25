@@ -12,18 +12,23 @@ class HandleCurrentUserResponse @Inject constructor(private val databaseReferenc
         val userRef = databaseReference.child("Users").child(userId)
         val listener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val typeIndicator = object : GenericTypeIndicator<Map<String, String>>() {}
-                val userDetails = snapshot.getValue(typeIndicator) ?: emptyMap()
-
-                if (userDetails.isNotEmpty()) {
+                val userDetails = snapshot.getValue(object : GenericTypeIndicator<Map<String, String>>() {})
+                if (!userDetails.isNullOrEmpty()) {
                     trySend(Resource.Success(userDetails)).isSuccess
                 } else {
-                    trySend(Resource.Error("User details not found")).isSuccess
+                    trySend(Resource.Error("User details not found or empty")).isSuccess
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                trySend(Resource.Error("Failed to fetch user details: ${error.message}")).isSuccess
+                val errorMessage = when (error.code) {
+                    DatabaseError.PERMISSION_DENIED -> "Permission denied to access user details."
+                    DatabaseError.NETWORK_ERROR -> "Network error occurred while accessing user details."
+                    DatabaseError.DATA_STALE -> "Data is outdated, please refresh."
+                    DatabaseError.OPERATION_FAILED -> "Operation failed due to a server error."
+                    else -> "Failed to fetch user details: ${error.message}"
+                }
+                trySend(Resource.Error(errorMessage)).isSuccess
             }
         }
 

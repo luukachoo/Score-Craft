@@ -15,6 +15,7 @@ import com.example.tournament.screen.tournament_list.adapter.TournamentRecyclerA
 import com.example.tournament.state.tournament_list.TournamentState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import com.core.common.R
 
 @AndroidEntryPoint
 class TournamentFragment :
@@ -25,7 +26,7 @@ class TournamentFragment :
 
     override fun bind() {
         setUpRecycler()
-        val slugArg = arguments?.getString("slug")
+        val slugArg = arguments?.getString(getString(R.string.slug))
         viewModel.onEvent(TournamentEvent.FetchTournaments(slugArg!!))
     }
 

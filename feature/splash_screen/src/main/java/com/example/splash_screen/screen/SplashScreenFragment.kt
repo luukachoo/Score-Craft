@@ -18,6 +18,7 @@ import com.example.splash_screen.extension.showSnackBar
 import com.example.splash_screen.state.SplashScreenState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import com.core.common.R
 
 @AndroidEntryPoint
 class SplashScreenFragment :
@@ -91,12 +92,12 @@ class SplashScreenFragment :
 
     private fun showNetworkErrorDialog() {
         AlertDialog.Builder(context)
-            .setTitle("No Internet Connection")
-            .setMessage("Please check your network settings and try again.")
-            .setPositiveButton("Retry") { _, _ ->
+            .setTitle(getString(R.string.no_internet_connection))
+            .setMessage(getString(R.string.please_check_your_network_settings_and_try_again))
+            .setPositiveButton(getString(R.string.retry)) { _, _ ->
                 viewModel.onEvent(SplashScreenEvent.CheckUserSessions)
             }
-            .setNegativeButton("Turn on WiFi") { _, _ ->
+            .setNegativeButton(getString(R.string.turn_on_wifi)) { _, _ ->
                 startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
             }
             .setCancelable(false)

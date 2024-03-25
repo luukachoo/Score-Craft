@@ -13,6 +13,7 @@ import com.example.tournament.screen.tournament_details.TournamentDetailsFragmen
 import com.example.tournament.state.tournament_team_standings.TournamentTeamStandingsState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import com.core.common.R
 
 @AndroidEntryPoint
 class TeamStandingsFragment : BaseFragment<FragmentTeamStandingsBinding>(FragmentTeamStandingsBinding::inflate) {
@@ -25,7 +26,7 @@ class TeamStandingsFragment : BaseFragment<FragmentTeamStandingsBinding>(Fragmen
         val parentFragment = parentFragment
 
         if (parentFragment is TournamentDetailsFragment) {
-            val slug = parentFragment.arguments?.getString("slug")
+            val slug = parentFragment.arguments?.getString(getString(R.string.slug))
             viewModel.onEvent(TournamentTeamStandingEvents.FetchTeamStandings(slug!!))
         }
     }

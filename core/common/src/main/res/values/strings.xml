@@ -136,7 +136,36 @@
     <string name="friend_remove_button">Friend remove button</string>
     <string name="friend_requests">Friend Requests</string>
     <string name="remove_chat_for_everyone">Remove chat for everyone</string>
+    <string name="error_user_not_found">ERROR_USER_NOT_FOUND</string>
+    <string name="email_no_capital">email</string>
+    <string name="password_no_capital">password</string>
+    <string name="full_name">%1$s %2$s</string>
+    <string name="friendid">friendId</string>
+    <string name="camera_selection_cancelled">Camera selection cancelled</string>
+    <string name="provider">%1$s.provider</string>
+    <string name="image">image/*</string>
+    <string name="imageuri">imageUri</string>
+    <string name="compressedimageuri">compressedImageUri</string>
+    <string name="photofilepath">photoFilePath</string>
+    <string name="matchid">matchId</string>
+    <string name="twitch_tv">twitch.tv</string>
+    <string name="youtube_com">youtube.com</string>
+    <string name="running">running</string>
+    <string name="slug">slug</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="please_check_your_network_settings_and_try_again">Please check your network settings and try again.</string>
+    <string name="retry">Retry</string>
+    <string name="turn_on_wifi">Turn on WiFi</string>
 
     <!--    :feature:friend_profile-->
+
+    <string name="error_invalid_credentials">The email address or password is incorrect.</string>
+    <string name="error_the_user_account_does_not_exist">The user account does not exist or has been disabled.</string>
+    <string name="error_user_collision">An account already exists with the given email address.</string>
+    <string name="error_too_many_requests">Too many requests. Try again later.</string>
+    <string name="error_recent_login_required">Recent login required. Please log in again to perform this action.</string>
+    <string name="error_authentication">Authentication error: %1$s</string>
+    <string name="error_login_failed">Login failed: %1$s</string>
+    <string name="error_fields_not_valid">Fields are not valid!</string>
 
 </resources>

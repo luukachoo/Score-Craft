@@ -28,7 +28,7 @@ class TournamentDetailsFragment :
     override fun bind() {
         setUpPagerAdapter()
         setUpTabLayout()
-        val arg = arguments?.getString("slug")
+        val arg = arguments?.getString(getString(R.string.slug))
         viewModel.onEvent(TournamentDetailsEvent.FetchTournamentDetailsBySlug(arg!!))
     }
 
