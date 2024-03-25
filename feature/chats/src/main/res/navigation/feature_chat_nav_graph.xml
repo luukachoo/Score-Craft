@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feature_chat_nav_graph"
+    app:startDestination="@id/chatFragment">
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.chats.screen.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat">
+
+        <deepLink app:uri="market-mingle://feature.chat/fragment_chat" />
+
+    </fragment>
+</navigation>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Layout directory="layout"
+    filePath="feature\past_matches\src\main\res\layout\fragment_past_matches.xml"
+    isBindingData="false" isMerge="false" layout="fragment_past_matches"
+    modulePackage="com.feature.past_matches"
+    rootNodeType="androidx.constraintlayout.widget.ConstraintLayout">
+    <Targets>
+        <Target tag="layout/fragment_past_matches_0"
+            view="androidx.constraintlayout.widget.ConstraintLayout">
+            <Expressions />
+            <location endLine="23" endOffset="51" startLine="1" startOffset="0" />
+        </Target>
+        <Target id="@+id/rvPastMatches" view="androidx.recyclerview.widget.RecyclerView">
+            <Expressions />
+            <location endLine="12" endOffset="78" startLine="8" startOffset="4" />
+        </Target>
+        <Target id="@+id/progressBar" view="ProgressBar">
+            <Expressions />
+            <location endLine="21" endOffset="51" startLine="14" startOffset="4" />
+        </Target>
+    </Targets>
+</Layout>

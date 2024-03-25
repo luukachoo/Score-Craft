@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feature_login_nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.login.screen.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+
+        <deepLink app:uri="market-mingle://feature.login/fragment_login?email={email}&amp;password={password}" />
+
+        <argument
+            android:name="email"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="password"
+            android:defaultValue=""
+            app:argType="string" />
+
+    </fragment>
+</navigation>

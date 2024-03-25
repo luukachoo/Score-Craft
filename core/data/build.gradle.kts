@@ -1,21 +1,26 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
-    kotlin("kapt")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.core.data"
+    namespace = ModulePackages.CORE_DATA
 }
 
 dependencies {
+    basic()
     retrofit()
-    daggerHilt()
-}
+    fireBaseAuth()
+    firebaseDataBase()
+    firebaseStorage()
+    firebaseMessaging()
+    workManager()
+    dataStore()
 
-kapt {
-    correctErrorTypes = true
+    // core
+    domain()
+    common()
 }

@@ -1,14 +1,27 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.ANDROID_LIBRARY)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.GMS_SERVICES)
 }
 
 apply<MainGradlePlugin>()
 
 android {
-    namespace = "com.core.common"
+    namespace = ModulePackages.CORE_COMMON
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
     basic()
+    retrofit()
+    glide()
+    fireBaseAuth()
+    firebaseDataBase()
+    firebaseStorage()
+    firebaseMessaging()
+    workManager()
+    navigationComponent()
 }

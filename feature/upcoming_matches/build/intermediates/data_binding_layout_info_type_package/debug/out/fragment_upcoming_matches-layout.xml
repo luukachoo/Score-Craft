@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Layout directory="layout"
+    filePath="feature\upcoming_matches\src\main\res\layout\fragment_upcoming_matches.xml"
+    isBindingData="false" isMerge="false" layout="fragment_upcoming_matches"
+    modulePackage="com.feature.upcoming_matches"
+    rootNodeType="androidx.constraintlayout.widget.ConstraintLayout">
+    <Targets>
+        <Target tag="layout/fragment_upcoming_matches_0"
+            view="androidx.constraintlayout.widget.ConstraintLayout">
+            <Expressions />
+            <location endLine="24" endOffset="51" startLine="1" startOffset="0" />
+        </Target>
+        <Target id="@+id/rvUpcomingMatches" view="androidx.recyclerview.widget.RecyclerView">
+            <Expressions />
+            <location endLine="13" endOffset="54" startLine="8" startOffset="4" />
+        </Target>
+        <Target id="@+id/progressBar" view="ProgressBar">
+            <Expressions />
+            <location endLine="22" endOffset="51" startLine="15" startOffset="4" />
+        </Target>
+    </Targets>
+</Layout>

@@ -1,44 +1,98 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
+    id(Plugins.ANDROID_APPLICATION)
+    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.DAGGER_HILT)
+    id(Plugins.GMS_SERVICES)
+    kotlin(Plugins.KAPT)
 }
 
 android {
-    namespace = "com.example.marketmingle"
-    compileSdk = ProjectConfig.compileSdk
+    namespace = ModulePackages.APP
+    compileSdk = DefaultConfig.COMPILE_SDK
 
     defaultConfig {
-        ProjectConfig.appId
-        ProjectConfig.minSdk
-        ProjectConfig.targetSdk
-        ProjectConfig.versionCode
-        ProjectConfig.versionName
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = ModulePackages.APP
+        minSdk = DefaultConfig.MIN_SDK
+        targetSdk = DefaultConfig.TARGET_SDK
+        versionCode = Release.VERSION_CODE
+        versionName = Release.VERSION_NAME
+        testInstrumentationRunner = DefaultConfig.ANDROID_JUNIT_TEST_RUNNER
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
     }
 
     buildTypes {
+        debug {
+            buildConfigField(BuildType.TYPE, BuildType.NAME_PANDA, BuildType.URL_PANDA)
+            buildConfigField(
+                BuildType.TYPE,
+                BuildType.NAME_NOTIFICATION,
+                BuildType.URL_NOTIFICATIONS
+            )
+        }
+
         release {
+            buildConfigField(BuildType.TYPE, BuildType.NAME_PANDA, BuildType.URL_PANDA)
+            buildConfigField(
+                BuildType.TYPE,
+                BuildType.NAME_NOTIFICATION,
+                BuildType.URL_NOTIFICATIONS
+            )
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile(BuildType.PROGUARD),
+                BuildType.PROGUARD_RULES
             )
         }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_18
+        targetCompatibility = JavaVersion.VERSION_18
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = DefaultConfig.JVM_TARGET
     }
 }
 
 dependencies {
     basic()
     daggerHilt()
+    navigationComponent()
+    retrofit()
+    fireBaseAuth()
+    firebaseDataBase()
+    firebaseMessaging()
+    dataStore()
+
+    // core
+    common()
+    data()
+    domain()
+    coreUi()
+
+    // feature
+    featureWelcome()
+    featureRegister()
+    featureLogin()
+    featureHome()
+    featureSeries()
+    featureLiveMatches()
+    featureLiveMatchDetails()
+    featureForgotPassword()
+    featureProfile()
+    featureImageBottomSheet()
+    featureSplashScreen()
+    featureSeries()
+    featureLiveMatchDetails()
+    featureTournament()
+    featureChats()
+    featureFriendRequest()
+    featureMessage()
+    featureFriendProfile()
 }
 
 kapt {

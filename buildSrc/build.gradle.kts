@@ -11,10 +11,11 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
-    implementation("com.android.tools.build:gradle:8.2.2")
+    implementation("com.android.tools.build:gradle:8.3.1")
+    implementation("com.squareup:javapoet:1.13.0")
 }
 
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
-    jvmTarget = "17"
+    jvmTarget = "18"
 }

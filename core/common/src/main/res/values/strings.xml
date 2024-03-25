@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  :feature:profile -->
+    <string name="profile">Profile</string>
+    <string name="aleksandre_toria">Aleksandre Toria</string>
+    <string name="flostii">Flostii</string>
+    <string name="log_out">Log Out</string>
+    <string name="feature_profile_permission_title">Permission Required</string>
+    <string name="feature_profile_message">This feature requires camera and media access to function. Please enable permissions in app settings.</string>
+    <string name="feature_profile_dialog_positive_button">App Settings</string>
+    <string name="feature_profile_dialog_negative_button">Cancel</string>
+    <string name="feature_profile_permission_required_message">Permissions required for this feature</string>
+    <string name="favourite_leagues">Favourite Leagues</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="settings">Settings</string>
+    <string name="dark_mode_preferene">Dark mode preference</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="system_default">System default</string>
+    <string name="light_lowercase">light</string>
+    <string name="dark_lowercase">dark</string>
+    <string name="system_default_lowercase">system_default</string>
+
+    <!--  :feature:series -->
+    <string name="back">back</string>
+    <string name="series">Series</string>
+    <string name="test_season">Season 2 2023</string>
+    <string name="begin_at">Begins at:</string>
+    <string name="test_date">2024 jan 14</string>
+    <string name="end_at">End at:</string>
+    <string name="season">Season:</string>
+    <string name="no_name">no name</string>
+
+    <!--  :feature:tournament -->
+    <string name="tournament">Tournaments</string>
+    <string name="_3_18_24">3–18–24</string>
+    <string name="name">name</string>
+    <string name="begins_at">Begins at:</string>
+    <string name="prize_pool">Prize pool:</string>
+    <string name="no_prize_pool">No Prize pool</string>
+    <string name="first">1.</string>
+    <string name="standings">STANDINGS</string>
+    <string name="matches">MATCHES</string>
+
+    <!--  :feature:register -->
+    <string name="hello_register_to_get_started">Hello! Register to get \nStarted</string>
+    <string name="username">Username</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="register">Register</string>
+    <string name="or_register_with">Or Register with</string>
+    <string name="already_have_an_account_login_now">Already have an account? <font color="#6F5DD5"><B>Login Now</B></font></string>
+    <string name="fields_are_not_valid">Fields are not valid!</string>
+    <string name="passwords_do_not_match">Passwords do not match!</string>
+
+    <!--  :feature:login -->
+    <string name="welcome_back_glad_to_see_you_again">Welcome back! Glad\nto see you, Again!</string>
+    <string name="login">Login</string>
+    <string name="or_login_with">Or Login with</string>
+    <string name="don_t_have_an_account_register_now">Don\'t have an account? <font color="#6F5DD5"><B>Register Now</B></font></string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="default_web_client_id">977644697938-9nptv2lbmk5cb4qrruvnnecnqc9m64le.apps.googleusercontent.com</string>
+
+    <!--  :feature:login -->
+    <string name="don_t_worry_it_occurs_please_enter_the_email_address_linked_with_your_account">Don\'t worry! It occurs. Please enter the email\naddress linked with your account.</string>
+    <string name="send_code">Send Code</string>
+    <string name="remember_password_login">Remember Password? <font color="#6F5DD5"><B>Login</B></font></string>
+
+    <!--  :feature:message -->
+    <string name="send_a_message">Send a message</string>
+    <string name="button_send">button send</string>
+    <string name="full_name_format">%1$s %2$s</string>
+    <string name="username_format">"@%1$s"</string>
+
+    <!--  :feature:chats -->
+    <string name="chat">Chat</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="friends">Friends</string>
+    <string name="friend_request">Friend Request</string>
+
+    <!--  :feature:friend_request -->
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+
+    <!--  :feature:match -->
+    <string name="now_streaming">Now Streaming:</string>
+    <string name="zero">0</string>
+    <string name="title">Title</string>
+    <string name="test">00/00/0000</string>
+    <string name="no_lives">No one is streaming now, come back later</string>
+    <string name="no_live_link">Live is not available</string>
+    <string name="test_name">SUMMER 2022 PLAYOFFS ROUND 3</string>
+    <string name="test_time">17:00</string>
+    <string name="test_team_one">FNATIC</string>
+    <string name="minus">-</string>
+    <string name="league_of_legends">League of Legends</string>
+    <string name="past">PAST</string>
+    <string name="live">LIVE</string>
+    <string name="upcoming">UPCOMING</string>
+
+    <!-- :feature:live_match_details-->
+    <string name="watch_on">Watch on</string>
+    <string name="bb_vs_tspirit">BB vs Tspirit</string>
+    <string name="ge">GE</string>
+
+    <!-- :feature:image_bottom_sheet-->
+    <string name="take_a_picture">Take a Picture</string>
+    <string name="choose_from_gallery">Choose from Gallery</string>
+    <string name="select_image">Select Image</string>
+
+    <!-- :feature:home-->
+    <string name="hello_text">Hello👋</string>
+    <string name="jemal_kakauridze">Jemal Kakauridze</string>
+    <string name="search">Search</string>
+    <string name="leagues">Leagues</string>
+    <string name="heart">Heart</string>
+    <string name="hoodie">Hoodie</string>
+    <string name="test_price">$120</string>
+    <string name="games">Games</string>
+    <string name="score_craft">Score Craft</string>
+    <string name="welcome_jemal_kakauridze">Welcome Jemal Kakauridze</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="explore_leagues">Explore Leagues</string>
+
+<!--    :feature:league-->
+    <string name="add_to_favourites_button">Add to favourites button</string>
+
+<!--    :feature:chat_item_layout-->
+    <string name="friend_remove_button">Friend remove button</string>
+    <string name="friend_requests">Friend Requests</string>
+    <string name="remove_chat_for_everyone">Remove chat for everyone</string>
+    <string name="error_user_not_found">ERROR_USER_NOT_FOUND</string>
+    <string name="email_no_capital">email</string>
+    <string name="password_no_capital">password</string>
+    <string name="full_name">%1$s %2$s</string>
+    <string name="friendid">friendId</string>
+    <string name="camera_selection_cancelled">Camera selection cancelled</string>
+    <string name="provider">%1$s.provider</string>
+    <string name="image">image/*</string>
+    <string name="imageuri">imageUri</string>
+    <string name="compressedimageuri">compressedImageUri</string>
+    <string name="photofilepath">photoFilePath</string>
+    <string name="matchid">matchId</string>
+    <string name="twitch_tv">twitch.tv</string>
+    <string name="youtube_com">youtube.com</string>
+    <string name="running">running</string>
+    <string name="slug">slug</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="please_check_your_network_settings_and_try_again">Please check your network settings and try again.</string>
+    <string name="retry">Retry</string>
+    <string name="turn_on_wifi">Turn on WiFi</string>
+
+    <!--    :feature:friend_profile-->
+
+    <string name="error_invalid_credentials">The email address or password is incorrect.</string>
+    <string name="error_the_user_account_does_not_exist">The user account does not exist or has been disabled.</string>
+    <string name="error_user_collision">An account already exists with the given email address.</string>
+    <string name="error_too_many_requests">Too many requests. Try again later.</string>
+    <string name="error_recent_login_required">Recent login required. Please log in again to perform this action.</string>
+    <string name="error_authentication">Authentication error: %1$s</string>
+    <string name="error_login_failed">Login failed: %1$s</string>
+    <string name="error_fields_not_valid">Fields are not valid!</string>
+
+</resources>

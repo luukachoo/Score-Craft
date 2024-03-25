@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_tournament_nav_graph"
+    app:startDestination="@id/tournamentFragment">
+
+    <fragment
+        android:id="@+id/tournamentFragment"
+        android:name="com.example.tournament.screen.tournament_list.TournamentFragment"
+        android:label="fragment_tournament"
+        tools:layout="@layout/fragment_tournament">
+
+        <deepLink app:uri="market-mingle://feature.tournament/fragment_tournament?slug={slug}" />
+        <argument
+            android:name="slug"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_tournamentFragment_to_tournamentDetailsFragment"
+            app:destination="@id/tournamentDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tournamentDetailsFragment"
+        android:name="com.example.tournament.screen.tournament_details.TournamentDetailsFragment"
+        android:label="fragment_tournament_details"
+        tools:layout="@layout/fragment_tournament_details">
+
+        <argument
+            android:name="slug"
+            app:argType="string" />
+
+    </fragment>
+</navigation>

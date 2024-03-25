@@ -16,16 +16,33 @@
           </compositeBuild>
         </compositeConfiguration>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="gradleJvm" value="corretto-18" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core-ui" />
             <option value="$PROJECT_DIR$/core/common" />
             <option value="$PROJECT_DIR$/core/data" />
+            <option value="$PROJECT_DIR$/core/domain" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/chats" />
+            <option value="$PROJECT_DIR$/feature/forgot_password" />
+            <option value="$PROJECT_DIR$/feature/friend_profile" />
+            <option value="$PROJECT_DIR$/feature/friend_request" />
+            <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/image_bottom_sheet" />
+            <option value="$PROJECT_DIR$/feature/live_match_details" />
+            <option value="$PROJECT_DIR$/feature/login" />
+            <option value="$PROJECT_DIR$/feature/match" />
+            <option value="$PROJECT_DIR$/feature/message" />
+            <option value="$PROJECT_DIR$/feature/profile" />
+            <option value="$PROJECT_DIR$/feature/registration" />
+            <option value="$PROJECT_DIR$/feature/series" />
+            <option value="$PROJECT_DIR$/feature/splash_screen" />
+            <option value="$PROJECT_DIR$/feature/tournament" />
             <option value="$PROJECT_DIR$/feature/welcome" />
           </set>
         </option>
