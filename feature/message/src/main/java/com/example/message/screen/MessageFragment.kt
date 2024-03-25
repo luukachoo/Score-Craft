@@ -6,11 +6,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.core.common.R
 import com.core.common.base.BaseFragment
 import com.core.common.extension.DeepLinkDestination
 import com.core.common.extension.deepLinkNavigateTo
 import com.core.common.extension.loadImagesWithGlide
-import com.core.common.R
 import com.example.message.adapter.MessageRecyclerAdapter
 import com.example.message.databinding.FragmentMessageBinding
 import com.example.message.event.MessageEvent
@@ -120,7 +120,7 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(FragmentMessageBind
                 DeepLinkDestination.Chat, popUpTo = true
             )
             is MessageFragmentViewModel.MessageUiEvent.NavigateToFriendProfile -> findNavController().deepLinkNavigateTo(
-                DeepLinkDestination.FriendProfile(event.friendId)
+                DeepLinkDestination.FriendProfile(event.friendId), popUpTo = true
             )
         }
     }

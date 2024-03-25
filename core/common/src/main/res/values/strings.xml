@@ -55,7 +55,7 @@
     <string name="confirm_password">Confirm password</string>
     <string name="register">Register</string>
     <string name="or_register_with">Or Register with</string>
-    <string name="already_have_an_account_login_now">Already have an account? <font color="#A45EE5"><B>Login Now</B></font></string>
+    <string name="already_have_an_account_login_now">Already have an account? <font color="#6F5DD5"><B>Login Now</B></font></string>
     <string name="fields_are_not_valid">Fields are not valid!</string>
     <string name="passwords_do_not_match">Passwords do not match!</string>
 
@@ -63,14 +63,14 @@
     <string name="welcome_back_glad_to_see_you_again">Welcome back! Glad\nto see you, Again!</string>
     <string name="login">Login</string>
     <string name="or_login_with">Or Login with</string>
-    <string name="don_t_have_an_account_register_now">Don\'t have an account? <font color="#A45EE5"><B>Register Now</B></font></string>
+    <string name="don_t_have_an_account_register_now">Don\'t have an account? <font color="#6F5DD5"><B>Register Now</B></font></string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="default_web_client_id">977644697938-9nptv2lbmk5cb4qrruvnnecnqc9m64le.apps.googleusercontent.com</string>
 
     <!--  :feature:login -->
     <string name="don_t_worry_it_occurs_please_enter_the_email_address_linked_with_your_account">Don\'t worry! It occurs. Please enter the email\naddress linked with your account.</string>
     <string name="send_code">Send Code</string>
-    <string name="remember_password_login">Remember Password? <font color="#A45EE5"><B>Login</B></font></string>
+    <string name="remember_password_login">Remember Password? <font color="#6F5DD5"><B>Login</B></font></string>
 
     <!--  :feature:message -->
     <string name="send_a_message">Send a message</string>

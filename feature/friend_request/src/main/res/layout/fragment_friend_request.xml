@@ -26,7 +26,6 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/alata"
         android:text="@string/friend_requests"
-        android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
