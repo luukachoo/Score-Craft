@@ -159,4 +159,13 @@
 
     <!--    :feature:friend_profile-->
 
+    <string name="error_invalid_credentials">The email address or password is incorrect.</string>
+    <string name="error_the_user_account_does_not_exist">The user account does not exist or has been disabled.</string>
+    <string name="error_user_collision">An account already exists with the given email address.</string>
+    <string name="error_too_many_requests">Too many requests. Try again later.</string>
+    <string name="error_recent_login_required">Recent login required. Please log in again to perform this action.</string>
+    <string name="error_authentication">Authentication error: %1$s</string>
+    <string name="error_login_failed">Login failed: %1$s</string>
+    <string name="error_fields_not_valid">Fields are not valid!</string>
+
 </resources>
